@@ -23,9 +23,15 @@ namespace KinectTest2
     {
         private KinectSensor kinect;
 
+        private int min = 300;
+
+        private int max = 400;
+
         public MainWindow()
         {
             InitializeComponent();
+            NearDepthMinDistanceTextBox.Text = min.ToString();
+            NearDepthMaxDistanceTextBox.Text = max.ToString();
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
@@ -47,9 +53,9 @@ namespace KinectTest2
                     LaunchButton.Content = "Stop";
                     kinect.ColorStream.Enable();
                     kinect.ColorFrameReady += KinectOnColorFrameReady;
-                    kinect.DepthStream.Range = DepthRange.Default;
                     kinect.DepthStream.Enable();
                     kinect.DepthFrameReady += KinectOnDepthFrameReady;
+                    ElevationSlider.Value = kinect.ElevationAngle;
                 }
                 else
                 {
@@ -93,8 +99,12 @@ namespace KinectTest2
 
         private void ShowDepthImageFrame(DepthImageFrame frame)
         {
+            if (frame == null)
+            {
+                return;
+            }
             DepthImagePixel[] depthPixels = new DepthImagePixel[frame.PixelDataLength];
-            byte[] colorPixels = new byte[frame.PixelDataLength * sizeof(int)];
+            byte[] colorPixels = new byte[frame.PixelDataLength*sizeof (int)];
             frame.CopyDepthImagePixelDataTo(depthPixels);
 
             WriteableBitmap bitmap = new WriteableBitmap(frame.Width, frame.Height, 96.0, 96.0, PixelFormats.Bgr32, null);
@@ -112,7 +122,7 @@ namespace KinectTest2
                 // Get the depth for this pixel
                 short depth = depthPixels[i].Depth;
 
-                if (depth > 400 && depth < 500)
+                if (depth > min && depth < max)
                 {
                     depthInRangeCount++;
                 }
@@ -126,7 +136,7 @@ namespace KinectTest2
                 // Consider using a lookup table instead when writing production code.
                 // See the KinectDepthViewer class used by the KinectExplorer sample
                 // for a lookup table example.
-                byte intensity = (byte)(depth >= minDepth && depth <= maxDepth ? depth : 0);
+                byte intensity = (byte) (depth >= minDepth && depth <= maxDepth ? depth : 0);
 
                 // Write out blue byte
                 colorPixels[colorPixelIndex++] = intensity;
@@ -142,7 +152,8 @@ namespace KinectTest2
                 ++colorPixelIndex;
             }
 
-            bitmap.WritePixels(new Int32Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight), colorPixels, bitmap.PixelWidth * sizeof(int), 0);
+            bitmap.WritePixels(new Int32Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight), colorPixels,
+                bitmap.PixelWidth*sizeof (int), 0);
             ImageCanvas.Background = new ImageBrush(bitmap);
 
             /*
@@ -161,8 +172,9 @@ namespace KinectTest2
         {
             var pixelData = new byte[frame.PixelDataLength];
             frame.CopyPixelDataTo(pixelData);
-            int stride = frame.Width * frame.BytesPerPixel;
-            BitmapSource bitmapSource = BitmapSource.Create(frame.Width, frame.Height, 96, 96, PixelFormats.Bgr32, null, pixelData,
+            int stride = frame.Width*frame.BytesPerPixel;
+            BitmapSource bitmapSource = BitmapSource.Create(frame.Width, frame.Height, 96, 96, PixelFormats.Bgr32, null,
+                pixelData,
                 stride);
 
             ImageCanvas.Background = new ImageBrush(bitmapSource);
@@ -173,22 +185,14 @@ namespace KinectTest2
             kinect.ElevationAngle = (int) ElevationSlider.Value;
         }
 
-        private void NearModeRadioButton_Checked(object sender, RoutedEventArgs e)
+        private void NearDepthMinDistanceTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (kinect == null)
-            {
-                return;
-            }
-            kinect.DepthStream.Range = DepthRange.Near;
+            min = Convert.ToInt32(NearDepthMinDistanceTextBox.Text);
         }
 
-        private void FarModeRadioButton_Checked(object sender, RoutedEventArgs e)
+        private void NearDepthMaxDistanceTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
-            if (kinect == null)
-            {
-                return;
-            }
-            kinect.DepthStream.Range = DepthRange.Default;
+            max = Convert.ToInt16(NearDepthMaxDistanceTextBox.Text);
         }
     }
 }

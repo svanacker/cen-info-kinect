@@ -32,7 +32,7 @@
         <Button x:Name="LaunchButton" Content="Start" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="ButtonStart_Click"/>
         <Button x:Name="TakePicture" Grid.ColumnSpan="2" Content="Take !" HorizontalAlignment="Left" Margin="0,111,0,0" VerticalAlignment="Top" Width="75" Click="TakePicture_Click"/>
         <Canvas x:Name="ImageCanvas" Grid.Column="1" HorizontalAlignment="Left" Height="480" Margin="25,73,0,0" VerticalAlignment="Top" Width="640" Grid.ColumnSpan="4" Grid.RowSpan="3"/>
-        <Slider x:Name="ElevationSlider" HorizontalAlignment="Left" Height="170" Margin="26,148,0,0" VerticalAlignment="Top" Width="23" Orientation="Vertical" Minimum="-27" Maximum="26" RenderTransformOrigin="0.5,0.5" ValueChanged="Slider_ValueChanged"/>
+        <Slider x:Name="ElevationSlider" HorizontalAlignment="Left" Height="138" Margin="24,165,0,0" VerticalAlignment="Top" Width="23" Orientation="Vertical" Minimum="-27" Maximum="26" RenderTransformOrigin="0.5,0.5" ValueChanged="Slider_ValueChanged"/>
         <Grid Margin="10,323,3,24">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="37*"/>
@@ -43,10 +43,13 @@
             <RadioButton x:Name="DepthRadioButton" Content="Depth" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" Margin="2,55,0,0" Grid.ColumnSpan="2"/>
 
         </Grid>
-        <RadioButton x:Name="NearModeRadioButton" Content="Near" HorizontalAlignment="Left" Margin="10,415,0,0" VerticalAlignment="Top" GroupName="DepthMode" Grid.RowSpan="2" IsChecked="True" Checked="NearModeRadioButton_Checked"/>
-        <RadioButton x:Name="FarModeRadioButton" Content="Far" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" GroupName="DepthMode" Grid.Row="1" Checked="FarModeRadioButton_Checked"/>
-        <Label x:Name="NearDepthCountLabel" Content="Near Depth Pixel Count :" Grid.Column="3" HorizontalAlignment="Left" Margin="94,0,0,0" VerticalAlignment="Top"/>
-        <Label x:Name="NearDepthCountValue" Content="-" Grid.Column="3" HorizontalAlignment="Left" Margin="234,0,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NearDepthCountLabel" Content="Near Depth Pixel Count :" Grid.Column="3" HorizontalAlignment="Left" Margin="53,-1,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NearDepthCountValue" Content="-" Grid.Column="3" HorizontalAlignment="Left" Margin="227,0,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="ElevationLabel" Content="Elevation Angle&#xD;&#xA;" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,138,0,0" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="NearDepthMinDistanceTextBox" Grid.Column="3" HorizontalAlignment="Left" Height="23" Margin="129,32,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Text="300" TextChanged="NearDepthMinDistanceTextBox_TextChanged"/>
+        <Label x:Name="NearDepthMinDistanceLabel" Content="Min Dist :" Grid.Column="3" HorizontalAlignment="Left" Margin="53,30,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="NearDepthMaxDistanceLabel" Content="Max Dist :" Grid.Column="3" HorizontalAlignment="Left" Margin="227,29,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="NearDepthMaxDistanceTextBox" Grid.Column="4" HorizontalAlignment="Left" Height="23" Margin="10,31,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Text="400" TextChanged="NearDepthMaxDistanceTextBox_TextChanged"/>
 
     </Grid>
 </Window>
