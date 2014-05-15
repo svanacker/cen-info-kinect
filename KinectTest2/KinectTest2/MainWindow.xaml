@@ -27,6 +27,7 @@
         <Button x:Name="LaunchButton" Content="Start" HorizontalAlignment="Left" Margin="0,73,0,0" VerticalAlignment="Top" Width="75" Grid.ColumnSpan="2" Click="ButtonStart_Click"/>
         <Button x:Name="TakePicture" Grid.ColumnSpan="2" Content="Take !" HorizontalAlignment="Left" Margin="0,111,0,0" VerticalAlignment="Top" Width="75" Click="TakePicture_Click"/>
         <Canvas x:Name="ImageCanvas" Grid.Column="1" HorizontalAlignment="Left" Height="480" Margin="25,73,0,0" VerticalAlignment="Top" Width="640" Grid.ColumnSpan="4"/>
+        <Slider x:Name="ElevationSlider" HorizontalAlignment="Left" Height="170" Margin="26,148,0,0" VerticalAlignment="Top" Width="23" Orientation="Vertical" Minimum="-27" Maximum="26" RenderTransformOrigin="0.5,0.5" ValueChanged="Slider_ValueChanged"/>
 
     </Grid>
 </Window>

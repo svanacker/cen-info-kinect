@@ -71,5 +71,10 @@ namespace KinectTest2
                 ImageCanvas.Background = new ImageBrush(bitmapSource);
             }
         }
+
+        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            kinect.ElevationAngle = (int) ElevationSlider.Value;
+        }
     }
 }
