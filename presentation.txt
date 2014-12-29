@@ -1,0 +1,41 @@
+Présentation Kinect 
+
+- Hardware Overview => SV
+- Color Camera => SV
+- IR Emitter => SV
+- Microphone Array => SV
+- Motor => SV
+
+-------------------------
+
+Create a WPF Application => MN
+- Get Kinect Id
+- Start
+- Stop
+- Add Photo
+- Add Video
+- Add Depth
+ -> Adjust Min Dist / Max Dist
+
+Code : 
+Robot Application => SV : Robot s'arrête lorsqu'il rencontre un obstacle
+
+-------------------------
+
+Gestures => MN
+- Explications du modèle
+- Slide => Onglets
+==> Left = -1, Right = +1
+- Creation Projet Selenium sur l'application Dashboard pour les Slides
+- Burndown => Bras en travers
+- Arrêter => Bras en croix
+- Version => V avec les bras
+
+-------------------------
+
+Code "Robotique"
+Reconnaissance vocale 
+- Présentation
+- Code
+- Arrête / Stop Air conditionné
+
