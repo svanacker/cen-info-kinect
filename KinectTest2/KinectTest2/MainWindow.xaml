@@ -38,9 +38,9 @@
                 <ColumnDefinition Width="37*"/>
                 <ColumnDefinition Width="21*"/>
             </Grid.ColumnDefinitions>
-            <RadioButton x:Name="VideoRadioButton" Content="Video" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" IsChecked="True" Margin="2,10,0,0" Grid.ColumnSpan="2"/>
-            <RadioButton x:Name="PhotoRadioButton" Content="Photo" HorizontalAlignment="Left" Margin="2,31,0,0" VerticalAlignment="Top" GroupName="Mode" Grid.ColumnSpan="2"/>
-            <RadioButton x:Name="DepthRadioButton" Content="Depth" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" Margin="2,55,0,0" Grid.ColumnSpan="2"/>
+            <RadioButton x:Name="VideoRadioButton" Content="Video" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" IsChecked="True" Margin="2,10,0,0" Grid.ColumnSpan="2" Checked="VideoRadioButton_OnChecked"/>
+            <RadioButton x:Name="PhotoRadioButton" Content="Photo" HorizontalAlignment="Left" Margin="2,31,0,0" VerticalAlignment="Top" GroupName="Mode" Grid.ColumnSpan="2" Checked="PhotoRadioButton_OnChecked"/>
+            <RadioButton x:Name="DepthRadioButton" Content="Depth" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" Margin="2,55,0,0" Grid.ColumnSpan="2" Checked="DepthRadioButton_OnChecked"/>
 
         </Grid>
         <Label x:Name="NearDepthCountLabel" Content="Near Depth Pixel Count :" Grid.Column="3" HorizontalAlignment="Left" Margin="53,-1,0,0" VerticalAlignment="Top"/>

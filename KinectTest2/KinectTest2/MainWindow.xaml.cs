@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -51,15 +52,15 @@ namespace KinectTest2
                     kinect.Start();
                     KinectIdValue.Content = kinect.DeviceConnectionId;
                     LaunchButton.Content = "Stop";
-                    kinect.ColorStream.Enable();
-                    kinect.ColorFrameReady += KinectOnColorFrameReady;
-                    kinect.DepthStream.Enable();
-                    kinect.DepthFrameReady += KinectOnDepthFrameReady;
                     ElevationSlider.Value = kinect.ElevationAngle;
+
+                    this.InitKinectDisplay();
                 }
                 else
                 {
+                    this.CleanKinectDisplay();
                     kinect.Stop();
+                    kinect = null;
                     KinectIdValue.Content = "-";
                     KinectStatusValue.Content = "-";
                     LaunchButton.Content = "Start";
@@ -67,34 +68,81 @@ namespace KinectTest2
             }
         }
 
+        private void InitKinectDisplay()
+        {
+            this.CleanKinectDisplay();
+
+            if (true == VideoRadioButton.IsChecked)
+            {
+                kinect.ColorStream.Enable();
+                kinect.ColorFrameReady += KinectOnColorFrameReady;
+                
+            }
+            else if (true == DepthRadioButton.IsChecked)
+            {
+                kinect.DepthStream.Enable();
+                kinect.DepthFrameReady += KinectOnDepthFrameReady;
+            }
+            else if (true == PhotoRadioButton.IsChecked)
+            {
+                kinect.ColorStream.Enable();
+            }
+        }
+
+        private void CleanKinectDisplay()
+        {
+            kinect.ColorFrameReady -= KinectOnColorFrameReady;
+            kinect.DepthFrameReady -= KinectOnDepthFrameReady;
+            if (kinect.ColorStream.IsEnabled)
+            {
+                kinect.ColorStream.Disable();
+            }
+            if (kinect.DepthStream.IsEnabled)
+            {
+                kinect.DepthStream.Disable();
+            }
+        }
+
         private void KinectOnDepthFrameReady(object sender, DepthImageFrameReadyEventArgs depthImageFrameReadyEventArgs)
         {
-            if (true == DepthRadioButton.IsChecked)
+            using (DepthImageFrame frame = depthImageFrameReadyEventArgs.OpenDepthImageFrame())
             {
-                using (DepthImageFrame frame = depthImageFrameReadyEventArgs.OpenDepthImageFrame())
-                {
-                    ShowDepthImageFrame(frame);
-                }
+                ShowDepthImageFrame(frame);
             }
         }
 
         private void KinectOnColorFrameReady(object sender, ColorImageFrameReadyEventArgs colorImageFrameReadyEventArgs)
         {
-            if (true == VideoRadioButton.IsChecked)
-            {
-                using (ColorImageFrame frame = colorImageFrameReadyEventArgs.OpenColorImageFrame())
-                {
-                    ShowColorImageFrame(frame);
-                }
-            }
-        }
-
-        private void TakePicture_Click(object sender, RoutedEventArgs e)
-        {
-            using (ColorImageFrame frame = kinect.ColorStream.OpenNextFrame(0))
+            using (ColorImageFrame frame = colorImageFrameReadyEventArgs.OpenColorImageFrame())
             {
                 ShowColorImageFrame(frame);
             }
+        }
+
+        private async void TakePicture_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.kinect == null) return;
+
+            kinect.ColorFrameReady -= KinectOnColorFrameReady;
+            kinect.DepthFrameReady -= KinectOnDepthFrameReady;
+
+            if (!kinect.ColorStream.IsEnabled) kinect.ColorStream.Enable();
+
+            using (ColorImageFrame frame = kinect.ColorStream.OpenNextFrame(100))
+            {
+                ShowColorImageFrame(frame);
+            }
+
+            var restoreDisplayTask = new Task(
+                () =>
+                    {
+                        Thread.Sleep(1000);
+                    });
+            restoreDisplayTask.Start();
+
+            await restoreDisplayTask;
+
+            this.InitKinectDisplay();
         }
 
         private void ShowDepthImageFrame(DepthImageFrame frame)
@@ -170,6 +218,10 @@ namespace KinectTest2
 
         private void ShowColorImageFrame(ColorImageFrame frame)
         {
+            if (frame == null)
+            {
+                return;
+            }
             var pixelData = new byte[frame.PixelDataLength];
             frame.CopyPixelDataTo(pixelData);
             int stride = frame.Width*frame.BytesPerPixel;
@@ -182,7 +234,20 @@ namespace KinectTest2
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
-            kinect.ElevationAngle = (int) ElevationSlider.Value;
+            if (this.kinect == null) return;
+
+            for (int i = 0; i < 5; i++)
+            {
+                try
+                {
+                    kinect.ElevationAngle = (int)ElevationSlider.Value;
+                    break;
+                }
+                catch (Exception)
+                {
+                    Thread.Sleep(10);
+                }
+            }
         }
 
         private void NearDepthMinDistanceTextBox_TextChanged(object sender, TextChangedEventArgs e)
@@ -193,6 +258,27 @@ namespace KinectTest2
         private void NearDepthMaxDistanceTextBox_TextChanged(object sender, TextChangedEventArgs e)
         {
             max = Convert.ToInt16(NearDepthMaxDistanceTextBox.Text);
+        }
+
+        private void VideoRadioButton_OnChecked(object sender, RoutedEventArgs e)
+        {
+            if (this.kinect == null) return;
+
+            this.InitKinectDisplay();
+        }
+
+        private void PhotoRadioButton_OnChecked(object sender, RoutedEventArgs e)
+        {
+            if (this.kinect == null) return;
+
+            this.InitKinectDisplay();
+        }
+
+        private void DepthRadioButton_OnChecked(object sender, RoutedEventArgs e)
+        {
+            if (this.kinect == null) return;
+
+            this.InitKinectDisplay();
         }
     }
 }
