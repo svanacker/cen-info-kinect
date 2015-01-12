@@ -35,7 +35,16 @@ Gestures => MN
 
 Code "Robotique"
 Reconnaissance vocale 
-- Présentation
-- Code
-- Arrête / Stop Air conditionné
+- Explication de ce qu'on va faire
+- Schéma d'architecture
+ -> Hardware Signal Processing
+ -> Drivers
+ -> DirectX ou Windows AudioSpeech API
+- 2eme slide d'architecture
+ -> Audio Source
+ -> Audio Stream
+ -> Speech Recognition
+- Bouton Start / Stop
+- Montrer un exemple WPF pour gérer l'air conditionné ou non
+- Connecter les 2 mondes
 

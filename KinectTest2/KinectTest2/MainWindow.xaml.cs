@@ -16,12 +16,20 @@ using Microsoft.Kinect;
 
 namespace KinectTest2
 {
+    using System.Threading;
+    using Microsoft.Speech.AudioFormat;
+    using Microsoft.Speech.Recognition;
+
     /// <summary>
     /// Interaction logic for MainWindow.xaml
     /// </summary>
     public partial class MainWindow : Window
     {
         private KinectSensor kinect;
+
+        private RecognizerInfo recognizer;
+
+        private SpeechRecognitionEngine speechRecognitionEngine;
 
         private int min = 300;
 
@@ -56,6 +64,26 @@ namespace KinectTest2
                     kinect.DepthStream.Enable();
                     kinect.DepthFrameReady += KinectOnDepthFrameReady;
                     ElevationSlider.Value = kinect.ElevationAngle;
+
+                    recognizer = GetRecognizer();
+                    speechRecognitionEngine = new SpeechRecognitionEngine(recognizer.Id);
+                    var choices = new Choices();
+                    choices.Add("Maison");
+                    /*
+                    choices.Add("red");
+                    choices.Add("green");
+                    choices.Add("start");
+                    */
+
+                    var grammarBuilder = new GrammarBuilder {Culture = recognizer.Culture};
+                    grammarBuilder.Append(choices);
+                    var grammar = new Grammar(grammarBuilder);
+
+                    speechRecognitionEngine.LoadGrammar(grammar);
+                    speechRecognitionEngine.SpeechRecognized += SpeechRecognitionEngineOnSpeechRecognized;
+
+                    var thread = new Thread(StartAudioStream);
+                    thread.Start();
                 }
                 else
                 {
@@ -65,6 +93,31 @@ namespace KinectTest2
                     LaunchButton.Content = "Start";
                 }
             }
+        }
+
+        private void StartAudioStream()
+        {
+            speechRecognitionEngine.SetInputToAudioStream(kinect.AudioSource.Start(), new SpeechAudioFormatInfo(EncodingFormat.Pcm, 16000, 16, 1, 32, 2, null));
+            speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
+        }
+
+        private void SpeechRecognitionEngineOnSpeechRecognized(object sender, SpeechRecognizedEventArgs e)
+        {
+            Console.WriteLine("Matched : {0}", e.Result.Text);
+        }
+
+        private RecognizerInfo GetRecognizer()
+        {
+            foreach (var recognizer in SpeechRecognitionEngine.InstalledRecognizers())
+            {
+                string value;
+                recognizer.AdditionalInfo.TryGetValue("Kinect", out value);
+                if ("True".Equals(value, StringComparison.OrdinalIgnoreCase) && "fr-FR".Equals(recognizer.Culture.Name, StringComparison.OrdinalIgnoreCase))
+                {
+                    return recognizer;
+                }
+            }
+            return null;
         }
 
         private void KinectOnDepthFrameReady(object sender, DepthImageFrameReadyEventArgs depthImageFrameReadyEventArgs)
@@ -170,6 +223,10 @@ namespace KinectTest2
 
         private void ShowColorImageFrame(ColorImageFrame frame)
         {
+            if (frame == null)
+            {
+                return;
+            }
             var pixelData = new byte[frame.PixelDataLength];
             frame.CopyPixelDataTo(pixelData);
             int stride = frame.Width*frame.BytesPerPixel;
@@ -182,6 +239,10 @@ namespace KinectTest2
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
+            if (kinect == null)
+            {
+                return;
+            }
             kinect.ElevationAngle = (int) ElevationSlider.Value;
         }
 
