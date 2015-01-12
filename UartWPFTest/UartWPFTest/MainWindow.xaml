@@ -1,0 +1,16 @@
+﻿<Window x:Class="UartWPFTest.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525">
+    <Grid>
+        <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="411,274,0,0" VerticalAlignment="Top" Width="75" Click="SendButton_Click"/>
+        <TextBox x:Name="SendTextBox" HorizontalAlignment="Left" Height="22" Margin="24,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369"/>
+        <TextBox x:Name="ContentTextBox" HorizontalAlignment="Left" Height="208" Margin="33,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="465"/>
+        <ComboBox x:Name="COMComboBox" HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top" Width="139" SelectionChanged="COMComboBox_SelectionChanged"/>
+        <Button x:Name="ClearButton" Content="Clear" HorizontalAlignment="Left" Margin="343,10,0,0" VerticalAlignment="Top" Width="75" Click="ClearButton_Click"/>
+        <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="75" Click="CloseButton_Click"/>
+        <Button x:Name="LoadListButton" Content="LoadList" HorizontalAlignment="Left" Margin="177,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.693,0.682" Click="LoadListButton_Click"/>
+        <Button x:Name="ReadButton" Content="Read" HorizontalAlignment="Left" Margin="257,10,0,0" VerticalAlignment="Top" Width="75" Click="ReadButton_Click"/>
+
+    </Grid>
+</Window>
