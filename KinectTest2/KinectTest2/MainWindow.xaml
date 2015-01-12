@@ -44,6 +44,8 @@
                 <RadioButton x:Name="DepthRadioButton" Content="Depth" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" Checked="DepthRadioButton_OnChecked"/>
             </StackPanel>
         </StackPanel>
-        <Canvas x:Name="ImageCanvas" Width="640" Height="480" />
+        <Canvas x:Name="ImageCanvas" Width="640" Height="480" >
+            <Ellipse x:Name="HeadElipse" Stroke="Red" Height="100" Canvas.Left="270" Canvas.Top="190" Width="100"/>
+        </Canvas>
     </DockPanel>
 </Window>

@@ -121,6 +121,9 @@ namespace KinectTest2
             {
                 kinect.ColorStream.Enable();
             }
+
+            kinect.SkeletonStream.Enable();
+            kinect.SkeletonFrameReady += KinectOnSkeletonFrameReady;
         }
 
         private void InitKinectSound()
@@ -151,6 +154,7 @@ namespace KinectTest2
         {
             kinect.ColorFrameReady -= KinectOnColorFrameReady;
             kinect.DepthFrameReady -= KinectOnDepthFrameReady;
+            kinect.SkeletonFrameReady -= KinectOnSkeletonFrameReady;
             if (kinect.ColorStream.IsEnabled)
             {
                 kinect.ColorStream.Disable();
@@ -158,6 +162,10 @@ namespace KinectTest2
             if (kinect.DepthStream.IsEnabled)
             {
                 kinect.DepthStream.Disable();
+            }
+            if (kinect.SkeletonStream.IsEnabled)
+            {
+                kinect.SkeletonStream.Disable();
             }
         }
 
@@ -175,6 +183,33 @@ namespace KinectTest2
             {
                 ShowColorImageFrame(frame);
             }
+        }
+
+        private void KinectOnSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
+        {
+            using (var sFrame = e.OpenSkeletonFrame())
+            {
+                if (sFrame != null)
+                {
+                    var skeletons = new Skeleton[sFrame.SkeletonArrayLength];
+                    sFrame.CopySkeletonDataTo(skeletons);
+                    foreach (var skeleton in skeletons)
+                    {
+                        if (skeleton.TrackingState == SkeletonTrackingState.Tracked)
+                        {
+                            var headLoc = skeleton.Joints[JointType.Head].Position;
+                            var colorImagePointOfHead = kinect.MapSkeletonPointToColor(headLoc, ColorImageFormat.RgbResolution640x480Fps30);
+                            this.FollowHead(colorImagePointOfHead);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void FollowHead(ColorImagePoint colorImagePointOfHead)
+        {
+            Canvas.SetLeft(this.HeadElipse, colorImagePointOfHead.X);
+            Canvas.SetTop(this.HeadElipse, colorImagePointOfHead.Y);
         }
 
         private async void TakePicture_Click(object sender, RoutedEventArgs e)
