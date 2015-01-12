@@ -151,18 +151,26 @@ namespace KinectTest2
                         if (skeleton.TrackingState == SkeletonTrackingState.Tracked)
                         {
                             var headLoc = skeleton.Joints[JointType.Head].Position;
+                            var neckLoc = skeleton.Joints[JointType.ShoulderCenter].Position;
                             var colorImagePointOfHead = kinect.MapSkeletonPointToColor(headLoc, ColorImageFormat.RgbResolution640x480Fps30);
-                            this.FollowHead(colorImagePointOfHead);
+                            var colorImagePointOfNeck = kinect.MapSkeletonPointToColor(neckLoc, ColorImageFormat.RgbResolution640x480Fps30);
+                            this.FollowHead(colorImagePointOfHead, colorImagePointOfNeck);
                         }
                     }
                 }
             }
         }
 
-        private void FollowHead(ColorImagePoint colorImagePointOfHead)
+        private void FollowHead(ColorImagePoint colorImagePointOfHead, ColorImagePoint colorImagePointOfNeck)
         {
-            Canvas.SetLeft(this.HeadElipse, colorImagePointOfHead.X);
-            Canvas.SetTop(this.HeadElipse, colorImagePointOfHead.Y);
+            var xdiff = colorImagePointOfHead.X - colorImagePointOfNeck.X;
+            var ydiff = colorImagePointOfHead.Y - colorImagePointOfNeck.Y;
+            var dist = Math.Sqrt((xdiff * xdiff) + (ydiff * ydiff));
+            var rayon = dist / 2;
+
+            this.HeadElipse.Width = this.HeadElipse.Height = dist;
+            Canvas.SetLeft(this.HeadElipse, colorImagePointOfHead.X - rayon);
+            Canvas.SetTop(this.HeadElipse, colorImagePointOfHead.Y - rayon);
         }
 
         private async void TakePicture_Click(object sender, RoutedEventArgs e)
@@ -391,12 +399,14 @@ namespace KinectTest2
             // Initialize the recognizer
             recognizer = GetRecognizer();
 
-            // Initialize the Engine
-            InitSpeechRecognitionEngine();
+            if (recognizer != null)
+            {
+                // Initialize the Engine
+                InitSpeechRecognitionEngine();
 
-            var thread = new Thread(StartAudioStream);
-            thread.Start();
-
+                var thread = new Thread(StartAudioStream);
+                thread.Start();
+            }
         }
 
         private void SpeechRecognitionEngineOnSpeechRecognized(object sender, SpeechRecognizedEventArgs e)
