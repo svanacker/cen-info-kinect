@@ -143,8 +143,9 @@
                         {
                             var headLoc = skeleton.Joints[JointType.Head].Position;
                             var neckLoc = skeleton.Joints[JointType.ShoulderCenter].Position;
-                            var colorImagePointOfHead = kinect.MapSkeletonPointToColor(headLoc, ColorImageFormat.RgbResolution640x480Fps30);
-                            var colorImagePointOfNeck = kinect.MapSkeletonPointToColor(neckLoc, ColorImageFormat.RgbResolution640x480Fps30);
+                            var coordMapper = this.kinect.CoordinateMapper;
+                            var colorImagePointOfHead = coordMapper.MapSkeletonPointToColorPoint(headLoc, ColorImageFormat.RgbResolution640x480Fps30);
+                            var colorImagePointOfNeck = coordMapper.MapSkeletonPointToColorPoint(neckLoc, ColorImageFormat.RgbResolution640x480Fps30);
                             this.FollowHead(colorImagePointOfHead, colorImagePointOfNeck);
                         }
                     }
