@@ -7,8 +7,8 @@
     using System.Windows.Controls;
     using System.Windows.Media;
     using System.Windows.Media.Imaging;
-    using Microsoft.Kinect;
 
+    using Microsoft.Kinect;
     using Microsoft.Speech.AudioFormat;
     using Microsoft.Speech.Recognition;
 
@@ -23,12 +23,15 @@
 
         private SpeechRecognitionEngine speechRecognitionEngine;
 
+        private GesturesModule gesturesModule;
+
         private int min = 300;
 
         private int max = 400;
 
         public MainWindow()
         {
+            this.gesturesModule = new GesturesModule(this);
             InitializeComponent();
             NearDepthMinDistanceTextBox.Text = min.ToString();
             NearDepthMaxDistanceTextBox.Text = max.ToString();
@@ -55,9 +58,11 @@
 
                     this.InitKinectDisplay();
                     this.InitKinectSound();
+                    this.gesturesModule.Start(kinect);
                 }
                 else
                 {
+                    this.gesturesModule.Stop();
                     this.CleanKinectDisplay();
                     kinect.Stop();
                     kinect = null;
@@ -133,7 +138,8 @@
         {
             using (var sFrame = e.OpenSkeletonFrame())
             {
-                if (sFrame != null)
+                // kinect variable can be null is the event is raised while we are stopping the device
+                if (sFrame != null && this.kinect != null)
                 {
                     var skeletons = new Skeleton[sFrame.SkeletonArrayLength];
                     sFrame.CopySkeletonDataTo(skeletons);
@@ -147,6 +153,8 @@
                             var colorImagePointOfHead = coordMapper.MapSkeletonPointToColorPoint(headLoc, ColorImageFormat.RgbResolution640x480Fps30);
                             var colorImagePointOfNeck = coordMapper.MapSkeletonPointToColorPoint(neckLoc, ColorImageFormat.RgbResolution640x480Fps30);
                             this.FollowHead(colorImagePointOfHead, colorImagePointOfNeck);
+
+                            this.gesturesModule.Follow(skeleton);
                         }
                     }
                 }
