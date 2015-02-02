@@ -51,6 +51,10 @@
             <Label x:Name="LastRecognizedWordLabel" Width="200"/>
             <Rectangle x:Name="SpeechDetectorIcon" Width="10" Height="10"  Fill="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
         </StackPanel>
-        <Canvas x:Name="ImageCanvas" Width="640" Height="480" />
+        <Canvas x:Name="ImageCanvas" Width="640" Height="480" >
+            <Ellipse x:Name="HeadElipse" Stroke="Red" Height="100" Canvas.Left="270" Canvas.Top="190" Width="100"/>
+            <Rectangle x:Name="LeftRectangle" Height="480" Width="320" Fill="Red" Visibility="Hidden" />
+            <Rectangle x:Name="RightRectangle" Height="480" Width="320" Fill="Green" Canvas.Right="0" Visibility="Hidden"  />
+        </Canvas>
     </DockPanel>
 </Window>

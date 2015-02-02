@@ -1,23 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-using Microsoft.Kinect;
-
-namespace KinectTest2
+﻿namespace KinectTest2
 {
+    using System;
     using System.Threading;
+    using System.Threading.Tasks;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Media.Imaging;
+
+    using Microsoft.Kinect;
     using Microsoft.Speech.AudioFormat;
     using Microsoft.Speech.Recognition;
 
@@ -32,12 +23,15 @@ namespace KinectTest2
 
         private SpeechRecognitionEngine speechRecognitionEngine;
 
+        private GesturesModule gesturesModule;
+
         private int min = 300;
 
         private int max = 400;
 
         public MainWindow()
         {
+            this.gesturesModule = new GesturesModule(this);
             InitializeComponent();
             NearDepthMinDistanceTextBox.Text = min.ToString();
             NearDepthMaxDistanceTextBox.Text = max.ToString();
@@ -64,9 +58,11 @@ namespace KinectTest2
 
                     this.InitKinectDisplay();
                     this.InitKinectSound();
+                    this.gesturesModule.Start(kinect);
                 }
                 else
                 {
+                    this.gesturesModule.Stop();
                     this.CleanKinectDisplay();
                     kinect.Stop();
                     kinect = null;
@@ -97,6 +93,9 @@ namespace KinectTest2
             {
                 kinect.ColorStream.Enable();
             }
+
+            kinect.SkeletonStream.Enable();
+            kinect.SkeletonFrameReady += KinectOnSkeletonFrameReady;
         }
 
 
@@ -104,6 +103,7 @@ namespace KinectTest2
         {
             kinect.ColorFrameReady -= KinectOnColorFrameReady;
             kinect.DepthFrameReady -= KinectOnDepthFrameReady;
+            kinect.SkeletonFrameReady -= KinectOnSkeletonFrameReady;
             if (kinect.ColorStream.IsEnabled)
             {
                 kinect.ColorStream.Disable();
@@ -111,6 +111,10 @@ namespace KinectTest2
             if (kinect.DepthStream.IsEnabled)
             {
                 kinect.DepthStream.Disable();
+            }
+            if (kinect.SkeletonStream.IsEnabled)
+            {
+                kinect.SkeletonStream.Disable();
             }
         }
 
@@ -128,6 +132,45 @@ namespace KinectTest2
             {
                 ShowColorImageFrame(frame);
             }
+        }
+
+        private void KinectOnSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
+        {
+            using (var sFrame = e.OpenSkeletonFrame())
+            {
+                // kinect variable can be null is the event is raised while we are stopping the device
+                if (sFrame != null && this.kinect != null)
+                {
+                    var skeletons = new Skeleton[sFrame.SkeletonArrayLength];
+                    sFrame.CopySkeletonDataTo(skeletons);
+                    foreach (var skeleton in skeletons)
+                    {
+                        if (skeleton.TrackingState == SkeletonTrackingState.Tracked)
+                        {
+                            var headLoc = skeleton.Joints[JointType.Head].Position;
+                            var neckLoc = skeleton.Joints[JointType.ShoulderCenter].Position;
+                            var coordMapper = this.kinect.CoordinateMapper;
+                            var colorImagePointOfHead = coordMapper.MapSkeletonPointToColorPoint(headLoc, ColorImageFormat.RgbResolution640x480Fps30);
+                            var colorImagePointOfNeck = coordMapper.MapSkeletonPointToColorPoint(neckLoc, ColorImageFormat.RgbResolution640x480Fps30);
+                            this.FollowHead(colorImagePointOfHead, colorImagePointOfNeck);
+
+                            this.gesturesModule.Follow(skeleton);
+                        }
+                    }
+                }
+            }
+        }
+
+        private void FollowHead(ColorImagePoint colorImagePointOfHead, ColorImagePoint colorImagePointOfNeck)
+        {
+            var xdiff = colorImagePointOfHead.X - colorImagePointOfNeck.X;
+            var ydiff = colorImagePointOfHead.Y - colorImagePointOfNeck.Y;
+            var dist = Math.Sqrt((xdiff * xdiff) + (ydiff * ydiff));
+            var rayon = dist / 2;
+
+            this.HeadElipse.Width = this.HeadElipse.Height = dist;
+            Canvas.SetLeft(this.HeadElipse, colorImagePointOfHead.X - rayon);
+            Canvas.SetTop(this.HeadElipse, colorImagePointOfHead.Y - rayon);
         }
 
         private async void TakePicture_Click(object sender, RoutedEventArgs e)
@@ -356,12 +399,14 @@ namespace KinectTest2
             // Initialize the recognizer
             recognizer = GetRecognizer();
 
-            // Initialize the Engine
-            InitSpeechRecognitionEngine();
+            if (recognizer != null)
+            {
+                // Initialize the Engine
+                InitSpeechRecognitionEngine();
 
-            var thread = new Thread(StartAudioStream);
-            thread.Start();
-
+                var thread = new Thread(StartAudioStream);
+                thread.Start();
+            }
         }
 
         private void SpeechRecognitionEngineOnSpeechRecognized(object sender, SpeechRecognizedEventArgs e)
