@@ -1,5 +1,7 @@
 Présentation Kinect 
 
+- Différence entre Kinect et Kinect For Windows (limitations)
+- Différence Kinect v1 / v2
 - Hardware Overview => SV
 - Color Camera => SV
 - IR Emitter => SV
@@ -16,9 +18,6 @@ Create a WPF Application => MN
 - Add Video
 - Add Depth
  -> Adjust Min Dist / Max Dist
-
-Code : 
-Robot Application => SV : Robot s'arrête lorsqu'il rencontre un obstacle
 
 -------------------------
 
