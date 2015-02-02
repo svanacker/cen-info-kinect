@@ -19,11 +19,9 @@
     {
         private KinectSensor kinect;
 
-        private RecognizerInfo recognizer;
-
-        private SpeechRecognitionEngine speechRecognitionEngine;
-
         private GesturesModule gesturesModule;
+
+        private RecognitionModule recognitionModule;
 
         private int min = 300;
 
@@ -32,6 +30,7 @@
         public MainWindow()
         {
             this.gesturesModule = new GesturesModule(this);
+            this.recognitionModule = new RecognitionModule(this);
             InitializeComponent();
             NearDepthMinDistanceTextBox.Text = min.ToString();
             NearDepthMaxDistanceTextBox.Text = max.ToString();
@@ -57,7 +56,7 @@
                     ElevationSlider.Value = kinect.ElevationAngle;
 
                     this.InitKinectDisplay();
-                    this.InitKinectSound();
+                    this.recognitionModule.Start(kinect);
                     this.gesturesModule.Start(kinect);
                 }
                 else
@@ -150,8 +149,10 @@
                             var headLoc = skeleton.Joints[JointType.Head].Position;
                             var neckLoc = skeleton.Joints[JointType.ShoulderCenter].Position;
                             var coordMapper = this.kinect.CoordinateMapper;
-                            var colorImagePointOfHead = coordMapper.MapSkeletonPointToColorPoint(headLoc, ColorImageFormat.RgbResolution640x480Fps30);
-                            var colorImagePointOfNeck = coordMapper.MapSkeletonPointToColorPoint(neckLoc, ColorImageFormat.RgbResolution640x480Fps30);
+                            var colorImagePointOfHead = coordMapper.MapSkeletonPointToColorPoint(headLoc,
+                                ColorImageFormat.RgbResolution640x480Fps30);
+                            var colorImagePointOfNeck = coordMapper.MapSkeletonPointToColorPoint(neckLoc,
+                                ColorImageFormat.RgbResolution640x480Fps30);
                             this.FollowHead(colorImagePointOfHead, colorImagePointOfNeck);
 
                             this.gesturesModule.Follow(skeleton);
@@ -165,8 +166,8 @@
         {
             var xdiff = colorImagePointOfHead.X - colorImagePointOfNeck.X;
             var ydiff = colorImagePointOfHead.Y - colorImagePointOfNeck.Y;
-            var dist = Math.Sqrt((xdiff * xdiff) + (ydiff * ydiff));
-            var rayon = dist / 2;
+            var dist = Math.Sqrt((xdiff*xdiff) + (ydiff*ydiff));
+            var rayon = dist/2;
 
             this.HeadElipse.Width = this.HeadElipse.Height = dist;
             Canvas.SetLeft(this.HeadElipse, colorImagePointOfHead.X - rayon);
@@ -206,7 +207,7 @@
                 return;
             }
             DepthImagePixel[] depthPixels = new DepthImagePixel[frame.PixelDataLength];
-            byte[] colorPixels = new byte[frame.PixelDataLength * sizeof(int)];
+            byte[] colorPixels = new byte[frame.PixelDataLength*sizeof (int)];
             frame.CopyDepthImagePixelDataTo(depthPixels);
 
             WriteableBitmap bitmap = new WriteableBitmap(frame.Width, frame.Height, 96.0, 96.0, PixelFormats.Bgr32, null);
@@ -238,7 +239,7 @@
                 // Consider using a lookup table instead when writing production code.
                 // See the KinectDepthViewer class used by the KinectExplorer sample
                 // for a lookup table example.
-                byte intensity = (byte)(depth >= minDepth && depth <= maxDepth ? depth : 0);
+                byte intensity = (byte) (depth >= minDepth && depth <= maxDepth ? depth : 0);
 
                 // Write out blue byte
                 colorPixels[colorPixelIndex++] = intensity;
@@ -255,7 +256,7 @@
             }
 
             bitmap.WritePixels(new Int32Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight), colorPixels,
-                bitmap.PixelWidth * sizeof(int), 0);
+                bitmap.PixelWidth*sizeof (int), 0);
             ImageCanvas.Background = new ImageBrush(bitmap);
 
             /*
@@ -278,7 +279,7 @@
             }
             var pixelData = new byte[frame.PixelDataLength];
             frame.CopyPixelDataTo(pixelData);
-            int stride = frame.Width * frame.BytesPerPixel;
+            int stride = frame.Width*frame.BytesPerPixel;
             BitmapSource bitmapSource = BitmapSource.Create(frame.Width, frame.Height, 96, 96, PixelFormats.Bgr32, null,
                 pixelData,
                 stride);
@@ -294,7 +295,7 @@
             {
                 try
                 {
-                    kinect.ElevationAngle = (int)ElevationSlider.Value;
+                    kinect.ElevationAngle = (int) ElevationSlider.Value;
                     break;
                 }
                 catch (Exception)
@@ -333,110 +334,6 @@
             if (this.kinect == null) return;
 
             this.InitKinectDisplay();
-        }
-
-
-
-        // SOUND PART : http://kin-educate.blogspot.fr/2012/06/speech-recognition-for-kinect-easy-way.html
-
-        private RecognizerInfo GetRecognizer()
-        {
-            foreach (var recognizer in SpeechRecognitionEngine.InstalledRecognizers())
-            {
-                string value;
-                recognizer.AdditionalInfo.TryGetValue("Kinect", out value);
-                if ("True".Equals(value, StringComparison.OrdinalIgnoreCase) &&
-                    "fr-FR".Equals(recognizer.Culture.Name, StringComparison.OrdinalIgnoreCase))
-                {
-                    return recognizer;
-                }
-            }
-            return null;
-        }
-
-        private SpeechRecognitionEngine InitSpeechRecognitionEngine()
-        {
-            speechRecognitionEngine = new SpeechRecognitionEngine(recognizer.Id);
-            var choices = new Choices();
-            choices.Add("hello");
-            choices.Add("goodbye");
-
-            var grammarBuilder = new GrammarBuilder { Culture = recognizer.Culture };
-            grammarBuilder.Append(choices);
-
-            var grammar = new Grammar(grammarBuilder);
-
-            speechRecognitionEngine.LoadGrammar(grammar);
-
-            speechRecognitionEngine.SpeechRecognized += SpeechRecognitionEngineOnSpeechRecognized;
-            speechRecognitionEngine.SpeechHypothesized += SpeechRecognitionEngineOnSpeechHypothesized;
-            speechRecognitionEngine.SpeechRecognitionRejected += SpeechRecognitionEngineOnSpeechRejected;
-            speechRecognitionEngine.SpeechDetected += SpeechRecognitionEngineOnSpeechDetected;
-
-            return speechRecognitionEngine;
-        }
-
-        private void StartAudioStream()
-        {
-            //set sensor audio source to variable
-            var audioSource = kinect.AudioSource;
-            //we want it to be set to adaptive
-            audioSource.BeamAngleMode = BeamAngleMode.Adaptive;
-
-            var kinectStream = audioSource.Start();
-
-            var speechAudioFormatInfo = new SpeechAudioFormatInfo(EncodingFormat.Pcm, 16000, 16, 1, 32000, 2, null);
-            speechRecognitionEngine.SetInputToAudioStream(kinectStream, speechAudioFormatInfo);
-            speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
-
-            //reduce background and ambient noise for better accuracy
-            kinect.AudioSource.EchoCancellationMode = EchoCancellationMode.None;
-            kinect.AudioSource.AutomaticGainControlEnabled = false;
-        }
-
-        private void InitKinectSound()
-        {
-            // Initialize the recognizer
-            recognizer = GetRecognizer();
-
-            if (recognizer != null)
-            {
-                // Initialize the Engine
-                InitSpeechRecognitionEngine();
-
-                var thread = new Thread(StartAudioStream);
-                thread.Start();
-            }
-        }
-
-        private void SpeechRecognitionEngineOnSpeechRecognized(object sender, SpeechRecognizedEventArgs e)
-        {
-            LastRecognitionStatusLabel.Content = "Recognized";
-            LastRecognizedWordLabel.Content = e.Result.Text;
-        }
-
-        private void SpeechRecognitionEngineOnSpeechHypothesized(object sender, SpeechHypothesizedEventArgs e)
-        {
-            LastRecognitionStatusLabel.Content = "Hypothesized";
-            LastRecognizedWordLabel.Content = e.Result.Text;
-        }
-
-        private void SpeechRecognitionEngineOnSpeechRejected(object sender, SpeechRecognitionRejectedEventArgs e)
-        {
-            Console.WriteLine("Rejected : {0}", e.Result.Text);
-        }
-
-        private void SpeechRecognitionEngineOnSpeechDetected(object sender, SpeechDetectedEventArgs e)
-        {
-            if (SpeechDetectorIcon.Visibility == Visibility.Visible)
-            {
-                SpeechDetectorIcon.Visibility = Visibility.Hidden;
-            }
-            else
-            {
-                SpeechDetectorIcon.Visibility = Visibility.Visible;
-                
-            }
         }
     }
 }
