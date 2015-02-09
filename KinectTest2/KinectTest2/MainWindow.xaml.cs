@@ -86,7 +86,18 @@
             }
             else if (true == DepthRadioButton.IsChecked)
             {
-                kinect.DepthStream.Enable();
+                DepthImageFormat dif = DepthImageFormat.Resolution640x480Fps30;
+
+                if (true == MiddleResolutionRadioButton.IsChecked)
+                {
+                    dif = DepthImageFormat.Resolution320x240Fps30;
+                }
+                if (true == LowResolutionRadioButton.IsChecked)
+                {
+                    dif = DepthImageFormat.Resolution80x60Fps30;
+                }
+
+                kinect.DepthStream.Enable(dif);
                 kinect.DepthFrameReady += KinectOnDepthFrameReady;
             }
             else if (true == PhotoRadioButton.IsChecked)
@@ -356,6 +367,23 @@
         private void GestureCheckBox_OnUnchecked(object sender, RoutedEventArgs e)
         {
             this.skeletonsModule.ReStart();
+        }
+
+        private void RecognitionCheckBox_OnCheckedCheckBox_OnChecked(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void RecognitionCheckBox_OnUncheckedCheckBox_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            throw new NotImplementedException();
+        }
+
+        private void ResolutionRadioButton_OnChecked(object sender, RoutedEventArgs e)
+        {
+            if (this.kinect == null) return;
+
+            this.InitKinectDisplay();
         }
     }
 }

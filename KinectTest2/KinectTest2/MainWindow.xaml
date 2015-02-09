@@ -33,21 +33,30 @@
             <Button x:Name="LaunchButton" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Margin="0,10,0,0" Click="ButtonStart_Click"/>
             <Button x:Name="TakePicture"  Content="Take !" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="TakePicture_Click"/>
 
-            <Label Content="Elevation Angle&#xD;&#xA;" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0" Height="25" />
+            <Label Content="Elevation Angle&#xD;&#xA;" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" Height="25" />
             <TextBox Text="{Binding ElementName=ElevationSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Width="40" HorizontalAlignment="Center" />
             <Slider x:Name="ElevationSlider" HorizontalAlignment="Center" Height="110" VerticalAlignment="Top" Orientation="Vertical" Minimum="-27" Maximum="27" ValueChanged="Slider_ValueChanged" LargeChange="5" SmallChange="1" TickPlacement="Both" TickFrequency="5" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True" />
 
-            <Label Content="Display Mode" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" />
+            <Label Content="Display Mode" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
             <StackPanel HorizontalAlignment="Center">
                 <RadioButton x:Name="VideoRadioButton" Content="Video" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" IsChecked="True"  Checked="VideoRadioButton_OnChecked"/>
                 <RadioButton x:Name="PhotoRadioButton" Content="Photo" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" Checked="PhotoRadioButton_OnChecked"/>
                 <RadioButton x:Name="DepthRadioButton" Content="Depth" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" Checked="DepthRadioButton_OnChecked"/>
             </StackPanel>
 
-            <Label Content="Skeleton Modules" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" />
+            <Label Content="Resolution Mode" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
+            <StackPanel HorizontalAlignment="Center">
+                <RadioButton x:Name="HighResolutionRadioButton" Content="High" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Resolution" Checked="ResolutionRadioButton_OnChecked" IsChecked="True"/>
+                <RadioButton x:Name="MiddleResolutionRadioButton" Content="Middle" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Resolution" Checked="ResolutionRadioButton_OnChecked"/>
+                <RadioButton x:Name="LowResolutionRadioButton" Content="Low" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Resolution" Checked="ResolutionRadioButton_OnChecked"/>
+            </StackPanel>
+
+
+            <Label Content="&#xD;&#xA;Modules" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
             <StackPanel HorizontalAlignment="Center">
                 <CheckBox x:Name="DrawSkeletonCheckBox" Content="Draw" Checked="DrawSkeletonCheckBox_OnChecked" Unchecked="DrawSkeletonCheckBox_OnUnchecked"/>
                 <CheckBox x:Name="GestureCheckBox" Content="Gestures" Checked="GestureCheckBox_OnChecked" Unchecked="GestureCheckBox_OnUnchecked"/>
+                <CheckBox x:Name="RecognitionCheckBox" Content="Vocal Recognition" Checked="RecognitionCheckBox_OnCheckedCheckBox_OnChecked" Unchecked="RecognitionCheckBox_OnUncheckedCheckBox_OnUnchecked"/>
             </StackPanel>
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"  >
