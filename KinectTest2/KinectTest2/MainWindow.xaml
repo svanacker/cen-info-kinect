@@ -22,11 +22,11 @@
             <Label x:Name="NearDepthCountValue" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="3"/>
             <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
                 <Label x:Name="NearDepthMinDistanceLabel" Content="Min Dist :" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox x:Name="NearDepthMinDistanceTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Text="300" TextChanged="NearDepthMinDistanceTextBox_TextChanged"/>
+                <TextBox x:Name="NearDepthMinDistanceTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Text="800" TextChanged="NearDepthMinDistanceTextBox_TextChanged"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
                 <Label x:Name="NearDepthMaxDistanceLabel" Content="Max Dist :" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox x:Name="NearDepthMaxDistanceTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Text="400" TextChanged="NearDepthMaxDistanceTextBox_TextChanged"/>
+                <TextBox x:Name="NearDepthMaxDistanceTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Text="1200" TextChanged="NearDepthMaxDistanceTextBox_TextChanged"/>
             </StackPanel>
         </Grid>
         <StackPanel DockPanel.Dock="Left" Width="120">
