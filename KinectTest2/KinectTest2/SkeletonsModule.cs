@@ -33,12 +33,31 @@
             this.kinect.SkeletonFrameReady += kinect_SkeletonFrameReady;
         }
 
+        public void ReStart()
+        {
+            this.DisposeTrackedSkeleton();
+            this.trackedSkeletons = new Dictionary<int, TrackedSkeleton>();
+            this.trackNumber = 0;
+        }
+
         public void Stop()
         {
             this.kinect.SkeletonFrameReady -= kinect_SkeletonFrameReady;
             this.kinect.SkeletonStream.Disable();
 
             this.kinect = null;
+        }
+
+        private void DisposeTrackedSkeleton()
+        {
+            if (this.trackedSkeletons == null) return;
+
+            var skeletonModules = this.trackedSkeletons.Values.SelectMany(p => p.SkeletonModules);
+            foreach (var skeletonModule in skeletonModules)
+            {
+                skeletonModule.Dispose();
+            }
+            this.trackedSkeletons = null;
         }
 
         private void kinect_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
@@ -105,8 +124,14 @@
 
         private IEnumerable<ISkeletonModule> CreateSkeletonModulesFor(Skeleton skeleton, int skeletonIndex)
         {
-            yield return new HeadTrackingModule(this.kinect, this.window, skeleton.TrackingId, GetSkeletonColor(skeletonIndex));
-            yield return new GesturesModule(this.kinect, this.window);
+            if (this.window.DrawSkeletonCheckBox.IsChecked.GetValueOrDefault())
+            {
+                yield return new HeadTrackingModule(this.kinect, this.window, skeleton.TrackingId, this.GetSkeletonColor(skeletonIndex));
+            }
+            if (this.window.GestureCheckBox.IsChecked.GetValueOrDefault())
+            {
+                yield return new GesturesModule(this.kinect, this.window);
+            }
         }
 
         private Brush GetSkeletonColor(int skeletonIndex)

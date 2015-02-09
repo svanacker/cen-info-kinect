@@ -337,5 +337,25 @@
             }
             UartManager.StopMotors();
         }
+
+        private void DrawSkeletonCheckBox_OnChecked(object sender, RoutedEventArgs e)
+        {
+            this.skeletonsModule.ReStart();
+        }
+
+        private void DrawSkeletonCheckBox_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            this.skeletonsModule.ReStart();
+        }
+
+        private void GestureCheckBox_OnChecked(object sender, RoutedEventArgs e)
+        {
+            this.skeletonsModule.ReStart();
+        }
+
+        private void GestureCheckBox_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            this.skeletonsModule.ReStart();
+        }
     }
 }
