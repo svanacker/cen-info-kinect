@@ -56,5 +56,12 @@
             <Rectangle x:Name="LeftRectangle" Height="480" Width="320" Fill="Red" Visibility="Hidden" />
             <Rectangle x:Name="RightRectangle" Height="480" Width="320" Fill="Green" Canvas.Right="0" Visibility="Hidden"  />
         </Canvas>
+        <StackPanel DockPanel.Dock="Right" Width="120">
+            <Button x:Name="LoadListButton" Content="LoadList" HorizontalAlignment="Center" Width="75" Click="LoadListButton_Click"/>
+            <ComboBox x:Name="COMComboBox" Width="110" SelectionChanged="COMComboBox_SelectionChanged"/>
+            <Button x:Name="TestMotorButton" Content="Go Motor" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="TestMotorButton_Click"/>
+            <Button x:Name="StopMotorButton" Content="StopMotor" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="StopMotorButton_OnClickMotorButton_Click"/>
+        </StackPanel>
     </DockPanel>
+
 </Window>

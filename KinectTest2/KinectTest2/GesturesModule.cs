@@ -50,9 +50,16 @@
             {
                 case "SwipeToRight":
                     this.window.LeftRectangle.Visibility = Visibility.Visible;
+                    if (this.window.UartManager != null) { 
+                        this.window.UartManager.RunMotors();
+                    }
                     break;
                 case "SwipeToLeft":
                     this.window.LeftRectangle.Visibility = Visibility.Hidden;
+                    if (this.window.UartManager != null)
+                    {
+                        this.window.UartManager.StopMotors();
+                    }
                     break;
             }
         }

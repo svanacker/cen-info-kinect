@@ -1,6 +1,7 @@
 ﻿namespace KinectTest2
 {
     using System;
+    using System.IO.Ports;
     using System.Threading;
     using System.Threading.Tasks;
     using System.Windows;
@@ -22,6 +23,9 @@
         private GesturesModule gesturesModule;
 
         private RecognitionModule recognitionModule;
+
+       
+        public UartManager UartManager { get; private set; }
 
         private int min = 300;
 
@@ -334,6 +338,53 @@
             if (this.kinect == null) return;
 
             this.InitKinectDisplay();
+        }
+
+        // COM Part
+
+        private void LoadListButton_Click(object sender, RoutedEventArgs e)
+        {
+            string[] portNames = SerialPort.GetPortNames();
+            COMComboBox.Items.Clear();
+            foreach (string portName in portNames)
+            {
+                COMComboBox.Items.Add(portName);
+            }
+        }
+
+        private void COMComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            object selectedItem = COMComboBox.SelectedItem;
+            if (selectedItem == null)
+            {
+                return;
+            }
+            if (UartManager != null)
+            {
+                UartManager.Close();
+            }
+            String portName = selectedItem.ToString();
+            UartManager = new UartManager(portName);
+            UartManager.Open();
+        }
+
+
+        private void TestMotorButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UartManager == null)
+            {
+                return;
+            }
+            UartManager.RunMotors();
+        }
+
+        private void StopMotorButton_OnClickMotorButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UartManager == null)
+            {
+                return;
+            }
+            UartManager.StopMotors();
         }
     }
 }
