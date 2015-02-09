@@ -67,6 +67,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="SkeletonModules\HeadTrackingModule.cs" />
+    <Compile Include="SkeletonModules\ISkeletonModule.cs" />
+    <Compile Include="SkeletonsModule.cs" />
+    <Compile Include="TrackedSkeleton.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -75,7 +79,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="GesturesModule.cs" />
+    <Compile Include="SkeletonModules\GesturesModule.cs" />
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
