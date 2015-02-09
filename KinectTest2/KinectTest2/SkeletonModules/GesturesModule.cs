@@ -1,4 +1,4 @@
-﻿namespace KinectTest2
+﻿namespace KinectTest2.SkeletonModules
 {
     using System.Windows;
 
@@ -6,39 +6,35 @@
 
     using Microsoft.Kinect;
 
-    public class GesturesModule
+    public class GesturesModule : ISkeletonModule
     {
+        private KinectSensor kinect;
         private MainWindow window;
 
-        private KinectSensor kinect;
         private SwipeGestureDetector leftHandSwipeGestureDetector;
         private SwipeGestureDetector rightHandSwipeGestureDetector;
 
-        public GesturesModule(MainWindow window)
-        {
-            this.window = window;
-        }
-
-        public void Start(KinectSensor kinect)
+        public GesturesModule(KinectSensor kinect, MainWindow window)
         {
             this.kinect = kinect;
+            this.window = window;
 
             this.leftHandSwipeGestureDetector = new SwipeGestureDetector();
-            this.leftHandSwipeGestureDetector.OnGestureDetected += leftHandSwipeGestureDetector_OnGestureDetected;
+            this.leftHandSwipeGestureDetector.OnGestureDetected += this.leftHandSwipeGestureDetector_OnGestureDetected;
 
             this.rightHandSwipeGestureDetector = new SwipeGestureDetector();
-            this.rightHandSwipeGestureDetector.OnGestureDetected += rightHandSwipeGestureDetector_OnGestureDetected;
+            this.rightHandSwipeGestureDetector.OnGestureDetected += this.rightHandSwipeGestureDetector_OnGestureDetected;
         }
 
-        public void Stop()
+        public void Dispose()
         {
             this.kinect = null;
 
-            this.leftHandSwipeGestureDetector.OnGestureDetected -= leftHandSwipeGestureDetector_OnGestureDetected;
-            this.rightHandSwipeGestureDetector.OnGestureDetected -= rightHandSwipeGestureDetector_OnGestureDetected;
+            this.leftHandSwipeGestureDetector.OnGestureDetected -= this.leftHandSwipeGestureDetector_OnGestureDetected;
+            this.rightHandSwipeGestureDetector.OnGestureDetected -= this.rightHandSwipeGestureDetector_OnGestureDetected;
         }
 
-        public void Follow(Skeleton skeleton)
+        public void Follow(Skeleton skeleton, int skeletonIndex)
         {
             this.leftHandSwipeGestureDetector.Add(skeleton.Joints[JointType.HandLeft].Position, this.kinect);
             this.rightHandSwipeGestureDetector.Add(skeleton.Joints[JointType.HandRight].Position, this.kinect);

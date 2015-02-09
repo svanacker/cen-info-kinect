@@ -12,6 +12,7 @@
     using Microsoft.Kinect;
     using Microsoft.Speech.AudioFormat;
     using Microsoft.Speech.Recognition;
+    using SkeletonModules;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -20,12 +21,11 @@
     {
         private KinectSensor kinect;
 
-        private GesturesModule gesturesModule;
-
         private RecognitionModule recognitionModule;
 
-       
         public UartManager UartManager { get; private set; }
+
+        private SkeletonsModule skeletonsModule;
 
         private int min = 300;
 
@@ -33,8 +33,8 @@
 
         public MainWindow()
         {
-            this.gesturesModule = new GesturesModule(this);
             this.recognitionModule = new RecognitionModule(this);
+            this.skeletonsModule = new SkeletonsModule(this);
             InitializeComponent();
             NearDepthMinDistanceTextBox.Text = min.ToString();
             NearDepthMaxDistanceTextBox.Text = max.ToString();
@@ -61,11 +61,11 @@
 
                     this.InitKinectDisplay();
                     this.recognitionModule.Start(kinect);
-                    this.gesturesModule.Start(kinect);
+                    this.skeletonsModule.Start(this.kinect);
                 }
                 else
                 {
-                    this.gesturesModule.Stop();
+                    this.skeletonsModule.Stop();
                     this.CleanKinectDisplay();
                     kinect.Stop();
                     kinect = null;
@@ -96,9 +96,6 @@
             {
                 kinect.ColorStream.Enable();
             }
-
-            kinect.SkeletonStream.Enable();
-            kinect.SkeletonFrameReady += KinectOnSkeletonFrameReady;
         }
 
 
@@ -106,7 +103,6 @@
         {
             kinect.ColorFrameReady -= KinectOnColorFrameReady;
             kinect.DepthFrameReady -= KinectOnDepthFrameReady;
-            kinect.SkeletonFrameReady -= KinectOnSkeletonFrameReady;
             if (kinect.ColorStream.IsEnabled)
             {
                 kinect.ColorStream.Disable();
@@ -114,10 +110,6 @@
             if (kinect.DepthStream.IsEnabled)
             {
                 kinect.DepthStream.Disable();
-            }
-            if (kinect.SkeletonStream.IsEnabled)
-            {
-                kinect.SkeletonStream.Disable();
             }
         }
 
@@ -135,47 +127,6 @@
             {
                 ShowColorImageFrame(frame);
             }
-        }
-
-        private void KinectOnSkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)
-        {
-            using (var sFrame = e.OpenSkeletonFrame())
-            {
-                // kinect variable can be null is the event is raised while we are stopping the device
-                if (sFrame != null && this.kinect != null)
-                {
-                    var skeletons = new Skeleton[sFrame.SkeletonArrayLength];
-                    sFrame.CopySkeletonDataTo(skeletons);
-                    foreach (var skeleton in skeletons)
-                    {
-                        if (skeleton.TrackingState == SkeletonTrackingState.Tracked)
-                        {
-                            var headLoc = skeleton.Joints[JointType.Head].Position;
-                            var neckLoc = skeleton.Joints[JointType.ShoulderCenter].Position;
-                            var coordMapper = this.kinect.CoordinateMapper;
-                            var colorImagePointOfHead = coordMapper.MapSkeletonPointToColorPoint(headLoc,
-                                ColorImageFormat.RgbResolution640x480Fps30);
-                            var colorImagePointOfNeck = coordMapper.MapSkeletonPointToColorPoint(neckLoc,
-                                ColorImageFormat.RgbResolution640x480Fps30);
-                            this.FollowHead(colorImagePointOfHead, colorImagePointOfNeck);
-
-                            this.gesturesModule.Follow(skeleton);
-                        }
-                    }
-                }
-            }
-        }
-
-        private void FollowHead(ColorImagePoint colorImagePointOfHead, ColorImagePoint colorImagePointOfNeck)
-        {
-            var xdiff = colorImagePointOfHead.X - colorImagePointOfNeck.X;
-            var ydiff = colorImagePointOfHead.Y - colorImagePointOfNeck.Y;
-            var dist = Math.Sqrt((xdiff*xdiff) + (ydiff*ydiff));
-            var rayon = dist/2;
-
-            this.HeadElipse.Width = this.HeadElipse.Height = dist;
-            Canvas.SetLeft(this.HeadElipse, colorImagePointOfHead.X - rayon);
-            Canvas.SetTop(this.HeadElipse, colorImagePointOfHead.Y - rayon);
         }
 
         private async void TakePicture_Click(object sender, RoutedEventArgs e)
