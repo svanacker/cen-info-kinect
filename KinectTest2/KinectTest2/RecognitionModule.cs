@@ -89,13 +89,18 @@ namespace KinectTest2
             speechRecognitionEngine.SetInputToAudioStream(kinectStream, speechAudioFormatInfo);
             speechRecognitionEngine.RecognizeAsync(RecognizeMode.Multiple);
 
-            //reduce background and ambient noise for better accuracy
+            // reduce background and ambient noise for better accuracy
             kinect.AudioSource.EchoCancellationMode = EchoCancellationMode.None;
             kinect.AudioSource.AutomaticGainControlEnabled = false;
         }
 
         private void SpeechRecognitionEngineOnSpeechRecognized(object sender, SpeechRecognizedEventArgs e)
         {
+            if (e.Result.Confidence * 100.0f < (float) window.ConfidenceSlider.Value)
+            {
+                window.LastRecognitionStatusLabel.Content = "";
+                return;
+            }
             window.LastRecognitionStatusLabel.Content = "Recognized";
             window.LastRecognizedWordLabel.Content = e.Result.Text;
         }
@@ -103,11 +108,13 @@ namespace KinectTest2
         private void SpeechRecognitionEngineOnSpeechHypothesized(object sender, SpeechHypothesizedEventArgs e)
         {
             window.LastRecognitionStatusLabel.Content = "Hypothesized";
-            window.LastRecognizedWordLabel.Content = e.Result.Text;
+            window.LasthHypothesizedWordLabel.Content = e.Result.Text;
         }
 
         private void SpeechRecognitionEngineOnSpeechRejected(object sender, SpeechRecognitionRejectedEventArgs e)
         {
+            window.LastRecognitionStatusLabel.Content = "";
+            window.LasthHypothesizedWordLabel.Content = "";
             Console.WriteLine("Rejected : {0}", e.Result.Text);
         }
 

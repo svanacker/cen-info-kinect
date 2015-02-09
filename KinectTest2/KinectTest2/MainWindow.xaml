@@ -45,10 +45,14 @@
             </StackPanel>
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"  >
+            <Label Content="Confidence : "/>
+            <Slider x:Name="ConfidenceSlider" HorizontalAlignment="Center" Width="200" VerticalAlignment="Top" Orientation="Horizontal" Value="70" Minimum="0" Maximum="100" LargeChange="10" SmallChange="2" TickPlacement="Both" TickFrequency="5" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True" />
             <Label Content="Last status : "/>
-            <Label x:Name="LastRecognitionStatusLabel" Width="200"/>
+            <Label x:Name="LastRecognitionStatusLabel" Width="100"/>
             <Label Content="Last recognized Word : "/>
-            <Label x:Name="LastRecognizedWordLabel" Width="200"/>
+            <Label x:Name="LastRecognizedWordLabel" Width="100"/>
+            <Label Content="Last hypothesized Word : "/>
+            <Label x:Name="LasthHypothesizedWordLabel" Width="100"/>
             <Rectangle x:Name="SpeechDetectorIcon" Width="10" Height="10"  Fill="{DynamicResource {x:Static SystemColors.ControlDarkBrushKey}}" />
         </StackPanel>
         <Canvas x:Name="ImageCanvas" Width="640" Height="480" >
