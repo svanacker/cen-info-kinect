@@ -14,9 +14,9 @@
 
         private KinectSensor kinect;
 
-        public int Min { get; set; }
+        public int Min { get; private set; }
 
-        public int Max { get; set; }
+        public int Max { get; private set; }
 
         public DepthModule(MainWindow window)
         {
@@ -24,6 +24,9 @@
 
             this.window.NearDepthMinDistanceTextBox.TextChanged += this.NearDepthMinDistanceTextBox_TextChanged;
             this.window.NearDepthMaxDistanceTextBox.TextChanged += this.NearDepthMaxDistanceTextBox_TextChanged;
+            this.window.HighResolutionRadioButton.Checked += ResolutionRadioButton_OnChecked;
+            this.window.MiddleResolutionRadioButton.Checked += ResolutionRadioButton_OnChecked;
+            this.window.LowResolutionRadioButton.Checked += ResolutionRadioButton_OnChecked;
 
             // raise the events once to retreive the initial values from the UI
             this.NearDepthMinDistanceTextBox_TextChanged(this.window.NearDepthMinDistanceTextBox, null);
@@ -34,16 +37,37 @@
         {
             this.kinect = kinect;
 
-            this.kinect.DepthStream.Enable();
+            var imageFormat = DepthImageFormat.Resolution640x480Fps30;
+            if (true == this.window.MiddleResolutionRadioButton.IsChecked)
+            {
+                imageFormat = DepthImageFormat.Resolution320x240Fps30;
+            }
+            if (true == this.window.LowResolutionRadioButton.IsChecked)
+            {
+                imageFormat = DepthImageFormat.Resolution80x60Fps30;
+            }
+
+            this.kinect.DepthStream.Enable(imageFormat);
             this.kinect.DepthFrameReady += kinect_DepthFrameReady;
         }
 
         public void Stop()
         {
+            if (this.kinect == null) return;
+
             this.kinect.DepthFrameReady -= kinect_DepthFrameReady;
             this.kinect.DepthStream.Disable();
 
             this.kinect = null;
+        }
+
+        public void Restart()
+        {
+            if (this.kinect == null) return;
+
+            var kinect = this.kinect;
+            this.Stop();
+            this.Start(kinect);
         }
 
         private void kinect_DepthFrameReady(object sender, DepthImageFrameReadyEventArgs e)
@@ -126,6 +150,11 @@
 
             this.window.ImageCanvas.Background = new ImageBrush(bitmap);
             this.window.NearDepthCountValue.Content = depthInRangeCount.ToString();
+        }
+
+        private void ResolutionRadioButton_OnChecked(object sender, RoutedEventArgs routedEventArgs)
+        {
+            this.Restart();
         }
 
         private void NearDepthMinDistanceTextBox_TextChanged(object sender, TextChangedEventArgs e)
