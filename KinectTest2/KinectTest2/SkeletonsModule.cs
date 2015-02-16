@@ -2,6 +2,7 @@
 {
     using System.Collections.Generic;
     using System.Linq;
+    using System.Windows;
     using System.Windows.Media;
 
     using KinectTest2.SkeletonModules;
@@ -21,6 +22,11 @@
         public SkeletonsModule(MainWindow window)
         {
             this.window = window;
+
+            this.window.DrawSkeletonCheckBox.Checked += this.ActiveSkeletonModulesChanged;
+            this.window.DrawSkeletonCheckBox.Unchecked += this.ActiveSkeletonModulesChanged;
+            this.window.GestureCheckBox.Checked += this.ActiveSkeletonModulesChanged;
+            this.window.GestureCheckBox.Unchecked += this.ActiveSkeletonModulesChanged;
         }
 
         public void Start(KinectSensor kinect)
@@ -58,6 +64,11 @@
                 skeletonModule.Dispose();
             }
             this.trackedSkeletons = null;
+        }
+
+        private void ActiveSkeletonModulesChanged(object sender, RoutedEventArgs routedEventArgs)
+        {
+            this.ReStart();
         }
 
         private void kinect_SkeletonFrameReady(object sender, SkeletonFrameReadyEventArgs e)

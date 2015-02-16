@@ -52,8 +52,8 @@
 
             <Label Content="&#xD;&#xA;Modules" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
             <StackPanel HorizontalAlignment="Center">
-                <CheckBox x:Name="DrawSkeletonCheckBox" Content="Draw" Checked="DrawSkeletonCheckBox_OnChecked" Unchecked="DrawSkeletonCheckBox_OnUnchecked"/>
-                <CheckBox x:Name="GestureCheckBox" Content="Gestures" Checked="GestureCheckBox_OnChecked" Unchecked="GestureCheckBox_OnUnchecked"/>
+                <CheckBox x:Name="DrawSkeletonCheckBox" Content="Draw"/>
+                <CheckBox x:Name="GestureCheckBox" Content="Gestures"/>
                 <CheckBox x:Name="RecognitionCheckBox" Content="Vocal Recognition" Checked="RecognitionCheckBox_OnCheckedCheckBox_OnChecked" Unchecked="RecognitionCheckBox_OnUncheckedCheckBox_OnUnchecked"/>
             </StackPanel>
         </StackPanel>
