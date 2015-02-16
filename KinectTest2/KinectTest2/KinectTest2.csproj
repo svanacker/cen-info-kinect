@@ -69,6 +69,7 @@
     </ApplicationDefinition>
     <Compile Include="CameraModule.cs" />
     <Compile Include="DepthModule.cs" />
+    <Compile Include="ElevationModule.cs" />
     <Compile Include="RecognitionModule.cs" />
     <Compile Include="UartManager.cs" />
     <Compile Include="SkeletonModules\HeadTrackingModule.cs" />

@@ -17,6 +17,8 @@
 
         private CameraModule cameraModule;
 
+        private ElevationModule elevationModule;
+
         private DepthModule depthModule;
 
         private RecognitionModule recognitionModule;
@@ -32,6 +34,7 @@
             this.TrackKinectStatus();
 
             this.cameraModule = new CameraModule(this);
+            this.elevationModule = new ElevationModule(this);
             this.depthModule = new DepthModule(this);
             this.recognitionModule = new RecognitionModule(this);
             this.skeletonsModule = new SkeletonsModule(this);
@@ -78,11 +81,11 @@
             {
                 this.kinect = kinectSensorCollection[0];
                 this.kinect.Start();
-                KinectIdValue.Content = kinect.DeviceConnectionId;
+                KinectIdValue.Content = this.kinect.DeviceConnectionId;
                 LaunchButton.Content = "Stop";
-                ElevationSlider.Value = kinect.ElevationAngle;
 
                 this.cameraModule.Start(this.kinect);
+                this.elevationModule.Start(this.kinect);
                 this.depthModule.Start(this.kinect);
                 this.recognitionModule.Start(kinect);
                 this.skeletonsModule.Start(this.kinect);
@@ -93,29 +96,12 @@
         {
             this.skeletonsModule.Stop();
             this.depthModule.Stop();
+            this.elevationModule.Stop();
             this.cameraModule.Stop();
             this.kinect.Stop();
             this.kinect = null;
             KinectIdValue.Content = "-";
             LaunchButton.Content = "Start";
-        }
-
-        private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
-        {
-            if (this.kinect == null) return;
-
-            for (int i = 0; i < 5; i++)
-            {
-                try
-                {
-                    kinect.ElevationAngle = (int) ElevationSlider.Value;
-                    break;
-                }
-                catch (Exception)
-                {
-                    Thread.Sleep(10);
-                }
-            }
         }
 
         // COM Part
