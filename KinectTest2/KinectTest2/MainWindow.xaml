@@ -38,8 +38,8 @@
 
             <Label Content="Display Mode" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />
             <StackPanel HorizontalAlignment="Center">
-                <RadioButton x:Name="VideoRadioButton" Content="Video" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" IsChecked="True" Checked="VideoRadioButton_OnChecked" Unchecked="VideoRadioButton_OnUnchecked"/>
-                <RadioButton x:Name="DepthRadioButton" Content="Depth" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" Checked="DepthRadioButton_OnChecked" Unchecked="DepthRadioButton_OnUnchecked"/>
+                <RadioButton x:Name="VideoRadioButton" Content="Video" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" IsChecked="True"/>
+                <RadioButton x:Name="DepthRadioButton" Content="Depth" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode"/>
             </StackPanel>
 
             <Label Content="Resolution Mode" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,10,0,0" />

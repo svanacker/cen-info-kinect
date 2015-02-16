@@ -34,9 +34,12 @@
 
         private void kinect_ColorFrameReady(object sender, ColorImageFrameReadyEventArgs colorImageFrameReadyEventArgs)
         {
-            using (ColorImageFrame frame = colorImageFrameReadyEventArgs.OpenColorImageFrame())
+            if (this.window.VideoRadioButton.IsChecked == true)
             {
-                ShowColorImageFrame(frame);
+                using (ColorImageFrame frame = colorImageFrameReadyEventArgs.OpenColorImageFrame())
+                {
+                    this.ShowColorImageFrame(frame);
+                }
             }
         }
 

@@ -72,9 +72,12 @@
 
         private void kinect_DepthFrameReady(object sender, DepthImageFrameReadyEventArgs e)
         {
-            using (DepthImageFrame frame = e.OpenDepthImageFrame())
+            if (this.window.DepthRadioButton.IsChecked == true)
             {
-                ShowDepthImageFrame(frame);
+                using (DepthImageFrame frame = e.OpenDepthImageFrame())
+                {
+                    this.ShowDepthImageFrame(frame);
+                }
             }
         }
 

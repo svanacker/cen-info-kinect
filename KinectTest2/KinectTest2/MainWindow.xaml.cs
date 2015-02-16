@@ -54,14 +54,16 @@
                     LaunchButton.Content = "Stop";
                     ElevationSlider.Value = kinect.ElevationAngle;
 
-                    this.StartKinectDisplay();
+                    this.cameraModule.Start(this.kinect);
+                    this.depthModule.Start(this.kinect);
                     this.recognitionModule.Start(kinect);
                     this.skeletonsModule.Start(this.kinect);
                 }
                 else
                 {
                     this.skeletonsModule.Stop();
-                    this.StopKinectDisplay();
+                    this.depthModule.Stop();
+                    this.cameraModule.Stop();
                     kinect.Stop();
                     kinect = null;
                     KinectIdValue.Content = "-";
@@ -70,33 +72,6 @@
                 }
             }
         }
-
-
-        private void StartKinectDisplay()
-        {
-            if (VideoRadioButton.IsChecked == true)
-            {
-                this.cameraModule.Start(this.kinect);
-            }
-            else if (DepthRadioButton.IsChecked == true)
-            {
-                this.depthModule.Start(this.kinect);
-            }
-        }
-
-
-        private void StopKinectDisplay()
-        {
-            if (VideoRadioButton.IsChecked == true)
-            {
-                this.cameraModule.Stop();
-            }
-            else if (DepthRadioButton.IsChecked == true)
-            {
-                this.depthModule.Stop();
-            }
-        }
-
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -114,34 +89,6 @@
                     Thread.Sleep(10);
                 }
             }
-        }
-
-        private void VideoRadioButton_OnChecked(object sender, RoutedEventArgs e)
-        {
-            if (this.kinect == null) return;
-
-            this.cameraModule.Start(this.kinect);
-        }
-
-        private void VideoRadioButton_OnUnchecked(object sender, RoutedEventArgs e)
-        {
-            if (this.kinect == null) return;
-
-            this.cameraModule.Stop();
-        }
-
-        private void DepthRadioButton_OnChecked(object sender, RoutedEventArgs e)
-        {
-            if (this.kinect == null) return;
-
-            this.depthModule.Start(this.kinect);
-        }
-
-        private void DepthRadioButton_OnUnchecked(object sender, RoutedEventArgs e)
-        {
-            if (this.kinect == null) return;
-
-            this.depthModule.Stop();
         }
 
         // COM Part
