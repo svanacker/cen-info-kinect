@@ -29,48 +29,75 @@
         {
             this.InitializeComponent();
 
+            this.TrackKinectStatus();
+
             this.cameraModule = new CameraModule(this);
             this.depthModule = new DepthModule(this);
             this.recognitionModule = new RecognitionModule(this);
             this.skeletonsModule = new SkeletonsModule(this);
         }
 
+        private void TrackKinectStatus()
+        {
+            var kinectSensorCollection = KinectSensor.KinectSensors;
+            if (kinectSensorCollection.Count > 0)
+            {
+                this.KinectStatusValue.Content = kinectSensorCollection[0].Status;
+            }
+            else
+            {
+                this.KinectStatusValue.Content = KinectStatus.Disconnected;
+            }
+
+            kinectSensorCollection.StatusChanged += (o, args) =>
+            {
+                this.KinectStatusValue.Content = args.Status;
+                if (args.Status == KinectStatus.Disconnected)
+                {
+                    this.StopKinect();
+                }
+            };
+        }
+
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
         {
-            KinectSensorCollection kinectSensorCollection = KinectSensor.KinectSensors;
-            int sensorCount = kinectSensorCollection.Count;
-            if (sensorCount > 0)
+            if (LaunchButton.Content.ToString() == "Start")
             {
-                kinect = kinectSensorCollection[0];
-                kinectSensorCollection.StatusChanged += (o, args) =>
-                {
-                    KinectStatusValue.Content = args.Status.ToString();
-                };
-
-                if (LaunchButton.Content.ToString() == "Start")
-                {
-                    kinect.Start();
-                    KinectIdValue.Content = kinect.DeviceConnectionId;
-                    LaunchButton.Content = "Stop";
-                    ElevationSlider.Value = kinect.ElevationAngle;
-
-                    this.cameraModule.Start(this.kinect);
-                    this.depthModule.Start(this.kinect);
-                    this.recognitionModule.Start(kinect);
-                    this.skeletonsModule.Start(this.kinect);
-                }
-                else
-                {
-                    this.skeletonsModule.Stop();
-                    this.depthModule.Stop();
-                    this.cameraModule.Stop();
-                    kinect.Stop();
-                    kinect = null;
-                    KinectIdValue.Content = "-";
-                    KinectStatusValue.Content = "-";
-                    LaunchButton.Content = "Start";
-                }
+                this.StartKinect();
             }
+            else
+            {
+                this.StopKinect();
+            }
+        }
+
+        private void StartKinect()
+        {
+            var kinectSensorCollection = KinectSensor.KinectSensors;
+            if (kinectSensorCollection.Count > 0)
+            {
+                this.kinect = kinectSensorCollection[0];
+                this.kinect.Start();
+                KinectIdValue.Content = kinect.DeviceConnectionId;
+                LaunchButton.Content = "Stop";
+                ElevationSlider.Value = kinect.ElevationAngle;
+
+                this.cameraModule.Start(this.kinect);
+                this.depthModule.Start(this.kinect);
+                this.recognitionModule.Start(kinect);
+                this.skeletonsModule.Start(this.kinect);
+            }
+        }
+
+        private void StopKinect()
+        {
+            this.skeletonsModule.Stop();
+            this.depthModule.Stop();
+            this.cameraModule.Stop();
+            this.kinect.Stop();
+            this.kinect = null;
+            KinectIdValue.Content = "-";
+            LaunchButton.Content = "Start";
         }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
