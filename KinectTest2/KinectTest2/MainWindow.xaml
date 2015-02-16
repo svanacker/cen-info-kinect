@@ -22,16 +22,15 @@
             <Label x:Name="NearDepthCountValue" Content="-" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.Row="0" Grid.Column="3"/>
             <StackPanel Grid.Row="1" Grid.Column="2" Orientation="Horizontal">
                 <Label x:Name="NearDepthMinDistanceLabel" Content="Min Dist :" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox x:Name="NearDepthMinDistanceTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Text="800" TextChanged="NearDepthMinDistanceTextBox_TextChanged"/>
+                <TextBox x:Name="NearDepthMinDistanceTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Text="800"/>
             </StackPanel>
             <StackPanel Grid.Row="1" Grid.Column="3" Orientation="Horizontal">
                 <Label x:Name="NearDepthMaxDistanceLabel" Content="Max Dist :" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                <TextBox x:Name="NearDepthMaxDistanceTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Text="1200" TextChanged="NearDepthMaxDistanceTextBox_TextChanged"/>
+                <TextBox x:Name="NearDepthMaxDistanceTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" VerticalAlignment="Top" Width="56" Text="1200"/>
             </StackPanel>
         </Grid>
         <StackPanel DockPanel.Dock="Left" Width="120">
             <Button x:Name="LaunchButton" Content="Start" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Margin="0,10,0,0" Click="ButtonStart_Click"/>
-            <Button x:Name="TakePicture"  Content="Take !" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="TakePicture_Click"/>
 
             <Label Content="Elevation Angle&#xD;&#xA;" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,30,0,0" Height="25" />
             <TextBox Text="{Binding ElementName=ElevationSlider, Path=Value, UpdateSourceTrigger=PropertyChanged}" TextAlignment="Right" Width="40" HorizontalAlignment="Center" />
@@ -39,9 +38,8 @@
 
             <Label Content="Display Mode" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" />
             <StackPanel HorizontalAlignment="Center">
-                <RadioButton x:Name="VideoRadioButton" Content="Video" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" IsChecked="True"  Checked="VideoRadioButton_OnChecked"/>
-                <RadioButton x:Name="PhotoRadioButton" Content="Photo" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" Checked="PhotoRadioButton_OnChecked"/>
-                <RadioButton x:Name="DepthRadioButton" Content="Depth" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" Checked="DepthRadioButton_OnChecked"/>
+                <RadioButton x:Name="VideoRadioButton" Content="Video" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" IsChecked="True" Checked="VideoRadioButton_OnChecked" Unchecked="VideoRadioButton_OnUnchecked"/>
+                <RadioButton x:Name="DepthRadioButton" Content="Depth" HorizontalAlignment="Left" VerticalAlignment="Top" GroupName="Mode" Checked="DepthRadioButton_OnChecked" Unchecked="DepthRadioButton_OnUnchecked"/>
             </StackPanel>
 
             <Label Content="Skeleton Modules" HorizontalAlignment="Center" VerticalAlignment="Top" Margin="0,20,0,0" />

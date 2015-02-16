@@ -18,23 +18,24 @@
     {
         private KinectSensor kinect;
 
+        private CameraModule cameraModule;
+
+        private DepthModule depthModule;
+
         private RecognitionModule recognitionModule;
 
         public UartManager UartManager { get; private set; }
 
         private SkeletonsModule skeletonsModule;
 
-        private int min = 300;
-
-        private int max = 400;
-
         public MainWindow()
         {
+            this.InitializeComponent();
+
+            this.cameraModule = new CameraModule(this);
+            this.depthModule = new DepthModule(this);
             this.recognitionModule = new RecognitionModule(this);
             this.skeletonsModule = new SkeletonsModule(this);
-            InitializeComponent();
-            NearDepthMinDistanceTextBox.Text = min.ToString();
-            NearDepthMaxDistanceTextBox.Text = max.ToString();
         }
 
         private void ButtonStart_Click(object sender, RoutedEventArgs e)
@@ -56,14 +57,14 @@
                     LaunchButton.Content = "Stop";
                     ElevationSlider.Value = kinect.ElevationAngle;
 
-                    this.InitKinectDisplay();
+                    this.StartKinectDisplay();
                     this.recognitionModule.Start(kinect);
                     this.skeletonsModule.Start(this.kinect);
                 }
                 else
                 {
                     this.skeletonsModule.Stop();
-                    this.CleanKinectDisplay();
+                    this.StopKinectDisplay();
                     kinect.Stop();
                     kinect = null;
                     KinectIdValue.Content = "-";
@@ -74,173 +75,31 @@
         }
 
 
-        private void InitKinectDisplay()
+        private void StartKinectDisplay()
         {
-            this.CleanKinectDisplay();
-
-            if (true == VideoRadioButton.IsChecked)
+            if (VideoRadioButton.IsChecked == true)
             {
-                kinect.ColorStream.Enable();
-                kinect.ColorFrameReady += KinectOnColorFrameReady;
-
+                this.cameraModule.Start(this.kinect);
             }
-            else if (true == DepthRadioButton.IsChecked)
+            else if (DepthRadioButton.IsChecked == true)
             {
-                kinect.DepthStream.Enable();
-                kinect.DepthFrameReady += KinectOnDepthFrameReady;
-            }
-            else if (true == PhotoRadioButton.IsChecked)
-            {
-                kinect.ColorStream.Enable();
+                this.depthModule.Start(this.kinect);
             }
         }
 
 
-        private void CleanKinectDisplay()
+        private void StopKinectDisplay()
         {
-            kinect.ColorFrameReady -= KinectOnColorFrameReady;
-            kinect.DepthFrameReady -= KinectOnDepthFrameReady;
-            if (kinect.ColorStream.IsEnabled)
+            if (VideoRadioButton.IsChecked == true)
             {
-                kinect.ColorStream.Disable();
+                this.cameraModule.Stop();
             }
-            if (kinect.DepthStream.IsEnabled)
+            else if (DepthRadioButton.IsChecked == true)
             {
-                kinect.DepthStream.Disable();
+                this.depthModule.Stop();
             }
         }
 
-        private void KinectOnDepthFrameReady(object sender, DepthImageFrameReadyEventArgs depthImageFrameReadyEventArgs)
-        {
-            using (DepthImageFrame frame = depthImageFrameReadyEventArgs.OpenDepthImageFrame())
-            {
-                ShowDepthImageFrame(frame);
-            }
-        }
-
-        private void KinectOnColorFrameReady(object sender, ColorImageFrameReadyEventArgs colorImageFrameReadyEventArgs)
-        {
-            using (ColorImageFrame frame = colorImageFrameReadyEventArgs.OpenColorImageFrame())
-            {
-                ShowColorImageFrame(frame);
-            }
-        }
-
-        private async void TakePicture_Click(object sender, RoutedEventArgs e)
-        {
-            if (this.kinect == null) return;
-
-            kinect.ColorFrameReady -= KinectOnColorFrameReady;
-            kinect.DepthFrameReady -= KinectOnDepthFrameReady;
-
-            if (!kinect.ColorStream.IsEnabled) kinect.ColorStream.Enable();
-
-            using (ColorImageFrame frame = kinect.ColorStream.OpenNextFrame(100))
-            {
-                ShowColorImageFrame(frame);
-            }
-
-            var restoreDisplayTask = new Task(
-                () =>
-                {
-                    Thread.Sleep(1000);
-                });
-            restoreDisplayTask.Start();
-
-            await restoreDisplayTask;
-
-            this.InitKinectDisplay();
-        }
-
-        private void ShowDepthImageFrame(DepthImageFrame frame)
-        {
-            if (frame == null)
-            {
-                return;
-            }
-            DepthImagePixel[] depthPixels = new DepthImagePixel[frame.PixelDataLength];
-            byte[] colorPixels = new byte[frame.PixelDataLength*sizeof (int)];
-            frame.CopyDepthImagePixelDataTo(depthPixels);
-
-            WriteableBitmap bitmap = new WriteableBitmap(frame.Width, frame.Height, 96.0, 96.0, PixelFormats.Bgr32, null);
-
-            // Get the min and max reliable depth for the current frame
-            int minDepth = frame.MinDepth;
-            int maxDepth = frame.MaxDepth;
-
-            int depthInRangeCount = 0;
-
-            // Convert the depth to RGB
-            int colorPixelIndex = 0;
-            for (int i = 0; i < depthPixels.Length; ++i)
-            {
-                // Get the depth for this pixel
-                short depth = depthPixels[i].Depth;
-
-                // To convert to a byte, we're discarding the most-significant
-                // rather than least-significant bits.
-                // We're preserving detail, although the intensity will "wrap."
-                // Values outside the reliable depth range are mapped to 0 (black).
-
-                // Note: Using conditionals in this loop could degrade performance.
-                // Consider using a lookup table instead when writing production code.
-                // See the KinectDepthViewer class used by the KinectExplorer sample
-                // for a lookup table example.
-                byte intensity = (byte) (depth >= minDepth && depth <= maxDepth ? depth : 0);
-
-
-                if (min < depth && depth < max)
-                {
-                    depthInRangeCount++;
-
-                    // Write out blue byte
-                    colorPixels[colorPixelIndex++] = 0;
-
-                    // Write out green byte
-                    colorPixels[colorPixelIndex++] = 0;
-
-                    // Write out red byte
-                    colorPixels[colorPixelIndex++] = intensity;
-                }
-                else
-                {
-                    // Write out blue byte
-                    colorPixels[colorPixelIndex++] = intensity;
-
-                    // Write out green byte
-                    colorPixels[colorPixelIndex++] = intensity;
-
-                    // Write out red byte
-                    colorPixels[colorPixelIndex++] = intensity;
-                }
-
-                // We're outputting BGR, the last byte in the 32 bits is unused so skip it
-                // If we were outputting BGRA, we would write alpha here.
-                ++colorPixelIndex;
-            }
-
-            bitmap.WritePixels(new Int32Rect(0, 0, bitmap.PixelWidth, bitmap.PixelHeight), colorPixels,
-                bitmap.PixelWidth*sizeof (int), 0);
-            ImageCanvas.Background = new ImageBrush(bitmap);
-
-            NearDepthCountValue.Content = depthInRangeCount.ToString();
-        }
-
-        private void ShowColorImageFrame(ColorImageFrame frame)
-        {
-            if (frame == null)
-            {
-                return;
-            }
-            var pixelData = new byte[frame.PixelDataLength];
-            frame.CopyPixelDataTo(pixelData);
-            int stride = frame.Width*frame.BytesPerPixel;
-            BitmapSource bitmapSource = BitmapSource.Create(frame.Width, frame.Height, 96, 96, PixelFormats.Bgr32, null,
-                pixelData,
-                stride);
-
-            ImageCanvas.Background = new ImageBrush(bitmapSource);
-        }
 
         private void Slider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
         {
@@ -260,35 +119,32 @@
             }
         }
 
-        private void NearDepthMinDistanceTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            min = Convert.ToInt32(NearDepthMinDistanceTextBox.Text);
-        }
-
-        private void NearDepthMaxDistanceTextBox_TextChanged(object sender, TextChangedEventArgs e)
-        {
-            max = Convert.ToInt16(NearDepthMaxDistanceTextBox.Text);
-        }
-
         private void VideoRadioButton_OnChecked(object sender, RoutedEventArgs e)
         {
             if (this.kinect == null) return;
 
-            this.InitKinectDisplay();
+            this.cameraModule.Start(this.kinect);
         }
 
-        private void PhotoRadioButton_OnChecked(object sender, RoutedEventArgs e)
+        private void VideoRadioButton_OnUnchecked(object sender, RoutedEventArgs e)
         {
             if (this.kinect == null) return;
 
-            this.InitKinectDisplay();
+            this.cameraModule.Stop();
         }
 
         private void DepthRadioButton_OnChecked(object sender, RoutedEventArgs e)
         {
             if (this.kinect == null) return;
 
-            this.InitKinectDisplay();
+            this.depthModule.Start(this.kinect);
+        }
+
+        private void DepthRadioButton_OnUnchecked(object sender, RoutedEventArgs e)
+        {
+            if (this.kinect == null) return;
+
+            this.depthModule.Stop();
         }
 
         // COM Part

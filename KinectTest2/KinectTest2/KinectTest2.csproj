@@ -67,6 +67,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="CameraModule.cs" />
+    <Compile Include="DepthModule.cs" />
     <Compile Include="RecognitionModule.cs" />
     <Compile Include="UartManager.cs" />
     <Compile Include="SkeletonModules\HeadTrackingModule.cs" />
