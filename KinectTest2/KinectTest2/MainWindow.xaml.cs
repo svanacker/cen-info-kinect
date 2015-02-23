@@ -133,21 +133,57 @@
         }
 
 
-        private void TestMotorButton_Click(object sender, RoutedEventArgs e)
+        private void ForwardMotorButton_Click(object sender, RoutedEventArgs e)
         {
             if (UartManager == null)
             {
                 return;
             }
             UartManager.RunMotors();
+            Thread.Sleep(1000);
+            UartManager.StopMotors();
         }
 
-        private void StopMotorButton_OnClickMotorButton_Click(object sender, RoutedEventArgs e)
+        private void BackwardMotorButton_Click(object sender, RoutedEventArgs e)
         {
             if (UartManager == null)
             {
                 return;
             }
+            UartManager.BackwardMotors();
+            Thread.Sleep(1000);
+            UartManager.StopMotors();
+        }
+
+        private void StopMotorButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UartManager == null)
+            {
+                return;
+            }
+            UartManager.StopMotors();
+
+        }
+
+        private void LeftMotorButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UartManager == null)
+            {
+                return;
+            }
+            UartManager.RotateLeft();
+            Thread.Sleep(1000);
+            UartManager.StopMotors();
+        }
+
+        private void RightMotorButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (UartManager == null)
+            {
+                return;
+            }
+            UartManager.RotateRight();
+            Thread.Sleep(1000);
             UartManager.StopMotors();
         }
 
@@ -160,5 +196,6 @@
         {
             throw new NotImplementedException();
         }
+
     }
 }

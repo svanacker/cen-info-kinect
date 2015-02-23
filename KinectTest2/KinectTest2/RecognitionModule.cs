@@ -58,8 +58,11 @@ namespace KinectTest2
         {
             speechRecognitionEngine = new SpeechRecognitionEngine(recognizer.Id);
             var choices = new Choices();
-            choices.Add("hello");
-            choices.Add("goodbye");
+            choices.Add("left");
+            choices.Add("right");
+            choices.Add("forward");
+            choices.Add("backward");
+            choices.Add("stop");
 
             var grammarBuilder = new GrammarBuilder {Culture = recognizer.Culture};
             grammarBuilder.Append(choices);
@@ -101,6 +104,24 @@ namespace KinectTest2
                 window.LastRecognitionStatusLabel.Content = "";
                 return;
             }
+            string text = e.Result.Text;
+            if ("left".Equals(text))
+            {
+                window.UartManager.RotateLeft();
+            }
+            if ("right".Equals(text))
+            {
+                window.UartManager.RotateRight();
+            }
+            if ("forward".Equals(text))
+            {
+                window.UartManager.RunMotors();
+            }
+            if ("backward".Equals(text))
+            {
+                window.UartManager.BackwardMotors();
+            }
+
             window.LastRecognitionStatusLabel.Content = "Recognized";
             window.LastRecognizedWordLabel.Content = e.Result.Text;
         }

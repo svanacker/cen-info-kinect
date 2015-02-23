@@ -51,6 +51,11 @@ namespace KinectTest2
             SendData("mw2020");
         }
 
+        public void BackwardMotors()
+        {
+            SendData("mwE0E0");
+        }
+
         // Controlled Motion
 
         public void RotateLeft()
