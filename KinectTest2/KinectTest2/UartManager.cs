@@ -60,12 +60,12 @@ namespace KinectTest2
 
         public void RotateLeft()
         {
-            SendData("Ml0200");
+            SendData("mw2000");
         }
 
         public void RotateRight()
         {
-            SendData("Mr0200");
+            SendData("mw0020");
         }
     }
 }

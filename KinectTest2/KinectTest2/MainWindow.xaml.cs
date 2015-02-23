@@ -189,12 +189,12 @@
 
         private void RecognitionCheckBox_OnCheckedCheckBox_OnChecked(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
-    }
+            ////throw new NotImplementedException();
+        }
 
         private void RecognitionCheckBox_OnUncheckedCheckBox_OnUnchecked(object sender, RoutedEventArgs e)
         {
-            throw new NotImplementedException();
+            ////throw new NotImplementedException();
         }
 
     }

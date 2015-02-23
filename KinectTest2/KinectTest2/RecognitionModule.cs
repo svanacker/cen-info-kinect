@@ -10,6 +10,18 @@ namespace KinectTest2
 
     public class RecognitionModule
     {
+        private const string LEFT_CMD = "gauche";
+
+        private const string RIGHT_CMD = "droite";
+
+        private const string FORWARD_CMD = "avance";
+
+        private const string BACKWARD_CMD = "recule";
+
+        private const string STOP_CMD = "arrêter";
+
+        private const string RECOGNITION_CULTURE = "fr-FR";
+
         private MainWindow window;
 
         private KinectSensor kinect;
@@ -46,7 +58,7 @@ namespace KinectTest2
                 string value;
                 recognizer.AdditionalInfo.TryGetValue("Kinect", out value);
                 if ("True".Equals(value, StringComparison.OrdinalIgnoreCase) &&
-                    "fr-FR".Equals(recognizer.Culture.Name, StringComparison.OrdinalIgnoreCase))
+                    RECOGNITION_CULTURE.Equals(recognizer.Culture.Name, StringComparison.OrdinalIgnoreCase))
                 {
                     return recognizer;
                 }
@@ -58,11 +70,11 @@ namespace KinectTest2
         {
             speechRecognitionEngine = new SpeechRecognitionEngine(recognizer.Id);
             var choices = new Choices();
-            choices.Add("left");
-            choices.Add("right");
-            choices.Add("forward");
-            choices.Add("backward");
-            choices.Add("stop");
+            choices.Add(LEFT_CMD);
+            choices.Add(RIGHT_CMD);
+            choices.Add(FORWARD_CMD);
+            choices.Add(BACKWARD_CMD);
+            choices.Add(STOP_CMD);
 
             var grammarBuilder = new GrammarBuilder {Culture = recognizer.Culture};
             grammarBuilder.Append(choices);
@@ -105,21 +117,28 @@ namespace KinectTest2
                 return;
             }
             string text = e.Result.Text;
-            if ("left".Equals(text))
+
+            var uartManager = this.window.UartManager;
+            if (uartManager != null)
             {
-                window.UartManager.RotateLeft();
-            }
-            if ("right".Equals(text))
-            {
-                window.UartManager.RotateRight();
-            }
-            if ("forward".Equals(text))
-            {
-                window.UartManager.RunMotors();
-            }
-            if ("backward".Equals(text))
-            {
-                window.UartManager.BackwardMotors();
+                switch (text)
+                {
+                    case LEFT_CMD:
+                        uartManager.RotateLeft();
+                        break;
+                    case RIGHT_CMD:
+                        uartManager.RotateRight();
+                        break;
+                    case FORWARD_CMD:
+                        uartManager.RunMotors();
+                        break;
+                    case BACKWARD_CMD:
+                        uartManager.BackwardMotors();
+                        break;
+                    case STOP_CMD:
+                        uartManager.StopMotors();
+                        break;
+                }
             }
 
             window.LastRecognitionStatusLabel.Content = "Recognized";

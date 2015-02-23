@@ -79,7 +79,7 @@
             <Button x:Name="BackwardMotorButton" Content="Backward Motor" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="BackwardMotorButton_Click"/>
             <Button x:Name="LeftMotorButton" Content="Left" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="LeftMotorButton_Click"/>
             <Button x:Name="RightMotorButton" Content="Right" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="RightMotorButton_Click"/>
-            <Button x:Name="StopMotorButton" Content="StopMotor" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="StopMotorButton_OnClickMotorButton_Click"/>
+            <Button x:Name="StopMotorButton" Content="StopMotor" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" Click="StopMotorButton_Click"/>
         </StackPanel>
     </DockPanel>
 
