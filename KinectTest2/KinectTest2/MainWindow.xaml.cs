@@ -11,15 +11,7 @@
     {
         private KinectSensor kinect;
 
-        private CameraModule cameraModule;
-
-        private ElevationModule elevationModule;
-
-        private DepthModule depthModule;
-
-        private RecognitionModule recognitionModule;
-
-        private SkeletonsModule skeletonsModule;
+        private IKinectModule[] kinectModules;
 
         public MainWindow()
         {
@@ -28,11 +20,14 @@
 
             this.TrackKinectStatus();
 
-            this.cameraModule = new CameraModule(this);
-            this.elevationModule = new ElevationModule(this);
-            this.depthModule = new DepthModule(this);
-            this.recognitionModule = new RecognitionModule(this);
-            this.skeletonsModule = new SkeletonsModule(this);
+            this.kinectModules = new IKinectModule[]
+                                     {
+                                         new CameraModule(this),
+                                         new ElevationModule(this),
+                                         new DepthModule(this),
+                                         new SkeletonsModule(this),
+                                         new RecognitionModule(this)
+                                     };
         }
 
         private void TrackKinectStatus()
@@ -79,22 +74,26 @@
                 KinectIdValue.Content = this.kinect.DeviceConnectionId;
                 LaunchButton.Content = "Stop";
 
-                this.cameraModule.Start(this.kinect);
-                this.elevationModule.Start(this.kinect);
-                this.depthModule.Start(this.kinect);
-                this.recognitionModule.Start(this.kinect);
-                this.skeletonsModule.Start(this.kinect);
+                foreach (var kinectModule in this.kinectModules)
+                {
+                    kinectModule.Start(this.kinect);
+                }
             }
         }
 
         private void StopKinect()
         {
-            this.skeletonsModule.Stop();
-            this.depthModule.Stop();
-            this.elevationModule.Stop();
-            this.cameraModule.Stop();
-            this.kinect.Stop();
-            this.kinect = null;
+            if (this.kinect != null)
+            {
+                foreach (var kinectModule in this.kinectModules)
+                {
+                    kinectModule.Stop();
+                }
+
+                this.kinect.Stop();
+                this.kinect = null;
+            }
+
             KinectIdValue.Content = "-";
             LaunchButton.Content = "Start";
         }
