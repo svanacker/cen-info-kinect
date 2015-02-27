@@ -23,9 +23,9 @@
 
         private RecognitionModule recognitionModule;
 
-        public UartManager UartManager { get; private set; }
-
         private SkeletonsModule skeletonsModule;
+
+        public UartManager UartManager { get; private set; }
 
         public MainWindow()
         {
@@ -87,7 +87,7 @@
                 this.cameraModule.Start(this.kinect);
                 this.elevationModule.Start(this.kinect);
                 this.depthModule.Start(this.kinect);
-                this.recognitionModule.Start(kinect);
+                this.recognitionModule.Start(this.kinect);
                 this.skeletonsModule.Start(this.kinect);
             }
         }
@@ -186,16 +186,5 @@
             Thread.Sleep(1000);
             UartManager.StopMotors();
         }
-
-        private void RecognitionCheckBox_OnCheckedCheckBox_OnChecked(object sender, RoutedEventArgs e)
-        {
-            ////throw new NotImplementedException();
-        }
-
-        private void RecognitionCheckBox_OnUncheckedCheckBox_OnUnchecked(object sender, RoutedEventArgs e)
-        {
-            ////throw new NotImplementedException();
-        }
-
     }
 }
