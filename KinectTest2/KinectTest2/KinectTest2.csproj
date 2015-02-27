@@ -68,6 +68,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="CameraModule.cs" />
+    <Compile Include="MainWindow.Com.cs" />
     <Compile Include="DepthModule.cs" />
     <Compile Include="ElevationModule.cs" />
     <Compile Include="RecognitionModule.cs" />

@@ -1,10 +1,6 @@
 ﻿namespace KinectTest2
 {
-    using System;
-    using System.IO.Ports;
-    using System.Threading;
     using System.Windows;
-    using System.Windows.Controls;
 
     using Microsoft.Kinect;
 
@@ -25,11 +21,10 @@
 
         private SkeletonsModule skeletonsModule;
 
-        public UartManager UartManager { get; private set; }
-
         public MainWindow()
         {
             this.InitializeComponent();
+            this.InitializeComComponent();
 
             this.TrackKinectStatus();
 
@@ -102,89 +97,6 @@
             this.kinect = null;
             KinectIdValue.Content = "-";
             LaunchButton.Content = "Start";
-        }
-
-        // COM Part
-
-        private void LoadListButton_Click(object sender, RoutedEventArgs e)
-        {
-            string[] portNames = SerialPort.GetPortNames();
-            COMComboBox.Items.Clear();
-            foreach (string portName in portNames)
-            {
-                COMComboBox.Items.Add(portName);
-            }
-        }
-
-        private void COMComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            object selectedItem = COMComboBox.SelectedItem;
-            if (selectedItem == null)
-            {
-                return;
-            }
-            if (UartManager != null)
-            {
-                UartManager.Close();
-            }
-            String portName = selectedItem.ToString();
-            UartManager = new UartManager(portName);
-            UartManager.Open();
-        }
-
-
-        private void ForwardMotorButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (UartManager == null)
-            {
-                return;
-            }
-            UartManager.RunMotors();
-            Thread.Sleep(1000);
-            UartManager.StopMotors();
-        }
-
-        private void BackwardMotorButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (UartManager == null)
-            {
-                return;
-            }
-            UartManager.BackwardMotors();
-            Thread.Sleep(1000);
-            UartManager.StopMotors();
-        }
-
-        private void StopMotorButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (UartManager == null)
-            {
-                return;
-            }
-            UartManager.StopMotors();
-
-        }
-
-        private void LeftMotorButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (UartManager == null)
-            {
-                return;
-            }
-            UartManager.RotateLeft();
-            Thread.Sleep(1000);
-            UartManager.StopMotors();
-        }
-
-        private void RightMotorButton_Click(object sender, RoutedEventArgs e)
-        {
-            if (UartManager == null)
-            {
-                return;
-            }
-            UartManager.RotateRight();
-            Thread.Sleep(1000);
-            UartManager.StopMotors();
         }
     }
 }
