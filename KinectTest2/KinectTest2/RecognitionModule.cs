@@ -20,6 +20,10 @@ namespace KinectTest2
 
         private const string STOP_CMD = "arrêter";
 
+        private const string HEAT_CMD = "chaud";
+
+        private const string COLD_CMD = "froid";
+
         private const string RECOGNITION_CULTURE = "fr-FR";
 
         private MainWindow window;
@@ -70,11 +74,14 @@ namespace KinectTest2
         {
             speechRecognitionEngine = new SpeechRecognitionEngine(recognizer.Id);
             var choices = new Choices();
-            choices.Add(LEFT_CMD);
-            choices.Add(RIGHT_CMD);
-            choices.Add(FORWARD_CMD);
-            choices.Add(BACKWARD_CMD);
-            choices.Add(STOP_CMD);
+            ////choices.Add(LEFT_CMD);
+            ////choices.Add(RIGHT_CMD);
+            ////choices.Add(FORWARD_CMD);
+            ////choices.Add(BACKWARD_CMD);
+            ////choices.Add(STOP_CMD);
+            choices.Add(HEAT_CMD);
+            choices.Add(COLD_CMD);
+
 
             var grammarBuilder = new GrammarBuilder {Culture = recognizer.Culture};
             grammarBuilder.Append(choices);
@@ -137,6 +144,12 @@ namespace KinectTest2
                         break;
                     case STOP_CMD:
                         uartManager.StopMotors();
+                        break;
+                    case HEAT_CMD:
+                        uartManager.StopAc();
+                        break;
+                    case COLD_CMD:
+                        uartManager.StartAc();
                         break;
                 }
             }

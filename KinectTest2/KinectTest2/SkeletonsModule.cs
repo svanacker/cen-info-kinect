@@ -48,7 +48,12 @@
 
         public void Stop()
         {
-            this.kinect.SkeletonFrameReady -= kinect_SkeletonFrameReady;
+            if (this.kinect == null)
+            {
+                return;
+            }
+
+            this.kinect.SkeletonFrameReady -= this.kinect_SkeletonFrameReady;
             this.kinect.SkeletonStream.Disable();
 
             this.kinect = null;

@@ -3,9 +3,15 @@ namespace KinectTest2
 {
     using System;
     using System.IO.Ports;
+    using System.Threading;
+    using System.Threading.Tasks;
 
     public class UartManager
     {
+        private const string POWERLEFT = "38";
+
+        private const string POWERRIGHT = "30";
+
         private String PortName { get; set; }
 
         public SerialPort CurrentPort { get; private set; }
@@ -48,7 +54,7 @@ namespace KinectTest2
 
         public void RunMotors()
         {
-            SendData("mw2020");
+            SendData("mw" + POWERLEFT + POWERRIGHT);
         }
 
         public void BackwardMotors()
@@ -60,12 +66,36 @@ namespace KinectTest2
 
         public void RotateLeft()
         {
-            SendData("mw2000");
+            SendData("mw" + POWERLEFT + "00");
+            var stopTask = new Task(
+            () =>
+            {
+                Thread.Sleep(800);
+                this.StopMotors();
+            });
+            stopTask.Start();
         }
 
         public void RotateRight()
         {
-            SendData("mw0020");
+            SendData("mw" + "00" + POWERRIGHT);
+            var stopTask = new Task(
+            () =>
+            {
+                Thread.Sleep(800);
+                this.StopMotors();
+            });
+            stopTask.Start();
+        }
+
+        public void StartAc()
+        {
+            this.SendData("go");
+        }
+
+        public void StopAc()
+        {
+            this.SendData("gf");
         }
     }
 }

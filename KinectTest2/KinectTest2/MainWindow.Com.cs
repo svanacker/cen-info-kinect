@@ -1,12 +1,16 @@
 ﻿namespace KinectTest2
 {
+    using System;
     using System.IO.Ports;
+    using System.Linq;
     using System.Threading;
     using System.Windows;
     using System.Windows.Controls;
 
     public partial class MainWindow
     {
+        private const int DELAY_MS = 700;
+
         public UartManager UartManager { get; private set; }
 
         public void InitializeComComponent()
@@ -18,6 +22,9 @@
             this.StopMotorButton.Click += this.StopMotorButton_Click;
             this.LeftMotorButton.Click += this.LeftMotorButton_Click;
             this.RightMotorButton.Click += this.RightMotorButton_Click;
+
+            this.StartAcButton.Click += this.StartAcButton_Click;
+            this.StopAcButton.Click += this.StopAcButton_Click;
         }
 
         private void LoadListButton_Click(object sender, RoutedEventArgs e)
@@ -28,6 +35,7 @@
             {
                 this.COMComboBox.Items.Add(portName);
             }
+            this.COMComboBox.SelectedValue = portNames.FirstOrDefault();
         }
 
         private void COMComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -56,7 +64,7 @@
             }
 
             this.UartManager.RunMotors();
-            Thread.Sleep(1000);
+            Thread.Sleep(DELAY_MS);
             this.UartManager.StopMotors();
         }
 
@@ -68,7 +76,7 @@
             }
 
             this.UartManager.BackwardMotors();
-            Thread.Sleep(1000);
+            Thread.Sleep(DELAY_MS);
             this.UartManager.StopMotors();
         }
 
@@ -91,7 +99,7 @@
             }
 
             this.UartManager.RotateLeft();
-            Thread.Sleep(1000);
+            Thread.Sleep(DELAY_MS);
             this.UartManager.StopMotors();
         }
 
@@ -103,8 +111,28 @@
             }
 
             this.UartManager.RotateRight();
-            Thread.Sleep(1000);
+            Thread.Sleep(DELAY_MS);
             this.UartManager.StopMotors();
+        }
+
+        private void StartAcButton_Click(object sender, RoutedEventArgs routedEventArgs)
+        {
+            if (this.UartManager == null)
+            {
+                return;
+            }
+
+            this.UartManager.StartAc();
+        }
+
+        private void StopAcButton_Click(object sender, RoutedEventArgs e)
+        {
+            if (this.UartManager == null)
+            {
+                return;
+            }
+
+            this.UartManager.StopAc();
         }
     }
 }

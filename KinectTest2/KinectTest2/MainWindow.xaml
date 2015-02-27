@@ -59,7 +59,7 @@
         </StackPanel>
         <StackPanel DockPanel.Dock="Bottom" Orientation="Horizontal"  >
             <Label Content="Confidence : "/>
-            <Slider x:Name="ConfidenceSlider" HorizontalAlignment="Center" Width="200" VerticalAlignment="Top" Orientation="Horizontal" Value="70" Minimum="0" Maximum="100" LargeChange="10" SmallChange="2" TickPlacement="Both" TickFrequency="5" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True" />
+            <Slider x:Name="ConfidenceSlider" HorizontalAlignment="Center" Width="200" VerticalAlignment="Top" Orientation="Horizontal" Value="50" Minimum="0" Maximum="100" LargeChange="10" SmallChange="2" TickPlacement="Both" TickFrequency="5" IsSnapToTickEnabled="True" IsMoveToPointEnabled="True" />
             <Label Content="Last status : "/>
             <Label x:Name="LastRecognitionStatusLabel" Width="100"/>
             <Label Content="Last recognized Word : "/>
@@ -80,6 +80,8 @@
             <Button x:Name="LeftMotorButton" Content="Left" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" />
             <Button x:Name="RightMotorButton" Content="Right" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" />
             <Button x:Name="StopMotorButton" Content="StopMotor" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" />
+            <Button x:Name="StartAcButton" Content="Start AC" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" />
+            <Button x:Name="StopAcButton" Content="Stop AC" HorizontalAlignment="Center" VerticalAlignment="Top" Width="75" />
         </StackPanel>
     </DockPanel>
 

@@ -1,5 +1,7 @@
 ﻿namespace KinectTest2.SkeletonModules
 {
+    using System.Threading;
+    using System.Threading.Tasks;
     using System.Windows;
 
     using Kinect.Toolbox;
@@ -46,7 +48,8 @@
             {
                 case "SwipeToRight":
                     this.window.LeftRectangle.Visibility = Visibility.Visible;
-                    if (this.window.UartManager != null) { 
+                    if (this.window.UartManager != null)
+                    { 
                         this.window.UartManager.RunMotors();
                     }
                     break;
@@ -66,9 +69,17 @@
             {
                 case "SwipeToRight":
                     this.window.RightRectangle.Visibility = Visibility.Hidden;
+                    if (this.window.UartManager != null)
+                    {
+                        this.window.UartManager.RotateRight();
+                    }
                     break;
                 case "SwipeToLeft":
                     this.window.RightRectangle.Visibility = Visibility.Visible;
+                    if (this.window.UartManager != null)
+                    {
+                        this.window.UartManager.RotateLeft();
+                    }
                     break;
             }
         }
