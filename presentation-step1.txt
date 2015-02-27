@@ -1,0 +1,30 @@
+﻿namespace KinectTest2
+{
+    using System.Windows;
+
+    using Microsoft.Kinect;
+
+    /// <summary>
+    /// Interaction logic for MainWindow.xaml
+    /// </summary>
+    public partial class MainWindow : Window
+    {
+
+        public MainWindow()
+        {
+            this.InitializeComponent();
+        }
+
+        private void ButtonStart_Click(object sender, RoutedEventArgs e)
+        {
+            var kinectSensorCollection = KinectSensor.KinectSensors;
+            if (kinectSensorCollection.Count > 0)
+            {
+                var kinect = kinectSensorCollection[0];
+                kinect.Start();
+                KinectIdValue.Content = kinect.DeviceConnectionId;
+                KinectStatusValue.Content = kinect.Status;
+            }
+        }
+    }
+}
