@@ -8,7 +8,7 @@ namespace KinectTest2
     using Microsoft.Speech.AudioFormat;
     using Microsoft.Speech.Recognition;
 
-    public class RecognitionModule
+    public class RecognitionModule : IKinectModule
     {
         private const string LEFT_CMD = "gauche";
 
@@ -31,6 +31,7 @@ namespace KinectTest2
         private KinectSensor kinect;
         private SpeechRecognitionEngine speechRecognitionEngine;
         private RecognizerInfo recognizer;
+        private Thread audioThread;
 
         // SOUND PART : http://kin-educate.blogspot.fr/2012/06/speech-recognition-for-kinect-easy-way.html
 
@@ -42,17 +43,31 @@ namespace KinectTest2
         public void Start(KinectSensor kinect)
         {
             this.kinect = kinect;
-            // Initialize the recognizer
-            recognizer = GetRecognizer();
 
-            if (recognizer != null)
+            // Initialize the recognizer
+            this.recognizer = GetRecognizer();
+
+            if (this.recognizer != null)
             {
                 // Initialize the Engine
-                InitSpeechRecognitionEngine();
+                this.InitSpeechRecognitionEngine();
 
-                var thread = new Thread(StartAudioStream);
+                var thread = new Thread(this.StartAudioStream);
                 thread.Start();
             }
+        }
+
+        public void Stop()
+        {
+            if (this.kinect == null)
+            {
+                return;
+            }
+
+            this.kinect = null;
+            this.recognizer = null;
+            this.audioThread.Abort();
+            this.audioThread = null;
         }
 
         private RecognizerInfo GetRecognizer()

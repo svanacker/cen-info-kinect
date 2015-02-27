@@ -9,7 +9,7 @@
 
     using Microsoft.Kinect;
 
-    public class SkeletonsModule
+    public class SkeletonsModule : IKinectModule
     {
         private MainWindow window;
 

@@ -8,7 +8,7 @@
 
     using Microsoft.Kinect;
 
-    public class DepthModule
+    public class DepthModule : IKinectModule
     {
         private MainWindow window;
 

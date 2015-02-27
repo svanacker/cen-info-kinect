@@ -5,7 +5,7 @@
 
     using Microsoft.Kinect;
 
-    public class CameraModule
+    public class CameraModule : IKinectModule
     {
         private MainWindow window;
 

@@ -4,7 +4,7 @@
     using System.Threading;
     using Microsoft.Kinect;
 
-    public class ElevationModule
+    public class ElevationModule : IKinectModule
     {
         private MainWindow window;
 
