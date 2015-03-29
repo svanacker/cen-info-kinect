@@ -1,16 +1,49 @@
 ﻿<Window x:Class="UartWPFTest.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525">
-    <Grid>
-        <Button x:Name="SendButton" Content="Send" HorizontalAlignment="Left" Margin="411,274,0,0" VerticalAlignment="Top" Width="75" Click="SendButton_Click"/>
-        <TextBox x:Name="SendTextBox" HorizontalAlignment="Left" Height="22" Margin="24,274,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="369"/>
-        <TextBox x:Name="ContentTextBox" HorizontalAlignment="Left" Height="208" Margin="33,45,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="465"/>
-        <ComboBox x:Name="COMComboBox" HorizontalAlignment="Left" Margin="33,10,0,0" VerticalAlignment="Top" Width="139" SelectionChanged="COMComboBox_SelectionChanged"/>
-        <Button x:Name="ClearButton" Content="Clear" HorizontalAlignment="Left" Margin="343,10,0,0" VerticalAlignment="Top" Width="75" Click="ClearButton_Click"/>
-        <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="423,10,0,0" VerticalAlignment="Top" Width="75" Click="CloseButton_Click"/>
-        <Button x:Name="LoadListButton" Content="LoadList" HorizontalAlignment="Left" Margin="177,10,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.693,0.682" Click="LoadListButton_Click"/>
-        <Button x:Name="ReadButton" Content="Read" HorizontalAlignment="Left" Margin="257,10,0,0" VerticalAlignment="Top" Width="75" Click="ReadButton_Click"/>
+        Title="MainWindow" Height="454" Width="775" Loaded="Window_Loaded">
+    <Grid Background="#E5E5E5E5">
+        <ComboBox x:Name="COMComboBox" HorizontalAlignment="Left" Margin="602,10,0,0" VerticalAlignment="Top" Width="139" SelectionChanged="COMComboBox_SelectionChanged"/>
+        <Button x:Name="ClearButton" Content="Clear" HorizontalAlignment="Left" Margin="513,38,0,0" VerticalAlignment="Top" Width="75" Click="ClearButton_Click"/>
+        <Button x:Name="CloseButton" Content="Close" HorizontalAlignment="Left" Margin="513,10,0,0" VerticalAlignment="Top" Width="75" Click="CloseButton_Click"/>
+        <Button x:Name="LoadListButton" Content="LoadList" HorizontalAlignment="Left" Margin="602,38,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="-0.693,0.682" Click="LoadListButton_Click"/>
+        <Button x:Name="ReadButton" Content="Read" HorizontalAlignment="Left" Margin="682,38,0,0" VerticalAlignment="Top" Width="75" Click="ReadButton_Click"/>
+        <DockPanel HorizontalAlignment="Left" Height="100" LastChildFill="False" Margin="91,147,0,0" VerticalAlignment="Top" Width="100"/>
+        <TabControl HorizontalAlignment="Stretch" Margin="25,60,10,10" VerticalAlignment="Stretch">
+            <TabItem Header="Console">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Out Data" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <TextBox x:Name="SendTextBox1" HorizontalAlignment="Left" Height="22" Margin="10,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp"/>
+                    <Button x:Name="SendButton1" Content="Send" HorizontalAlignment="Left" Margin="180,25,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
+                    <TextBox x:Name="SendTextBox2" HorizontalAlignment="Left" Height="22" Margin="10,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp"/>
+                    <Button x:Name="SendButton2" Content="Send" HorizontalAlignment="Left" Margin="180,50,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
+                    <TextBox x:Name="SendTextBox3" HorizontalAlignment="Left" Height="22" Margin="10,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp"/>
+                    <Button x:Name="SendButton3" Content="Send" HorizontalAlignment="Left" Margin="180,75,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
+                    <TextBox x:Name="SendTextBox4" HorizontalAlignment="Left" Height="22" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp"/>
+                    <Button x:Name="SendButton4" Content="Send" HorizontalAlignment="Left" Margin="180,100,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
+                    <TextBox x:Name="SendTextBox5" HorizontalAlignment="Left" Height="22" Margin="10,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp"/>
+                    <Button x:Name="SendButton5" Content="Send" HorizontalAlignment="Left" Margin="180,125,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
+                    <TextBox x:Name="SendTextBox6" HorizontalAlignment="Left" Height="22" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp"/>
+                    <Button x:Name="SendButton6" Content="Send" HorizontalAlignment="Left" Margin="180,150,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
+                    <TextBox x:Name="SendTextBox7" HorizontalAlignment="Left" Height="22" Margin="10,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp"/>
+                    <Button x:Name="SendButton7" Content="Send" HorizontalAlignment="Left" Margin="180,175,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
+                    <TextBox x:Name="SendTextBox8" HorizontalAlignment="Left" Height="22" Margin="10,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp"/>
+                    <Button x:Name="SendButton8" Content="Send" HorizontalAlignment="Left" Margin="180,200,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
 
+                    <TextBox x:Name="ContentTextBox" HorizontalAlignment="Stretch" Margin="260,25,0,0" TextWrapping="Wrap" VerticalAlignment="Stretch"/>
+                    <Label Content="Out Data" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                    <Label Content="In Data" HorizontalAlignment="Stretch" Margin="260,0,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Configuration">
+                <Grid Background="#FFFFFFFF">
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="Run">
+                <Grid Background="#FFFFFFFF"/>
+            </TabItem>
+        </TabControl>
+        <Image x:Name="LogoImage" HorizontalAlignment="Left" Height="55" Margin="25,0,0,0" VerticalAlignment="Top" Width="202" Source="logo.png"/>
     </Grid>
 </Window>
