@@ -73,6 +73,8 @@ namespace UartWPFTest
             TextBox textBox = GetLinkedTextBox(senderButton);
             string text = textBox.Text;
             SendText(text);
+            InputHistory inputHistory = GetInputHistory(textBox);
+            inputHistory.AddEntry(text);
         }
 
         private void SendText(string text)
@@ -82,6 +84,8 @@ namespace UartWPFTest
                 return;
             }
             currentPort.WriteLine(text);
+            // we add some line return so that we can read easily the return of the remote board
+            ContentTextBox.Text += "\n";
         }
 
         private void ClearButton_Click(object sender, RoutedEventArgs e)
@@ -111,19 +115,14 @@ namespace UartWPFTest
             {
                 return;
             }
+            if (currentPort != null && currentPort.IsOpen)
+            {
+                currentPort.Close();
+                currentPort.DataReceived -= UartReceive;
+            }
             currentPort = new SerialPort(selectedItem.ToString(), 115200, Parity.None, 8, StopBits.One);
             currentPort.Open();
-        }
-
-        private void ReadButton_Click(object sender, RoutedEventArgs e)
-        {
             currentPort.DataReceived += UartReceive;
-
-            // BackgroundWorker _backgroundWorker = new BackgroundWorker();
-            // _backgroundWorker.DoWork += ReadUart;
-            // _backgroundWorker.RunWorkerAsync(100);
-            // Thread readThread = new Thread(new ParameterizedThreadStart(ReadUart));
-            // readThread.Start();
         }
 
         private void UartReceive(object sender, SerialDataReceivedEventArgs e)
@@ -132,20 +131,23 @@ namespace UartWPFTest
             {
                 return;
             }
-            if (currentPort.BytesToRead == 0)
+            int bytesToRead = currentPort.BytesToRead;
+            if (bytesToRead == 0)
             {
                 return;
             }
-            string readLine = currentPort.ReadLine();
-            if (readLine.Length > 0)
+
+            byte[] buffer = new byte[bytesToRead];
+            currentPort.Read(buffer, 0, bytesToRead);
+            ContentTextBox.Dispatcher.BeginInvoke(new Action(delegate()
             {
-                ContentTextBox.Dispatcher.BeginInvoke(new Action(delegate()
-                {
-                    // ContentTextBox.
-                    ContentTextBox.Text += readLine;
-                    ContentTextBox.Text += "\n";
-                }));
-            }
+                string newText = Encoding.ASCII.GetString(buffer, 0, bytesToRead);
+                ContentTextBox.Text += newText;
+                // ContentTextBox.Text += "\n";
+                ContentTextBox.ScrollToEnd();
+                ContentScrollViewer.ScrollToVerticalOffset(ContentScrollViewer.ScrollableHeight);
+                ContentScrollViewer.UpdateLayout();
+            }));
         }
 
         private InputHistory GetInputHistory(TextBox textBox)
