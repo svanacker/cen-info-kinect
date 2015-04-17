@@ -1,24 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
+﻿
 namespace UartWPFTest
 {
-    using System.ComponentModel;
+    using System;
+    using System.Text;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+
     using System.IO.Ports;
-    using System.Threading;
-    using NUnit.Framework;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -142,6 +131,9 @@ namespace UartWPFTest
             ContentTextBox.Dispatcher.BeginInvoke(new Action(delegate()
             {
                 string newText = Encoding.ASCII.GetString(buffer, 0, bytesToRead);
+
+                // Analysis of apg01-05C7-00-000000-0000-00-008E-0000-0000
+
                 ContentTextBox.Text += newText;
                 // ContentTextBox.Text += "\n";
                 ContentTextBox.ScrollToEnd();
