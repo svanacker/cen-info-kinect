@@ -9,30 +9,40 @@
         <TabControl HorizontalAlignment="Stretch" Margin="25,60,10,10" VerticalAlignment="Stretch">
             <TabItem Header="Console">
                 <Grid Background="#FFE5E5E5">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="77*"/>
+                        <ColumnDefinition Width="81*"/>
+                        <ColumnDefinition Width="564*"/>
+                    </Grid.ColumnDefinitions>
                     <Label Content="Out Data" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <TextBox x:Name="SendTextBox1" HorizontalAlignment="Left" Height="22" Margin="10,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New"/>
-                    <Button x:Name="SendButton1" Content="Send" HorizontalAlignment="Left" Margin="180,25,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
-                    <TextBox x:Name="SendTextBox2" HorizontalAlignment="Left" Height="22" Margin="10,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New"/>
-                    <Button x:Name="SendButton2" Content="Send" HorizontalAlignment="Left" Margin="180,50,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
-                    <TextBox x:Name="SendTextBox3" HorizontalAlignment="Left" Height="22" Margin="10,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New"/>
-                    <Button x:Name="SendButton3" Content="Send" HorizontalAlignment="Left" Margin="180,75,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
-                    <TextBox x:Name="SendTextBox4" HorizontalAlignment="Left" Height="22" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New"/>
-                    <Button x:Name="SendButton4" Content="Send" HorizontalAlignment="Left" Margin="180,100,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
-                    <TextBox x:Name="SendTextBox5" HorizontalAlignment="Left" Height="22" Margin="10,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New"/>
-                    <Button x:Name="SendButton5" Content="Send" HorizontalAlignment="Left" Margin="180,125,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
-                    <TextBox x:Name="SendTextBox6" HorizontalAlignment="Left" Height="22" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New"/>
-                    <Button x:Name="SendButton6" Content="Send" HorizontalAlignment="Left" Margin="180,150,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
-                    <TextBox x:Name="SendTextBox7" HorizontalAlignment="Left" Height="22" Margin="10,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New"/>
-                    <Button x:Name="SendButton7" Content="Send" HorizontalAlignment="Left" Margin="180,175,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
-                    <TextBox x:Name="SendTextBox8" HorizontalAlignment="Left" Height="22" Margin="10,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New"/>
-                    <Button x:Name="SendButton8" Content="Send" HorizontalAlignment="Left" Margin="180,200,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click"/>
-                    <ScrollViewer x:Name="ContentScrollViewer" Margin="260,25,0,25">
+                    <TextBox x:Name="SendTextBox1" HorizontalAlignment="Left" Height="22" Margin="10,25,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New" Grid.ColumnSpan="3"/>
+                    <Button x:Name="SendButton1" Content="Send" HorizontalAlignment="Left" Margin="22,25,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click" Grid.Column="2"/>
+                    <TextBox x:Name="SendTextBox2" HorizontalAlignment="Left" Height="22" Margin="10,50,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New" Grid.ColumnSpan="3"/>
+                    <Button x:Name="SendButton2" Content="Send" HorizontalAlignment="Left" Margin="22,50,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click" Grid.Column="2"/>
+                    <TextBox x:Name="SendTextBox3" HorizontalAlignment="Left" Height="22" Margin="10,75,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New" Grid.ColumnSpan="3"/>
+                    <Button x:Name="SendButton3" Content="Send" HorizontalAlignment="Left" Margin="22,75,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click" Grid.Column="2"/>
+                    <TextBox x:Name="SendTextBox4" HorizontalAlignment="Left" Height="22" Margin="10,100,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New" Grid.ColumnSpan="3"/>
+                    <Button x:Name="SendButton4" Content="Send" HorizontalAlignment="Left" Margin="22,100,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click" Grid.Column="2"/>
+                    <TextBox x:Name="SendTextBox5" HorizontalAlignment="Left" Height="22" Margin="10,125,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New" Grid.ColumnSpan="3"/>
+                    <Button x:Name="SendButton5" Content="Send" HorizontalAlignment="Left" Margin="22,125,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click" Grid.Column="2"/>
+                    <TextBox x:Name="SendTextBox6" HorizontalAlignment="Left" Height="22" Margin="10,150,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New" Grid.ColumnSpan="3"/>
+                    <Button x:Name="SendButton6" Content="Send" HorizontalAlignment="Left" Margin="22,150,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click" Grid.Column="2"/>
+                    <TextBox x:Name="SendTextBox7" HorizontalAlignment="Left" Height="22" Margin="10,175,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New" Grid.ColumnSpan="3"/>
+                    <Button x:Name="SendButton7" Content="Send" HorizontalAlignment="Left" Margin="22,175,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click" Grid.Column="2"/>
+                    <TextBox x:Name="SendTextBox8" HorizontalAlignment="Left" Height="22" Margin="10,200,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New" Grid.ColumnSpan="3"/>
+                    <Button x:Name="SendButton8" Content="Send" HorizontalAlignment="Left" Margin="22,200,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click" Grid.Column="2"/>
+                    <TextBox x:Name="SendTextBox9" HorizontalAlignment="Left" Height="22" Margin="10,225,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New" Grid.ColumnSpan="3"/>
+                    <Button x:Name="SendButton9" Content="Send" HorizontalAlignment="Left" Margin="22,225,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click" Grid.Column="2"/>
+                    <TextBox x:Name="SendTextBox10" HorizontalAlignment="Left" Height="22" Margin="10,250,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="150" KeyUp="SendTextBox_KeyUp" FontFamily="Courier New" Grid.ColumnSpan="3"/>
+                    <Button x:Name="SendButton10" Content="Send" HorizontalAlignment="Left" Margin="22,250,0,0" VerticalAlignment="Top" Width="50" Click="SendButton_Click" Grid.Column="2"/>
+
+                    <ScrollViewer x:Name="ContentScrollViewer" Margin="102,25,0,25" Grid.Column="2">
                         <TextBox x:Name="ContentTextBox" HorizontalAlignment="Stretch" TextWrapping="Wrap" VerticalAlignment="Stretch" FontFamily="Courier New"/>
                     </ScrollViewer>
-                    <Button x:Name="ClearButton" Content="Clear" Margin="260,0,0,0" VerticalAlignment="Bottom" Width="75" Click="ClearButton_Click"/>
+                    <Button x:Name="ClearButton" Content="Clear" Margin="296,0,193,0" VerticalAlignment="Bottom" Width="75" Click="ClearButton_Click" Grid.Column="2"/>
 
                     <Label Content="Out Data" HorizontalAlignment="Left" VerticalAlignment="Top"/>
-                    <Label Content="In Data" HorizontalAlignment="Stretch" Margin="260,0,0,0" VerticalAlignment="Top"/>
+                    <Label Content="In Data" HorizontalAlignment="Stretch" Margin="102,0,0,0" VerticalAlignment="Top" Grid.Column="2"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Configuration">
@@ -41,7 +51,20 @@
                 </Grid>
             </TabItem>
             <TabItem Header="Run">
-                <Grid Background="#FFFFFFFF"/>
+                <Grid Background="#FFFFFFFF" RenderTransformOrigin="0.275,0.461">
+                    <Slider x:Name="ForwardSlider" HorizontalAlignment="Left" Margin="37,47,0,0" VerticalAlignment="Top" Width="291" TickPlacement="BottomRight" TickFrequency="256" Value="256" Maximum="3000" ValueChanged="ForwardSlider_ValueChanged"/>
+                    <Button x:Name="ForwardButton" Content="Forward" HorizontalAlignment="Left" Margin="149,15,0,0" VerticalAlignment="Top" Width="75" Click="ForwardButton_Click"/>
+                    <Slider x:Name="BackwardSlider" HorizontalAlignment="Left" Margin="37,192,0,0" VerticalAlignment="Top" Width="291" TickPlacement="BottomRight" TickFrequency="256" Value="256" Maximum="3000" ValueChanged="BackwardSlider_ValueChanged"/>
+                    <Button x:Name="BackwardButton" Content="Backward" HorizontalAlignment="Left" Margin="149,219,0,0" VerticalAlignment="Top" Width="75" Click="BackwardButton_Click"/>
+                    <Slider x:Name="LeftSlider" HorizontalAlignment="Left" Margin="37,100,0,0" VerticalAlignment="Top" Width="143" TickPlacement="BottomRight" TickFrequency="300" Value="316" Maximum="3594" ValueChanged="LeftSlider_ValueChanged"/>
+                    <Button x:Name="LeftButton" Content="Left" HorizontalAlignment="Left" Margin="37,134,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-6.911,0.409" Click="LeftButton_Click"/>
+                    <Label x:Name="ForwardLabel" Content="" HorizontalAlignment="Left" Margin="156,69,0,0" VerticalAlignment="Top" Width="56"/>
+                    <Label x:Name="BackwardLabel" Content="" HorizontalAlignment="Left" Margin="168,166,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.714,4.25"/>
+                    <Label x:Name="LeftLabel" Content="" HorizontalAlignment="Left" Margin="119,134,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.714,4.25"/>
+                    <Slider x:Name="RightSlider" HorizontalAlignment="Left" Margin="185,100,0,0" VerticalAlignment="Top" Width="143" TickPlacement="BottomRight" TickFrequency="300" Value="316" Maximum="3594" ValueChanged="RightSlider_ValueChanged"/>
+                    <Button x:Name="RightButton" Content="Right" HorizontalAlignment="Left" Margin="283,134,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-6.911,0.409" Click="RightButton_Click"/>
+                    <Label x:Name="RightLabel" Content="" HorizontalAlignment="Left" Margin="191,134,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.714,4.25"/>
+                </Grid>
             </TabItem>
         </TabControl>
         <Image x:Name="LogoImage" HorizontalAlignment="Left" Height="55" Margin="25,0,0,0" VerticalAlignment="Top" Width="202" Source="logo.png"/>

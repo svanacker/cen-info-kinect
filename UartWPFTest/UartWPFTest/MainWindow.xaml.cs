@@ -8,6 +8,7 @@ namespace UartWPFTest
     using System.Windows.Input;
 
     using System.IO.Ports;
+    using Org.Cen.Com.Utils;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -48,7 +49,8 @@ namespace UartWPFTest
             if (SendButton6 == sendButton) { return SendTextBox6; }
             if (SendButton7 == sendButton) { return SendTextBox7; }
             if (SendButton8 == sendButton) { return SendTextBox8; }
-            
+            if (SendButton9 == sendButton) { return SendTextBox9; }
+            if (SendButton10 == sendButton) { return SendTextBox10; }
             return null;
         }
 
@@ -176,6 +178,14 @@ namespace UartWPFTest
             {
                 return inputHistories[7];
             }
+            else if (textBox.Equals(SendTextBox9))
+            {
+                return inputHistories[8];
+            }
+            else if (textBox.Equals(SendTextBox10))
+            {
+                return inputHistories[9];
+            }
             return null;
         }
 
@@ -223,5 +233,82 @@ namespace UartWPFTest
         {
             LoadPortNames();
         }
+
+        // forward
+
+        private void ForwardButton_Click(object sender, RoutedEventArgs e)
+        {
+            int value = (int) ForwardSlider.Value;
+            string hexValue = ComDataUtils.format(value, 4);
+            string command = "Mf" + hexValue;
+            SendText(command);
+        }
+
+        private void ForwardSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (ForwardLabel == null)
+            {
+                return;
+            }
+            ForwardLabel.Content = ForwardSlider.Value + " mm";
+        }
+
+        // backward
+
+        private void BackwardButton_Click(object sender, RoutedEventArgs e)
+        {
+            int value = (int)BackwardSlider.Value;
+            string hexValue = ComDataUtils.format(value, 4);
+            string command = "Mb" + hexValue;
+            SendText(command);
+        }
+
+        private void BackwardSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (BackwardLabel == null)
+            {
+                return;
+            }
+            BackwardLabel.Content = BackwardSlider.Value + " mm";
+        }
+
+        // left
+
+        private void LeftSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (LeftLabel == null)
+            {
+                return;
+            }
+            LeftLabel.Content = LeftSlider.Value/10 + " °";
+        }
+
+        private void LeftButton_Click(object sender, RoutedEventArgs e)
+        {
+            int value = (int)LeftSlider.Value;
+            string hexValue = ComDataUtils.format(value, 4);
+            string command = "Ml" + hexValue;
+            SendText(command);
+        }
+
+        // Right
+
+        private void RightSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (RightLabel == null)
+            {
+                return;
+            }
+            RightLabel.Content = RightSlider.Value / 10 + " °";
+        }
+
+        private void RightButton_Click(object sender, RoutedEventArgs e)
+        {
+            int value = (int)RightSlider.Value;
+            string hexValue = ComDataUtils.format(value, 4);
+            string command = "Mr" + hexValue;
+            SendText(command);
+        }
+
     }
 }
