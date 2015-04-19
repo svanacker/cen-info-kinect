@@ -59,9 +59,9 @@
                         <ColumnDefinition Width="11*"/>
                         <ColumnDefinition Width="350*"/>
                     </Grid.ColumnDefinitions>
-                    <Slider x:Name="ForwardSlider" HorizontalAlignment="Left" Margin="15,82,0,0" VerticalAlignment="Top" Width="291" TickPlacement="BottomRight" TickFrequency="256" Value="256" Maximum="3000" ValueChanged="ForwardSlider_ValueChanged" SmallChange="10" Grid.Column="1"/>
+                    <Slider x:Name="ForwardSlider" HorizontalAlignment="Left" Margin="15,82,0,0" VerticalAlignment="Top" Width="291" TickPlacement="BottomRight" TickFrequency="256" Value="512" Maximum="3000" ValueChanged="ForwardSlider_ValueChanged" SmallChange="10" Grid.Column="1"/>
                     <Button x:Name="ForwardButton" Content="Forward" HorizontalAlignment="Left" Margin="127,55,0,0" VerticalAlignment="Top" Width="75" Click="ForwardButton_Click" Grid.Column="1"/>
-                    <Slider x:Name="BackwardSlider" HorizontalAlignment="Left" Margin="15,192,0,0" VerticalAlignment="Top" Width="291" TickPlacement="BottomRight" TickFrequency="256" Value="256" Maximum="3000" ValueChanged="BackwardSlider_ValueChanged" Grid.Column="1"/>
+                    <Slider x:Name="BackwardSlider" HorizontalAlignment="Left" Margin="15,192,0,0" VerticalAlignment="Top" Width="291" TickPlacement="BottomRight" TickFrequency="256" Value="512" Maximum="3000" ValueChanged="BackwardSlider_ValueChanged" Grid.Column="1"/>
                     <Button x:Name="BackwardButton" Content="Backward" HorizontalAlignment="Left" Margin="127,219,0,0" VerticalAlignment="Top" Width="75" Click="BackwardButton_Click" Grid.Column="1"/>
                     <Slider x:Name="LeftSlider" HorizontalAlignment="Left" Margin="15,123,0,0" VerticalAlignment="Top" Width="143" TickPlacement="BottomRight" TickFrequency="300" Value="300" Maximum="3594" ValueChanged="LeftSlider_ValueChanged" SmallChange="1" Grid.Column="1"/>
                     <Button x:Name="LeftButton" Content="Left" HorizontalAlignment="Left" Margin="15,160,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-6.911,0.409" Click="LeftButton_Click" Grid.Column="1"/>
@@ -93,16 +93,64 @@
                     <CheckBox x:Name="SynchronizeMotorCheckBox" Content="Synchronize Left / Right" Grid.Column="1" HorizontalAlignment="Left" Margin="415,65,0,0" VerticalAlignment="Top" IsChecked="True"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Analysis">
+            <TabItem Header="Parameters">
                 <Grid Background="#FFE5E5E5">
-                    <Button x:Name="LaunchAnalysisButton" Content="Analysis" HorizontalAlignment="Center" Margin="0,10,0,0" VerticalAlignment="Top" Width="75" Click="LaunchAnalysisButton_Click"/>
+                    <Label x:Name="AccelerationLabel" Content="Acceleration : " Height="25" Width="100" Margin="35,40,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="SpeedLabel" Content="Speed : " Height="25" Width="100" Margin="35,70,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="SpeedMaxLabel" Content="Speed Max : " Height="25" Width="100" Margin="35,100,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="Time1Label" Content="Time 1 : " Height="25" Width="100" Margin="35,130,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="Time2Label" Content="Time 2 : " Height="25" Width="100" Margin="35,160,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="Time3Label" Content="Time 3 : " Height="25" Width="100" Margin="35,190,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="Position1Label" Content="Position 1 : " Height="25" Width="100" Margin="35,220,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="Position2Label" Content="Position 2 : " Height="25" Width="100" Margin="35,250,587,0" VerticalAlignment="Top"/>
 
-                    <oxy:PlotView x:Name="Graph" Title="{Binding Title}" Margin="0,50,0,-3" Initialized="Graph_Initialized">
-                    <oxy:PlotView.Series>
-                        <oxy:LineSeries ItemsSource="{Binding Points}"/>
-                    </oxy:PlotView.Series>
-                </oxy:PlotView>
-                    </Grid>
+                    <Label x:Name="ThetaAccelerationLabel" Height="25" Width="100" Margin="150,40,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="ThetaSpeedLabel" Content="Speed : " Height="25" Width="100" Margin="150,70,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="ThetaSpeedMaxLabel" Content="Speed Max : " Height="25" Width="100" Margin="150,100,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="ThetaTime1Label" Content="Time 1 : " Height="25" Width="100" Margin="150,130,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="ThetaTime2Label" Content="Time 2 : " Height="25" Width="100" Margin="150,160,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="ThetaTime3Label" Content="Time 3 : " Height="25" Width="100" Margin="150,190,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="ThetaPosition1Label" Content="Position 1 : " Height="25" Width="100" Margin="150,220,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="ThetaPosition2Label" Content="Position 2 : " Height="25" Width="100" Margin="150,250,587,0" VerticalAlignment="Top"/>
+
+                    <Label x:Name="AlphaAccelerationLabel" Height="25" Width="100" Margin="300,40,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="AlphaSpeedLabel" Content="Speed : " Height="25" Width="100" Margin="300,70,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="AlphaSpeedMaxLabel" Content="Speed Max : " Height="25" Width="100" Margin="300,100,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="AlphaTime1Label" Content="Time 1 : " Height="25" Width="100" Margin="300,130,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="AlphaTime2Label" Content="Time 2 : " Height="25" Width="100" Margin="300,160,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="AlphaTime3Label" Content="Time 3 : " Height="25" Width="100" Margin="300,190,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="AlphaPosition1Label" Content="Position 1 : " Height="25" Width="100" Margin="300,220,587,0" VerticalAlignment="Top"/>
+                    <Label x:Name="AlphaPosition2Label" Content="Position 2 : " Height="25" Width="100" Margin="300,250,587,0" VerticalAlignment="Top"/>
+
+
+                    <Label x:Name="ThetaLabel" Content="Theta : " Height="25" Width="100" Margin="168,10,454,0" VerticalAlignment="Top" FontWeight="Bold"/>
+                    <Label x:Name="AlphaLabel" Content="Alpha: " Height="25" Width="100" Margin="300,10,300,0" VerticalAlignment="Top" FontWeight="Bold"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="PID Analysis">
+                <Grid Background="#FFE5E5E5">
+                    <Button x:Name="LaunchAnalysisBackwardButton" Content="Analysis - Backward" HorizontalAlignment="Center" Margin="42,10,399,0" VerticalAlignment="Top" Width="125" Click="LaunchAnalysisButton_Click" Grid.Column="2"/>
+                    <Button x:Name="LaunchAnalysisForwardButton" Content="Analysis - Forward" HorizontalAlignment="Center" Margin="262,10,151,0" VerticalAlignment="Top" Width="153" Click="LaunchAnalysisButton_Click" Grid.Column="2"/>
+                    <oxy:PlotView x:Name="PIDGraph" Title="{Binding Title}" Margin="0,40,0,0" RenderTransformOrigin="0.497,0.354" Initialized="PIDGraph_Initialized">
+                        <oxy:PlotView.Series>
+                            <oxy:LineSeries ItemsSource="{Binding Points}" Title="u"/>
+                            <oxy:LineSeries ItemsSource="{Binding Points}" Title="error"/>
+                        </oxy:PlotView.Series>
+                    </oxy:PlotView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Motion Position">
+                <Grid Background="#FFE5E5E5">
+                    <oxy:PlotView x:Name="MotionGraph" Title="{Binding Title}" Margin="0,40,0,0" Initialized="MotionGraph_Initialized" RenderTransformOrigin="0.497,0.354">
+                        <oxy:PlotView.Series>
+                            <oxy:LineSeries ItemsSource="{Binding Points}" Title="position"/>
+                            <oxy:LineSeries ItemsSource="{Binding Points}" Title="Normal Position"/>
+                            <oxy:LineSeries ItemsSource="{Binding Points}" Title="speed"/>
+                            <oxy:LineSeries ItemsSource="{Binding Points}" Title="normal Speed"/>
+                        </oxy:PlotView.Series>
+                    </oxy:PlotView>
+                </Grid>
             </TabItem>
         </TabControl>
         <Image x:Name="LogoImage" HorizontalAlignment="Left" Height="55" Margin="25,0,0,0" VerticalAlignment="Top" Width="202" Source="logo.png"/>

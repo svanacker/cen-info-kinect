@@ -31,27 +31,27 @@
             string positionAsString = data.Substring(14, 6);
             pidData.Position = int.Parse(positionAsString, NumberStyles.HexNumber);
 
-            if (pidData.Position > 0x7F0000)
+            if (pidData.Position > 0x7FFFFF)
             {
-                pidData.Position -= 0xFFFFFF;
+                pidData.Position -= 0x1000000;
             }
 
             // error
             string errorAsString = data.Substring(21, 4);
-            pidData.U = int.Parse(errorAsString, NumberStyles.HexNumber);
+            pidData.Error = int.Parse(errorAsString, NumberStyles.HexNumber);
 
-            if (pidData.U > 0x7F00)
+            if (pidData.Error > 0x7FFF)
             {
-                pidData.U -= 0xFFFF;
+                pidData.Error -= 0x10000;
             }
 
             // u
-            string uAsString = data.Substring(26, 2);
+            string uAsString = data.Substring(26, 4);
             pidData.U = int.Parse(uAsString, NumberStyles.HexNumber);
 
-            if (pidData.U > 0x7F)
+            if (pidData.U > 0x7FFF)
             {
-                pidData.U -= 0xFF;
+                pidData.U -= 0x10000;
             }
 
             PIDDebugInData result = new PIDDebugInData(pidData);
@@ -61,7 +61,7 @@
 
         public int GetDataLength(string header)
         {
-            return 40;
+            return 42;
         }
     }
 }

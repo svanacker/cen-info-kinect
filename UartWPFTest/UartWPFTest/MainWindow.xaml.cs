@@ -13,13 +13,11 @@ namespace UartWPFTest
     using System.IO.Ports;
     using Devices.Pid;
     using Devices.Pid.Com;
-    using Graph;
     using Org.Cen.Com.Utils;
     using Org.Cen.Devices.Pid.Com;
     using OxyPlot;
+    using OxyPlot.Axes;
     using OxyPlot.Series;
-    using OxyPlot.Wpf;
-
     using LineSeries = OxyPlot.Series.LineSeries;
 
     /// <summary>
@@ -395,63 +393,174 @@ namespace UartWPFTest
             MotorRightSlider_ValueChanged(null, null);
         }
 
-        private void Graph_Initialized(object sender, EventArgs e)
+        private void PIDGraph_Initialized(object sender, EventArgs e)
         {
-            // Graph.Model = new MainViewModel();
-            PlotModel model = new PlotModel
+            PlotModel pidModel = new PlotModel
             {
-                Title = "Normal distribution",
-                Subtitle = "Probability density function"
+                Title = "PID Analyis",
             };
+            PIDGraph.Model = pidModel;
+        }
 
-            
-            LineSeries lineSeries = new LineSeries();
-            model.Series.Add(lineSeries);
-            /*
-            lineSeries.Points.Add(new DataPoint(0, 4));
-            lineSeries.Points.Add(new DataPoint(10, 13));
-            lineSeries.Points.Add(new DataPoint(20, 15));
-            lineSeries.Points.Add(new DataPoint(30, 16));
-            lineSeries.Points.Add(new DataPoint(40, 12));
-            lineSeries.Points.Add(new DataPoint(50, 12));
-            */
-            Graph.Model = model;
+        private void MotionGraph_Initialized(object sender, EventArgs e)
+        {
+            PlotModel motionModel = new PlotModel
+            {
+                Title = "Motion Analyis",
+            };
+            MotionGraph.Model = motionModel;
         }
 
         private void LaunchAnalysisButton_Click(object sender, RoutedEventArgs e)
         {
-            //ForwardButton_Click(null, null);
-            BackwardButton_Click(null, null);
-            PlotModel plotModel = Graph.Model;
-            plotModel.Series.Clear();
-            LineSeries lineSeries = new LineSeries();
-            plotModel.Series.Add(lineSeries);
+            if (sender == LaunchAnalysisBackwardButton)
+            {
+                BackwardButton_Click(null, null);
+            }
+            else
+            {
+                ForwardButton_Click(null, null);
+            }
+            PlotModel pidModel = InitPIDGraphModel();
+            PlotModel motionModel = InitMotionGraphModel();
 
             Thread.Sleep(100);
 
-            for (int i = 0; i < 50; i++)
+            int previousPosition = 0;
+            int previousPidTime = 0;
+            int previousNormalPosition = 0;
+            for (int i = 0; i < 40; i++)
             {
                 receivedData.Clear();
                 SendText("pg00");
 
-                while (receivedData.Length < 40)
+                PIDDebugDataDecoder decoder = new PIDDebugDataDecoder();
+
+                while (receivedData.Length < decoder.GetDataLength(PIDDebugInData.HEADER))
                 {
 
                 }
-                PIDDebugDataDecoder decoder = new PIDDebugDataDecoder();
                 PIDDebugInData inData = (PIDDebugInData)decoder.Decode(receivedData.ToString());
-                // LaunchAnalysisButton.Content = receivedData.ToString();
 
                 PIDDebugData debugData = inData.PIDDebugData;
                 int pidTime = debugData.PidTime;
                 int position = debugData.Position;
+                int u = debugData.U;
+                int error = debugData.Error;
+                int speed = 0;
+                int normalSpeed = 0;
+                int normalPosition = position + error;
 
-                lineSeries.Points.Add(new DataPoint(pidTime, position));
+                if (previousPidTime > 0)
+                {
+                    speed = (position - previousPosition) / (previousPidTime - pidTime);
+                    normalSpeed = (normalPosition - previousNormalPosition) / (previousPidTime - pidTime);
+                }
+
+                // Graph PID
+                LineSeries uSeries = (LineSeries)pidModel.Series[0];
+                uSeries.Points.Add(new DataPoint(pidTime, u));
+                LineSeries errorSeries = (LineSeries)pidModel.Series[1];
+                errorSeries.Points.Add(new DataPoint(pidTime, error));
+
+                // Position PID
+                LineSeries positionSeries = (LineSeries)motionModel.Series[0];
+                positionSeries.Points.Add(new DataPoint(pidTime, position));
+
+                LineSeries normalPositionSeries = (LineSeries)motionModel.Series[1];
+                normalPositionSeries.Points.Add(new DataPoint(pidTime, normalPosition));
+
+                LineSeries speedSeries = (LineSeries)motionModel.Series[2];
+                speedSeries.Points.Add(new DataPoint(pidTime, speed));
+
+                LineSeries normalSpeedSeries = (LineSeries)motionModel.Series[3];
+                normalSpeedSeries.Points.Add(new DataPoint(pidTime, normalSpeed));
 
                 receivedData.Clear();
-                Thread.Sleep(20);
+
+                previousPidTime = pidTime;
+                previousPosition = position;
+                previousNormalPosition = normalPosition;
+                Thread.Sleep(40);
             }
-            plotModel.InvalidatePlot(true);
+            pidModel.InvalidatePlot(true);
+            motionModel.InvalidatePlot(true);
         }
+
+        public PlotModel InitPIDGraphModel()
+        {
+            PlotModel plotModel = PIDGraph.Model;
+
+            plotModel.Axes.Clear();
+
+            var leftAxis = new LinearAxis();
+            leftAxis.Position = AxisPosition.Left;
+            leftAxis.Key = "leftAxis";
+            plotModel.Axes.Add(leftAxis);
+
+            var rightAxis = new LinearAxis();
+            rightAxis.Position = AxisPosition.Right;
+            rightAxis.Key = "rightAxis";
+            plotModel.Axes.Add(rightAxis);
+
+            plotModel.Series.Clear();
+
+            LineSeries uLineSeries = new LineSeries();
+            uLineSeries.Title = "U";
+            plotModel.Series.Add(uLineSeries);
+            uLineSeries.YAxisKey = "leftAxis";
+            leftAxis.AxislineColor = uLineSeries.Color;
+
+            LineSeries errorSeries = new LineSeries();
+            errorSeries.Title = "Error";
+            plotModel.Series.Add(errorSeries);
+            errorSeries.YAxisKey = "rightAxis";
+            rightAxis.AxislineColor = errorSeries.Color;
+
+            return plotModel;
+        }
+
+        public PlotModel InitMotionGraphModel()
+        {
+            PlotModel plotModel = MotionGraph.Model;
+
+            plotModel.Axes.Clear();
+
+            var leftAxis = new LinearAxis();
+            leftAxis.Position = AxisPosition.Left;
+            leftAxis.Key = "leftAxis";
+            plotModel.Axes.Add(leftAxis);
+
+            var rightAxis = new LinearAxis();
+            rightAxis.Position = AxisPosition.Right;
+            rightAxis.Key = "rightAxis";
+            plotModel.Axes.Add(rightAxis);
+
+            plotModel.Series.Clear();
+            
+            LineSeries positionSeries = new LineSeries();
+            positionSeries.Title = "Position";
+            plotModel.Series.Add(positionSeries);
+            positionSeries.YAxisKey = "leftAxis";
+
+            LineSeries normalPositionSeries = new LineSeries();
+            normalPositionSeries.Title = "Normal Position";
+            plotModel.Series.Add(normalPositionSeries);
+            normalPositionSeries.YAxisKey = "leftAxis";
+
+            LineSeries speedSeries = new LineSeries();
+            speedSeries.Title = "Speed";
+            plotModel.Series.Add(speedSeries);
+            speedSeries.YAxisKey = "rightAxis";
+
+            LineSeries normalSpeedSeries = new LineSeries();
+            normalSpeedSeries.Title = "Normal Speed";
+            plotModel.Series.Add(normalSpeedSeries);
+            normalSpeedSeries.YAxisKey = "rightAxis";
+
+            return plotModel;
+        }
+
+
     }
 }
