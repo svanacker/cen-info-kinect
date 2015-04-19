@@ -39,8 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
     <Compile Include="Pid\Com\MotionEndDetectionParameter.cs" />
+    <Compile Include="Pid\Com\PIDDebugDataDecoder.cs" />
+    <Compile Include="Pid\Com\PIDDebugInData.cs" />
     <Compile Include="Pid\Com\ReadMotionEndDetectionParameterInData.cs" />
     <Compile Include="Pid\Com\ReadMotionEndDetectionParametersOutData.cs" />
     <Compile Include="Pid\Com\ReadPIDInData.cs" />
@@ -48,6 +49,7 @@
     <Compile Include="Pid\Com\WriteMotionEndDetectionParameterOutData.cs" />
     <Compile Include="Pid\Com\WritePIDOutData.cs" />
     <Compile Include="Pid\PIDData.cs" />
+    <Compile Include="Pid\PIDDebugData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

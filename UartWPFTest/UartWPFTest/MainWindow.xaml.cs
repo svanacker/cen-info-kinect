@@ -2,13 +2,25 @@
 namespace UartWPFTest
 {
     using System;
+    using System.Collections.Generic;
     using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
     using System.Windows.Input;
 
     using System.IO.Ports;
+    using Devices.Pid;
+    using Devices.Pid.Com;
+    using Graph;
     using Org.Cen.Com.Utils;
+    using Org.Cen.Devices.Pid.Com;
+    using OxyPlot;
+    using OxyPlot.Series;
+    using OxyPlot.Wpf;
+
+    using LineSeries = OxyPlot.Series.LineSeries;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -18,6 +30,8 @@ namespace UartWPFTest
         private SerialPort currentPort;
 
         private const int COM_INPUT_COUNT = 10;
+
+        private StringBuilder receivedData = new StringBuilder();
 
         private InputHistory[] inputHistories = new InputHistory[COM_INPUT_COUNT];
 
@@ -130,14 +144,17 @@ namespace UartWPFTest
 
             byte[] buffer = new byte[bytesToRead];
             currentPort.Read(buffer, 0, bytesToRead);
+
+            string newText = Encoding.ASCII.GetString(buffer, 0, bytesToRead);
+
+            receivedData.Append(newText);
+            
+            // Update the contentText
             ContentTextBox.Dispatcher.BeginInvoke(new Action(delegate()
             {
-                string newText = Encoding.ASCII.GetString(buffer, 0, bytesToRead);
-
                 // Analysis of apg01-05C7-00-000000-0000-00-008E-0000-0000
 
                 ContentTextBox.Text += newText;
-                // ContentTextBox.Text += "\n";
                 ContentTextBox.ScrollToEnd();
                 ContentScrollViewer.ScrollToVerticalOffset(ContentScrollViewer.ScrollableHeight);
                 ContentScrollViewer.UpdateLayout();
@@ -250,7 +267,7 @@ namespace UartWPFTest
             {
                 return;
             }
-            ForwardLabel.Content = ForwardSlider.Value + " mm";
+            ForwardLabel.Content = (int) ForwardSlider.Value + " mm";
         }
 
         // backward
@@ -269,7 +286,7 @@ namespace UartWPFTest
             {
                 return;
             }
-            BackwardLabel.Content = BackwardSlider.Value + " mm";
+            BackwardLabel.Content = (int) BackwardSlider.Value + " mm";
         }
 
         // left
@@ -280,7 +297,7 @@ namespace UartWPFTest
             {
                 return;
             }
-            LeftLabel.Content = LeftSlider.Value/10 + " °";
+            LeftLabel.Content = (int) LeftSlider.Value / 10 + " °";
         }
 
         private void LeftButton_Click(object sender, RoutedEventArgs e)
@@ -299,7 +316,7 @@ namespace UartWPFTest
             {
                 return;
             }
-            RightLabel.Content = RightSlider.Value / 10 + " °";
+            RightLabel.Content = (int) RightSlider.Value / 10 + " °";
         }
 
         private void RightButton_Click(object sender, RoutedEventArgs e)
@@ -310,5 +327,131 @@ namespace UartWPFTest
             SendText(command);
         }
 
+        private void StopButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendText("Mc");
+        }
+
+        // Go
+
+        private void MotorGoButton_Click(object sender, RoutedEventArgs e)
+        {
+            int leftValue = (int)MotorLeftSlider.Value;
+            string hexLeftValue = ComDataUtils.format(leftValue, 2);
+            int rightValue = (int)MotorLeftSlider.Value;
+            string hexRightValue = ComDataUtils.format(rightValue, 2);
+            string command = "mw" + hexLeftValue + hexRightValue;
+            SendText(command);
+        }
+
+
+        private void MotorStopButton_Click(object sender, RoutedEventArgs e)
+        {
+            receivedData.Clear();
+            SendText("mc");
+
+            while (receivedData.Length < 3)
+            {
+            }
+            LeftLabel.Content = receivedData.ToString();
+
+            receivedData.Clear();
+        }
+
+        private void MotorLeftSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (LeftValueLabel == null)
+            {
+                return;
+            }
+            LeftValueLabel.Content = (int) MotorLeftSlider.Value;
+            if (SynchronizeMotorCheckBox.IsChecked.GetValueOrDefault(false))
+            {
+                RightValueLabel.Content = LeftValueLabel.Content;
+            }
+        }
+
+        private void MotorRightSlider_ValueChanged(object sender, RoutedPropertyChangedEventArgs<double> e)
+        {
+            if (RightValueLabel == null)
+            {
+                return;
+            }
+            RightValueLabel.Content = (int)MotorRightSlider.Value;
+            if (SynchronizeMotorCheckBox.IsChecked.GetValueOrDefault(false))
+            {
+                LeftValueLabel.Content = RightValueLabel.Content;
+            }
+        }
+
+        private void Window_Initialized(object sender, EventArgs e)
+        {
+            ForwardSlider_ValueChanged(null, null);
+            LeftSlider_ValueChanged(null, null);
+            RightSlider_ValueChanged(null, null);
+            BackwardSlider_ValueChanged(null, null);
+
+            MotorLeftSlider_ValueChanged(null, null);
+            MotorRightSlider_ValueChanged(null, null);
+        }
+
+        private void Graph_Initialized(object sender, EventArgs e)
+        {
+            // Graph.Model = new MainViewModel();
+            PlotModel model = new PlotModel
+            {
+                Title = "Normal distribution",
+                Subtitle = "Probability density function"
+            };
+
+            
+            LineSeries lineSeries = new LineSeries();
+            model.Series.Add(lineSeries);
+            /*
+            lineSeries.Points.Add(new DataPoint(0, 4));
+            lineSeries.Points.Add(new DataPoint(10, 13));
+            lineSeries.Points.Add(new DataPoint(20, 15));
+            lineSeries.Points.Add(new DataPoint(30, 16));
+            lineSeries.Points.Add(new DataPoint(40, 12));
+            lineSeries.Points.Add(new DataPoint(50, 12));
+            */
+            Graph.Model = model;
+        }
+
+        private void LaunchAnalysisButton_Click(object sender, RoutedEventArgs e)
+        {
+            //ForwardButton_Click(null, null);
+            BackwardButton_Click(null, null);
+            PlotModel plotModel = Graph.Model;
+            plotModel.Series.Clear();
+            LineSeries lineSeries = new LineSeries();
+            plotModel.Series.Add(lineSeries);
+
+            Thread.Sleep(100);
+
+            for (int i = 0; i < 50; i++)
+            {
+                receivedData.Clear();
+                SendText("pg00");
+
+                while (receivedData.Length < 40)
+                {
+
+                }
+                PIDDebugDataDecoder decoder = new PIDDebugDataDecoder();
+                PIDDebugInData inData = (PIDDebugInData)decoder.Decode(receivedData.ToString());
+                // LaunchAnalysisButton.Content = receivedData.ToString();
+
+                PIDDebugData debugData = inData.PIDDebugData;
+                int pidTime = debugData.PidTime;
+                int position = debugData.Position;
+
+                lineSeries.Points.Add(new DataPoint(pidTime, position));
+
+                receivedData.Clear();
+                Thread.Sleep(20);
+            }
+            plotModel.InvalidatePlot(true);
+        }
     }
 }
