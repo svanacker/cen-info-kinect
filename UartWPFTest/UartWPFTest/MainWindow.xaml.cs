@@ -561,6 +561,47 @@ namespace UartWPFTest
             return plotModel;
         }
 
+        private void ReadMotionParameterButton_Click(object sender, RoutedEventArgs e)
+        {
+            receivedData.Clear();
+            SendText("pm00");
 
+            ReadMotionParameterDataDecoder decoder = new ReadMotionParameterDataDecoder();
+
+            while (receivedData.Length < decoder.GetDataLength(ReadMotionParameterInData.HEADER))
+            {
+
+            }
+            ReadMotionParameterInData inData = (ReadMotionParameterInData)decoder.Decode(receivedData.ToString());
+
+            MotionParameterData motionParameterData = inData.MotionParameterData;
+            ThetaAccelerationLabel.Content = motionParameterData.Acceleration;
+            ThetaSpeedLabel.Content = motionParameterData.Speed;
+            ThetaSpeedMaxLabel.Content = motionParameterData.SpeedMax;
+            ThetaTime1Label.Content = motionParameterData.Time1;
+            ThetaTime2Label.Content = motionParameterData.Time2;
+            ThetaTime3Label.Content = motionParameterData.Time3;
+            ThetaPosition1Label.Content = motionParameterData.Position1;
+            ThetaPosition2Label.Content = motionParameterData.Position2;
+
+
+            receivedData.Clear();
+            SendText("pm01");
+
+            while (receivedData.Length < decoder.GetDataLength(ReadMotionParameterInData.HEADER))
+            {
+
+            }
+            inData = (ReadMotionParameterInData)decoder.Decode(receivedData.ToString());
+            motionParameterData = inData.MotionParameterData;
+            AlphaAccelerationLabel.Content = motionParameterData.Acceleration;
+            AlphaSpeedLabel.Content = motionParameterData.Speed;
+            AlphaSpeedMaxLabel.Content = motionParameterData.SpeedMax;
+            AlphaTime1Label.Content = motionParameterData.Time1;
+            AlphaTime2Label.Content = motionParameterData.Time2;
+            AlphaTime3Label.Content = motionParameterData.Time3;
+            AlphaPosition1Label.Content = motionParameterData.Position1;
+            AlphaPosition2Label.Content = motionParameterData.Position2;
+        }
     }
 }

@@ -129,7 +129,7 @@ namespace Org.Cen.Common.Attributes.Impl
             this.weight = weight;
         }
 
-        public string ToString()
+        public override string ToString()
         {
             return GetType().Name + "[width=" + width + ", depth=" + depth + ", wheelsDistance="
                    + wheelsDistance + ", weight=" + weight + " kg, leftMotor: " + leftMotor + ", rightMotor: "
