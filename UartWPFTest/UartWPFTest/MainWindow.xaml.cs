@@ -14,6 +14,7 @@ namespace UartWPFTest
     using Devices.Pid;
     using Devices.Pid.Com;
     using Org.Cen.Com.Utils;
+    using Org.Cen.Devices.Com;
     using Org.Cen.Devices.Pid.Com;
     using OxyPlot;
     using OxyPlot.Axes;
@@ -146,7 +147,7 @@ namespace UartWPFTest
             string newText = Encoding.ASCII.GetString(buffer, 0, bytesToRead);
 
             receivedData.Append(newText);
-            
+
             // Update the contentText
             ContentTextBox.Dispatcher.BeginInvoke(new Action(delegate()
             {
@@ -163,7 +164,7 @@ namespace UartWPFTest
         {
             if (textBox.Equals(SendTextBox1))
             {
-                return inputHistories[0]; 
+                return inputHistories[0];
             }
             else if (textBox.Equals(SendTextBox2))
             {
@@ -253,7 +254,7 @@ namespace UartWPFTest
 
         private void ForwardButton_Click(object sender, RoutedEventArgs e)
         {
-            int value = (int) ForwardSlider.Value;
+            int value = (int)ForwardSlider.Value;
             string hexValue = ComDataUtils.format(value, 4);
             string command = "Mf" + hexValue;
             SendText(command);
@@ -265,7 +266,7 @@ namespace UartWPFTest
             {
                 return;
             }
-            ForwardLabel.Content = (int) ForwardSlider.Value + " mm";
+            ForwardLabel.Content = (int)ForwardSlider.Value + " mm";
         }
 
         // backward
@@ -284,7 +285,7 @@ namespace UartWPFTest
             {
                 return;
             }
-            BackwardLabel.Content = (int) BackwardSlider.Value + " mm";
+            BackwardLabel.Content = (int)BackwardSlider.Value + " mm";
         }
 
         // left
@@ -295,7 +296,7 @@ namespace UartWPFTest
             {
                 return;
             }
-            LeftLabel.Content = (int) LeftSlider.Value / 10 + " °";
+            LeftLabel.Content = (int)LeftSlider.Value / 10 + " °";
         }
 
         private void LeftButton_Click(object sender, RoutedEventArgs e)
@@ -314,7 +315,7 @@ namespace UartWPFTest
             {
                 return;
             }
-            RightLabel.Content = (int) RightSlider.Value / 10 + " °";
+            RightLabel.Content = (int)RightSlider.Value / 10 + " °";
         }
 
         private void RightButton_Click(object sender, RoutedEventArgs e)
@@ -362,7 +363,7 @@ namespace UartWPFTest
             {
                 return;
             }
-            LeftValueLabel.Content = (int) MotorLeftSlider.Value;
+            LeftValueLabel.Content = (int)MotorLeftSlider.Value;
             if (SynchronizeMotorCheckBox.IsChecked.GetValueOrDefault(false))
             {
                 RightValueLabel.Content = LeftValueLabel.Content;
@@ -423,12 +424,13 @@ namespace UartWPFTest
             }
             PlotModel pidModel = InitPIDGraphModel();
             PlotModel motionModel = InitMotionGraphModel();
+            MotionDataGrid.Items.Clear();
 
             Thread.Sleep(100);
 
-            int previousPosition = 0;
-            int previousPidTime = 0;
-            int previousNormalPosition = 0;
+            float previousPosition = 0;
+            float previousPidTime = 0;
+            float previousNormalPosition = 0;
             for (int i = 0; i < 40; i++)
             {
                 receivedData.Clear();
@@ -443,18 +445,18 @@ namespace UartWPFTest
                 PIDDebugInData inData = (PIDDebugInData)decoder.Decode(receivedData.ToString());
 
                 PIDDebugData debugData = inData.PIDDebugData;
-                int pidTime = debugData.PidTime;
-                int position = debugData.Position;
-                int u = debugData.U;
-                int error = debugData.Error;
-                int speed = 0;
-                int normalSpeed = 0;
-                int normalPosition = position + error;
+                float pidTime = debugData.PidTime;
+                float position = debugData.Position;
+                float normalPosition = debugData.NormalPosition;
+                float u = debugData.U;
+                float error = debugData.Error;
+                float speed = 0;
+                float normalSpeed = 0;
 
                 if (previousPidTime > 0)
                 {
-                    speed = (position - previousPosition) / (previousPidTime - pidTime);
-                    normalSpeed = (normalPosition - previousNormalPosition) / (previousPidTime - pidTime);
+                    speed = (position - previousPosition) / (pidTime - previousPidTime);
+                    normalSpeed = (normalPosition - previousNormalPosition) / (pidTime - previousPidTime);
                 }
 
                 // Graph PID
@@ -482,9 +484,18 @@ namespace UartWPFTest
                 previousPosition = position;
                 previousNormalPosition = normalPosition;
                 Thread.Sleep(40);
+
+                MotionDataItem dataItem = new MotionDataItem();
+                dataItem.PidTime = (int) pidTime;
+                dataItem.NormalPosition = (int) normalPosition;
+                dataItem.NormalSpeed = (int) normalSpeed;
+                dataItem.Position = (int) position;
+                dataItem.Speed = (int) speed;
+                MotionDataGrid.Items.Add(dataItem);
             }
             pidModel.InvalidatePlot(true);
             motionModel.InvalidatePlot(true);
+            MotionDataGrid.UpdateLayout();
         }
 
         public PlotModel InitPIDGraphModel()
@@ -537,7 +548,7 @@ namespace UartWPFTest
             plotModel.Axes.Add(rightAxis);
 
             plotModel.Series.Clear();
-            
+
             LineSeries positionSeries = new LineSeries();
             positionSeries.Title = "Position";
             plotModel.Series.Add(positionSeries);
@@ -557,6 +568,11 @@ namespace UartWPFTest
             normalSpeedSeries.Title = "Normal Speed";
             plotModel.Series.Add(normalSpeedSeries);
             normalSpeedSeries.YAxisKey = "rightAxis";
+
+            LineSeries profileSeries = new LineSeries();
+            profileSeries.Title = "Profile Trajectory";
+            plotModel.Series.Add(profileSeries);
+            profileSeries.YAxisKey = "rightAxis";
 
             return plotModel;
         }
@@ -584,6 +600,19 @@ namespace UartWPFTest
             ThetaPosition1Label.Content = motionParameterData.Position1;
             ThetaPosition2Label.Content = motionParameterData.Position2;
 
+            // Draw graph
+            PlotModel motionModel = MotionGraph.Model;
+            LineSeries profileSeries = (LineSeries)motionModel.Series[4];
+
+            // Draw Trapeze
+            profileSeries.Points.Add(new DataPoint(0, 0));
+            profileSeries.Points.Add(new DataPoint(motionParameterData.Time1, motionParameterData.SpeedMax));
+            profileSeries.Points.Add(new DataPoint(motionParameterData.Time2, motionParameterData.SpeedMax));
+            profileSeries.Points.Add(new DataPoint(motionParameterData.Time3, 0));
+
+            motionModel.InvalidatePlot(true);
+
+            // ALPHA
 
             receivedData.Clear();
             SendText("pm01");
@@ -602,6 +631,43 @@ namespace UartWPFTest
             AlphaTime3Label.Content = motionParameterData.Time3;
             AlphaPosition1Label.Content = motionParameterData.Position1;
             AlphaPosition2Label.Content = motionParameterData.Position2;
+
+        }
+
+        private void EndMotionParameterReadButton_Click(object sender, RoutedEventArgs e)
+        {
+            receivedData.Clear();
+            SendText("pP");
+
+            ReadMotionEndDetectionParameterDataDecoder decoder = new ReadMotionEndDetectionParameterDataDecoder();
+
+            while (receivedData.Length < decoder.GetDataLength(ReadMotionEndDetectionParameterInData.HEADER))
+            {
+
+            }
+            ReadMotionEndDetectionParameterInData inData = (ReadMotionEndDetectionParameterInData)decoder.Decode(receivedData.ToString());
+            MotionEndDetectionParameter parameter = inData.EndDetectionParameter;
+
+            AbsDeltaPositionIntegralFactorThresholdSlider.Value = parameter.AbsDeltaPositionIntegralFactorThreshold;
+            MaxUIntegralFactorThresholdSlider.Value = parameter.MaxUIntegralFactorThreshold;
+            MaxUIntegralConstantThresholdSlider.Value = parameter.MaxUIntegralConstantThreshold;
+            TimeRangeAnalysisSlider.Value = parameter.TimeRangeAnalysis;
+            NoAnalysisAtStartupTimeSlider.Value = parameter.NoAnalysisAtStartupTime;
+        }
+
+        private void EndMotionParameterWriteButton_Click(object sender, RoutedEventArgs e)
+        {
+            MotionEndDetectionParameter parameter = new MotionEndDetectionParameter();
+            parameter.AbsDeltaPositionIntegralFactorThreshold = (float) AbsDeltaPositionIntegralFactorThresholdSlider.Value; 
+            parameter.MaxUIntegralFactorThreshold = (float) MaxUIntegralFactorThresholdSlider.Value;
+            parameter.MaxUIntegralConstantThreshold = (float) MaxUIntegralConstantThresholdSlider.Value;
+            parameter.TimeRangeAnalysis = (int) TimeRangeAnalysisSlider.Value;
+            parameter.NoAnalysisAtStartupTime = (int) NoAnalysisAtStartupTimeSlider.Value;
+
+            WriteMotionEndDetectionParameterOutData outData = new WriteMotionEndDetectionParameterOutData(parameter);
+
+            string data = outData.getHeader() + outData.getArguments();
+            SendText(data);
         }
     }
 }

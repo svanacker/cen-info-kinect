@@ -8,22 +8,17 @@ namespace Org.Cen.Devices.Com
 
         public const string HEADER = "pP";
 
-        private MotionEndDetectionParameter data;
+        public MotionEndDetectionParameter EndDetectionParameter { get; private set; }
 
         public ReadMotionEndDetectionParameterInData(MotionEndDetectionParameter data)
             : base()
         {
-            this.data = data;
-        }
-
-        public MotionEndDetectionParameter getData()
-        {
-            return data;
+            this.EndDetectionParameter = data;
         }
 
         public override string ToString()
         {
-            return typeof(ReadMotionEndDetectionParameterInData).Name + "{data=" + data + "}";
+            return typeof(ReadMotionEndDetectionParameterInData).Name + "{data=" + EndDetectionParameter + "}";
         }
-}
+    }
 }

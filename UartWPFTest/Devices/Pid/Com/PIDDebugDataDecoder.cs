@@ -27,8 +27,17 @@
                 pidData.PidTime -= 65536;
             }
 
+            // normalPosition
+            string normalPositionAsString = data.Substring(14, 6);
+            pidData.NormalPosition = int.Parse(normalPositionAsString, NumberStyles.HexNumber);
+
+            if (pidData.NormalPosition > 0x7FFFFF)
+            {
+                pidData.NormalPosition -= 0x1000000;
+            }
+
             // position
-            string positionAsString = data.Substring(14, 6);
+            string positionAsString = data.Substring(21, 6);
             pidData.Position = int.Parse(positionAsString, NumberStyles.HexNumber);
 
             if (pidData.Position > 0x7FFFFF)
@@ -37,7 +46,7 @@
             }
 
             // error
-            string errorAsString = data.Substring(21, 4);
+            string errorAsString = data.Substring(28, 4);
             pidData.Error = int.Parse(errorAsString, NumberStyles.HexNumber);
 
             if (pidData.Error > 0x7FFF)
@@ -46,7 +55,7 @@
             }
 
             // u
-            string uAsString = data.Substring(26, 4);
+            string uAsString = data.Substring(33, 4);
             pidData.U = int.Parse(uAsString, NumberStyles.HexNumber);
 
             if (pidData.U > 0x7FFF)
@@ -61,7 +70,7 @@
 
         public int GetDataLength(string header)
         {
-            return 42;
+            return 49;
         }
     }
 }

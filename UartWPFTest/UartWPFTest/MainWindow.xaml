@@ -4,8 +4,8 @@
         xmlns:oxy="http://oxyplot.org/wpf"
         Title="MainWindow" Height="450" Width="775" Loaded="Window_Loaded" Initialized="Window_Initialized">
     <Grid Background="#E5E5E5E5">
-        <ComboBox x:Name="COMComboBox" HorizontalAlignment="Left" Margin="538,50,0,0" VerticalAlignment="Top" Width="139" SelectionChanged="COMComboBox_SelectionChanged"/>
-        <Button x:Name="LoadListButton" Content="Refresh" HorizontalAlignment="Left" Margin="682,50,0,0" VerticalAlignment="Top" Width="75" Click="LoadListButton_Click"/>
+        <ComboBox x:Name="COMComboBox" HorizontalAlignment="Left" Margin="536,20,0,0" VerticalAlignment="Top" Width="139" SelectionChanged="COMComboBox_SelectionChanged"/>
+        <Button x:Name="LoadListButton" Content="Refresh" HorizontalAlignment="Left" Margin="682,20,0,0" VerticalAlignment="Top" Width="75" Click="LoadListButton_Click"/>
         <DockPanel HorizontalAlignment="Left" Height="100" LastChildFill="False" Margin="91,147,0,0" VerticalAlignment="Top" Width="100"/>
         <TabControl HorizontalAlignment="Stretch" Margin="25,60,10,10" VerticalAlignment="Stretch">
             <TabItem Header="Console">
@@ -149,8 +149,39 @@
                             <oxy:LineSeries ItemsSource="{Binding Points}" Title="Normal Position"/>
                             <oxy:LineSeries ItemsSource="{Binding Points}" Title="speed"/>
                             <oxy:LineSeries ItemsSource="{Binding Points}" Title="normal Speed"/>
+                            <oxy:LineSeries ItemsSource="{Binding Points}" Title="Speed Profile"/>
                         </oxy:PlotView.Series>
                     </oxy:PlotView>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Data">
+                <DataGrid x:Name="MotionDataGrid" >
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Binding="{Binding PidTime}" Header="PidTime"/>
+                        <DataGridTextColumn Binding="{Binding NormalPosition}" Header="NormalPosition"/>
+                        <DataGridTextColumn Binding="{Binding NormalSpeed}" Header="NormalSpeed"/>
+                        <DataGridTextColumn Binding="{Binding Position}" Header="Position"/>
+                        <DataGridTextColumn Binding="{Binding Speed}" Header="Speed"/>
+
+                    </DataGrid.Columns>
+                </DataGrid>
+
+            </TabItem>
+            <TabItem Header="End Detection">
+                <Grid Background="#FFE5E5E5" Margin="0,-18,0,18">
+                    <Label x:Name="AbsDeltaPositionIntegralFactorThresholdLabel" Content="Abs Delta Position Integral Factor Threshold : " Height="25" Margin="35,40,398,0" VerticalAlignment="Top"/>
+                    <Slider x:Name="AbsDeltaPositionIntegralFactorThresholdSlider" HorizontalAlignment="Left" Margin="297,43,0,0" VerticalAlignment="Top" Width="397" Maximum="255" TickPlacement="BottomRight" TickFrequency="10"/>
+                    <Label x:Name="MaxUIntegralConstantThresholdLabel" Content="Max U Integral Constant Threshold" Height="25" Margin="35,124,398,0" VerticalAlignment="Top"/>
+                    <Slider x:Name="MaxUIntegralConstantThresholdSlider" HorizontalAlignment="Left" Margin="297,127,0,0" VerticalAlignment="Top" Width="397" Maximum="255" TickPlacement="BottomRight" TickFrequency="10"/>
+                    <Label x:Name="MaxUIntegralFactorThresholdLabel" Content="Max U Integral Factor Threshold" Height="25" Margin="35,84,398,0" VerticalAlignment="Top"/>
+                    <Slider x:Name="MaxUIntegralFactorThresholdSlider" HorizontalAlignment="Left" Margin="297,87,0,0" VerticalAlignment="Top" Width="397" Maximum="255" TickFrequency="10" TickPlacement="BottomRight"/>
+
+                    <Label x:Name="TimeRangeAnalysisLabel" Content="Time Range Analysis" Height="25" Margin="35,167,398,0" VerticalAlignment="Top"/>
+                    <Slider x:Name="TimeRangeAnalysisSlider" HorizontalAlignment="Left" Margin="297,167,0,0" VerticalAlignment="Top" Width="397" Maximum="255" TickFrequency="10" TickPlacement="BottomRight"/>
+                    <Label x:Name="NoAnalysisAtStartupTimeLabel" Content="No Analysis At Startup Time : " Height="25" Margin="35,207,398,0" VerticalAlignment="Top"/>
+                    <Slider x:Name="NoAnalysisAtStartupTimeSlider" HorizontalAlignment="Left" Margin="297,210,0,0" VerticalAlignment="Top" Width="397" Maximum="255" TickPlacement="BottomRight" TickFrequency="10"/>
+                    <Button x:Name="EndMotionParameterReadButton" Content="Read" HorizontalAlignment="Left" Margin="297,249,0,0" VerticalAlignment="Top" Width="166" Click="EndMotionParameterReadButton_Click"/>
+                    <Button x:Name="EndMotionParameterWriteButton" Content="Write" HorizontalAlignment="Left" Margin="484,249,0,0" VerticalAlignment="Top" Width="166" Click="EndMotionParameterWriteButton_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

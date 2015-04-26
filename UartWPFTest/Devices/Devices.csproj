@@ -39,7 +39,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Pid\Com\MotionEndDetectionParameter.cs" />
+    <Compile Include="Pid\MotionEndDetectionParameter.cs" />
+    <Compile Include="Pid\Com\ReadMotionEndDetectionParameterDataDecoder.cs" />
     <Compile Include="Pid\MotionParameterData.cs" />
     <Compile Include="Pid\Com\PIDDebugDataDecoder.cs" />
     <Compile Include="Pid\Com\PIDDebugInData.cs" />

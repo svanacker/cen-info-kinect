@@ -1,5 +1,6 @@
 namespace Org.Cen.Devices.Pid.Com
 {
+    using System.Text;
     using Cen.Com.Out;
     using Cen.Com.Utils;
 
@@ -23,33 +24,33 @@ namespace Org.Cen.Devices.Pid.Com
     ////@formatter:on
     public class WriteMotionEndDetectionParameterOutData : OutData
     {
+        private const string HEADER = "pp";
 
-        private const string HEADER = "=";
-
-        public MotionEndDetectionParameter getEndDetectionParameter()
-        {
-            return endDetectionParameter;
-        }
-
-        private MotionEndDetectionParameter endDetectionParameter;
+        public MotionEndDetectionParameter Parameter { get; private set; }
 
         /**
          * Constructor.
          */
         public WriteMotionEndDetectionParameterOutData(MotionEndDetectionParameter endDetectionParameter)
         {
-            this.endDetectionParameter = endDetectionParameter;
+            this.Parameter = endDetectionParameter;
         }
 
         public override string getArguments()
         {
-            string result = ComDataUtils
-                    .format((int)endDetectionParameter.getAbsDeltaPositionIntegralFactorThreshold(), 2);
-            result += ComDataUtils.format((int)endDetectionParameter.getMaxUIntegralFactorThreshold(), 2);
-            result += ComDataUtils.format((int)endDetectionParameter.getMaxUIntegralConstantThreshold(), 2);
-            result += ComDataUtils.format(endDetectionParameter.getTimeRangeAnalysis(), 2);
-            result += ComDataUtils.format(endDetectionParameter.getNoAnalysisAtStartupTime(), 2);
-            return result;
+            StringBuilder result = new StringBuilder();
+            result.Append(ComDataUtils
+                    .format((int)Parameter.AbsDeltaPositionIntegralFactorThreshold, 2));
+            result.Append("-");
+            result.Append(ComDataUtils.format((int)Parameter.MaxUIntegralFactorThreshold, 2));
+            result.Append("-");
+            result.Append(ComDataUtils.format((int)Parameter.MaxUIntegralConstantThreshold, 2));
+            result.Append("-");
+            result.Append(ComDataUtils.format(Parameter.TimeRangeAnalysis, 2));
+            result.Append("-");
+            result.Append(ComDataUtils.format(Parameter.NoAnalysisAtStartupTime, 2));
+
+            return result.ToString();
         }
 
         public override string getHeader()

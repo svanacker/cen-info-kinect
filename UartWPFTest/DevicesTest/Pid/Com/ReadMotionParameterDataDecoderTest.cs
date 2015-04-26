@@ -6,7 +6,7 @@
     public class ReadMotionParameterDataDecoderTest
     {
         [Test]
-        public void ShouldAnalyseOk()
+        public void ShouldDecodeReadParameterData()
         {
             string data = "apm00-01-E0-A8-0081-0081-0103-002ACA-002ACA-1-0-0M";
 
