@@ -11,6 +11,8 @@ namespace UartWPFTest
     using System.Windows.Input;
 
     using System.IO.Ports;
+    using Devices.Motion.Position;
+    using Devices.Motion.Position.Com;
     using Devices.Pid;
     using Devices.Pid.Com;
     using Org.Cen.Com.Utils;
@@ -668,6 +670,28 @@ namespace UartWPFTest
 
             string data = outData.getHeader() + outData.getArguments();
             SendText(data);
+        }
+
+        private void ClearPositionButton_Click(object sender, RoutedEventArgs e)
+        {
+            receivedData.Clear();
+            SendText("mc");
+        }
+
+        private void ReadPositionButton_Click(object sender, RoutedEventArgs e)
+        {
+            receivedData.Clear();
+            WheelPositionDataDecoder decoder = new WheelPositionDataDecoder();
+
+            while (receivedData.Length < decoder.GetDataLength(ReadWheelPositionInData.HEADER))
+            {
+
+            }
+            ReadWheelPositionInData inData = (ReadWheelPositionInData)decoder.Decode(receivedData.ToString());
+            WheelPositionData wheelPositionData = inData.WheelPosition;
+            LeftPositionValueLabel.Content = wheelPositionData.LeftPosition;
+            RightPositionValueLabel.Content = wheelPositionData.RightPosition;
+
         }
     }
 }

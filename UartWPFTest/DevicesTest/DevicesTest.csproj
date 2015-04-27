@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Motion\Position\WheelPositionDataDecoderTest.cs" />
     <Compile Include="Pid\Com\ReadMotionEndDetectionParameterDataDecoderTest.cs" />
     <Compile Include="Pid\Com\ReadMotionParameterDataDecoderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

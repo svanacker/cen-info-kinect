@@ -1,11 +1,5 @@
 ﻿namespace DevicesTest.Pid.Com
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
-
     using Devices.Pid;
     using Devices.Pid.Com;
     using NUnit.Framework;

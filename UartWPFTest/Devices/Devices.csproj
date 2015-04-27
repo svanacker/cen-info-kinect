@@ -7,8 +7,8 @@
     <ProjectGuid>{C4F8C935-2BC1-4A9C-9A79-60317233CE74}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Devices</RootNamespace>
-    <AssemblyName>Devices</AssemblyName>
+    <RootNamespace>Org.Com.Devices</RootNamespace>
+    <AssemblyName>Org.Com.Devices</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -39,6 +39,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Motion\Position\Com\ReadWheelPositionInData.cs" />
+    <Compile Include="Motion\Position\Com\WheelPositionDataDecoder.cs" />
+    <Compile Include="Motion\Position\Com\ClearPositionOutData.cs" />
+    <Compile Include="Motion\Position\WheelPositionData.cs" />
     <Compile Include="Pid\MotionEndDetectionParameter.cs" />
     <Compile Include="Pid\Com\ReadMotionEndDetectionParameterDataDecoder.cs" />
     <Compile Include="Pid\MotionParameterData.cs" />
@@ -62,6 +66,7 @@
       <Name>Communication</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
