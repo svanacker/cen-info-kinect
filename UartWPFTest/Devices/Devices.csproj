@@ -39,9 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Motion\Position\Com\ReadRobotPositionDataDecoder.cs" />
+    <Compile Include="Motion\Position\Com\ReadRobotPositionInData.cs" />
     <Compile Include="Motion\Position\Com\ReadWheelPositionInData.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionDataDecoder.cs" />
     <Compile Include="Motion\Position\Com\ClearPositionOutData.cs" />
+    <Compile Include="Motion\Position\Com\WriteRobotPositionOutData.cs" />
+    <Compile Include="Motion\Position\RobotPosition.cs" />
     <Compile Include="Motion\Position\WheelPositionData.cs" />
     <Compile Include="Pid\MotionEndDetectionParameter.cs" />
     <Compile Include="Pid\Com\ReadMotionEndDetectionParameterDataDecoder.cs" />

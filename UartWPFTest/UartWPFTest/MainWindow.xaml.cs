@@ -18,6 +18,8 @@ namespace UartWPFTest
     using Org.Cen.Com.Utils;
     using Org.Cen.Devices.Com;
     using Org.Cen.Devices.Pid.Com;
+    using Org.Com.Devices.Motion.Position;
+    using Org.Com.Devices.Motion.Position.Com;
     using OxyPlot;
     using OxyPlot.Axes;
     using OxyPlot.Series;
@@ -675,12 +677,15 @@ namespace UartWPFTest
         private void ClearPositionButton_Click(object sender, RoutedEventArgs e)
         {
             receivedData.Clear();
-            SendText("mc");
+            SendText("wc");
+            Thread.Sleep(100);
+            ReadPositionButton_Click(null, null);
         }
 
         private void ReadPositionButton_Click(object sender, RoutedEventArgs e)
         {
             receivedData.Clear();
+            SendText("wr");
             WheelPositionDataDecoder decoder = new WheelPositionDataDecoder();
 
             while (receivedData.Length < decoder.GetDataLength(ReadWheelPositionInData.HEADER))
@@ -691,7 +696,35 @@ namespace UartWPFTest
             WheelPositionData wheelPositionData = inData.WheelPosition;
             LeftPositionValueLabel.Content = wheelPositionData.LeftPosition;
             RightPositionValueLabel.Content = wheelPositionData.RightPosition;
+        }
 
+        private void ReadRobotPositionButton_Click(object sender, RoutedEventArgs e)
+        {
+            receivedData.Clear();
+            SendText("nr");
+            ReadRobotPositionDataDecoder decoder = new ReadRobotPositionDataDecoder();
+
+            while (receivedData.Length < decoder.GetDataLength(ReadRobotPositionInData.HEADER))
+            {
+
+            }
+            ReadRobotPositionInData inData = (ReadRobotPositionInData)decoder.Decode(receivedData.ToString());
+            RobotPosition robotPosition = inData.Position;
+
+            XTextBox.Text = robotPosition.X.ToString();
+            YTextBox.Text = robotPosition.Y.ToString();
+            AngleTextBox.Text = robotPosition.DeciDegreeAngle.ToString();
+        }
+
+        private void WriteRobotPositionButton_Click(object sender, RoutedEventArgs e)
+        {
+            RobotPosition robotPosition = new RobotPosition();
+            robotPosition.X = int.Parse(XTextBox.Text);
+            robotPosition.Y = int.Parse(YTextBox.Text);
+            robotPosition.DeciDegreeAngle = int.Parse(AngleTextBox.Text);
+
+            WriteRobotPositionOutData outData = new WriteRobotPositionOutData(robotPosition);
+            SendText(outData.getMessage());
         }
     }
 }

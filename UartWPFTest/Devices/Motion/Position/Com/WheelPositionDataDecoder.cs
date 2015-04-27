@@ -7,8 +7,8 @@ namespace Devices.Motion.Position.Com
     using Org.Cen.Com.In;
     using Org.Cen.Devices.Pid.Com;
 
-    public class WheelPositionDataDecoder: IInDataDecoder {
-
+    public class WheelPositionDataDecoder : IInDataDecoder
+    {
         public ISet<string> GetHandledHeaders()
         {
             return new HashSet<string>() { ReadWheelPositionInData.HEADER };
@@ -20,18 +20,18 @@ namespace Devices.Motion.Position.Com
 
 
             // awr012345-678901
-            string leftPositionAsString = data.Substring(4, 6);
-            wheelPositionData.LeftPosition = int.Parse(leftPositionAsString, NumberStyles.HexNumber);
-            if (wheelPositionData.LeftPosition > 0x7FFFFF)
+            string leftPositionAsString = data.Substring(3, 8);
+            wheelPositionData.LeftPosition = long.Parse(leftPositionAsString, NumberStyles.HexNumber);
+            if (wheelPositionData.LeftPosition > 0x7FFFFFFF)
             {
-                wheelPositionData.LeftPosition -= 0x1000000;
+                wheelPositionData.LeftPosition -= 0x100000000;
             }
 
-            string rightPositionAsString = data.Substring(11, 6);
-            wheelPositionData.RightPosition = int.Parse(rightPositionAsString, NumberStyles.HexNumber);
-            if (wheelPositionData.RightPosition > 0x7FFFFF)
+            string rightPositionAsString = data.Substring(12, 8);
+            wheelPositionData.RightPosition = long.Parse(rightPositionAsString, NumberStyles.HexNumber);
+            if (wheelPositionData.RightPosition > 0x7FFFFFFF)
             {
-                wheelPositionData.RightPosition -= 0x1000000;
+                wheelPositionData.RightPosition -= 0x100000000;
             }
 
             ReadWheelPositionInData result = new ReadWheelPositionInData(wheelPositionData);
@@ -41,7 +41,7 @@ namespace Devices.Motion.Position.Com
 
         public int GetDataLength(string header)
         {
-            return 17;
+            return 20;
         }
     }
 }

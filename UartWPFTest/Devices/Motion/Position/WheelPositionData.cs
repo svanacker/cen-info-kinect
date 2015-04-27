@@ -5,8 +5,8 @@
      */
     public class WheelPositionData
     {
-        public int LeftPosition { get; set; }
-        public int RightPosition { get; set; }
+        public long LeftPosition { get; set; }
+        public long RightPosition { get; set; }
 
         public override string ToString()
         {

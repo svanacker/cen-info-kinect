@@ -69,8 +69,8 @@
                             <TextBox x:Name="YTextBox" Margin="140,46,45,73" Height="23" TextWrapping="Wrap" Text=""/>
                             <Label x:Name="AngleLabel" Content="Angle (deci deg) : " HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Width="105"/>
                             <TextBox x:Name="AngleTextBox" Margin="140,80,45,40" Height="23" TextWrapping="Wrap" Text=""/>
-                            <Button x:Name="ReadRobotPositionButton" Content="Read" Width="75" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,108,0,0"/>
-                            <Button x:Name="WriteRobotPositionButton" Content="Write" Width="75" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="147,108,0,0"/>
+                            <Button x:Name="ReadRobotPositionButton" Content="Read" Width="75" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,108,0,0" Click="ReadRobotPositionButton_Click"/>
+                            <Button x:Name="WriteRobotPositionButton" Content="Write" Width="75" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="147,108,0,0" Click="WriteRobotPositionButton_Click"/>
                         </Grid>
                     </GroupBox>
                     <Canvas HorizontalAlignment="Left" Height="300" Margin="412,0,0,0" VerticalAlignment="Top" Width="200">
