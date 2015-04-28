@@ -7,9 +7,9 @@ using System.Threading.Tasks;
 namespace DevicesTest.Motion.Position
 {
     using NUnit.Framework;
+    using Org.Cen.Devices.Motion.Position.Com;
     using Org.Cen.Devices.Pid.Com;
     using Org.Com.Devices.Motion.Position;
-    using Org.Com.Devices.Motion.Position.Com;
 
     public class ReadRobotPositionDataDecoderTest
     {

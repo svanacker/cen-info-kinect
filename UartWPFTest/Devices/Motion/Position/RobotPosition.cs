@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Org.Com.Devices.Motion.Position
+﻿namespace Org.Com.Devices.Motion.Position
 {
     public class RobotPosition
     {

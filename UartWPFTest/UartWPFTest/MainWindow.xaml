@@ -1,4 +1,4 @@
-﻿<Window x:Class="UartWPFTest.MainWindow"
+﻿<Window x:Name="Main_Window" x:Class="UartWPFTest.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:oxy="http://oxyplot.org/wpf"
@@ -48,33 +48,36 @@
                     <Label Content="In Data" HorizontalAlignment="Stretch" Margin="42,0,0,0" VerticalAlignment="Top" Grid.Column="4"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Coders/Trajectory">
-                <Grid Background="#FFE5E5E5">
-                    <GroupBox Header="Coders" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Height="100" Width="284">
+            <TabItem x:Name="PositionTabItem" Header="Position" SizeChanged="PositionTabItem_SizeChanged">
+                <Grid x:Name="PositionGrid"  Background="#FFE5E5E5" SizeChanged="PositionGrid_SizeChanged">
+                    <GroupBox Header="Coders" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Height="100" Width="256">
                         <Grid>
-                            <Label x:Name="LeftPositionLabel" Content="Left Position : " HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="105"/>
-                            <Label x:Name="LeftPositionValueLabel" Content="N/A" HorizontalAlignment="Left" Margin="102,11,0,0" VerticalAlignment="Top" Width="105"/>
+                            <Label x:Name="LeftPositionLabel" Content="Left Position : " HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="105"/>
+                            <Label x:Name="LeftPositionValueLabel" Content="N/A" HorizontalAlignment="Left" Margin="91,14,0,0" VerticalAlignment="Top" Width="105"/>
                             <Label x:Name="RightPositionLabel" Content="Right Position : " HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="105"/>
-                            <Label x:Name="RightPositionValueLabel" Content="N/A" HorizontalAlignment="Left" Margin="102,44,0,0" VerticalAlignment="Top" Width="105"/>
-                            <Button x:Name="ReadPositionButton" Content="Read" Width="75" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="187,10,0,0" Click="ReadPositionButton_Click"/>
-                            <Button x:Name="ClearPositionButton" Content="Clear" Width="75" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="187,44,0,0" Click="ClearPositionButton_Click"/>
+                            <Label x:Name="RightPositionValueLabel" Content="N/A" HorizontalAlignment="Left" Margin="91,45,0,0" VerticalAlignment="Top" Width="105"/>
+                            <Button x:Name="ReadPositionButton" Content="Read" Width="55" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="187,10,0,0" Click="ReadPositionButton_Click"/>
+                            <Button x:Name="ClearPositionButton" Content="Clear" Width="55" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="187,44,0,0" Click="ClearPositionButton_Click"/>
                         </Grid>
                     </GroupBox>
-                    <GroupBox Header="Trajectory" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" Height="165" Width="279">
+                    <GroupBox Header="Trajectory" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" Height="165" Width="251">
                         <Grid>
                             <Label x:Name="XLabel" Content="X (mm): " HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="105"/>
-                            <TextBox x:Name="XTextBox" Margin="140,10,45,109" Height="23" TextWrapping="Wrap" Text=""/>
+                            <TextBox x:Name="XTextBox" Margin="115,10,67,110" Height="23" TextWrapping="Wrap" Text="0"/>
                             <Label x:Name="YLabel" Content="Y (mm) : " HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="105"/>
                             <Label x:Name="YValueLabel" HorizontalAlignment="Left" Margin="102,44,0,0" VerticalAlignment="Top" Width="105"/>
-                            <TextBox x:Name="YTextBox" Margin="140,46,45,73" Height="23" TextWrapping="Wrap" Text=""/>
+                            <TextBox x:Name="YTextBox" Margin="115,46,67,73" Height="23" TextWrapping="Wrap" Text="0"/>
                             <Label x:Name="AngleLabel" Content="Angle (deci deg) : " HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Width="105"/>
-                            <TextBox x:Name="AngleTextBox" Margin="140,80,45,40" Height="23" TextWrapping="Wrap" Text=""/>
-                            <Button x:Name="ReadRobotPositionButton" Content="Read" Width="75" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,108,0,0" Click="ReadRobotPositionButton_Click"/>
-                            <Button x:Name="WriteRobotPositionButton" Content="Write" Width="75" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="147,108,0,0" Click="WriteRobotPositionButton_Click"/>
+                            <TextBox x:Name="AngleTextBox" Margin="115,80,67,40" Height="23" TextWrapping="Wrap" Text="0"/>
+                            <Button x:Name="ReadRobotPositionButton" Content="Read" Width="51" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,108,0,0" Click="ReadRobotPositionButton_Click"/>
+                            <Button x:Name="WriteRobotPositionButton" Content="Write" Width="58" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,108,0,0" Click="WriteRobotPositionButton_Click"/>
                         </Grid>
                     </GroupBox>
-                    <Canvas HorizontalAlignment="Left" Height="300" Margin="412,0,0,0" VerticalAlignment="Top" Width="200">
-                        <Rectangle x:Name="Border" Height="300" Stroke="Black" Width="200"/>
+                    <Canvas x:Name="GameBoardCanvas" HorizontalAlignment="Left" Height="300" Margin="512,0,0,0" VerticalAlignment="Top" Width="200">
+                        <Canvas.RenderTransform>
+                            <ScaleTransform x:Name="GameBoardScaleTransform" ScaleX="1" ScaleY="1" />
+                        </Canvas.RenderTransform>
+                        <Rectangle x:Name="Border" Stroke="Black" Width="200" Height="300"/>
 
                         <Rectangle x:Name="CenterRedRectangle" Fill="Red" Height="118" Stroke="Black" Canvas.Left="83" Canvas.Top="91" Width="50"/>
                         <Rectangle x:Name="RightRedRectangle" Fill="Red" Height="80" Stroke="Black" RadiusX="10" RadiusY="10" Width="20" Canvas.Top="110" Canvas.Left="180" />
@@ -145,12 +148,40 @@
                         <Ellipse x:Name="StackRightGreen1" Fill="Green" Stroke="Black" Canvas.Left="172" Canvas.Top="6" Width="6" Height="6" />
                         <Ellipse x:Name="StackRightGreen2" Fill="Green" Stroke="Black" Canvas.Left="182" Canvas.Top="6" Width="6" Height="6" />
                         <Ellipse x:Name="StackRightGreen3" Fill="Green" Stroke="Black" Canvas.Left="172" Canvas.Top="107" Width="6" Height="6" />
+
+                        <Grid x:Name="RobotGrid" Width="30.8">
+                            <Path x:Name="Robot" Data="M-15.4,-6.4 -15.4,+6.4 -6.4,+15.4 6.4,+15.4 15.4,+6.4, 15.4,-6.4" Fill="#FFF4F4F5" Stretch="Fill" Stroke="Black" Width="30.8"/>
+                            <Grid.RenderTransform>
+                                <TransformGroup>
+                                    <!-- To Center the robot -->
+                                    <TranslateTransform X="-15.4" Y="-6.4"/>
+                                    <!-- Rotation around the center -->
+                                    <RotateTransform x:Name="RobotPositionRotateTransform" Angle="0"/>
+                                    <!-- Real Position -->
+                                    <TranslateTransform x:Name="RobotPositionTranslateTransform" X="100" Y="260"/>
+                                </TransformGroup>
+                            </Grid.RenderTransform>
+                        </Grid>
                     </Canvas>
+                    <CheckBox x:Name="ShowPathCheckBox" Content="Show Paths" HorizontalAlignment="Left" Margin="310,25,0,0" VerticalAlignment="Top" Checked="ShowPathCheckBox_Checked" IsChecked="True" Unchecked="ShowPathCheckBox_Checked"/>
+                    <CheckBox x:Name="PathStrokedBoxCheckBox" Content="Show Strock" HorizontalAlignment="Left" Margin="310,45,0,0" VerticalAlignment="Top" IsChecked="True" Checked="EnableRobotStrockeCheckBox_Checked" Unchecked="EnableRobotStrockeCheckBox_Checked"/>
+                    <CheckBox x:Name="ShowRobotCheckBox" Content="Show Robot" HorizontalAlignment="Left" Margin="310,65,0,0" VerticalAlignment="Top" IsChecked="True" Checked="ShowRobotCheckBox_Checked" Unchecked="ShowRobotCheckBox_Checked"/>
                 </Grid>
 
             </TabItem>
-            <TabItem Header="Configuration">
+            <TabItem Header="Conf.">
                 <Grid Background="#FFE5E5E5">
+                    <Slider x:Name="ConfigStrategyIndexSlider" HorizontalAlignment="Left" Margin="20,10,0,0" VerticalAlignment="Top" Width="178" Maximum="7" TickPlacement="BottomRight" SmallChange="1" IsSnapToTickEnabled="True"/>
+                    <CheckBox x:Name="ConfigDontWaitForStartCheckBox" Content="(0000 0000 1000) : Don't Wait For Start" HorizontalAlignment="Left" Margin="20,50,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ConfigDontEndForStartCheckBox" Content="(0000 0001 0000) : Don't End" HorizontalAlignment="Left" Margin="20,70,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ConfigDontCheckOpponentStartCheckBox" Content="(0000 0010 0000) : Don't Check Opponent" HorizontalAlignment="Left" Margin="20,90,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ConfigRollingTestCheckBox" Content="(0000 0100 0000) : Rolling Test" HorizontalAlignment="Left" Margin="20,110,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ConfigGreenCheckBox" Content="(0000 1000 0000) : Green (if checked) " HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ConfigLowCheckBox" Content="(0001 0000 0000) : Low " HorizontalAlignment="Left" Margin="20,200,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ConfigVeryLowCheckBox" Content="(0010 0000 0000) : Very Low " HorizontalAlignment="Left" Margin="20,220,0,0" VerticalAlignment="Top"/>
+                    <CheckBox x:Name="ConfigUltraLowCheckBox" Content="(0100 0000 0000) : Ultra Low " HorizontalAlignment="Left" Margin="20,240,0,0" VerticalAlignment="Top"/>
+                    <Button x:Name="ConfigReadButton" Content="Read" HorizontalAlignment="Left" Margin="10,272,0,0" VerticalAlignment="Top" Width="75" Click="ConfigReadButton_Click"/>
+                    <Button x:Name="ConfigWriteButton" Content="Write" HorizontalAlignment="Left" Margin="100,272,0,0" VerticalAlignment="Top" Width="75" Click="ConfigWriteButton_Click"/>
 
                 </Grid>
             </TabItem>
@@ -194,7 +225,7 @@
                     <CheckBox x:Name="SynchronizeMotorCheckBox" Content="Synchronize Left / Right" Grid.Column="1" HorizontalAlignment="Left" Margin="415,65,0,0" VerticalAlignment="Top" IsChecked="True"/>
                 </Grid>
             </TabItem>
-            <TabItem Header="Parameters">
+            <TabItem Header="Motion Params">
                 <Grid Background="#FFE5E5E5">
                     <Label x:Name="AccelerationLabel" Content="Acceleration : " Height="25" Width="100" Margin="35,40,587,0" VerticalAlignment="Top"/>
                     <Label x:Name="SpeedLabel" Content="Speed : " Height="25" Width="100" Margin="35,70,587,0" VerticalAlignment="Top"/>
@@ -230,7 +261,7 @@
 
                 </Grid>
             </TabItem>
-            <TabItem Header="PID Analysis">
+            <TabItem Header="PID Graph">
                 <Grid Background="#FFE5E5E5">
                     <Button x:Name="LaunchAnalysisBackwardButton" Content="Analysis - Backward" HorizontalAlignment="Center" Margin="42,10,399,0" VerticalAlignment="Top" Width="125" Click="LaunchAnalysisButton_Click" Grid.Column="2"/>
                     <Button x:Name="LaunchAnalysisForwardButton" Content="Analysis - Forward" HorizontalAlignment="Center" Margin="262,10,151,0" VerticalAlignment="Top" Width="153" Click="LaunchAnalysisButton_Click" Grid.Column="2"/>
@@ -242,7 +273,7 @@
                     </oxy:PlotView>
                 </Grid>
             </TabItem>
-            <TabItem Header="Motion Position">
+            <TabItem Header="Motion Graph">
                 <Grid Background="#FFE5E5E5">
                     <oxy:PlotView x:Name="MotionGraph" Title="{Binding Title}" Margin="0,40,0,0" Initialized="MotionGraph_Initialized" RenderTransformOrigin="0.497,0.354">
                         <oxy:PlotView.Series>
@@ -255,7 +286,7 @@
                     </oxy:PlotView>
                 </Grid>
             </TabItem>
-            <TabItem Header="Data">
+            <TabItem Header="Raw Data">
                 <DataGrid x:Name="MotionDataGrid" >
                     <DataGrid.Columns>
                         <DataGridTextColumn Binding="{Binding PidTime}" Header="PidTime"/>
@@ -268,7 +299,7 @@
                 </DataGrid>
 
             </TabItem>
-            <TabItem Header="End Detection">
+            <TabItem Header="End Detection Params">
                 <Grid Background="#FFE5E5E5" Margin="0,-18,0,18">
                     <Label x:Name="AbsDeltaPositionIntegralFactorThresholdLabel" Content="Abs Delta Position Integral Factor Threshold : " Height="25" Margin="35,40,398,0" VerticalAlignment="Top"/>
                     <Slider x:Name="AbsDeltaPositionIntegralFactorThresholdSlider" HorizontalAlignment="Left" Margin="297,43,0,0" VerticalAlignment="Top" Width="397" Maximum="255" TickPlacement="BottomRight" TickFrequency="10"/>

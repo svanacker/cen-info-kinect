@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Org.Com.Devices.Motion.Position.Com
+﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
+    using System.Collections.Generic;
     using System.Globalization;
     using Cen.Com;
     using Cen.Com.In;
-    using Cen.Devices.Pid.Com;
-    using global::Devices.Motion.Position;
+    using Org.Com.Devices.Motion.Position;
 
     public class ReadRobotPositionDataDecoder : IInDataDecoder
     {
@@ -33,14 +27,14 @@ namespace Org.Com.Devices.Motion.Position.Com
             }
 
             string yPositionAsString = data.Substring(8, 4);
-            robotPosition.Y= int.Parse(yPositionAsString, NumberStyles.HexNumber);
+            robotPosition.Y = int.Parse(yPositionAsString, NumberStyles.HexNumber);
             if (robotPosition.Y > 0x7FFF)
             {
                 robotPosition.Y -= 0x10000;
             }
 
             string angleAsString = data.Substring(13, 4);
-            robotPosition.DeciDegreeAngle= int.Parse(angleAsString, NumberStyles.HexNumber);
+            robotPosition.DeciDegreeAngle = int.Parse(angleAsString, NumberStyles.HexNumber);
             if (robotPosition.DeciDegreeAngle > 0x7FFF)
             {
                 robotPosition.DeciDegreeAngle -= 0x10000;

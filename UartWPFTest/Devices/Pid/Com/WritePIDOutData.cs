@@ -1,24 +1,25 @@
-using Devices.Pid;
-using Org.Cen.Com.Out;
-using Org.Cen.Com.Utils;
 
 namespace Org.Cen.Devices.Pid.Com
 {
+    using Devices.Pid;
+    using Org.Cen.Com.Out;
+    using Org.Cen.Com.Utils;
 
-/**
- * The encapsulation of the data which must be sent to change the PID.
- */
-////@formatter:off
-//[DeviceDataSignature(deviceName = INavigationDevice.NAME, methods = { @DeviceMethodSignature(
-//        header = WritePIDOutData.HEADER,
-//        methodName = "writePID",
-//        type = DeviceMethodType.INPUT,
-//        parameters = { @DeviceParameter(name = "index", length = 2, type = DeviceParameterType.UNSIGNED, unit = ""),
-//                @DeviceParameter(name = "p", length = 2, type = DeviceParameterType.UNSIGNED, unit = ""),
-//                @DeviceParameter(name = "i", length = 2, type = DeviceParameterType.UNSIGNED, unit = ""),
-//                @DeviceParameter(name = "d", length = 2, type = DeviceParameterType.UNSIGNED, unit = ""),
-//                @DeviceParameter(name = "maxI", length = 2, type = DeviceParameterType.UNSIGNED, unit = "") }) })
-////@formatter:on
+
+    /**
+     * The encapsulation of the data which must be sent to change the PID.
+     */
+    ////@formatter:off
+    //[DeviceDataSignature(deviceName = INavigationDevice.NAME, methods = { @DeviceMethodSignature(
+    //        header = WritePIDOutData.HEADER,
+    //        methodName = "writePID",
+    //        type = DeviceMethodType.INPUT,
+    //        parameters = { @DeviceParameter(name = "index", length = 2, type = DeviceParameterType.UNSIGNED, unit = ""),
+    //                @DeviceParameter(name = "p", length = 2, type = DeviceParameterType.UNSIGNED, unit = ""),
+    //                @DeviceParameter(name = "i", length = 2, type = DeviceParameterType.UNSIGNED, unit = ""),
+    //                @DeviceParameter(name = "d", length = 2, type = DeviceParameterType.UNSIGNED, unit = ""),
+    //                @DeviceParameter(name = "maxI", length = 2, type = DeviceParameterType.UNSIGNED, unit = "") }) })
+    ////@formatter:on
     public class WritePIDOutData : OutData
     {
 
@@ -42,7 +43,8 @@ namespace Org.Cen.Devices.Pid.Com
      *            the data of the PID
      */
 
-        public WritePIDOutData(int index, PIDData data) : base()
+        public WritePIDOutData(int index, PIDData data)
+            : base()
         {
             this.index = index;
             this.data = data;

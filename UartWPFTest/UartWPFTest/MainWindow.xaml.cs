@@ -11,15 +11,15 @@ namespace UartWPFTest
     using System.Windows.Input;
 
     using System.IO.Ports;
-    using Devices.Motion.Position;
-    using Devices.Motion.Position.Com;
-    using Devices.Pid;
-    using Devices.Pid.Com;
+    using System.Windows.Media;
+    using System.Windows.Shapes;
     using Org.Cen.Com.Utils;
-    using Org.Cen.Devices.Com;
+    using Org.Cen.Devices.Motion.Position;
+    using Org.Cen.Devices.Motion.Position.Com;
+    using Org.Cen.Devices.Pid;
     using Org.Cen.Devices.Pid.Com;
+    using Org.Cen.Devices.Robot.Configuration.Com;
     using Org.Com.Devices.Motion.Position;
-    using Org.Com.Devices.Motion.Position.Com;
     using OxyPlot;
     using OxyPlot.Axes;
     using OxyPlot.Series;
@@ -725,6 +725,144 @@ namespace UartWPFTest
 
             WriteRobotPositionOutData outData = new WriteRobotPositionOutData(robotPosition);
             SendText(outData.getMessage());
+
+            RobotPositionTranslateTransform.X = robotPosition.X;
+            RobotPositionTranslateTransform.Y = robotPosition.Y;
+            RobotPositionRotateTransform.Angle = robotPosition.DeciDegreeAngle/10.0d;
+        }
+
+        private void PositionTabItem_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+        }
+
+        private void PositionGrid_SizeChanged(object sender, SizeChangedEventArgs e)
+        {
+            GameBoardScaleTransform.ScaleX = PositionGrid.RenderSize.Height / 300;
+            GameBoardScaleTransform.ScaleY = PositionGrid.RenderSize.Height / 300;
+            GameBoardCanvas.UpdateLayout();
+        }
+
+        public void UpdatePaths()
+        {
+            foreach (Path path in FindVisualChildren<Path>(Main_Window))
+            {
+                if (path.Equals(Robot))
+                {
+                    continue;
+                }
+                if (ShowPathCheckBox.IsChecked != null && ShowPathCheckBox.IsChecked.Value == true)
+                {
+                    path.Visibility = Visibility.Visible;
+                }
+                else
+                {
+                    path.Visibility = Visibility.Hidden;
+                }
+                if (PathStrokedBoxCheckBox.IsChecked != null && PathStrokedBoxCheckBox.IsChecked.Value == true)
+                {
+                    path.StrokeThickness = 35;
+                }
+                else
+                {
+                    path.StrokeThickness = 1;
+                }
+            }
+        }
+
+        private void ShowPathCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            UpdatePaths();
+        }
+
+        private void EnableRobotStrockeCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            UpdatePaths();
+        }
+
+        private void ShowRobotCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (ShowRobotCheckBox.IsChecked == true)
+            {
+                Robot.Visibility = Visibility.Visible;
+            }
+            else
+            {
+                Robot.Visibility = Visibility.Hidden;
+            }
+        }
+
+        public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
+        {
+            if (depObj != null)
+            {
+                for (int i = 0; i < VisualTreeHelper.GetChildrenCount(depObj); i++)
+                {
+                    DependencyObject child = VisualTreeHelper.GetChild(depObj, i);
+                    if (child != null && child is T)
+                    {
+                        yield return (T)child;
+                    }
+
+                    foreach (T childOfChild in FindVisualChildren<T>(child))
+                    {
+                        yield return childOfChild;
+                    }
+                }
+            }
+        }
+
+        private void ConfigReadButton_Click(object sender, RoutedEventArgs e)
+        {
+            receivedData.Clear();
+            RobotConfigReadOutData outData = new RobotConfigReadOutData();
+            string message = outData.getMessage();
+            SendText(message);
+
+            RobotConfigReadInDataDecoder decoder = new RobotConfigReadInDataDecoder();
+
+            while (receivedData.Length < decoder.GetDataLength(RobotConfigReadInData.HEADER))
+            {
+
+            }
+            RobotConfigReadInData inData = (RobotConfigReadInData)decoder.Decode(receivedData.ToString());
+            RobotConfig config = inData.Config;
+
+            ConfigStrategyIndexSlider.Value = config.StrategyIndex;
+            ConfigDontWaitForStartCheckBox.IsChecked = config.DontWaitForStart;
+            ConfigDontEndForStartCheckBox.IsChecked = config.DoNotEnd;
+            ConfigDontCheckOpponentStartCheckBox.IsChecked = config.DontUseBeacon;
+            ConfigRollingTestCheckBox.IsChecked = config.RollingTest;
+            ConfigGreenCheckBox.IsChecked = config.UseGreen;
+            ConfigLowCheckBox.IsChecked = config.SpeedLow;
+            ConfigVeryLowCheckBox.IsChecked = config.SpeedVeryLow;
+            ConfigUltraLowCheckBox.IsChecked = config.SpeedUltraLow;
+        }
+
+        private void ConfigWriteButton_Click(object sender, RoutedEventArgs e)
+        {
+            receivedData.Clear();
+            RobotConfig robotConfig = new RobotConfig(0);
+            robotConfig.StrategyIndex = (int)ConfigStrategyIndexSlider.Value;
+            robotConfig.DontWaitForStart = ConfigDontWaitForStartCheckBox.IsChecked != null &&
+                                           ConfigDontWaitForStartCheckBox.IsChecked.Value;
+            robotConfig.DoNotEnd = ConfigDontEndForStartCheckBox.IsChecked != null &&
+                                           ConfigDontEndForStartCheckBox.IsChecked.Value;
+            robotConfig.DontUseBeacon = ConfigDontCheckOpponentStartCheckBox.IsChecked != null &&
+                                           ConfigDontCheckOpponentStartCheckBox.IsChecked.Value;
+            robotConfig.RollingTest = ConfigRollingTestCheckBox.IsChecked != null &&
+                                           ConfigRollingTestCheckBox.IsChecked.Value;
+            robotConfig.UseGreen = ConfigGreenCheckBox.IsChecked != null &&
+                                           ConfigGreenCheckBox.IsChecked.Value;
+            robotConfig.SpeedLow = ConfigLowCheckBox.IsChecked != null &&
+                                           ConfigLowCheckBox.IsChecked.Value;
+            robotConfig.SpeedVeryLow = ConfigVeryLowCheckBox.IsChecked != null &&
+                                           ConfigVeryLowCheckBox.IsChecked.Value;
+            robotConfig.SpeedUltraLow = ConfigUltraLowCheckBox.IsChecked != null &&
+                                           ConfigUltraLowCheckBox.IsChecked.Value;
+
+            RobotConfigWriteOutData outData = new RobotConfigWriteOutData(robotConfig);
+            string message = outData.getMessage();
+            SendText(message);
         }
     }
 }

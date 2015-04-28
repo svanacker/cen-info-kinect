@@ -7,8 +7,8 @@
     <ProjectGuid>{27965CE6-BDA2-40C0-8A4F-6F00CE945586}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Communication</RootNamespace>
-    <AssemblyName>Communication</AssemblyName>
+    <RootNamespace>Org.Cen.Communication</RootNamespace>
+    <AssemblyName>Org.Cen.Communication</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

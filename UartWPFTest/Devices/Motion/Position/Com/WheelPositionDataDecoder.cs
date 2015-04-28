@@ -1,11 +1,9 @@
-﻿using System.Collections.Generic;
-
-namespace Devices.Motion.Position.Com
+﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
+    using System.Collections.Generic;
     using System.Globalization;
     using Org.Cen.Com;
     using Org.Cen.Com.In;
-    using Org.Cen.Devices.Pid.Com;
 
     public class WheelPositionDataDecoder : IInDataDecoder
     {

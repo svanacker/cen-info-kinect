@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Org.Com.Devices.Motion.Position.Com
+﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
     using Cen.Com.Out;
     using Cen.Com.Utils;
+    using Org.Com.Devices.Motion.Position;
 
     public class WriteRobotPositionOutData : OutData
     {

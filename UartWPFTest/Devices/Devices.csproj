@@ -7,8 +7,8 @@
     <ProjectGuid>{C4F8C935-2BC1-4A9C-9A79-60317233CE74}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Org.Com.Devices</RootNamespace>
-    <AssemblyName>Org.Com.Devices</AssemblyName>
+    <RootNamespace>Org.Cen.Devices</RootNamespace>
+    <AssemblyName>Org.Cen.Devices</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -63,6 +63,11 @@
     <Compile Include="Pid\PIDData.cs" />
     <Compile Include="Pid\PIDDebugData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Robot\Configuration\Com\RobotConfigReadInDataDecoder.cs" />
+    <Compile Include="Robot\Configuration\Com\RobotConfigReadOutData.cs" />
+    <Compile Include="Robot\Configuration\Com\RobotConfigWriteOutData.cs" />
+    <Compile Include="Robot\Configuration\Com\RobotConfigReadInData.cs" />
+    <Compile Include="Robot\Configuration\Com\RobotConfig.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Communication\Communication.csproj">

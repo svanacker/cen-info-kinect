@@ -1,15 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Devices.Pid.Com
+﻿namespace Org.Cen.Devices.Pid.Com
 {
+    using System.Collections.Generic;
     using System.Globalization;
     using Org.Cen.Com;
     using Org.Cen.Com.In;
-    using Org.Cen.Devices.Pid.Com;
 
     public class ReadMotionParameterDataDecoder : IInDataDecoder
     {

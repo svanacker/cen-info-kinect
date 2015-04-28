@@ -1,16 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace Org.Com.Devices.Motion.Position.Com
+﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
     using Cen.Com.In;
+    using Org.Com.Devices.Motion.Position;
 
     public class ReadRobotPositionInData : InData
     {
-
         public const string HEADER = "nr";
 
         public RobotPosition Position { get; private set; }

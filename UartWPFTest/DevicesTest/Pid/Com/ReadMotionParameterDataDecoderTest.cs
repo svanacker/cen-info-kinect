@@ -1,6 +1,5 @@
-﻿namespace DevicesTest.Pid.Com
+﻿namespace Org.Cen.Devices.Pid.Com
 {
-    using Devices.Pid.Com;
     using NUnit.Framework;
 
     public class ReadMotionParameterDataDecoderTest
@@ -8,7 +7,7 @@
         [Test]
         public void ShouldDecodeReadParameterData()
         {
-            string data = "apm00-01-E0-A8-0081-0081-0103-002ACA-002ACA-1-0-0M";
+            string data = "apm00-01-E0-A8-0081-0082-0103-002ACA-002ACB-1-0-0";
 
             ReadMotionParameterDataDecoder decoder = new ReadMotionParameterDataDecoder();
             ReadMotionParameterInData inData = (ReadMotionParameterInData)decoder.Decode(data);
@@ -18,10 +17,10 @@
             Assert.AreEqual(224, motionParameterData.Speed);
             Assert.AreEqual(168, motionParameterData.SpeedMax);
             Assert.AreEqual(129, motionParameterData.Time1);
-            Assert.AreEqual(129, motionParameterData.Time2);
+            Assert.AreEqual(130, motionParameterData.Time2);
             Assert.AreEqual(259, motionParameterData.Time3);
             Assert.AreEqual(10954, motionParameterData.Position1);
-            Assert.AreEqual(10954, motionParameterData.Position2);
+            Assert.AreEqual(10955, motionParameterData.Position2);
             // TODO : 3 more informations
 
             int length = decoder.GetDataLength(ReadMotionParameterInData.HEADER);

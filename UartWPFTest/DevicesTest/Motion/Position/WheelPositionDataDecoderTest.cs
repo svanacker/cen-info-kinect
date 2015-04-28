@@ -6,10 +6,10 @@ using System.Threading.Tasks;
 
 namespace DevicesTest.Motion.Position
 {
-    using Devices.Motion.Position;
-    using Devices.Motion.Position.Com;
     using NUnit.Framework;
     using Org.Cen.Com.In;
+    using Org.Cen.Devices.Motion.Position;
+    using Org.Cen.Devices.Motion.Position.Com;
     using Org.Cen.Devices.Pid.Com;
 
     public class WheelPositionDataDecoderTest

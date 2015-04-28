@@ -1,7 +1,6 @@
 namespace Org.Cen.Devices.Pid.Com
 {
     using Cen.Com.In;
-    using global::Devices.Pid;
 
     /**
      * Encapsulation of the message corresponding to the read of PIDData.

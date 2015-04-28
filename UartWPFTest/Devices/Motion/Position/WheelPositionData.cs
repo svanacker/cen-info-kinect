@@ -1,8 +1,8 @@
-﻿namespace Devices.Motion.Position
+﻿namespace Org.Cen.Devices.Motion.Position
 {
-    /**
-     * Encapsulation of the both wheel position.
-     */
+    ///
+    /// Encapsulation of the both wheel position.
+    /// 
     public class WheelPositionData
     {
         public long LeftPosition { get; set; }

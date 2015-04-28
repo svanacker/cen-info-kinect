@@ -1,4 +1,4 @@
-﻿namespace Devices.Pid
+﻿namespace Org.Cen.Devices.Pid
 {
     public class PIDDebugData
     {

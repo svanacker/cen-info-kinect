@@ -1,4 +1,4 @@
-﻿namespace Devices.Pid.Com
+﻿namespace Org.Cen.Devices.Pid.Com
 {
     using Org.Cen.Com.In;
 

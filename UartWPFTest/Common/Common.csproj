@@ -7,8 +7,8 @@
     <ProjectGuid>{7ACB7B12-6DFD-432E-BA67-1FB91926769B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Common</RootNamespace>
-    <AssemblyName>Common</AssemblyName>
+    <RootNamespace>Org.Cen.Common</RootNamespace>
+    <AssemblyName>Org.Cen.Common</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>

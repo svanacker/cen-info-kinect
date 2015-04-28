@@ -1,6 +1,5 @@
-namespace Org.Cen.Devices.Pid.Com
+namespace Org.Cen.Devices.Pid
 {
-
     /**
      * Encapsulates the parameter to detect the end of motion.
      */

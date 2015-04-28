@@ -1,7 +1,6 @@
-namespace Org.Cen.Devices.Com
+namespace Org.Cen.Devices.Pid.Com
 {
     using Cen.Com.In;
-    using Pid.Com;
 
     public class ReadMotionEndDetectionParameterInData : InData
     {

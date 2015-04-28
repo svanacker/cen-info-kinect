@@ -1,11 +1,9 @@
-﻿namespace Devices.Pid.Com
+﻿namespace Org.Cen.Devices.Pid.Com
 {
     using System.Collections.Generic;
-
     using System.Globalization;
     using Org.Cen.Com;
     using Org.Cen.Com.In;
-    using Org.Cen.Devices.Pid.Com;
 
     public class PIDDebugDataDecoder : IInDataDecoder
     {

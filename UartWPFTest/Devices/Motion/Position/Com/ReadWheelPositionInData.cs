@@ -1,8 +1,6 @@
-namespace Org.Cen.Devices.Pid.Com
+namespace Org.Cen.Devices.Motion.Position.Com
 {
     using Cen.Com.In;
-    using global::Devices.Motion.Position;
-    using global::Devices.Pid;
 
     /**
      * Encapsulation of the message corresponding to the read of the Wheels.
