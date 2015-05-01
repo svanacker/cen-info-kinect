@@ -17,7 +17,7 @@
 
         public override string ToString()
         {
-            return GetType().Name.ToString() + "{position=" + Position + "}";
+            return GetType().Name.ToString() + "{RobotPosition=" + Position + "}";
         }
     }
 }

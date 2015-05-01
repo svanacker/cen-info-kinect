@@ -42,12 +42,15 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Eeprom\EepromReadOutDataTest.cs" />
     <Compile Include="Motion\Position\ReadRobotPositionDataDecoderTest.cs" />
     <Compile Include="Motion\Position\WheelPositionDataDecoderTest.cs" />
     <Compile Include="Pid\Com\ReadMotionEndDetectionParameterDataDecoderTest.cs" />
     <Compile Include="Pid\Com\ReadMotionParameterDataDecoderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Robot\Configuration\Com\RobotConfigReadInDataDecoderTest.cs" />
+    <Compile Include="Robot\Start\Com\StartMatchWritePositionOutDataTest.cs" />
+    <Compile Include="Robot\Start\Com\StartMatchReadPositionInDataDecoderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

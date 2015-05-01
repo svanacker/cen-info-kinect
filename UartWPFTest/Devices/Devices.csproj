@@ -39,6 +39,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Eeprom\Com\EepromReadOutData.cs" />
+    <Compile Include="Eeprom\Com\EepromReadInData.cs" />
+    <Compile Include="Eeprom\Com\EepromReadInDataDecoder.cs" />
+    <Compile Include="Servo\Com\ServoReadTargetPositionInData.cs" />
+    <Compile Include="Servo\ServoData.cs" />
     <Compile Include="Motion\Position\Com\ReadRobotPositionDataDecoder.cs" />
     <Compile Include="Motion\Position\Com\ReadRobotPositionInData.cs" />
     <Compile Include="Motion\Position\Com\ReadWheelPositionInData.cs" />
@@ -68,6 +73,11 @@
     <Compile Include="Robot\Configuration\Com\RobotConfigWriteOutData.cs" />
     <Compile Include="Robot\Configuration\Com\RobotConfigReadInData.cs" />
     <Compile Include="Robot\Configuration\Com\RobotConfig.cs" />
+    <Compile Include="Robot\MatchSide.cs" />
+    <Compile Include="Robot\Start\Com\StartMatchReadPositionInData.cs" />
+    <Compile Include="Robot\Start\Com\StartMatchReadPositionInDataDecoder.cs" />
+    <Compile Include="Robot\Start\Com\StartMatchReadPositionOutData.cs" />
+    <Compile Include="Robot\Start\Com\StartMatchWritePositionOutData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Communication\Communication.csproj">

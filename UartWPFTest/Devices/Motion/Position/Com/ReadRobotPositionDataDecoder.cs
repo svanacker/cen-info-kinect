@@ -4,6 +4,7 @@
     using System.Globalization;
     using Cen.Com;
     using Cen.Com.In;
+    using Eeprom.Com;
     using Org.Com.Devices.Motion.Position;
 
     public class ReadRobotPositionDataDecoder : IInDataDecoder
@@ -21,7 +22,7 @@
             // anr01234-5678-9012
             string xPositionAsString = data.Substring(3, 4);
             robotPosition.X = int.Parse(xPositionAsString, NumberStyles.HexNumber);
-            if (robotPosition.X > 0x7FFFF)
+            if (robotPosition.X > 0x7FFF)
             {
                 robotPosition.X -= 0x10000;
             }

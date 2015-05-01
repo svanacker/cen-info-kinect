@@ -14,11 +14,14 @@ namespace UartWPFTest
     using System.Windows.Media;
     using System.Windows.Shapes;
     using Org.Cen.Com.Utils;
+    using Org.Cen.Devices.Eeprom.Com;
     using Org.Cen.Devices.Motion.Position;
     using Org.Cen.Devices.Motion.Position.Com;
     using Org.Cen.Devices.Pid;
     using Org.Cen.Devices.Pid.Com;
+    using Org.Cen.Devices.Robot;
     using Org.Cen.Devices.Robot.Configuration.Com;
+    using Org.Cen.Devices.Robot.Start.Com;
     using Org.Com.Devices.Motion.Position;
     using OxyPlot;
     using OxyPlot.Axes;
@@ -714,6 +717,15 @@ namespace UartWPFTest
             XTextBox.Text = robotPosition.X.ToString();
             YTextBox.Text = robotPosition.Y.ToString();
             AngleTextBox.Text = robotPosition.DeciDegreeAngle.ToString();
+        
+            UpdateCanvasRobotPosition(robotPosition);
+        }
+
+        public void UpdateCanvasRobotPosition(RobotPosition robotPosition)
+        {
+            RobotPositionTranslateTransform.X = robotPosition.X / 10.0d;
+            RobotPositionTranslateTransform.Y = robotPosition.Y / 10.0d;
+            RobotPositionRotateTransform.Angle = robotPosition.DeciDegreeAngle / 10.0d;
         }
 
         private void WriteRobotPositionButton_Click(object sender, RoutedEventArgs e)
@@ -726,9 +738,7 @@ namespace UartWPFTest
             WriteRobotPositionOutData outData = new WriteRobotPositionOutData(robotPosition);
             SendText(outData.getMessage());
 
-            RobotPositionTranslateTransform.X = robotPosition.X;
-            RobotPositionTranslateTransform.Y = robotPosition.Y;
-            RobotPositionRotateTransform.Angle = robotPosition.DeciDegreeAngle/10.0d;
+            UpdateCanvasRobotPosition(robotPosition);
         }
 
         private void PositionTabItem_SizeChanged(object sender, SizeChangedEventArgs e)
@@ -738,7 +748,8 @@ namespace UartWPFTest
         private void PositionGrid_SizeChanged(object sender, SizeChangedEventArgs e)
         {
             GameBoardScaleTransform.ScaleX = PositionGrid.RenderSize.Height / 300;
-            GameBoardScaleTransform.ScaleY = PositionGrid.RenderSize.Height / 300;
+            GameBoardScaleTransform.ScaleY = -PositionGrid.RenderSize.Height / 300;
+            GameBoardScaleTranslateTransform.Y = PositionGrid.RenderSize.Height;
             GameBoardCanvas.UpdateLayout();
         }
 
@@ -863,6 +874,78 @@ namespace UartWPFTest
             RobotConfigWriteOutData outData = new RobotConfigWriteOutData(robotConfig);
             string message = outData.getMessage();
             SendText(message);
+        }
+
+        private void StartParametersRead_Click(object sender, RoutedEventArgs e)
+        {
+            receivedData.Clear();
+
+            // Yellow
+            StartMatchReadPositionOutData outData = new StartMatchReadPositionOutData(MatchSide.Yellow);
+            string message = outData.getMessage();
+            SendText(message);
+
+            StartMatchReadPositionInDataDecoder decoder = new StartMatchReadPositionInDataDecoder();
+
+            while (receivedData.Length < decoder.GetDataLength(StartMatchReadPositionInData.HEADER))
+            {
+
+            }
+            StartMatchReadPositionInData inData = (StartMatchReadPositionInData)decoder.Decode(receivedData.ToString());
+
+            YellowX.Text = inData.X.ToString();
+            YellowY.Text = inData.Y.ToString();
+            YellowAngle.Text = inData.AngleDeciDegree.ToString();
+
+            // Green
+            receivedData.Clear();
+            outData = new StartMatchReadPositionOutData(MatchSide.Green);
+            message = outData.getMessage();
+            SendText(message);
+
+            decoder = new StartMatchReadPositionInDataDecoder();
+
+            while (receivedData.Length < decoder.GetDataLength(StartMatchReadPositionInData.HEADER))
+            {
+
+            }
+            inData = (StartMatchReadPositionInData)decoder.Decode(receivedData.ToString());
+
+            GreenX.Text = inData.X.ToString();
+            GreenY.Text = inData.Y.ToString();
+            GreenAngle.Text = inData.AngleDeciDegree.ToString();
+        }
+
+        private void StartParametersWrite_Click(object sender, RoutedEventArgs e)
+        {
+            // Yellow
+            int x = int.Parse(YellowX.Text);
+            int y = int.Parse(YellowY.Text);
+            int angle = int.Parse(YellowAngle.Text);
+            StartMatchWritePositionOutData outData = new StartMatchWritePositionOutData(MatchSide.Yellow, x, y, angle);
+            SendText(outData.getMessage());
+
+            // Green
+            x = int.Parse(GreenX.Text);
+            y = int.Parse(GreenY.Text);
+            angle = int.Parse(GreenAngle.Text);
+            outData = new StartMatchWritePositionOutData(MatchSide.Green, x, y, angle);
+            SendText(outData.getMessage());
+        }
+
+        private void ShowUsageButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendText("Su");
+        }
+
+        private void ClearTargetBufferButton_Click(object sender, RoutedEventArgs e)
+        {
+            SendText("z");
+        }
+
+        private void ReadEepromButton_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

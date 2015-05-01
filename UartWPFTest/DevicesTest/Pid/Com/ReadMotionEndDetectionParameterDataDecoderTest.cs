@@ -7,7 +7,7 @@
     public class ReadMotionEndDetectionParameterDataDecoderTest
     {
         [Test]
-        public void ShouldDecodeReadMotionEndDetectionParameterDataDecoder()
+        public void ShouldDecodeReadMotionEndDetectionParameterData()
         {
             string data = "apP01-03-0A-0B-3C";
 
