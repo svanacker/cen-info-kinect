@@ -42,6 +42,7 @@
     <Compile Include="Eeprom\Com\EepromReadOutData.cs" />
     <Compile Include="Eeprom\Com\EepromReadInData.cs" />
     <Compile Include="Eeprom\Com\EepromReadInDataDecoder.cs" />
+    <Compile Include="Eeprom\Com\EepromWriteOutData.cs" />
     <Compile Include="Servo\Com\ServoReadTargetPositionInData.cs" />
     <Compile Include="Servo\ServoData.cs" />
     <Compile Include="Motion\Position\Com\ReadRobotPositionDataDecoder.cs" />
@@ -78,6 +79,7 @@
     <Compile Include="Robot\Start\Com\StartMatchReadPositionInDataDecoder.cs" />
     <Compile Include="Robot\Start\Com\StartMatchReadPositionOutData.cs" />
     <Compile Include="Robot\Start\Com\StartMatchWritePositionOutData.cs" />
+    <Compile Include="System\SystemUsageOutData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Communication\Communication.csproj">

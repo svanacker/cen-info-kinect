@@ -1,7 +1,8 @@
-﻿namespace UartWPFTest
+﻿namespace Org.Cen.RobotManager.Controls
 {
     using System.Collections.Generic;
     using System.Linq;
+    using UartWPFTest;
 
     /**
      * Store an history of strings by the more usefull reference

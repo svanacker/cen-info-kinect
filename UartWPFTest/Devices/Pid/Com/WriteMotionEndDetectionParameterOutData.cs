@@ -1,8 +1,8 @@
 namespace Org.Cen.Devices.Pid.Com
 {
-    using System.Text;
     using Cen.Com.Out;
     using Cen.Com.Utils;
+    using global::System.Text;
 
 
     //@formatter:off

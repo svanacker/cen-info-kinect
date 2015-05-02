@@ -1,7 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
-    using System.Collections.Generic;
-    using System.Globalization;
+    using global::System.Collections.Generic;
+    using global::System.Globalization;
     using Org.Cen.Com;
     using Org.Cen.Com.In;
 

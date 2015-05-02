@@ -1,11 +1,9 @@
-﻿namespace Org.Cen.Devices.Motion.Position.Com
+﻿namespace Org.Cen.Devices.Eeprom.Com
 {
-    using System.Collections.Generic;
-    using System.Globalization;
     using Cen.Com;
     using Cen.Com.In;
-    using Eeprom.Com;
-    using Org.Com.Devices.Motion.Position;
+    using global::System.Collections.Generic;
+    using global::System.Globalization;
 
     public class EepromReadInDataDecoder : IInDataDecoder
     {
@@ -16,8 +14,8 @@
 
         public InData Decode(string data)
         {
-            // aEr12
-            string valueAsString = data.Substring(3, 4);
+            // aEr56
+            string valueAsString = data.Substring(3, 2);
             int value = int.Parse(valueAsString, NumberStyles.HexNumber);
 
             EepromReadInData result = new EepromReadInData(value);
@@ -27,7 +25,7 @@
 
         public int GetDataLength(string header)
         {
-            return 17;
+            return 5;
         }
     }
 }

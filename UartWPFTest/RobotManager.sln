@@ -3,16 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.31101.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UartWPFTest", "UartWPFTest\UartWPFTest.csproj", "{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotManagerTest", "RobotManagerTest\RobotManagerTest.csproj", "{292BEDB5-6CBB-4579-8D8A-DF0480413A53}"
 	ProjectSection(ProjectDependencies) = postProject
 		{7ACB7B12-6DFD-432E-BA67-1FB91926769B} = {7ACB7B12-6DFD-432E-BA67-1FB91926769B}
 		{C4F8C935-2BC1-4A9C-9A79-60317233CE74} = {C4F8C935-2BC1-4A9C-9A79-60317233CE74}
 		{27965CE6-BDA2-40C0-8A4F-6F00CE945586} = {27965CE6-BDA2-40C0-8A4F-6F00CE945586}
-	EndProjectSection
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RobotManagerTest", "RobotManagerTest\RobotManagerTest.csproj", "{292BEDB5-6CBB-4579-8D8A-DF0480413A53}"
-	ProjectSection(ProjectDependencies) = postProject
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6} = {9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Communication", "Communication\Communication.csproj", "{27965CE6-BDA2-40C0-8A4F-6F00CE945586}"
@@ -32,6 +27,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DevicesTest", "DevicesTest\
 		{27965CE6-BDA2-40C0-8A4F-6F00CE945586} = {27965CE6-BDA2-40C0-8A4F-6F00CE945586}
 	EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Org.Cen.RobotManager", "RobotManager\Org.Cen.RobotManager.csproj", "{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,16 +39,6 @@ Global
 		Release|Win32 = Release|Win32
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Debug|Win32.ActiveCfg = Debug|Any CPU
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
-		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Release|Win32.ActiveCfg = Release|Any CPU
 		{292BEDB5-6CBB-4579-8D8A-DF0480413A53}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{292BEDB5-6CBB-4579-8D8A-DF0480413A53}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{292BEDB5-6CBB-4579-8D8A-DF0480413A53}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
@@ -102,6 +89,16 @@ Global
 		{04CE49F2-603F-449C-B473-B1D6BBE96A2F}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{04CE49F2-603F-449C-B473-B1D6BBE96A2F}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{04CE49F2-603F-449C-B473-B1D6BBE96A2F}.Release|Win32.ActiveCfg = Release|Any CPU
+		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,18 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DevicesTest.Motion.Position
+﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
     using NUnit.Framework;
-    using Org.Cen.Devices.Eeprom.Com;
-    using Org.Cen.Devices.Motion.Position.Com;
-    using Org.Cen.Devices.Pid.Com;
     using Org.Com.Devices.Motion.Position;
 
-    public class ReadRobotPositionDataDecoderTest
+    public class ReadRobotPositionInDataDecoderTest
     {
         [Test]
         public void ShouldDecodeReadRobotPositionDataDecoder()

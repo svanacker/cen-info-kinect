@@ -1,7 +1,8 @@
 ﻿namespace RobotManagerTest
 {
     using NUnit.Framework;
-    using UartWPFTest;
+    using Org.Cen.RobotManager.Controls;
+    using Org.Cen.RobotManager;
 
     public class InputHistoryTest
     {

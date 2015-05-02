@@ -1,10 +1,9 @@
 ﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
-    using System.Collections.Generic;
-    using System.Globalization;
     using Cen.Com;
     using Cen.Com.In;
-    using Eeprom.Com;
+    using global::System.Collections.Generic;
+    using global::System.Globalization;
     using Org.Com.Devices.Motion.Position;
 
     public class ReadRobotPositionDataDecoder : IInDataDecoder

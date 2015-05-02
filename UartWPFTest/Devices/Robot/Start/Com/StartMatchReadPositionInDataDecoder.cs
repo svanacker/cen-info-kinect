@@ -1,11 +1,10 @@
 ﻿namespace Org.Cen.Devices.Robot.Start.Com
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Globalization;
     using Cen.Com;
     using Cen.Com.In;
-    using Pid.Com;
+    using global::System;
+    using global::System.Collections.Generic;
+    using global::System.Globalization;
 
     public class StartMatchReadPositionInDataDecoder : IInDataDecoder
     {

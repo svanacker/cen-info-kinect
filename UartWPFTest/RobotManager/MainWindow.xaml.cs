@@ -22,6 +22,9 @@ namespace UartWPFTest
     using Org.Cen.Devices.Robot;
     using Org.Cen.Devices.Robot.Configuration.Com;
     using Org.Cen.Devices.Robot.Start.Com;
+    using Org.Cen.Devices.System;
+    using Org.Cen.RobotManager.Controls;
+    using Org.Cen.RobotManager.Graph;
     using Org.Com.Devices.Motion.Position;
     using OxyPlot;
     using OxyPlot.Axes;
@@ -935,7 +938,8 @@ namespace UartWPFTest
 
         private void ShowUsageButton_Click(object sender, RoutedEventArgs e)
         {
-            SendText("Su");
+            SystemUsageOutData outData = new SystemUsageOutData();
+            SendText(outData.getMessage());
         }
 
         private void ClearTargetBufferButton_Click(object sender, RoutedEventArgs e)
@@ -945,7 +949,33 @@ namespace UartWPFTest
 
         private void ReadEepromButton_Click(object sender, RoutedEventArgs e)
         {
+            receivedData.Clear();
 
+            int address = int.Parse(EepromAddressTextBox.Text);
+
+            EepromReadOutData outData = new EepromReadOutData(address);
+            string message = outData.getMessage();
+            SendText(message);
+
+            EepromReadInDataDecoder decoder = new EepromReadInDataDecoder();
+
+            while (receivedData.Length < decoder.GetDataLength(EepromReadInData.HEADER))
+            {
+
+            }
+            EepromReadInData inData = (EepromReadInData)decoder.Decode(receivedData.ToString());
+
+            EepromDataTextBox.Text = inData.Value.ToString();
+        }
+
+        private void WriteEepromButton_Click(object sender, RoutedEventArgs e)
+        {
+            receivedData.Clear();
+            int address = int.Parse(EepromAddressTextBox.Text);
+            int value = int.Parse(EepromDataTextBox.Text);
+            EepromWriteOutData outData = new EepromWriteOutData(address, value);
+            string message = outData.getMessage();
+            SendText(message);
         }
     }
 }

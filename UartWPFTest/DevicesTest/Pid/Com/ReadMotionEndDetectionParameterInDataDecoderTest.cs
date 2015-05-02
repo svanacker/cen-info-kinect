@@ -1,10 +1,9 @@
-﻿namespace DevicesTest.Pid.Com
+﻿namespace Org.Cen.Devices.Pid.Com
 {
     using NUnit.Framework;
     using Org.Cen.Devices.Pid;
-    using Org.Cen.Devices.Pid.Com;
 
-    public class ReadMotionEndDetectionParameterDataDecoderTest
+    public class ReadMotionEndDetectionParameterInDataDecoderTest
     {
         [Test]
         public void ShouldDecodeReadMotionEndDetectionParameterData()

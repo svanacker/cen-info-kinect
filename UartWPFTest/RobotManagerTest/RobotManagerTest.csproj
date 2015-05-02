@@ -7,8 +7,8 @@
     <ProjectGuid>{292BEDB5-6CBB-4579-8D8A-DF0480413A53}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>RobotManagerTest</RootNamespace>
-    <AssemblyName>RobotManagerTest</AssemblyName>
+    <RootNamespace>Org.Cen.RobotManager</RootNamespace>
+    <AssemblyName>Org.Cen.RobotManager.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -54,13 +54,13 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\UartWPFTest\UartWPFTest.csproj">
-      <Project>{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}</Project>
-      <Name>UartWPFTest</Name>
-    </ProjectReference>
+    <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
+    <ProjectReference Include="..\RobotManager\Org.Cen.RobotManager.csproj">
+      <Project>{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}</Project>
+      <Name>Org.Cen.RobotManager</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

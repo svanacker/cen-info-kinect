@@ -2,7 +2,7 @@
 {
     using NUnit.Framework;
 
-    public class ReadMotionParameterDataDecoderTest
+    public class ReadMotionParameterInDataDecoderTest
     {
         [Test]
         public void ShouldDecodeReadParameterData()

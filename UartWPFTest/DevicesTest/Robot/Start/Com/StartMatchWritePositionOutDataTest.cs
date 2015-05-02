@@ -1,17 +1,21 @@
 ﻿namespace Org.Cen.Devices.Robot.Start.Com
 {
-    using Eeprom.Com;
     using NUnit.Framework;
+    using Org.Cen.Devices.Robot;
 
-    public class EepromReadOutDataTest
+    public class StartMatchWritePositionOutDataTest
     {
         [Test]
-        public void ShouldGenerateEepromReadOutData()
+        public void ShouldGenerateMatchWritePositionOutData()
         {
-            string expected = "Er0012";
+            string expected = "!P01-1234-5678-9012";
 
-            EepromReadOutData outData = new EepromReadOutData(0x12);
+            StartMatchReadPositionInDataDecoder decoder = new StartMatchReadPositionInDataDecoder();
+            StartMatchWritePositionOutData outData = new StartMatchWritePositionOutData(MatchSide.Green, 0x1234, 0x5678,
+                0x9012);
+
             string actual = outData.getMessage();
+
             Assert.AreEqual(expected, actual);
         }
     }
