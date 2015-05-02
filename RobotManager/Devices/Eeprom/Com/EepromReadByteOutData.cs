@@ -6,7 +6,7 @@ namespace Org.Cen.Devices.Eeprom.Com
     ///
     /// The encapsulation of the data which must be sent to read the eeprom.
     ///
-    public class EepromReadOutData : OutData
+    public class EepromReadByteOutData : OutData
     {
         /// <summary>
         /// The Header which is used by the message to read a char from the eeprom.
@@ -15,7 +15,7 @@ namespace Org.Cen.Devices.Eeprom.Com
 
         public int Address { get; private set; }
 
-        public EepromReadOutData(int address)
+        public EepromReadByteOutData(int address)
             : base()
         {
             Address = address;

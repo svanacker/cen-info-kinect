@@ -1,20 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace Org.Cen.RobotManager.Pages
+﻿namespace Org.Cen.RobotManager.Pages
 {
+    using System.Collections.Generic;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Media;
+    using System.Windows.Shapes;
+
     using System.Threading;
     using Devices.Motion.Position;
     using Devices.Motion.Position.Com;
@@ -39,7 +30,9 @@ namespace Org.Cen.RobotManager.Pages
         private void ClearPositionButton_Click(object sender, RoutedEventArgs e)
         {
             Main.receivedData.Clear();
-            Main.SendText("wc");
+            WheelPositionClearOutData outData = new WheelPositionClearOutData();
+            string command = outData.getMessage();
+            Main.SendText(command);
             Thread.Sleep(100);
             ReadPositionButton_Click(null, null);
         }
@@ -47,14 +40,17 @@ namespace Org.Cen.RobotManager.Pages
         private void ReadPositionButton_Click(object sender, RoutedEventArgs e)
         {
             Main.receivedData.Clear();
-            Main.SendText("wr");
-            WheelPositionDataDecoder decoder = new WheelPositionDataDecoder();
+            WheelPositionReadOutData outData = new WheelPositionReadOutData();
+            string command = outData.getMessage();
+            Main.SendText(command);
 
-            while (Main.receivedData.Length < decoder.GetDataLength(ReadWheelPositionInData.HEADER))
+            WheelPositionReadInDataDecoder decoder = new WheelPositionReadInDataDecoder();
+
+            while (Main.receivedData.Length < decoder.GetDataLength(WheelPositionReadInData.HEADER))
             {
 
             }
-            ReadWheelPositionInData inData = (ReadWheelPositionInData)decoder.Decode(Main.receivedData.ToString());
+            WheelPositionReadInData inData = (WheelPositionReadInData)decoder.Decode(Main.receivedData.ToString());
             WheelPositionData wheelPositionData = inData.WheelPosition;
             LeftPositionValueLabel.Content = wheelPositionData.LeftPosition;
             RightPositionValueLabel.Content = wheelPositionData.RightPosition;
@@ -64,13 +60,13 @@ namespace Org.Cen.RobotManager.Pages
         {
             Main.receivedData.Clear();
             Main.SendText("nr");
-            ReadRobotPositionDataDecoder decoder = new ReadRobotPositionDataDecoder();
+            RobotPositionReadInDataDecoder decoder = new RobotPositionReadInDataDecoder();
 
-            while (Main.receivedData.Length < decoder.GetDataLength(ReadRobotPositionInData.HEADER))
+            while (Main.receivedData.Length < decoder.GetDataLength(RobotPositionReadInData.HEADER))
             {
 
             }
-            ReadRobotPositionInData inData = (ReadRobotPositionInData)decoder.Decode(Main.receivedData.ToString());
+            RobotPositionReadInData inData = (RobotPositionReadInData)decoder.Decode(Main.receivedData.ToString());
             RobotPosition robotPosition = inData.Position;
 
             XTextBox.Text = robotPosition.X.ToString();
@@ -137,12 +133,12 @@ namespace Org.Cen.RobotManager.Pages
 
         private void ShowPathCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            // UpdatePaths();
+            // TODO : UpdatePaths();
         }
 
         private void EnableRobotStrockeCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            // UpdatePaths();
+            // TODO : UpdatePaths();
         }
 
         private void ShowRobotCheckBox_Checked(object sender, RoutedEventArgs e)

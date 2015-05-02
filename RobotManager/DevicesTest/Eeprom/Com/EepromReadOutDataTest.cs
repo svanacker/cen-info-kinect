@@ -5,11 +5,11 @@
     public class EepromReadOutDataTest
     {
         [Test]
-        public void ShouldGenerateEepromReadOutData()
+        public void ShouldGenerateEepromReadByteOutData()
         {
             string expected = "Er1234";
 
-            EepromReadOutData outData = new EepromReadOutData(0x1234);
+            EepromReadByteOutData outData = new EepromReadByteOutData(0x1234);
             string actual = outData.getMessage();
             Assert.AreEqual(expected, actual);
         }

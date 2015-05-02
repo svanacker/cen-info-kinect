@@ -6,11 +6,11 @@
     using global::System.Globalization;
     using Org.Com.Devices.Motion.Position;
 
-    public class ReadRobotPositionDataDecoder : IInDataDecoder
+    public class RobotPositionReadInDataDecoder : IInDataDecoder
     {
         public ISet<string> GetHandledHeaders()
         {
-            return new HashSet<string>() { ReadRobotPositionInData.HEADER };
+            return new HashSet<string>() { RobotPositionReadInData.HEADER };
         }
 
         public InData Decode(string data)
@@ -41,7 +41,7 @@
             }
 
 
-            ReadRobotPositionInData result = new ReadRobotPositionInData(robotPosition);
+            RobotPositionReadInData result = new RobotPositionReadInData(robotPosition);
 
             return result;
         }

@@ -5,11 +5,11 @@
     using Org.Cen.Com;
     using Org.Cen.Com.In;
 
-    public class WheelPositionDataDecoder : IInDataDecoder
+    public class WheelPositionReadInDataDecoder : IInDataDecoder
     {
         public ISet<string> GetHandledHeaders()
         {
-            return new HashSet<string>() { ReadWheelPositionInData.HEADER };
+            return new HashSet<string>() { WheelPositionReadInData.HEADER };
         }
 
         public InData Decode(string data)
@@ -32,7 +32,7 @@
                 wheelPositionData.RightPosition -= 0x100000000;
             }
 
-            ReadWheelPositionInData result = new ReadWheelPositionInData(wheelPositionData);
+            WheelPositionReadInData result = new WheelPositionReadInData(wheelPositionData);
 
             return result;
         }

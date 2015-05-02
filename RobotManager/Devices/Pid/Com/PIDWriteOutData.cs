@@ -20,7 +20,7 @@ namespace Org.Cen.Devices.Pid.Com
     //                @DeviceParameter(name = "d", length = 2, type = DeviceParameterType.UNSIGNED, unit = ""),
     //                @DeviceParameter(name = "maxI", length = 2, type = DeviceParameterType.UNSIGNED, unit = "") }) })
     ////@formatter:on
-    public class WritePIDOutData : OutData
+    public class PIDWriteOutData : OutData
     {
 
         /** The Header which is used by the message to change the PID. */
@@ -43,7 +43,7 @@ namespace Org.Cen.Devices.Pid.Com
      *            the data of the PID
      */
 
-        public WritePIDOutData(int index, PIDData data)
+        public PIDWriteOutData(int index, PIDData data)
             : base()
         {
             this.index = index;

@@ -9,8 +9,8 @@
         {
             string data = "apm00-01-E0-A8-0081-0082-0103-002ACA-002ACB-1-0-0";
 
-            ReadMotionParameterDataDecoder decoder = new ReadMotionParameterDataDecoder();
-            ReadMotionParameterInData inData = (ReadMotionParameterInData)decoder.Decode(data);
+            MotionParameterReadInDataDecoder decoder = new MotionParameterReadInDataDecoder();
+            MotionParameterReadInData inData = (MotionParameterReadInData)decoder.Decode(data);
 
             MotionParameterData motionParameterData = inData.MotionParameterData;
             Assert.AreEqual(1, motionParameterData.Acceleration);
@@ -23,7 +23,7 @@
             Assert.AreEqual(10955, motionParameterData.Position2);
             // TODO : 3 more informations
 
-            int length = decoder.GetDataLength(ReadMotionParameterInData.HEADER);
+            int length = decoder.GetDataLength(MotionParameterReadInData.HEADER);
             Assert.AreEqual(length, data.Length);
         }
     }

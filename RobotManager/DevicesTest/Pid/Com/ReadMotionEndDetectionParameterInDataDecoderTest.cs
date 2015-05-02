@@ -10,8 +10,8 @@
         {
             string data = "apP01-03-0A-0B-3C";
 
-            ReadMotionEndDetectionParameterDataDecoder decoder = new ReadMotionEndDetectionParameterDataDecoder();
-            ReadMotionEndDetectionParameterInData inData = (ReadMotionEndDetectionParameterInData)decoder.Decode(data);
+            MotionEndDetectionParameterReadInDataDecoder decoder = new MotionEndDetectionParameterReadInDataDecoder();
+            MotionEndDetectionParameterReadInData inData = (MotionEndDetectionParameterReadInData)decoder.Decode(data);
             MotionEndDetectionParameter motionEndDetectionParameter = inData.EndDetectionParameter;
 
             Assert.AreEqual(1.0f, motionEndDetectionParameter.AbsDeltaPositionIntegralFactorThreshold);
@@ -20,7 +20,7 @@
             Assert.AreEqual(11.0f, motionEndDetectionParameter.TimeRangeAnalysis);
             Assert.AreEqual(60.0f, motionEndDetectionParameter.NoAnalysisAtStartupTime);
 
-            int length = decoder.GetDataLength(ReadMotionEndDetectionParameterInData.HEADER);
+            int length = decoder.GetDataLength(MotionEndDetectionParameterReadInData.HEADER);
             Assert.AreEqual(length, data.Length);
         }
     }

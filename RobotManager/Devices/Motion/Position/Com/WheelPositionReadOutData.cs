@@ -3,17 +3,17 @@ namespace Org.Cen.Devices.Motion.Position.Com
     using Org.Cen.Com.Out;
 
     ///
-    /// The encapsulation of the data which must be sent to clear the wheel positions.
+    /// The encapsulation of the data which must be sent to read the wheel positions.
     ///
-    public class ClearPositionOutData : OutData
+    public class WheelPositionReadOutData : OutData
     {
 
         /// <summary>
-        /// The Header which is used by the message to change the PID.
+        /// The Header which is used by the message to read the wheel position.
         /// </summary>
-        public const string HEADER = "wc";
+        public const string HEADER = "wr";
 
-        public ClearPositionOutData()
+        public WheelPositionReadOutData()
             : base()
         {
         }

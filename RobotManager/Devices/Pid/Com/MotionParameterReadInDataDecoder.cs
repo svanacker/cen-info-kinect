@@ -5,11 +5,11 @@
     using Org.Cen.Com;
     using Org.Cen.Com.In;
 
-    public class ReadMotionParameterDataDecoder : IInDataDecoder
+    public class MotionParameterReadInDataDecoder : IInDataDecoder
     {
         public ISet<string> GetHandledHeaders()
         {
-            return new HashSet<string>() { ReadMotionParameterInData.HEADER };
+            return new HashSet<string>() { MotionParameterReadInData.HEADER };
         }
 
         public InData Decode(string data)
@@ -61,7 +61,7 @@
             // profileType;
             // motionParameterType
             // pidType
-            ReadMotionParameterInData result = new ReadMotionParameterInData(motionParameterData);
+            MotionParameterReadInData result = new MotionParameterReadInData(motionParameterData);
 
             return result;
         }

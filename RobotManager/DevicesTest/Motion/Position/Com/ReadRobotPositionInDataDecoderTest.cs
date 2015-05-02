@@ -10,8 +10,8 @@
         {
             string data = "anr0100-0200-0300";
 
-            ReadRobotPositionDataDecoder decoder = new ReadRobotPositionDataDecoder();
-            ReadRobotPositionInData inData = (ReadRobotPositionInData)decoder.Decode(data);
+            RobotPositionReadInDataDecoder decoder = new RobotPositionReadInDataDecoder();
+            RobotPositionReadInData inData = (RobotPositionReadInData)decoder.Decode(data);
 
             RobotPosition robotPosition = inData.Position;
             int x = robotPosition.X;
@@ -22,7 +22,7 @@
             Assert.AreEqual(512, y);
             Assert.AreEqual(768, deciDegreeAngle);
 
-            Assert.AreEqual(data.Length, decoder.GetDataLength(ReadRobotPositionInData.HEADER));
+            Assert.AreEqual(data.Length, decoder.GetDataLength(RobotPositionReadInData.HEADER));
         }
     }
 }

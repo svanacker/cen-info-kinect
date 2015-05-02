@@ -2,14 +2,14 @@ namespace Org.Cen.Devices.Pid.Com
 {
     using Cen.Com.In;
 
-    public class ReadMotionEndDetectionParameterInData : InData
+    public class MotionEndDetectionParameterReadInData : InData
     {
 
         public const string HEADER = "pP";
 
         public MotionEndDetectionParameter EndDetectionParameter { get; private set; }
 
-        public ReadMotionEndDetectionParameterInData(MotionEndDetectionParameter data)
+        public MotionEndDetectionParameterReadInData(MotionEndDetectionParameter data)
             : base()
         {
             this.EndDetectionParameter = data;
@@ -17,7 +17,7 @@ namespace Org.Cen.Devices.Pid.Com
 
         public override string ToString()
         {
-            return typeof(ReadMotionEndDetectionParameterInData).Name + "{data=" + EndDetectionParameter + "}";
+            return typeof(MotionEndDetectionParameterReadInData).Name + "{data=" + EndDetectionParameter + "}";
         }
     }
 }

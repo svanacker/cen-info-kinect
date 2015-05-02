@@ -5,14 +5,14 @@ namespace Org.Cen.Devices.Motion.Position.Com
     /**
      * Encapsulation of the message corresponding to the read of the Wheels.
      */
-    public class ReadWheelPositionInData : InData
+    public class WheelPositionReadInData : InData
     {
 
         public const string HEADER = "wr";
 
         public WheelPositionData WheelPosition { get; private set; }
 
-        public ReadWheelPositionInData(WheelPositionData data)
+        public WheelPositionReadInData(WheelPositionData data)
             : base()
         {
             this.WheelPosition = data;

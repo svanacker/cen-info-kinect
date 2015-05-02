@@ -2,13 +2,13 @@
 {
     using Org.Cen.Com.In;
 
-    public class ReadMotionParameterInData : InData
+    public class MotionParameterReadInData : InData
     {
         public const string HEADER = "pm";
 
         public MotionParameterData MotionParameterData { get; private set; }
 
-        public ReadMotionParameterInData(MotionParameterData motionParameterData)
+        public MotionParameterReadInData(MotionParameterData motionParameterData)
             : base()
         {
             this.MotionParameterData = motionParameterData;

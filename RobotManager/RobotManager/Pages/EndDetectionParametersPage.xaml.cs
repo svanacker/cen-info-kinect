@@ -28,13 +28,13 @@ namespace Org.Cen.RobotManager.Pages
             Main.receivedData.Clear();
             Main.SendText("pP");
 
-            ReadMotionEndDetectionParameterDataDecoder decoder = new ReadMotionEndDetectionParameterDataDecoder();
+            MotionEndDetectionParameterReadInDataDecoder decoder = new MotionEndDetectionParameterReadInDataDecoder();
 
-            while (Main.receivedData.Length < decoder.GetDataLength(ReadMotionEndDetectionParameterInData.HEADER))
+            while (Main.receivedData.Length < decoder.GetDataLength(MotionEndDetectionParameterReadInData.HEADER))
             {
 
             }
-            ReadMotionEndDetectionParameterInData inData = (ReadMotionEndDetectionParameterInData)decoder.Decode(Main.receivedData.ToString());
+            MotionEndDetectionParameterReadInData inData = (MotionEndDetectionParameterReadInData)decoder.Decode(Main.receivedData.ToString());
             MotionEndDetectionParameter parameter = inData.EndDetectionParameter;
 
             AbsDeltaPositionIntegralFactorThresholdSlider.Value = parameter.AbsDeltaPositionIntegralFactorThreshold;
@@ -53,7 +53,7 @@ namespace Org.Cen.RobotManager.Pages
             parameter.TimeRangeAnalysis = (int)TimeRangeAnalysisSlider.Value;
             parameter.NoAnalysisAtStartupTime = (int)NoAnalysisAtStartupTimeSlider.Value;
 
-            WriteMotionEndDetectionParameterOutData outData = new WriteMotionEndDetectionParameterOutData(parameter);
+            MotionEndDetectionParameterWriteOutData outData = new MotionEndDetectionParameterWriteOutData(parameter);
 
             string data = outData.getHeader() + outData.getArguments();
             Main.SendText(data);

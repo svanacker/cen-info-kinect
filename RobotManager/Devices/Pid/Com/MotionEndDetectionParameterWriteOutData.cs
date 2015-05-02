@@ -22,7 +22,7 @@ namespace Org.Cen.Devices.Pid.Com
     //                @DeviceParameter(name = "noAnalysisAtStartupTime", length = 2, type = DeviceParameterType.UNSIGNED,
     //                        unit = "pidTime") }) })
     ////@formatter:on
-    public class WriteMotionEndDetectionParameterOutData : OutData
+    public class MotionEndDetectionParameterWriteOutData : OutData
     {
         private const string HEADER = "pp";
 
@@ -31,7 +31,7 @@ namespace Org.Cen.Devices.Pid.Com
         /**
          * Constructor.
          */
-        public WriteMotionEndDetectionParameterOutData(MotionEndDetectionParameter endDetectionParameter)
+        public MotionEndDetectionParameterWriteOutData(MotionEndDetectionParameter endDetectionParameter)
         {
             this.Parameter = endDetectionParameter;
         }

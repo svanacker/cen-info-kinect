@@ -15,7 +15,7 @@ namespace Org.Cen.Devices.Pid.Com
     //                        @DeviceParameter(name = "index", length = 2, type = DeviceParameterType.SIGNED, unit = "")
     //                })
     //        })
-    public class ReadPIDOutData : OutData
+    public class PIDReadOutData : OutData
     {
 
         private const string HEADER = "q";
@@ -35,7 +35,7 @@ namespace Org.Cen.Devices.Pid.Com
         /**
          * Constructor.
          */
-        public ReadPIDOutData(int index)
+        public PIDReadOutData(int index)
             : base()
         {
             this.index = index;

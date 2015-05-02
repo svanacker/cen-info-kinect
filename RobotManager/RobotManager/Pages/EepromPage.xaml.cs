@@ -27,7 +27,7 @@
 
             int address = int.Parse(EepromAddressTextBox.Text);
 
-            EepromReadOutData outData = new EepromReadOutData(address);
+            EepromReadByteOutData outData = new EepromReadByteOutData(address);
             string message = outData.getMessage();
             Main.SendText(message);
 

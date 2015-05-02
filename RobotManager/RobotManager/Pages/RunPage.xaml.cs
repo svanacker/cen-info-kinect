@@ -4,6 +4,8 @@
     using System.Windows;
     using System.Windows.Controls;
     using Com.Utils;
+    using Devices.Motion.Simple.Com;
+    using Devices.Motor.Com;
     using UartWPFTest;
 
     /// <summary>
@@ -27,8 +29,8 @@
         public void ForwardButton_Click(object sender, RoutedEventArgs e)
         {
             int value = (int)ForwardSlider.Value;
-            string hexValue = ComDataUtils.format(value, 4);
-            string command = "Mf" + hexValue;
+            MotionSimpleForwardOutData outData = new MotionSimpleForwardOutData(value);
+            string command = outData.getMessage();
             Main.SendText(command);
         }
 
@@ -46,8 +48,9 @@
         public void BackwardButton_Click(object sender, RoutedEventArgs e)
         {
             int value = (int)BackwardSlider.Value;
-            string hexValue = ComDataUtils.format(value, 4);
-            string command = "Mb" + hexValue;
+
+            MotionSimpleBackwardOutData outData = new MotionSimpleBackwardOutData(value);
+            string command = outData.getMessage();
             Main.SendText(command);
         }
 
@@ -74,8 +77,9 @@
         private void LeftButton_Click(object sender, RoutedEventArgs e)
         {
             int value = (int)LeftSlider.Value;
-            string hexValue = ComDataUtils.format(value, 4);
-            string command = "Ml" + hexValue;
+
+            MotionSimpleRotateLeftOutData outData = new MotionSimpleRotateLeftOutData(value);
+            string command = outData.getMessage();
             Main.SendText(command);
         }
 
@@ -93,14 +97,16 @@
         private void RightButton_Click(object sender, RoutedEventArgs e)
         {
             int value = (int)RightSlider.Value;
-            string hexValue = ComDataUtils.format(value, 4);
-            string command = "Mr" + hexValue;
+            MotionSimpleRotateRightOutData outData = new MotionSimpleRotateRightOutData(value);
+            string command = outData.getMessage();
             Main.SendText(command);
         }
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
-            Main.SendText("Mc");
+            MotionSimpleStopOutData outData = new MotionSimpleStopOutData();
+            string command = outData.getMessage();
+            Main.SendText(command);
         }
 
         // Go
@@ -108,18 +114,20 @@
         private void MotorGoButton_Click(object sender, RoutedEventArgs e)
         {
             int leftValue = (int)MotorLeftSlider.Value;
-            string hexLeftValue = ComDataUtils.format(leftValue, 2);
             int rightValue = (int)MotorLeftSlider.Value;
-            string hexRightValue = ComDataUtils.format(rightValue, 2);
-            string command = "mw" + hexLeftValue + hexRightValue;
+            MotorWriteOutData outData = new MotorWriteOutData(leftValue, rightValue);
+
+            string command = outData.getMessage();
             Main.SendText(command);
         }
-
 
         private void MotorStopButton_Click(object sender, RoutedEventArgs e)
         {
             Main.receivedData.Clear();
-            Main.SendText("mc");
+
+            MotorStopOutData outData = new MotorStopOutData();
+            string command = outData.getMessage();
+            Main.SendText(command);
 
             while (Main.receivedData.Length < 3)
             {
@@ -155,8 +163,9 @@
             }
         }
 
-        private void Window_Initialized(object sender, EventArgs e)
+        private void Page_Loaded(object sender, RoutedEventArgs e)
         {
+            Main.Run = this;
             ForwardSlider_ValueChanged(null, null);
             LeftSlider_ValueChanged(null, null);
             RightSlider_ValueChanged(null, null);
@@ -164,11 +173,6 @@
 
             MotorLeftSlider_ValueChanged(null, null);
             MotorRightSlider_ValueChanged(null, null);
-        }
-
-        private void Page_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.Run = this;
         }
     }
 }

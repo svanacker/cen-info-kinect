@@ -5,14 +5,14 @@ namespace Org.Cen.Devices.Pid.Com
     /**
      * Encapsulation of the message corresponding to the read of PIDData.
      */
-    public class ReadPIDInData : InData
+    public class PIDReadInData : InData
     {
 
         public const string HEADER = "q";
 
         private PIDData data;
 
-        public ReadPIDInData(PIDData data)
+        public PIDReadInData(PIDData data)
             : base()
         {
             this.data = data;

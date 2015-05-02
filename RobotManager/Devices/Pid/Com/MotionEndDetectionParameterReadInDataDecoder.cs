@@ -5,11 +5,11 @@
     using Org.Cen.Com;
     using Org.Cen.Com.In;
 
-    public class ReadMotionEndDetectionParameterDataDecoder : IInDataDecoder
+    public class MotionEndDetectionParameterReadInDataDecoder : IInDataDecoder
     {
         public ISet<string> GetHandledHeaders()
         {
-            return new HashSet<string>() { ReadMotionEndDetectionParameterInData.HEADER };
+            return new HashSet<string>() { MotionEndDetectionParameterReadInData.HEADER };
         }
 
         public InData Decode(string data)
@@ -38,7 +38,7 @@
             string noAnalysisAtStartupTimeAsString = data.Substring(15, 2);
             parameter.NoAnalysisAtStartupTime = int.Parse(noAnalysisAtStartupTimeAsString, NumberStyles.HexNumber);
 
-            ReadMotionEndDetectionParameterInData result = new ReadMotionEndDetectionParameterInData(parameter);
+            MotionEndDetectionParameterReadInData result = new MotionEndDetectionParameterReadInData(parameter);
             return result;
         }
 

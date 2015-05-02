@@ -10,8 +10,8 @@
         {
             string data = "awrFFFE7960-00004E20";
 
-            WheelPositionDataDecoder decoder = new WheelPositionDataDecoder();
-            ReadWheelPositionInData inData = (ReadWheelPositionInData)decoder.Decode(data);
+            WheelPositionReadInDataDecoder decoder = new WheelPositionReadInDataDecoder();
+            WheelPositionReadInData inData = (WheelPositionReadInData)decoder.Decode(data);
             WheelPositionData wheelPositionData = inData.WheelPosition;
             long leftPosition = wheelPositionData.LeftPosition;
             long rightPosition = wheelPositionData.RightPosition;
@@ -19,7 +19,7 @@
             Assert.AreEqual(-100000, leftPosition);
             Assert.AreEqual(20000, rightPosition);
 
-            Assert.AreEqual(data.Length, decoder.GetDataLength(ReadWheelPositionInData.HEADER));
+            Assert.AreEqual(data.Length, decoder.GetDataLength(WheelPositionReadInData.HEADER));
         }
     }
 }

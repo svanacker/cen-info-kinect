@@ -14,7 +14,7 @@ namespace Org.Cen.Devices.Pid.Com
     //        parameters = {}) 
     //        })
     ////@formatter:on
-    public class ReadMotionEndDetectionParametersOutData : OutData
+    public class MotionEndDetectionParametersReadOutData : OutData
     {
 
         private const string HEADER = "~";
@@ -22,7 +22,7 @@ namespace Org.Cen.Devices.Pid.Com
         /**
          * Constructor.
          */
-        public ReadMotionEndDetectionParametersOutData()
+        public MotionEndDetectionParametersReadOutData()
             : base()
         {
 
