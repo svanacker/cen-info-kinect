@@ -4,6 +4,7 @@
     using System.Windows.Controls;
 
     using Devices.Robot;
+    using Devices.Robot.End.Com;
     using Devices.Robot.Start.Com;
     using UartWPFTest;
 
@@ -83,6 +84,31 @@
         private void MatchGrid_Loaded(object sender, RoutedEventArgs e)
         {
             Main.Match = this;
+        }
+
+        private void TimeLeftReadButton_Click(object sender, RoutedEventArgs e)
+        {
+            Main.receivedData.Clear();
+            EndMatchReadTimeLeftOutData outData = new EndMatchReadTimeLeftOutData();
+            string message = outData.getMessage();
+            Main.SendText(message);
+
+            EndMatchReadTimeLeftInDataDecoder decoder = new EndMatchReadTimeLeftInDataDecoder();
+
+            while (Main.receivedData.Length < decoder.GetDataLength(EndMatchReadTimeLeftInData.HEADER))
+            {
+
+            }
+            EndMatchReadTimeLeftInData inData = (EndMatchReadTimeLeftInData)decoder.Decode(Main.receivedData.ToString());
+
+            TimeLeftValueLabel.Content = inData.TimeLeft;
+        }
+
+        private void SimulateMatchStartButton_Click(object sender, RoutedEventArgs e)
+        {
+            StartMatchSetStartedOutData outData = new StartMatchSetStartedOutData(true);
+            string message = outData.getMessage();
+            Main.SendText(message);
         }
     }
 }

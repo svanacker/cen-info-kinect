@@ -78,9 +78,11 @@
 
         public void UpdateCanvasRobotPosition(RobotPosition robotPosition)
         {
+            /* TODO
             RobotPositionTranslateTransform.X = robotPosition.X / 10.0d;
             RobotPositionTranslateTransform.Y = robotPosition.Y / 10.0d;
             RobotPositionRotateTransform.Angle = robotPosition.DeciDegreeAngle / 10.0d;
+            */
         }
 
         private void WriteRobotPositionButton_Click(object sender, RoutedEventArgs e)
@@ -96,22 +98,16 @@
             UpdateCanvasRobotPosition(robotPosition);
         }
 
-        private void PositionGrid_SizeChanged(object sender, SizeChangedEventArgs e)
-        {
-            GameBoardScaleTransform.ScaleX = PositionGrid.RenderSize.Height / 300;
-            GameBoardScaleTransform.ScaleY = -PositionGrid.RenderSize.Height / 300;
-            GameBoardScaleTranslateTransform.Y = PositionGrid.RenderSize.Height;
-            GameBoardCanvas.UpdateLayout();
-        }
-
         public void UpdatePaths()
         {
             foreach (Path path in FindVisualChildren<Path>(Main.Main_Window))
             {
+                /* TODO
                 if (path.Equals(Robot))
                 {
                     continue;
                 }
+                */
                 if (ShowPathCheckBox.IsChecked != null && ShowPathCheckBox.IsChecked.Value == true)
                 {
                     path.Visibility = Visibility.Visible;
@@ -143,6 +139,7 @@
 
         private void ShowRobotCheckBox_Checked(object sender, RoutedEventArgs e)
         {
+            /* TODO
             if (ShowRobotCheckBox.IsChecked == true)
             {
                 Robot.Visibility = Visibility.Visible;
@@ -151,6 +148,7 @@
             {
                 Robot.Visibility = Visibility.Hidden;
             }
+            */ 
         }
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject

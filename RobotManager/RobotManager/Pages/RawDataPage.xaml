@@ -7,16 +7,15 @@
       d:DesignHeight="300" d:DesignWidth="300"
 	Title="RawDataPage">
 
-    <Grid x:Name="MotionGrid" Loaded="MotionGrid_Loaded">
+    <Grid x:Name="MotionGrid" Loaded="MotionGrid_Loaded" Margin="0,0,-297,0">
         <DataGrid x:Name="MotionDataGrid" >
-        <DataGrid.Columns>
-            <DataGridTextColumn Binding="{Binding PidTime}" Header="PidTime"/>
-            <DataGridTextColumn Binding="{Binding NormalPosition}" Header="NormalPosition"/>
-            <DataGridTextColumn Binding="{Binding NormalSpeed}" Header="NormalSpeed"/>
-            <DataGridTextColumn Binding="{Binding Position}" Header="Position"/>
-            <DataGridTextColumn Binding="{Binding Speed}" Header="Speed"/>
-
-        </DataGrid.Columns>
-    </DataGrid>
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding PidTime}" Header="PidTime"/>
+                <DataGridTextColumn Binding="{Binding NormalPosition}" Header="NormalPosition"/>
+                <DataGridTextColumn Binding="{Binding NormalSpeed}" Header="NormalSpeed"/>
+                <DataGridTextColumn Binding="{Binding Position}" Header="Position"/>
+                <DataGridTextColumn Binding="{Binding Speed}" Header="Speed"/>
+            </DataGrid.Columns>
+        </DataGrid>
     </Grid>
 </Page>

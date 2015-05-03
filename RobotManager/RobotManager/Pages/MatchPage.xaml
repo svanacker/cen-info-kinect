@@ -3,12 +3,11 @@
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-      mc:Ignorable="d" 
-      d:DesignHeight="300"
-    Title="MatchPage" Width="516.818">
+      mc:Ignorable="d"
+    Title="MatchPage" Width="516.818" Height="318">
 
     <Grid x:Name="MatchGrid" Background="#FFE5E5E5" Loaded="MatchGrid_Loaded">
-        <GroupBox Header="Start Parameters" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="298" Width="223">
+        <GroupBox Header="Start Parameters" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="252" Width="223">
             <Grid>
                 <Label Content="Yellow X (mm) : " HorizontalAlignment="Left" Margin="7,14,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="YellowX" HorizontalAlignment="Left" Height="23" Margin="126,14,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62"/>
@@ -22,15 +21,18 @@
                 <TextBox x:Name="GreenY" HorizontalAlignment="Left" Height="23" Margin="125,147,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62"/>
                 <Label Content="Green Angle (ddeg) : " HorizontalAlignment="Left" Margin="7,172,0,0" VerticalAlignment="Top"/>
                 <TextBox x:Name="GreenAngle" HorizontalAlignment="Left" Height="23" Margin="125,175,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="62"/>
-
-                <Label Content="TIME LEFT : " HorizontalAlignment="Left" Margin="47,207,0,0" VerticalAlignment="Top"/>
-                <Label x:Name="TimeLeftValue" HorizontalAlignment="Left" Margin="125,207,0,0" VerticalAlignment="Top" Height="26" Width="63"/>
-                <Button x:Name="StartParametersRead" Content="Read" HorizontalAlignment="Left" Margin="10,238,0,0" VerticalAlignment="Top" Width="75" Click="StartParametersRead_Click"/>
-                <Button x:Name="StartParametersWrite" Content="Write" HorizontalAlignment="Left" Margin="112,238,0,0" VerticalAlignment="Top" Width="75" Click="StartParametersWrite_Click"/>
-
+                <Button x:Name="StartParametersRead" Content="Read" HorizontalAlignment="Left" Margin="10,203,0,0" VerticalAlignment="Top" Width="75" Click="StartParametersRead_Click"/>
+                <Button x:Name="StartParametersWrite" Content="Write" HorizontalAlignment="Left" Margin="112,203,0,0" VerticalAlignment="Top" Width="75" Click="StartParametersWrite_Click"/>
             </Grid>
         </GroupBox>
-
+        <GroupBox x:Name="EndMatchGroupBox" Header="End Parameters" HorizontalAlignment="Left" Height="280" Margin="253,10,0,0" VerticalAlignment="Top" Width="236">
+            <Grid Margin="0,0,-21,0">
+                <Label Content="TIME LEFT : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="TimeLeftValueLabel" Content="N/A" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top"/>
+                <Button x:Name="TimeLeftReadButton" Content="Read" HorizontalAlignment="Left" Margin="151,14,0,0" VerticalAlignment="Top" Width="75" Click="TimeLeftReadButton_Click"/>
+            </Grid>
+        </GroupBox>
+        <Button x:Name="SimulateMatchStartButton" Content="Simulate Match Start" HorizontalAlignment="Left" Margin="42,274,0,0" VerticalAlignment="Top" Width="145" Click="SimulateMatchStartButton_Click"/>
     </Grid>
 
 </Page>

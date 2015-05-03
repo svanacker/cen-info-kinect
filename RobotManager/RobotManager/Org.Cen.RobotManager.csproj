@@ -135,6 +135,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\GameBoardPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Pages\MatchPage.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -144,6 +148,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\MotionParametersPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\NavigationPath.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -178,6 +186,9 @@
     <Compile Include="Pages\EndDetectionParametersPage.xaml.cs">
       <DependentUpon>EndDetectionParametersPage.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Pages\GameBoardPage.xaml.cs">
+      <DependentUpon>GameBoardPage.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Pages\MatchPage.xaml.cs">
       <DependentUpon>MatchPage.xaml</DependentUpon>
     </Compile>
@@ -186,6 +197,9 @@
     </Compile>
     <Compile Include="Pages\MotionParametersPage.xaml.cs">
       <DependentUpon>MotionParametersPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\NavigationPath.xaml.cs">
+      <DependentUpon>NavigationPath.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PIDGraphPage.xaml.cs">
       <DependentUpon>PIDGraphPage.xaml</DependentUpon>

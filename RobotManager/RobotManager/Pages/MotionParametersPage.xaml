@@ -7,7 +7,7 @@
       d:DesignHeight="300"
 	Title="MotionParametersPage" Width="662.728">
 
-    <Grid x:Name="MotionParametersGrid" Background="#FFE5E5E5" Loaded="MotionParametersGrid_Loaded">
+    <Grid x:Name="MotionParametersGrid" Background="#FFE5E5E5" Loaded="MotionParametersGrid_Loaded" Margin="0,0,0,-43">
         <Label x:Name="AccelerationLabel" Content="Acceleration : " Height="25" Width="100" Margin="35,40,587,0" VerticalAlignment="Top"/>
         <Label x:Name="SpeedLabel" Content="Speed : " Height="25" Width="100" Margin="35,70,587,0" VerticalAlignment="Top"/>
         <Label x:Name="SpeedMaxLabel" Content="Speed Max : " Height="25" Width="100" Margin="35,100,587,0" VerticalAlignment="Top"/>
@@ -38,7 +38,7 @@
 
         <Label x:Name="ThetaLabel" Content="Theta : " Height="25" Width="100" Margin="168,10,454,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label x:Name="AlphaLabel" Content="Alpha: " Height="25" Width="100" Margin="300,10,300,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button x:Name="ReadMotionParameterButton" Content="Read Motion Parameter" HorizontalAlignment="Center" Margin="300,290,300,0" VerticalAlignment="Top" Width="125" Click="ReadMotionParameterButton_Click"/>
+        <Button x:Name="ReadMotionParameterButton" Content="Read Motion Parameter" HorizontalAlignment="Center" Margin="220,290,263,0" VerticalAlignment="Top" Width="180" Click="ReadMotionParameterButton_Click"/>
 
     </Grid>
 </Page>

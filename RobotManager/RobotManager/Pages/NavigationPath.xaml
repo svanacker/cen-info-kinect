@@ -1,0 +1,35 @@
+﻿<Page x:Class="Org.Cen.RobotManager.Pages.NavigationPath"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      d:DesignHeight="300"
+	Title="NavigationPath" Width="546.269">
+
+    <Grid Margin="0,0,-461,0">
+        <Label Content="Location List :" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="LocationGrid" Width="150" HorizontalAlignment="Left" Margin="0, 25, 0, 0" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="60"/>
+                <DataGridTextColumn Binding="{Binding X}" Header="X" Width="40"/>
+                <DataGridTextColumn Binding="{Binding Y}" Header="Y" Width="40"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Label Content="Path List :" HorizontalAlignment="Left" Margin="200,0,0,0" VerticalAlignment="Top"/>
+        <DataGrid x:Name="PathDataGrid" Width="300" HorizontalAlignment="Left" Margin="200, 25, 0, 0" >
+            <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding LocationName1}" Header="L1 Name"/>
+                <DataGridTextColumn Binding="{Binding Angle1}" Header="CP Dist 2"/>
+                <DataGridTextColumn Binding="{Binding ControlPointDistance1}" Header="CP Dist 1"/>
+                <DataGridTextColumn Binding="{Binding LocationName2}" Header="L2 Name"/>
+                <DataGridTextColumn Binding="{Binding Angle2}" Header="CP Dist 2"/>
+                <DataGridTextColumn Binding="{Binding ControlPointDistance2}" Header="CP Dist 2"/>
+                <DataGridTextColumn Binding="{Binding AccelerationFactor}" Header="Acc Fact"/>
+                <DataGridTextColumn Binding="{Binding SpeedFactor}" Header="SpeedFactor"/>
+                <DataGridTextColumn Binding="{Binding MustGoBackward}" Header="MustGoBackward"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Frame x:Name="ConsoleFrame" Source="/Pages/GameBoardPage.xaml" Margin="512,0,-203,0"/>
+    </Grid>
+</Page>

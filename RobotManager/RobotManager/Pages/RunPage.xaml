@@ -4,9 +4,9 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
-	Title="RunPage" Height="342.273" Width="730.909" Loaded="Page_Loaded">
+    Title="RunPage" Height="342.273" Width="800" Loaded="Page_Loaded">
 
-    <Grid x:Name="RunGrid" Background="#FFFFFFFF" RenderTransformOrigin="0.275,0.461" Margin="0,2,0,-2">
+    <Grid x:Name="RunGrid" Background="#FFFFFFFF">
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="11*"/>
             <ColumnDefinition Width="350*"/>

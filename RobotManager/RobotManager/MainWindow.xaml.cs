@@ -6,7 +6,6 @@
     using System.Windows.Controls;
 
     using System.IO.Ports;
-    using Org.Cen.RobotManager.Controls;
     using Org.Cen.RobotManager.Pages;
 
     /// <summary>
@@ -54,7 +53,7 @@
             }
             currentPort.WriteLine(text);
             // we add some line return so that we can read easily the return of the remote board
-            Console.ContentTextBox.Text += "\n";
+            Console.ContentTextBox.Text += text + "\n";
         }
 
         private void LoadPortNames()
