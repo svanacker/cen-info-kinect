@@ -2,6 +2,7 @@ namespace Org.Cen.Com.Out
 {
     using System;
     using System.Text;
+    using Communication;
 
     /**
      * Objects which represents the data which are sent from the PC to the

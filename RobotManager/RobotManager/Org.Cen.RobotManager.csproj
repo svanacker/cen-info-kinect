@@ -119,15 +119,15 @@
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="Pages\ConfigurationPage.xaml">
+    <Page Include="Pages\ConfigurationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\ConsolePage.xaml">
+    <Page Include="Pages\ConsoleControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\EepromPage.xaml">
+    <Page Include="Pages\EepromControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -135,83 +135,83 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\GameBoardPage.xaml">
+    <Page Include="Pages\GameBoardControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MatchPage.xaml">
+    <Page Include="Pages\MatchControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MotionGraphPage.xaml">
+    <Page Include="Pages\MotionGraphControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\MotionParametersPage.xaml">
+    <Page Include="Pages\MotionParametersControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\NavigationPath.xaml">
+    <Page Include="Pages\NavigationControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PIDGraphPage.xaml">
+    <Page Include="Pages\PIDGraphControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PositionPage.xaml">
+    <Page Include="Pages\PositionControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\RawDataPage.xaml">
+    <Page Include="Pages\RawDataControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\RunPage.xaml">
+    <Page Include="Pages\RunControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Graph\MotionDataItem.cs" />
-    <Compile Include="Pages\ConfigurationPage.xaml.cs">
-      <DependentUpon>ConfigurationPage.xaml</DependentUpon>
+    <Compile Include="Pages\ConfigurationControl.xaml.cs">
+      <DependentUpon>ConfigurationControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\ConsolePage.xaml.cs">
-      <DependentUpon>ConsolePage.xaml</DependentUpon>
+    <Compile Include="Pages\ConsoleControl.xaml.cs">
+      <DependentUpon>ConsoleControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\EepromPage.xaml.cs">
-      <DependentUpon>EepromPage.xaml</DependentUpon>
+    <Compile Include="Pages\EepromControl.xaml.cs">
+      <DependentUpon>EepromControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\EndDetectionParametersPage.xaml.cs">
       <DependentUpon>EndDetectionParametersPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\GameBoardPage.xaml.cs">
-      <DependentUpon>GameBoardPage.xaml</DependentUpon>
+    <Compile Include="Pages\GameBoardControl.xaml.cs">
+      <DependentUpon>GameBoardControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MatchPage.xaml.cs">
-      <DependentUpon>MatchPage.xaml</DependentUpon>
+    <Compile Include="Pages\MatchControl.xaml.cs">
+      <DependentUpon>MatchControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MotionGraphPage.xaml.cs">
-      <DependentUpon>MotionGraphPage.xaml</DependentUpon>
+    <Compile Include="Pages\MotionGraphControl.xaml.cs">
+      <DependentUpon>MotionGraphControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\MotionParametersPage.xaml.cs">
-      <DependentUpon>MotionParametersPage.xaml</DependentUpon>
+    <Compile Include="Pages\MotionParametersControl.xaml.cs">
+      <DependentUpon>MotionParametersControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\NavigationPath.xaml.cs">
-      <DependentUpon>NavigationPath.xaml</DependentUpon>
+    <Compile Include="Pages\NavigationControl.xaml.cs">
+      <DependentUpon>NavigationControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PIDGraphPage.xaml.cs">
-      <DependentUpon>PIDGraphPage.xaml</DependentUpon>
+    <Compile Include="Pages\PIDGraphControl.xaml.cs">
+      <DependentUpon>PIDGraphControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PositionPage.xaml.cs">
-      <DependentUpon>PositionPage.xaml</DependentUpon>
+    <Compile Include="Pages\PositionControl.xaml.cs">
+      <DependentUpon>PositionControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RawDataPage.xaml.cs">
-      <DependentUpon>RawDataPage.xaml</DependentUpon>
+    <Compile Include="Pages\RawDataControl.xaml.cs">
+      <DependentUpon>RawDataControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\RunPage.xaml.cs">
-      <DependentUpon>RunPage.xaml</DependentUpon>
+    <Compile Include="Pages\RunControl.xaml.cs">
+      <DependentUpon>RunControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

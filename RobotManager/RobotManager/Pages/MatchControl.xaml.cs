@@ -11,14 +11,14 @@
     /// <summary>
     /// Interaction logic for MatchPage.xaml
     /// </summary>
-    public partial class MatchPage : Page
+    public partial class MatchControl : UserControl
     {
         private MainWindow Main
         {
             get { return (MainWindow)Window.GetWindow(this); }
         }
 
-        public MatchPage()
+        public MatchControl()
         {
             InitializeComponent();
         }
@@ -79,11 +79,6 @@
             angle = int.Parse(GreenAngle.Text);
             outData = new StartMatchWritePositionOutData(MatchSide.Green, x, y, angle);
             Main.SendText(outData.getMessage());
-        }
-
-        private void MatchGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.Match = this;
         }
 
         private void TimeLeftReadButton_Click(object sender, RoutedEventArgs e)

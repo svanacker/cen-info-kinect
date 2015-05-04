@@ -8,14 +8,14 @@
     /// <summary>
     /// Interaction logic for ConfigurationPage.xaml
     /// </summary>
-    public partial class ConfigurationPage : Page
+    public partial class ConfigurationControl : UserControl
     {
         private MainWindow Main
         {
             get { return (MainWindow) Window.GetWindow(this); }
         }
 
-        public ConfigurationPage()
+        public ConfigurationControl()
         {
             InitializeComponent();
         }
@@ -75,11 +75,6 @@
             ConfigLowCheckBox.IsChecked = config.SpeedLow;
             ConfigVeryLowCheckBox.IsChecked = config.SpeedVeryLow;
             ConfigUltraLowCheckBox.IsChecked = config.SpeedUltraLow;
-        }
-
-        private void ConfigurationGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.Configuration = this;
         }
     }
 }

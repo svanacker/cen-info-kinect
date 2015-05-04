@@ -47,6 +47,7 @@
     <Compile Include="Eeprom\Com\EepromReadInDataDecoderTest.cs" />
     <Compile Include="Motion\Position\Com\ReadRobotPositionInDataDecoderTest.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionDataInDecoderTest.cs" />
+    <Compile Include="Pid\Com\PidDebugOutDataTest.cs" />
     <Compile Include="Pid\Com\ReadMotionEndDetectionParameterInDataDecoderTest.cs" />
     <Compile Include="Pid\Com\ReadMotionParameterInDataDecoderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

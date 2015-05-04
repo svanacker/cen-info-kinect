@@ -13,16 +13,16 @@
     using UartWPFTest;
 
     /// <summary>
-    /// Interaction logic for PositionPage.xaml
+    /// Interaction logic for PositionControl.xaml
     /// </summary>
-    public partial class PositionPage : Page
+    public partial class PositionControl : UserControl
     {
         private MainWindow Main
         {
             get { return (MainWindow)Window.GetWindow(this); }
         }
 
-        public PositionPage()
+        public PositionControl()
         {
             InitializeComponent();
         }
@@ -78,11 +78,9 @@
 
         public void UpdateCanvasRobotPosition(RobotPosition robotPosition)
         {
-            /* TODO
-            RobotPositionTranslateTransform.X = robotPosition.X / 10.0d;
-            RobotPositionTranslateTransform.Y = robotPosition.Y / 10.0d;
-            RobotPositionRotateTransform.Angle = robotPosition.DeciDegreeAngle / 10.0d;
-            */
+            GameBoard.RobotPositionTranslateTransform.X = robotPosition.X / 10.0d;
+            GameBoard.RobotPositionTranslateTransform.Y = robotPosition.Y / 10.0d;
+            GameBoard.RobotPositionRotateTransform.Angle = robotPosition.DeciDegreeAngle / 10.0d;
         }
 
         private void WriteRobotPositionButton_Click(object sender, RoutedEventArgs e)
@@ -100,14 +98,16 @@
 
         public void UpdatePaths()
         {
+            if (Main == null || GameBoard == null)
+            {
+                return;
+            }
             foreach (Path path in FindVisualChildren<Path>(Main.Main_Window))
             {
-                /* TODO
-                if (path.Equals(Robot))
+                if (path.Equals(GameBoard.Robot))
                 {
                     continue;
                 }
-                */
                 if (ShowPathCheckBox.IsChecked != null && ShowPathCheckBox.IsChecked.Value == true)
                 {
                     path.Visibility = Visibility.Visible;
@@ -129,26 +129,28 @@
 
         private void ShowPathCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            // TODO : UpdatePaths();
+            UpdatePaths();
         }
 
         private void EnableRobotStrockeCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            // TODO : UpdatePaths();
+            UpdatePaths();
         }
 
         private void ShowRobotCheckBox_Checked(object sender, RoutedEventArgs e)
         {
-            /* TODO
+            if (Main == null)
+            {
+                return;
+            }
             if (ShowRobotCheckBox.IsChecked == true)
             {
-                Robot.Visibility = Visibility.Visible;
+                GameBoard.Robot.Visibility = Visibility.Visible;
             }
             else
             {
-                Robot.Visibility = Visibility.Hidden;
+                GameBoard.Robot.Visibility = Visibility.Hidden;
             }
-            */ 
         }
 
         public static IEnumerable<T> FindVisualChildren<T>(DependencyObject depObj) where T : DependencyObject
@@ -170,11 +172,5 @@
                 }
             }
         }
-
-        private void PositionGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.Position = this;
-        }
-
     }
 }

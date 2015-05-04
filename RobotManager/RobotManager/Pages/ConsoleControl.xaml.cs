@@ -10,9 +10,9 @@ namespace Org.Cen.RobotManager.Pages
     using UartWPFTest;
 
     /// <summary>
-    /// Interaction logic for ConsolePage.xaml
+    /// Interaction logic for ConsoleControl.xaml
     /// </summary>
-    public partial class ConsolePage : Page
+    public partial class ConsoleControl : UserControl
     {
         private const int COM_INPUT_COUNT = 10;
 
@@ -23,7 +23,7 @@ namespace Org.Cen.RobotManager.Pages
             get { return (MainWindow)Window.GetWindow(this); }
         }
 
-        public ConsolePage()
+        public ConsoleControl()
         {
             InitializeComponent();
             for (int i = 0; i < COM_INPUT_COUNT; i++)
@@ -32,12 +32,6 @@ namespace Org.Cen.RobotManager.Pages
             }
             
         }
-
-        private void ConsoleGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.Console = this;
-        }
-
 
         public void UpdateInDataText(string newText)
         {
@@ -182,6 +176,5 @@ namespace Org.Cen.RobotManager.Pages
         {
             Main.SendText("z");
         }
-
     }
 }

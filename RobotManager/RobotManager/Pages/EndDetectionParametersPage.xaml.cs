@@ -1,23 +1,22 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-
-namespace Org.Cen.RobotManager.Pages
+﻿namespace Org.Cen.RobotManager.Pages
 {
     using Devices.Pid;
     using Devices.Pid.Com;
     using UartWPFTest;
+    using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
-    /// Interaction logic for EndDetectionParametersPage.xaml
+    /// Interaction logic for EndDetectionParametersControl.xaml
     /// </summary>
-    public partial class EndDetectionParametersPage : Page
+    public partial class EndDetectionParametersControl : UserControl
     {
         private MainWindow Main
         {
             get { return (MainWindow)Window.GetWindow(this); }
         }
 
-        public EndDetectionParametersPage()
+        public EndDetectionParametersControl()
         {
             InitializeComponent();
         }
@@ -58,11 +57,5 @@ namespace Org.Cen.RobotManager.Pages
             string data = outData.getHeader() + outData.getArguments();
             Main.SendText(data);
         }
-
-        private void EndDetectionParametersGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.EndDetectionParameters = this;
-        }
-
     }
 }

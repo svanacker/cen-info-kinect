@@ -1,24 +1,22 @@
 ﻿namespace Org.Cen.RobotManager.Pages
 {
-    using System;
     using System.Windows;
     using System.Windows.Controls;
-    using Com.Utils;
     using Devices.Motion.Simple.Com;
     using Devices.Motor.Com;
     using UartWPFTest;
 
     /// <summary>
-    /// Interaction logic for RunPage.xaml
+    /// Interaction logic for RunControl.xaml
     /// </summary>
-    public partial class RunPage : Page
+    public partial class RunControl : UserControl
     {
         private MainWindow Main
         {
             get { return (MainWindow)Window.GetWindow(this); }
         }
 
-        public RunPage()
+        public RunControl()
         {
             InitializeComponent();
         }
@@ -163,9 +161,8 @@
             }
         }
 
-        private void Page_Loaded(object sender, RoutedEventArgs e)
+        private void RunPage_Loaded(object sender, RoutedEventArgs e)
         {
-            Main.Run = this;
             ForwardSlider_ValueChanged(null, null);
             LeftSlider_ValueChanged(null, null);
             RightSlider_ValueChanged(null, null);

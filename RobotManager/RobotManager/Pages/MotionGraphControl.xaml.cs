@@ -1,40 +1,26 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
+﻿
 namespace Org.Cen.RobotManager.Pages
 {
-    using System.Threading;
-    using Devices.Pid;
-    using Devices.Pid.Com;
-    using Graph;
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+
     using OxyPlot;
     using OxyPlot.Axes;
     using OxyPlot.Series;
     using UartWPFTest;
 
     /// <summary>
-    /// Interaction logic for MotionGraphPage.xaml
+    /// Interaction logic for MotionGraphControl.xaml
     /// </summary>
-    public partial class MotionGraphPage : Page
+    public partial class MotionGraphControl : UserControl
     {
         private MainWindow Main
         {
             get { return (MainWindow)Window.GetWindow(this); }
         }
 
-        public MotionGraphPage()
+        public MotionGraphControl()
         {
             InitializeComponent();
         }
@@ -92,12 +78,6 @@ namespace Org.Cen.RobotManager.Pages
             profileSeries.YAxisKey = "rightAxis";
 
             return plotModel;
-        }
-
-
-        private void MotionGraphGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.MotionGraph = this;
         }
     }
 }

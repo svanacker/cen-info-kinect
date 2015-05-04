@@ -13,14 +13,14 @@
             MotionParameterReadInData inData = (MotionParameterReadInData)decoder.Decode(data);
 
             MotionParameterData motionParameterData = inData.MotionParameterData;
-            Assert.AreEqual(1, motionParameterData.Acceleration);
-            Assert.AreEqual(224, motionParameterData.Speed);
-            Assert.AreEqual(168, motionParameterData.SpeedMax);
-            Assert.AreEqual(129, motionParameterData.Time1);
-            Assert.AreEqual(130, motionParameterData.Time2);
-            Assert.AreEqual(259, motionParameterData.Time3);
-            Assert.AreEqual(10954, motionParameterData.Position1);
-            Assert.AreEqual(10955, motionParameterData.Position2);
+            Assert.AreEqual(0X01, motionParameterData.Acceleration);
+            Assert.AreEqual(0xE0, motionParameterData.Speed);
+            Assert.AreEqual(0xA8, motionParameterData.SpeedMax);
+            Assert.AreEqual(0x0081, motionParameterData.Time1);
+            Assert.AreEqual(0x0082, motionParameterData.Time2);
+            Assert.AreEqual(0x013, motionParameterData.Time3);
+            Assert.AreEqual(0x2ACA, motionParameterData.Position1);
+            Assert.AreEqual(0x2ACB, motionParameterData.Position2);
             // TODO : 3 more informations
 
             int length = decoder.GetDataLength(MotionParameterReadInData.HEADER);

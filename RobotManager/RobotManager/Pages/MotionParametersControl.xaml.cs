@@ -1,6 +1,4 @@
-﻿using System.Windows;
-using System.Windows.Controls;
-
+﻿
 namespace Org.Cen.RobotManager.Pages
 {
     using Devices.Pid;
@@ -8,18 +6,20 @@ namespace Org.Cen.RobotManager.Pages
     using OxyPlot;
     using OxyPlot.Series;
     using UartWPFTest;
+    using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Interaction logic for MotionParameters.xaml
     /// </summary>
-    public partial class MotionParametersPage : Page
+    public partial class MotionParametersControl : UserControl
     {
         private MainWindow Main
         {
             get { return (MainWindow)Window.GetWindow(this); }
         }
 
-        public MotionParametersPage()
+        public MotionParametersControl()
         {
             InitializeComponent();
         }
@@ -79,11 +79,6 @@ namespace Org.Cen.RobotManager.Pages
             AlphaPosition1Label.Content = motionParameterData.Position1;
             AlphaPosition2Label.Content = motionParameterData.Position2;
 
-        }
-
-        private void MotionParametersGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.MotionParameters = this;
         }
     }
 }

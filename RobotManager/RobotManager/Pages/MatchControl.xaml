@@ -1,12 +1,12 @@
-﻿<Page x:Class="Org.Cen.RobotManager.Pages.MatchPage"
+﻿<UserControl x:Class="Org.Cen.RobotManager.Pages.MatchControl"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d"
-    Title="MatchPage" Width="516.818" Height="318">
+    Width="516.818" Height="318">
 
-    <Grid x:Name="MatchGrid" Background="#FFE5E5E5" Loaded="MatchGrid_Loaded">
+    <Grid x:Name="MatchGrid" Background="#FFE5E5E5">
         <GroupBox Header="Start Parameters" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="252" Width="223">
             <Grid>
                 <Label Content="Yellow X (mm) : " HorizontalAlignment="Left" Margin="7,14,0,0" VerticalAlignment="Top"/>
@@ -35,4 +35,4 @@
         <Button x:Name="SimulateMatchStartButton" Content="Simulate Match Start" HorizontalAlignment="Left" Margin="42,274,0,0" VerticalAlignment="Top" Width="145" Click="SimulateMatchStartButton_Click"/>
     </Grid>
 
-</Page>
+</UserControl>

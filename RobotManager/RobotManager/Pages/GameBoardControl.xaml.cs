@@ -5,16 +5,16 @@
     using UartWPFTest;
 
     /// <summary>
-    /// Interaction logic for GameBoardPage.xaml
+    /// Interaction logic for GameBoardControl.xaml
     /// </summary>
-    public partial class GameBoardPage : Page
+    public partial class GameBoardControl : UserControl
     {
         private MainWindow Main
         {
             get { return (MainWindow)Window.GetWindow(this); }
         }
 
-        public GameBoardPage()
+        public GameBoardControl()
         {
             InitializeComponent();
         }

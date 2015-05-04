@@ -1,13 +1,12 @@
-﻿<Page x:Class="Org.Cen.RobotManager.Pages.EepromPage"
+﻿<UserControl x:Class="Org.Cen.RobotManager.Pages.EepromControl"
       xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
       xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="300"
-	Title="EepromPage" Width="408.955">
+      d:DesignHeight="300" Width="408.955">
 
-    <Grid x:Name="EepromGrid" Background="#FFE5E5E5" Margin="0,0,-167,0" Loaded="EepromGrid_Loaded">
+    <Grid x:Name="EepromGrid" Background="#FFE5E5E5" Margin="0,0,-167,0">
         <DataGrid x:Name="EepromDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,47,0,0" Width="224" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Data00}" Header="0x00"/>
@@ -26,4 +25,4 @@
         <Label Content="Address : " HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.237,-3.308" Width="57"/>
         <Label Content="Value : " HorizontalAlignment="Left" Margin="229,39,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.237,-3.308" Width="76"/>
     </Grid>
-</Page>
+</UserControl>

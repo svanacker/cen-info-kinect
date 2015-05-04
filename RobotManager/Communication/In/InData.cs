@@ -1,5 +1,6 @@
 namespace Org.Cen.Com.In
 {
+    using Communication;
 
     /**
      * Objects which represents the data which comes from the micro-controllers and

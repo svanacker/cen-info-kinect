@@ -7,16 +7,16 @@
     using UartWPFTest;
 
     /// <summary>
-    /// Interaction logic for EepromPage.xaml
+    /// Interaction logic for EepromControl.xaml
     /// </summary>
-    public partial class EepromPage : Page
+    public partial class EepromControl : UserControl
     {
         private MainWindow Main
         {
             get { return (MainWindow)Window.GetWindow(this); }
         }
 
-        public EepromPage()
+        public EepromControl()
         {
             InitializeComponent();
         }
@@ -50,11 +50,6 @@
             EepromWriteOutData outData = new EepromWriteOutData(address, value);
             string message = outData.getMessage();
             Main.SendText(message);
-        }
-
-        private void EepromGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.Eeprom = this;
         }
     }
 }

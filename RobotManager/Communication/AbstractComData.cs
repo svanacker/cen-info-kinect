@@ -1,4 +1,4 @@
-namespace Org.Cen.Com
+namespace Org.Cen.Communication
 {
     using System;
 

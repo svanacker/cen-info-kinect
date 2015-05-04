@@ -1,12 +1,10 @@
 ﻿namespace UartWPFTest
 {
-    using System;
     using System.Text;
     using System.Windows;
     using System.Windows.Controls;
 
     using System.IO.Ports;
-    using Org.Cen.RobotManager.Pages;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -18,17 +16,20 @@
         // TODO : transform in private
         public StringBuilder receivedData = new StringBuilder();
 
-        public ConsolePage Console { get; set; }
-        public ConfigurationPage Configuration { get; set; }
-        public EepromPage Eeprom { get; set; }
-        public EndDetectionParametersPage EndDetectionParameters { get; set; }
-        public MatchPage Match { get; set; }
-        public MotionGraphPage MotionGraph { get; set; }
-        public MotionParametersPage MotionParameters { get; set; }
-        public PIDGraphPage PIDGraph { get; set; }
-        public PositionPage Position { get; set; }
-        public RawDataPage RawData { get; set; }
-        public RunPage Run { get; set; }
+        /*
+        public ConsoleControl Console { get; set; }
+        public ConfigurationControl Configuration { get; set; }
+        public EepromControl Eeprom { get; set; }
+        public EndDetectionParametersControl EndDetectionParameters { get; set; }
+        public MatchControl Match { get; set; }
+        public MotionGraphControl MotionGraph { get; set; }
+        public MotionParametersControl MotionParameters { get; set; }
+        public PIDGraphControl PIDGraph { get; set; }
+        public PositionControl Position { get; set; }
+        public RawDataControl RawData { get; set; }
+        public RunControl Run { get; set; }
+        public GameBoardControl GameBoard { get; set; }
+        */
 
         public MainWindow()
         {

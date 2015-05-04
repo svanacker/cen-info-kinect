@@ -1,20 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
-
-namespace Org.Cen.RobotManager.Pages
+﻿namespace Org.Cen.RobotManager.Pages
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+
     using System.Threading;
     using Devices.Pid;
     using Devices.Pid.Com;
@@ -25,16 +14,16 @@ namespace Org.Cen.RobotManager.Pages
     using UartWPFTest;
 
     /// <summary>
-    /// Interaction logic for PIDGraphPage.xaml
+    /// Interaction logic for PIDGraphControl.xaml
     /// </summary>
-    public partial class PIDGraphPage : Page
+    public partial class PIDGraphControl : UserControl
     {
         private MainWindow Main
         {
             get { return (MainWindow)Window.GetWindow(this); }
         }
 
-        public PIDGraphPage()
+        public PIDGraphControl()
         {
             InitializeComponent();
         }
@@ -49,7 +38,7 @@ namespace Org.Cen.RobotManager.Pages
             PIDGraph.Model = pidModel;
         }
 
-        public PlotModel InitPIDGraphModel()
+        public PlotModel InitPidGraphModel()
         {
             PlotModel plotModel = PIDGraph.Model;
 
@@ -85,6 +74,12 @@ namespace Org.Cen.RobotManager.Pages
 
         private void LaunchAnalysisButton_Click(object sender, RoutedEventArgs e)
         {
+            foreach (TabItem tabItem in Main.MainTabControl.Items)
+            {
+                Main.MainTabControl.SelectedItem = tabItem;
+                Main.MainTabControl.UpdateLayout();
+            }
+
             if (sender == Main.PIDGraph.LaunchAnalysisBackwardButton)
             {
                 Main.Run.BackwardButton_Click(null, null);
@@ -93,7 +88,7 @@ namespace Org.Cen.RobotManager.Pages
             {
                 Main.Run.ForwardButton_Click(null, null);
             }
-            PlotModel pidModel = Main.PIDGraph.InitPIDGraphModel();
+            PlotModel pidModel = Main.PIDGraph.InitPidGraphModel();
             PlotModel motionModel = Main.MotionGraph.InitMotionGraphModel();
             Main.RawData.MotionDataGrid.Items.Clear();
 
@@ -105,7 +100,9 @@ namespace Org.Cen.RobotManager.Pages
             for (int i = 0; i < 40; i++)
             {
                 Main.receivedData.Clear();
-                Main.SendText("pg00");
+                PidDebugOutData outData = new PidDebugOutData(InstructionType.Theta);
+                string message = outData.getMessage();
+                Main.SendText(message);
 
                 PIDDebugDataDecoder decoder = new PIDDebugDataDecoder();
 
@@ -167,12 +164,6 @@ namespace Org.Cen.RobotManager.Pages
             pidModel.InvalidatePlot(true);
             motionModel.InvalidatePlot(true);
             Main.RawData.MotionDataGrid.UpdateLayout();
-        }
-
-
-        private void PIDGraphGrid_Loaded(object sender, RoutedEventArgs e)
-        {
-            Main.PIDGraph = this;
         }
     }
 }
