@@ -85,7 +85,7 @@
     <Compile Include="Pid\Com\PIDReadOutData.cs" />
     <Compile Include="Pid\Com\MotionEndDetectionParameterWriteOutData.cs" />
     <Compile Include="Pid\Com\PIDWriteOutData.cs" />
-    <Compile Include="Pid\PIDData.cs" />
+    <Compile Include="Pid\PidData.cs" />
     <Compile Include="Pid\PIDDebugData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Robot\Configuration\Com\RobotConfigReadInDataDecoder.cs" />

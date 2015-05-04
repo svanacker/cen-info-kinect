@@ -28,7 +28,6 @@
             InitializeComponent();
         }
 
-
         private void PIDGraph_Initialized(object sender, EventArgs e)
         {
             PlotModel pidModel = new PlotModel

@@ -1,0 +1,53 @@
+﻿<UserControl
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:xctk="http://schemas.xceed.com/wpf/xaml/toolkit" x:Class="Org.Cen.RobotManager.Controls.PidParametersUserControl" 
+             mc:Ignorable="d" 
+             d:DesignHeight="200" Width="220">
+    <Grid>
+        <GroupBox x:Name="PidTypeGroupBox" Header="NAME OF PID" HorizontalAlignment="Left" VerticalAlignment="Top" Height="190" Width="217">
+            <Grid Margin="6,24,4,4">
+                    <Label x:Name="ThetaPidLabel" Content="Theta :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="40,-26,0,0"/>
+                    <Label x:Name="ThetaPidPLabel" Content="P :" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+                <Label x:Name="ThetaPidILabel" Content="I :" HorizontalAlignment="Left" Margin="0,28,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ThetaPidDLabel" Content="D :" HorizontalAlignment="Left" Margin="0,56,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="ThetaPidMiLabel" Content="MI :" HorizontalAlignment="Left" Margin="0,84,0,0" VerticalAlignment="Top"/>
+                <xctk:ButtonSpinner HorizontalAlignment="Left" Margin="28,0,0,0" VerticalAlignment="Top" Spin="Spin_OnSpin">
+                    <TextBox x:Name="ThetaPidPTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+                </xctk:ButtonSpinner>
+                <xctk:ButtonSpinner HorizontalAlignment="Left" Margin="28,28,0,0" VerticalAlignment="Top" Spin="Spin_OnSpin">
+                    <TextBox x:Name="ThetaPidITextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+                </xctk:ButtonSpinner>
+                <xctk:ButtonSpinner HorizontalAlignment="Left" Margin="28,56,0,0" VerticalAlignment="Top" Spin="Spin_OnSpin">
+                    <TextBox x:Name="ThetaPidDTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+                </xctk:ButtonSpinner>
+                <xctk:ButtonSpinner HorizontalAlignment="Left" Margin="28,84,0,0" VerticalAlignment="Top" Spin="Spin_OnSpin">
+                    <TextBox x:Name="ThetaPidMiTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+                </xctk:ButtonSpinner>
+
+                <Label x:Name="AlphaPidLabel" Content="Alpha :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="137,-26,0,0"/>
+                <Label x:Name="AlphaPidPLabel" Content="P :" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="100,0,0,0"/>
+                <Label x:Name="AlphaPidILabel" Content="I :" HorizontalAlignment="Left" Margin="100,28,0,0" VerticalAlignment="Top"/>
+                <Label x:Name="AlphaPidDLabel" Content="D :" HorizontalAlignment="Left" Margin="100,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.026,-1.308"/>
+                <Label x:Name="AlphaPidMiLabel" Content="MI :" HorizontalAlignment="Left" Margin="100,84,0,0" VerticalAlignment="Top"/>
+                <xctk:ButtonSpinner HorizontalAlignment="Left" Margin="128,0,0,0" VerticalAlignment="Top" Spin="Spin_OnSpin">
+                    <TextBox x:Name="AlphaPidPTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+                </xctk:ButtonSpinner>
+                <xctk:ButtonSpinner HorizontalAlignment="Left" Margin="128,28,0,0" VerticalAlignment="Top" Spin="Spin_OnSpin">
+                    <TextBox x:Name="AlphaPidITextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="44"/>
+                </xctk:ButtonSpinner>
+                <xctk:ButtonSpinner HorizontalAlignment="Left" Margin="128,56,0,0" VerticalAlignment="Top" Spin="Spin_OnSpin"> 
+                    <TextBox x:Name="AlphaPidDTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="43"/>
+                </xctk:ButtonSpinner>
+                <xctk:ButtonSpinner HorizontalAlignment="Left" Margin="128,84,0,0" VerticalAlignment="Top" Spin="Spin_OnSpin">
+                    <TextBox x:Name="AlphaPidMiTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="43"/>
+                </xctk:ButtonSpinner>
+
+                <Button x:Name="ReadButton" Content="Read" HorizontalAlignment="Left" Margin="22,115,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="WriteButton"  Content="Write" HorizontalAlignment="Left" Margin="120,115,0,0" VerticalAlignment="Top" Width="75"/>
+            </Grid>
+        </GroupBox>
+    </Grid>
+</UserControl>

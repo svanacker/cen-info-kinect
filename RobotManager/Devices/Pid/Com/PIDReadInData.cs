@@ -10,15 +10,15 @@ namespace Org.Cen.Devices.Pid.Com
 
         public const string HEADER = "q";
 
-        private PIDData data;
+        private PidData data;
 
-        public PIDReadInData(PIDData data)
+        public PIDReadInData(PidData data)
             : base()
         {
             this.data = data;
         }
 
-        public PIDData getData()
+        public PidData getData()
         {
             return data;
         }

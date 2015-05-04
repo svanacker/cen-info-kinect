@@ -105,6 +105,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\PidParametersUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -115,6 +119,9 @@
     </Compile>
     <Compile Include="Controls\InputHistory.cs" />
     <Compile Include="Controls\InputHistoryItem.cs" />
+    <Compile Include="Controls\PidParametersUserControl.xaml.cs">
+      <DependentUpon>PidParametersUserControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
@@ -152,6 +159,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Pages\NavigationControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Pages\PidAllParametersControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -200,6 +211,9 @@
     </Compile>
     <Compile Include="Pages\NavigationControl.xaml.cs">
       <DependentUpon>NavigationControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\PidAllParametersControl.xaml.cs">
+      <DependentUpon>PidAllParametersControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PIDGraphControl.xaml.cs">
       <DependentUpon>PIDGraphControl.xaml</DependentUpon>

@@ -16,21 +16,6 @@
         // TODO : transform in private
         public StringBuilder receivedData = new StringBuilder();
 
-        /*
-        public ConsoleControl Console { get; set; }
-        public ConfigurationControl Configuration { get; set; }
-        public EepromControl Eeprom { get; set; }
-        public EndDetectionParametersControl EndDetectionParameters { get; set; }
-        public MatchControl Match { get; set; }
-        public MotionGraphControl MotionGraph { get; set; }
-        public MotionParametersControl MotionParameters { get; set; }
-        public PIDGraphControl PIDGraph { get; set; }
-        public PositionControl Position { get; set; }
-        public RawDataControl RawData { get; set; }
-        public RunControl Run { get; set; }
-        public GameBoardControl GameBoard { get; set; }
-        */
-
         public MainWindow()
         {
             InitializeComponent();

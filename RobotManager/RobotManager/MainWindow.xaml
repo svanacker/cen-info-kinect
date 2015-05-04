@@ -1,9 +1,8 @@
 ﻿<Window x:Name="Main_Window" x:Class="UartWPFTest.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        xmlns:oxy="http://oxyplot.org/wpf"
         xmlns:pages="clr-namespace:Org.Cen.RobotManager.Pages"
-        Title="MainWindow" Height="484" Width="775" Loaded="Window_Loaded">
+        Title="MainWindow" Height="600" Width="800" Loaded="Window_Loaded">
     <Grid Background="#E5E5E5E5">
         <ComboBox x:Name="COMComboBox" HorizontalAlignment="Left" Margin="536,20,0,0" VerticalAlignment="Top" Width="139" SelectionChanged="COMComboBox_SelectionChanged"/>
         <Button x:Name="LoadListButton" Content="Refresh" HorizontalAlignment="Left" Margin="682,20,0,0" VerticalAlignment="Top" Width="75" Click="LoadListButton_Click"/>
@@ -21,11 +20,14 @@
             <TabItem x:Name="RunTabItem" Header="Run">
                 <pages:RunControl x:Name="Run"/>
             </TabItem>
-            <TabItem x:Name="MotionParametersTabItem" Header="Motion Params">
+            <TabItem x:Name="MotionParametersTabItem" Header="Motion Params" Height="23" VerticalAlignment="Bottom">
                 <pages:MotionParametersControl x:Name="MotionParameters"/>
             </TabItem>
+            <TabItem x:Name="PidAllParametersTabItem" Header="PID Parameters">
+                <pages:PidAllParametersControl x:Name="PidAllParameters"/>
+            </TabItem>
             <TabItem x:Name="PidGraphTabItem" Header="PID Graph">
-                <pages:PIDGraphControl x:Name="PIDGraph" Margin="0, 0, 0, 0"/>
+                <pages:PIDGraphControl x:Name="PIDGraph"/>
             </TabItem>
             <TabItem x:Name="MotionGraphTabItem" Header="Motion Graph">
                 <pages:MotionGraphControl x:Name="MotionGraph"/>

@@ -10,7 +10,7 @@
     <Grid x:Name="PIDGraphGrid" Background="#FFE5E5E5">
         <Button x:Name="LaunchAnalysisBackwardButton" Content="Analysis - Backward" HorizontalAlignment="Center" Margin="42,10,399,0" VerticalAlignment="Top" Width="125" Click="LaunchAnalysisButton_Click" Grid.Column="2"/>
         <Button x:Name="LaunchAnalysisForwardButton" Content="Analysis - Forward" HorizontalAlignment="Center" Margin="262,10,151,0" VerticalAlignment="Top" Width="153" Click="LaunchAnalysisButton_Click" Grid.Column="2"/>
-        <oxy:PlotView x:Name="PIDGraph" Title="{Binding Title}" Margin="0,40,0,0" Initialized="PIDGraph_Initialized">
+        <oxy:PlotView x:Name="PIDGraph" Title="{Binding Title}" Margin="0,40,0,0" RenderTransformOrigin="0.497,0.354" Initialized="PIDGraph_Initialized">
             <oxy:PlotView.Series>
                 <oxy:LineSeries ItemsSource="{Binding Points}" Title="u"/>
                 <oxy:LineSeries ItemsSource="{Binding Points}" Title="error"/>

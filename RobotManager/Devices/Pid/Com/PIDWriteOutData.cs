@@ -1,10 +1,8 @@
-
 namespace Org.Cen.Devices.Pid.Com
 {
     using Devices.Pid;
     using Org.Cen.Com.Out;
     using Org.Cen.Com.Utils;
-
 
     /**
      * The encapsulation of the data which must be sent to change the PID.
@@ -29,30 +27,20 @@ namespace Org.Cen.Devices.Pid.Com
         /** Change all PID index in one Time. */
         protected const int ALL_PID_INDEX = -1;
 
-        protected PIDData data;
+        public int Index { get; private set; }
 
-        private int index;
+        public PidData Data { get; private set; }
 
-        /**
-     * Constructor
-     * 
-     * @param index
-     *            the index of the PID
-     * 
-     * @param thetaData
-     *            the data of the PID
-     */
-
-        public PIDWriteOutData(int index, PIDData data)
+        public PIDWriteOutData(int index, PidData data)
             : base()
         {
-            this.index = index;
-            this.data = data;
+            this.Index = index;
+            this.Data = data;
         }
 
         public override string getArguments()
         {
-            return PIDEngineToData(data);
+            return PidEngineToData(Data);
         }
 
         public override string getHeader()
@@ -60,23 +48,15 @@ namespace Org.Cen.Devices.Pid.Com
             return HEADER;
         }
 
-        /**
-     * Transform the PIDEngine data to a string with hexadecimal Value
-     * 
-     * @param engineData
-     *            the data which must be converted
-     * @return
-     */
-
-        protected string PIDEngineToData(PIDData engineData)
+        protected string PidEngineToData(PidData engineData)
         {
-            string indexString = ComDataUtils.format(index, 2);
+            string indexString = ComDataUtils.format(Index, 2);
             string pString = ComDataUtils.format(engineData.P, 2);
             string iString = ComDataUtils.format(engineData.I, 2);
             string dString = ComDataUtils.format(engineData.D, 2);
             string maxIString = ComDataUtils.format(engineData.MaxI, 2);
 
-            return indexString + pString + iString + dString + maxIString;
+            return indexString + "-" + pString + "-" + iString + "-" + dString + "-" + maxIString;
         }
     }
 }
