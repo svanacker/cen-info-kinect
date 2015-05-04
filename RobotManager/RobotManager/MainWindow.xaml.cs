@@ -19,6 +19,18 @@
         public IRemoteCommunicationManager CommunicationManager { get; private set; }
 
         public Process motorBoardProcess;
+        public ConsolePage Console { get; set; }
+        public ConfigurationPage Configuration { get; set; }
+        public EepromPage Eeprom { get; set; }
+        public EndDetectionParametersPage EndDetectionParameters { get; set; }
+        public MatchPage Match { get; set; }
+        public MotionGraphPage MotionGraph { get; set; }
+        public MotionParametersPage MotionParameters { get; set; }
+        public PIDGraphPage PIDGraph { get; set; }
+        public PositionPage Position { get; set; }
+        public RawDataPage RawData { get; set; }
+        public RunPage Run { get; set; }
+        public MiscPage Misc { get; set; }
 
         public MainWindow()
         {
