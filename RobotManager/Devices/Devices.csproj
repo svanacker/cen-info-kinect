@@ -57,7 +57,9 @@
     <Compile Include="Navigation\PathData.cs" />
     <Compile Include="Navigation\PathDataList.cs" />
     <Compile Include="Pid\Com\PidDebugOutData.cs" />
+    <Compile Include="Pid\Com\PIDReadInDataDecoder.cs" />
     <Compile Include="Pid\InstructionType.cs" />
+    <Compile Include="Pid\PidType.cs" />
     <Compile Include="Robot\End\Com\EndMatchReadTimeLeftOutData.cs" />
     <Compile Include="Robot\End\Com\EndMatchReadTimeLeftInData.cs" />
     <Compile Include="Robot\End\Com\EndMatchReadTimeLeftInDataDecoder.cs" />

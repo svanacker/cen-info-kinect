@@ -2,30 +2,27 @@ namespace Org.Cen.Devices.Pid.Com
 {
     using Cen.Com.In;
 
-    /**
-     * Encapsulation of the message corresponding to the read of PIDData.
-     */
+    ///
+    /// Encapsulation of the message corresponding to the read of PIDData.
+    /// 
     public class PIDReadInData : InData
     {
+        public const string HEADER = "pr";
 
-        public const string HEADER = "q";
+        public int Index { get; private set; }
 
-        private PidData data;
+        public PidData Data { get; private set; }
 
-        public PIDReadInData(PidData data)
+        public PIDReadInData(int index, PidData data)
             : base()
         {
-            this.data = data;
-        }
-
-        public PidData getData()
-        {
-            return data;
+            Index = index;
+            this.Data = data;
         }
 
         public override string ToString()
         {
-            return GetType().Name.ToString() + "{data=" + data + "}";
+            return GetType().Name.ToString() + "{index=" + Index + "data=" + Data + "}";
         }
     }
 }

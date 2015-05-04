@@ -3,6 +3,7 @@
 namespace Org.Cen.RobotManager.Pages
 {
     using System.Windows;
+    using UartWPFTest;
 
     /// <summary>
     /// Interaction logic for PidAllParametersControl.xaml
@@ -12,6 +13,11 @@ namespace Org.Cen.RobotManager.Pages
         public PidAllParametersControl()
         {
             InitializeComponent();
+        }
+
+        private MainWindow Main
+        {
+            get { return (MainWindow)Window.GetWindow(this); }
         }
 
         private void PidAllParametersControlGrid_OnLoaded(object sender, RoutedEventArgs e)

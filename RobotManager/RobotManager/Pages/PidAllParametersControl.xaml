@@ -7,10 +7,10 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="800">
     <Grid Loaded="PidAllParametersControlGrid_OnLoaded">
-        <controls:PidParametersUserControl x:Name="PidTypeGoControl" HorizontalAlignment="Left"/>
-        <controls:PidParametersUserControl x:Name="PidTypeRotateControl" HorizontalAlignment="Center"/>
-        <controls:PidParametersUserControl x:Name="PidTypeMaintainControl" HorizontalAlignment="Right"/>
-        <controls:PidParametersUserControl x:Name="PidTypeAdjustDirection" HorizontalAlignment="Left" VerticalAlignment="Bottom"/>
-        <controls:PidParametersUserControl x:Name="PidTypeFinalApproach" HorizontalAlignment="Center" VerticalAlignment="Bottom"/>
+        <controls:PidParametersUserControl x:Name="PidTypeGoControl" HorizontalAlignment="Left" Type="Go"/>
+        <controls:PidParametersUserControl x:Name="PidTypeRotateControl" HorizontalAlignment="Center" Type="Rotate"/>
+        <controls:PidParametersUserControl x:Name="PidTypeMaintainControl" HorizontalAlignment="Right" Type="MaintainPosition"/>
+        <controls:PidParametersUserControl x:Name="PidTypeAdjustDirection" HorizontalAlignment="Left" VerticalAlignment="Bottom" Type="AdjustDirection"/>
+        <controls:PidParametersUserControl x:Name="PidTypeFinalApproach" HorizontalAlignment="Center" VerticalAlignment="Bottom" Type="FinalApproach"/>
     </Grid>
 </UserControl>

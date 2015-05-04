@@ -45,8 +45,8 @@
                     <TextBox x:Name="AlphaPidMiTextBox" HorizontalAlignment="Left" Height="23" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="43"/>
                 </xctk:ButtonSpinner>
 
-                <Button x:Name="ReadButton" Content="Read" HorizontalAlignment="Left" Margin="22,115,0,0" VerticalAlignment="Top" Width="75"/>
-                <Button x:Name="WriteButton"  Content="Write" HorizontalAlignment="Left" Margin="120,115,0,0" VerticalAlignment="Top" Width="75"/>
+                <Button x:Name="ReadButton" Content="Read" HorizontalAlignment="Left" Margin="22,115,0,0" VerticalAlignment="Top" Width="75" Click="ReadButton_Click"/>
+                <Button x:Name="WriteButton"  Content="Write" HorizontalAlignment="Left" Margin="120,115,0,0" VerticalAlignment="Top" Width="75" Click="WriteButton_Click"/>
             </Grid>
         </GroupBox>
     </Grid>

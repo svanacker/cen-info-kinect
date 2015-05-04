@@ -17,20 +17,9 @@ namespace Org.Cen.Devices.Pid.Com
     //        })
     public class PIDReadOutData : OutData
     {
+        private const string HEADER = "pr";
 
-        private const string HEADER = "q";
-
-        protected int index;
-
-        public int getIndex()
-        {
-            return index;
-        }
-
-        public void setIndex(int index)
-        {
-            this.index = index;
-        }
+        public int Index { get; private set; }
 
         /**
          * Constructor.
@@ -38,12 +27,12 @@ namespace Org.Cen.Devices.Pid.Com
         public PIDReadOutData(int index)
             : base()
         {
-            this.index = index;
+            this.Index = index;
         }
 
         public override string getArguments()
         {
-            string result = ComDataUtils.format(index, 2);
+            string result = ComDataUtils.format(Index, 2);
             return result;
         }
 
@@ -52,6 +41,4 @@ namespace Org.Cen.Devices.Pid.Com
             return HEADER;
         }
     }
-
-
 }

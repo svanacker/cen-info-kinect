@@ -18,7 +18,7 @@
             Assert.AreEqual(0xA8, motionParameterData.SpeedMax);
             Assert.AreEqual(0x0081, motionParameterData.Time1);
             Assert.AreEqual(0x0082, motionParameterData.Time2);
-            Assert.AreEqual(0x013, motionParameterData.Time3);
+            Assert.AreEqual(0x0103, motionParameterData.Time3);
             Assert.AreEqual(0x2ACA, motionParameterData.Position1);
             Assert.AreEqual(0x2ACB, motionParameterData.Position2);
             // TODO : 3 more informations

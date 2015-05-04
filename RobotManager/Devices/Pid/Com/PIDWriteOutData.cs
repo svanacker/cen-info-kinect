@@ -22,7 +22,7 @@ namespace Org.Cen.Devices.Pid.Com
     {
 
         /** The Header which is used by the message to change the PID. */
-        public const string HEADER = "p";
+        public const string HEADER = "pw";
 
         /** Change all PID index in one Time. */
         protected const int ALL_PID_INDEX = -1;
