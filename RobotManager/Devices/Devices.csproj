@@ -44,6 +44,7 @@
     <Compile Include="Eeprom\Com\EepromReadInDataDecoder.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteOutData.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionReadOutData.cs" />
+    <Compile Include="Motion\Simple\Com\MotionCalibrationOutData.cs" />
     <Compile Include="Motion\Simple\Com\MotionSimpleStopOutData.cs" />
     <Compile Include="Motion\Simple\Com\MotionSimpleBackwardOutData.cs" />
     <Compile Include="Motion\Simple\Com\MotionSimpleRotateRightOutData.cs" />

@@ -171,5 +171,18 @@
             MotorLeftSlider_ValueChanged(null, null);
             MotorRightSlider_ValueChanged(null, null);
         }
+
+        private void CalibrateButton_Click(object sender, RoutedEventArgs e)
+        {
+            MotionCalibrationOutData.CalibrationDirection direction = MotionCalibrationOutData.CalibrationDirection.Left;
+            if (CalibrationRight.IsChecked != null && CalibrationRight.IsChecked.GetValueOrDefault())
+            {
+                direction = MotionCalibrationOutData.CalibrationDirection.Rigth;
+            }
+            int calibrationLength = int.Parse(CalibrationLengthTextBox.Text);
+            MotionCalibrationOutData outData = new MotionCalibrationOutData(direction, calibrationLength);
+            string message = outData.getMessage();
+            Main.SendText(message);
+        }
     }
 }
