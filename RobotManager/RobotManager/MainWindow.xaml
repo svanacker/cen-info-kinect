@@ -9,7 +9,7 @@
         <DockPanel HorizontalAlignment="Left" Height="100" LastChildFill="False" Margin="91,147,0,0" VerticalAlignment="Top" Width="100"/>
         <TabControl x:Name="MainTabControl" HorizontalAlignment="Stretch" Margin="25,60,10,10" VerticalAlignment="Stretch">
             <TabItem x:Name="ConsoleTablItem" Header="Console">
-                <pages:ConsoleControl x:Name="Console"/>
+                <pages:ConsoleControl x:Name="ConsolePage"/>
             </TabItem>
             <TabItem x:Name="PositionTabItem" Header="Position">
                 <pages:PositionControl x:Name="Position"/>
@@ -50,5 +50,7 @@
         </TabControl>
         <Image x:Name="LogoImage" HorizontalAlignment="Left" Height="55" Margin="25,0,0,0" VerticalAlignment="Top" Width="202" Source="Resources/Images/logo.png"/>
         <Label Content="COM : " HorizontalAlignment="Left" Margin="474,20,0,0" VerticalAlignment="Top"/>
+        <Button x:Name="SimulationButton" Content="Create Server Pipe" HorizontalAlignment="Left" Margin="826,4,0,0" VerticalAlignment="Top" Width="113" Click="SimulationButton_Click"/>
+        <Button x:Name="ClientPipeCreate" Content="Create Client Pipe" HorizontalAlignment="Left" Margin="826,31,0,0" VerticalAlignment="Top" Width="113" Click="ClientPipeCreate_Click"/>
     </Grid>
 </Window>

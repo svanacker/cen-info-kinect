@@ -47,6 +47,7 @@
     <Compile Include="Documentation\DeviceMethodType.cs" />
     <Compile Include="Documentation\DeviceParameterAttribute.cs" />
     <Compile Include="Documentation\DeviceParameterType.cs" />
+    <Compile Include="I2C\I2CManager.cs" />
     <Compile Include="IComDebugListener.cs" />
     <Compile Include="IComService.cs" />
     <Compile Include="IComServiceListener.cs" />

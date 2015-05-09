@@ -1,10 +1,19 @@
 ﻿namespace UartWPFTest
 {
+    using System;
+    using System.IO;
+    using System.IO.Pipes;
+    using System.Linq;
+    using System.Security.Principal;
     using System.Text;
+    using System.Threading;
+    using System.Threading.Tasks;
     using System.Windows;
     using System.Windows.Controls;
 
     using System.IO.Ports;
+    using System.Security.AccessControl;
+    using Org.Cen.Communication.I2c;
 
     /// <summary>
     /// Interaction logic for MainWindow.xaml
@@ -15,6 +24,9 @@
 
         // TODO : transform in private
         public StringBuilder receivedData = new StringBuilder();
+
+        private StreamWriter pipeWriter;
+        private StreamReader pipeReader;
 
         public MainWindow()
         {
@@ -33,13 +45,25 @@
 
         public void SendText(string text)
         {
+            if (pipeWriter != null)
+            {
+                try
+                {
+                    I2CManager.SendToSlave(pipeWriter, text);
+                }
+                catch (Exception ex)
+                {
+                    ConsolePage.ContentTextBox.Text += ex.StackTrace.ToString();
+                }
+            }
+
             if (currentPort == null)
             {
                 return;
             }
             currentPort.WriteLine(text);
             // we add some line return so that we can read easily the return of the remote board
-            Console.ContentTextBox.Text += text + "\n";
+            ConsolePage.ContentTextBox.Text += text + "\n";
         }
 
         private void LoadPortNames()
@@ -94,12 +118,66 @@
             receivedData.Append(newText);
 
             // Update the contentText
-            Console.UpdateInDataText(newText);
+            ConsolePage.UpdateInDataText(newText);
         }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadPortNames();
+        }
+
+        private void SimulationButton_Click(object sender, RoutedEventArgs e)
+        {
+            // Server
+            Task.Run(() =>
+            {
+                var sid = new SecurityIdentifier(WellKnownSidType.WorldSid, null);
+                var rule = new PipeAccessRule(sid, PipeAccessRights.ReadWrite, AccessControlType.Allow);
+                var sec = new PipeSecurity();
+                sec.AddAccessRule(rule);
+
+                var server = new NamedPipeServerStream("mainBoardPipe", PipeDirection.InOut, 1,
+                    PipeTransmissionMode.Byte, PipeOptions.None, 100, 100, sec);
+                server.WaitForConnection();
+                pipeWriter = new StreamWriter(server, Encoding.ASCII);
+                pipeWriter.AutoFlush = true;
+
+            });
+        }
+
+        private void ClientPipeCreate_Click(object sender, RoutedEventArgs e)
+        {
+            // Client
+            Task.Run(() =>
+            {
+                var client = new NamedPipeClientStream("motorBoardPipe");
+                client.Connect();
+                pipeReader = new StreamReader(client, Encoding.ASCII);
+                while (true)
+                {
+                    char value = (char) pipeReader.Read();
+                    // No Control Char
+                    if (!Char.IsControl(value))
+                    {
+                        receivedData.Append(value);
+                        ConsolePage.UpdateInDataText(Char.ToString(value));
+                    }
+                }
+            });
+
+            // Server
+            Task.Run(() =>
+            {
+
+                while (true)
+                {
+                    if (pipeReader != null)
+                    {
+                        Thread.Sleep(10);
+                        I2CManager.AskToSendDataFromSlaveToMaster(pipeWriter);
+                    }
+                }
+            });
         }
     }
 }
