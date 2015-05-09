@@ -6,6 +6,10 @@
     {
         public static void SendToSlave(StreamWriter slaveStreamWriter, string text)
         {
+            if (slaveStreamWriter == null)
+            {
+                return;
+            }
             // STX
             slaveStreamWriter.Write('\x02');
 
@@ -22,6 +26,10 @@
 
         public static void AskToSendDataFromSlaveToMaster(StreamWriter slaveStreamWriter)
         {
+            if (slaveStreamWriter == null)
+            {
+                return;
+            }
             // STX
             slaveStreamWriter.Write('\x02');
 

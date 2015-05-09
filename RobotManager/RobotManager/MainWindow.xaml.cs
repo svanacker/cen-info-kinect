@@ -1,6 +1,7 @@
 ﻿namespace UartWPFTest
 {
     using System;
+    using System.Diagnostics;
     using System.IO;
     using System.IO.Pipes;
     using System.Linq;
@@ -27,6 +28,8 @@
 
         private StreamWriter pipeWriter;
         private StreamReader pipeReader;
+
+        public Process motorBoardProcess;
 
         public MainWindow()
         {
@@ -126,7 +129,7 @@
             LoadPortNames();
         }
 
-        private void SimulationButton_Click(object sender, RoutedEventArgs e)
+        private void CreateMotorBoardServerPipe()
         {
             // Server
             Task.Run(() =>
@@ -145,7 +148,7 @@
             });
         }
 
-        private void ClientPipeCreate_Click(object sender, RoutedEventArgs e)
+        private void CreateMotorBoardClientPipe()
         {
             // Client
             Task.Run(() =>
@@ -155,7 +158,11 @@
                 pipeReader = new StreamReader(client, Encoding.ASCII);
                 while (true)
                 {
-                    char value = (char) pipeReader.Read();
+                    if (pipeReader == null)
+                    {
+                        break;
+                    }
+                    char value = (char)pipeReader.Read();
                     // No Control Char
                     if (!Char.IsControl(value))
                     {
@@ -178,6 +185,37 @@
                     }
                 }
             });
+        }
+
+        private void AttachToRobotSimulatorButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreateMotorBoardServerPipe();
+            CreateMotorBoardClientPipe();
+        }
+
+        private void CreateAndAttachToRobotSimulatorButton_Click(object sender, RoutedEventArgs e)
+        {
+            CreateMotorBoardServerPipe();
+            CreateMotorBoardClientPipe();
+            // Create Process
+            motorBoardProcess = Process.Start(@"C:\dev\git\cen-electronic\Debug\cen-electronic-console.exe", "motorBoardPc single");
+        }
+
+        private void Main_Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (motorBoardProcess != null)
+            {
+                if (pipeReader != null)
+                {
+                    pipeReader.Dispose();
+                    pipeReader = null;
+                }
+                if (pipeWriter != null) { 
+                    pipeWriter.Dispose();
+                    pipeWriter = null;
+                }
+                motorBoardProcess.Kill();
+            }
         }
     }
 }
