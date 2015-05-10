@@ -1,7 +1,7 @@
 namespace Org.Cen.Devices.Pid.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
     using global::System.Text;
 
 
@@ -39,16 +39,16 @@ namespace Org.Cen.Devices.Pid.Com
         public override string getArguments()
         {
             StringBuilder result = new StringBuilder();
-            result.Append(ComDataUtils
+            result.Append(DataParserUtils
                     .format((int)Parameter.AbsDeltaPositionIntegralFactorThreshold, 2));
             result.Append("-");
-            result.Append(ComDataUtils.format((int)Parameter.MaxUIntegralFactorThreshold, 2));
+            result.Append(DataParserUtils.format((int)Parameter.MaxUIntegralFactorThreshold, 2));
             result.Append("-");
-            result.Append(ComDataUtils.format((int)Parameter.MaxUIntegralConstantThreshold, 2));
+            result.Append(DataParserUtils.format((int)Parameter.MaxUIntegralConstantThreshold, 2));
             result.Append("-");
-            result.Append(ComDataUtils.format(Parameter.TimeRangeAnalysis, 2));
+            result.Append(DataParserUtils.format(Parameter.TimeRangeAnalysis, 2));
             result.Append("-");
-            result.Append(ComDataUtils.format(Parameter.NoAnalysisAtStartupTime, 2));
+            result.Append(DataParserUtils.format(Parameter.NoAnalysisAtStartupTime, 2));
 
             return result.ToString();
         }

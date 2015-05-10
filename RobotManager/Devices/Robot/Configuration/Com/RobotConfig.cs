@@ -1,6 +1,6 @@
 ﻿namespace Org.Cen.Devices.Robot.Configuration.Com
 {
-    using Cen.Com.Utils;
+    using Communication.Utils;
 
     public class RobotConfig
     {
@@ -77,7 +77,7 @@
 
         public override string ToString()
         {
-            return typeof(RobotConfigReadInData) + "{value=" + ComDataUtils.format(Value, 4) + "}";
+            return typeof(RobotConfigReadInData) + "{value=" + DataParserUtils.format(Value, 4) + "}";
         }
     }
 }

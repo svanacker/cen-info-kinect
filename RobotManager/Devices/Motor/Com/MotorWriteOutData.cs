@@ -1,7 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motor.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
 
     ///
     /// The encapsulation of the data which must be sent to rotate the motor.
@@ -25,8 +25,8 @@
 
         public override string getArguments()
         {
-            string hexLeftValue = ComDataUtils.format(LeftValue, 2);
-            string hexRightValue = ComDataUtils.format(RightValue, 2);
+            string hexLeftValue = DataParserUtils.format(LeftValue, 2);
+            string hexRightValue = DataParserUtils.format(RightValue, 2);
             string result = hexLeftValue + hexRightValue;
             return result;
         }

@@ -1,7 +1,7 @@
 ﻿namespace Org.Cen.Devices.Robot.Start.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
     using global::System.Text;
 
     public class StartMatchWritePositionOutData : OutData
@@ -26,22 +26,22 @@
             StringBuilder result = new StringBuilder();
 
             // !p01-1234-5678-9012
-            string sideAsString = ComDataUtils.format((int)(Side), 2);
+            string sideAsString = DataParserUtils.format((int)(Side), 2);
             result.Append(sideAsString);
             result.Append("-");
 
             // x
-            string xAsString = ComDataUtils.format(X, 4);
+            string xAsString = DataParserUtils.format(X, 4);
             result.Append(xAsString);
             result.Append("-");
 
             // y
-            string yAsString = ComDataUtils.format(Y, 4);
+            string yAsString = DataParserUtils.format(Y, 4);
             result.Append(yAsString);
             result.Append("-");
 
             // angleDeciDegree
-            string angleDeciDegreeAsString = ComDataUtils.format(AngleDeciDegree, 4);
+            string angleDeciDegreeAsString = DataParserUtils.format(AngleDeciDegree, 4);
             result.Append(angleDeciDegreeAsString);
 
             return result.ToString();

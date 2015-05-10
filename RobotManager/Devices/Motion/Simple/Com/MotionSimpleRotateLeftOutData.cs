@@ -1,7 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motion.Simple.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
 
     ///
     /// The encapsulation of the data which must be sent to rotate.
@@ -23,7 +23,7 @@
 
         public override string getArguments()
         {
-            string result = ComDataUtils.format(LeftAngleDeciDegree, 4);
+            string result = DataParserUtils.format(LeftAngleDeciDegree, 4);
             return result;
         }
 

@@ -1,4 +1,4 @@
-namespace Org.Cen.Com.Utils
+namespace Org.Cen.Communication.Utils
 {
     using System;
     using System.Globalization;
@@ -6,8 +6,7 @@ namespace Org.Cen.Com.Utils
     /**
      * Set of function useful to read and write data.
      */
-
-    public class ComDataUtils
+    public class DataParserUtils
     {
 
         /**

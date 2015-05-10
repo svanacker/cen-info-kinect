@@ -1,7 +1,7 @@
 namespace Org.Cen.Devices.Pid.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
 
     /**
      * Encapsulation of the message which ask for PID.
@@ -32,7 +32,7 @@ namespace Org.Cen.Devices.Pid.Com
 
         public override string getArguments()
         {
-            string result = ComDataUtils.format(Index, 2);
+            string result = DataParserUtils.format(Index, 2);
             return result;
         }
 

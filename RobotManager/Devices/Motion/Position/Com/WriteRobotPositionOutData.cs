@@ -1,7 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
     using Org.Com.Devices.Motion.Position;
 
     public class WriteRobotPositionOutData : OutData
@@ -17,8 +17,8 @@
 
         public override string getArguments()
         {
-            return ComDataUtils.format(Position.X, 4) + "-" + ComDataUtils.format(Position.Y, 4) + "-" +
-                   ComDataUtils.format(Position.DeciDegreeAngle, 4);
+            return DataParserUtils.format(Position.X, 4) + "-" + DataParserUtils.format(Position.Y, 4) + "-" +
+                   DataParserUtils.format(Position.DeciDegreeAngle, 4);
         }
 
         public override string getHeader()

@@ -1,7 +1,7 @@
 ﻿namespace Org.Cen.Devices.Pid.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
 
     public class PidDebugOutData : OutData
     {
@@ -20,7 +20,7 @@
 
         public override string getArguments()
         {
-            string result = ComDataUtils.format((int)InstructionType, 2);
+            string result = DataParserUtils.format((int)InstructionType, 2);
             return result;
         }
 

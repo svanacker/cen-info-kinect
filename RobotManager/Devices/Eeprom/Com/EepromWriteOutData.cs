@@ -1,7 +1,7 @@
 namespace Org.Cen.Devices.Eeprom.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
     using global::System.Text;
 
     ///
@@ -28,9 +28,9 @@ namespace Org.Cen.Devices.Eeprom.Com
         {
             StringBuilder result = new StringBuilder();
 
-            result.Append(ComDataUtils.format(Address, 4));
+            result.Append(DataParserUtils.format(Address, 4));
             result.Append("-");
-            result.Append(ComDataUtils.format(Value, 2));
+            result.Append(DataParserUtils.format(Value, 2));
 
             return result.ToString();
         }

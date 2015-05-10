@@ -1,7 +1,7 @@
 namespace Org.Cen.Devices.Robot.Configuration.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
 
     public class RobotConfigWriteOutData : OutData
     {
@@ -17,7 +17,7 @@ namespace Org.Cen.Devices.Robot.Configuration.Com
 
         public override string getMessage()
         {
-            return ComDataUtils.format(RobotConfig.Value, 2);
+            return DataParserUtils.format(RobotConfig.Value, 2);
         }
 
         public override string getHeader()

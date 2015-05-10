@@ -1,7 +1,7 @@
 ﻿namespace Org.Cen.Devices.Robot.Start.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
 
     public class StartMatchReadPositionOutData : OutData
     {
@@ -17,7 +17,7 @@
 
         public override string getArguments()
         {
-            string result = ComDataUtils.format((int)(Side), 2);
+            string result = DataParserUtils.format((int)(Side), 2);
             return result;
         }
 

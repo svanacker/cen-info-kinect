@@ -1,7 +1,6 @@
 namespace Org.Cen.Devices.Robot.Configuration.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
 
     public class RobotConfigReadOutData : OutData
     {

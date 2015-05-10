@@ -1,8 +1,8 @@
 namespace Org.Cen.Devices.Pid.Com
 {
+    using Communication.Utils;
     using Devices.Pid;
     using Org.Cen.Com.Out;
-    using Org.Cen.Com.Utils;
 
     /**
      * The encapsulation of the data which must be sent to change the PID.
@@ -50,11 +50,11 @@ namespace Org.Cen.Devices.Pid.Com
 
         protected string PidEngineToData(PidData engineData)
         {
-            string indexString = ComDataUtils.format(Index, 2);
-            string pString = ComDataUtils.format(engineData.P, 2);
-            string iString = ComDataUtils.format(engineData.I, 2);
-            string dString = ComDataUtils.format(engineData.D, 2);
-            string maxIString = ComDataUtils.format(engineData.MaxI, 2);
+            string indexString = DataParserUtils.format(Index, 2);
+            string pString = DataParserUtils.format(engineData.P, 2);
+            string iString = DataParserUtils.format(engineData.I, 2);
+            string dString = DataParserUtils.format(engineData.D, 2);
+            string maxIString = DataParserUtils.format(engineData.MaxI, 2);
 
             return indexString + "-" + pString + "-" + iString + "-" + dString + "-" + maxIString;
         }

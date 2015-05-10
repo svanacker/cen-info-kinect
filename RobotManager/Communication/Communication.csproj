@@ -47,7 +47,9 @@
     <Compile Include="Documentation\DeviceMethodType.cs" />
     <Compile Include="Documentation\DeviceParameterAttribute.cs" />
     <Compile Include="Documentation\DeviceParameterType.cs" />
-    <Compile Include="I2C\I2CManager.cs" />
+    <Compile Include="Utils\ComManager.cs" />
+    <Compile Include="Utils\IRemoteDataReceivedEvent.cs" />
+    <Compile Include="Utils\Simulation\I2CSimulationManager.cs" />
     <Compile Include="IComDebugListener.cs" />
     <Compile Include="IComService.cs" />
     <Compile Include="IComServiceListener.cs" />
@@ -62,8 +64,12 @@
     <Compile Include="Out\OutDataSender.cs" />
     <Compile Include="Out\RawOutData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\IRemoteCommunicationManager.cs" />
     <Compile Include="UntypedInData.cs" />
-    <Compile Include="Utils\ComDataUtils.cs" />
+    <Compile Include="Utils\DataParserUtils.cs" />
+    <Compile Include="Utils\Simulation\PipeClientManager.cs" />
+    <Compile Include="Utils\Simulation\PipeServerManager.cs" />
+    <Compile Include="Utils\Simulation\SerialSimulationManager.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

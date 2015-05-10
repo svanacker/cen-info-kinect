@@ -1,7 +1,7 @@
 namespace Org.Cen.Devices.Eeprom.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
 
     ///
     /// The encapsulation of the data which must be sent to read the eeprom.
@@ -23,7 +23,7 @@ namespace Org.Cen.Devices.Eeprom.Com
 
         public override string getArguments()
         {
-            return ComDataUtils.format(Address, 4);
+            return DataParserUtils.format(Address, 4);
         }
 
         public override string getHeader()

@@ -1,7 +1,7 @@
 ﻿namespace Org.Cen.Devices.Robot.Start.Com
 {
     using Cen.Com.Out;
-    using Cen.Com.Utils;
+    using Communication.Utils;
 
     public class StartMatchSetStartedOutData : OutData
     {
@@ -16,7 +16,7 @@
 
         public override string getArguments()
         {
-            return ComDataUtils.format(Started);
+            return DataParserUtils.format(Started);
         }
 
         public override string getHeader()
