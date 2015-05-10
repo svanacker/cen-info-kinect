@@ -91,7 +91,10 @@
             CommunicationManager = new SerialSimulationManager(this);
 
             // Create Process
-            motorBoardProcess = Process.Start(@"C:\dev\git\cen-electronic\Debug\cen-electronic-console.exe", "motorBoardPc single");
+            string fileName = @"C:\dev\git\cen-electronic\Debug\cen-electronic-console.exe";
+            // string option = "motorBoardPc single";
+            string option = "mainBoardPc robotManager";
+            motorBoardProcess = Process.Start(fileName, option);
         }
 
         private void Main_Window_Closing(object sender, System.ComponentModel.CancelEventArgs e)
