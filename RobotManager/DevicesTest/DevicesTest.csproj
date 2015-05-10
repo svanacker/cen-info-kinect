@@ -55,6 +55,7 @@
     <Compile Include="Pid\Com\ReadMotionParameterInDataDecoderTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Robot\Configuration\Com\RobotConfigReadInDataDecoderTest.cs" />
+    <Compile Include="Robot\Configuration\Com\RobotConfigWriteOutDataTest.cs" />
     <Compile Include="Robot\End\Com\EndMatchReadTimeLeftInDataDecoderTest.cs" />
     <Compile Include="Robot\Start\Com\StartMatchWritePositionOutDataTest.cs" />
     <Compile Include="Robot\Start\Com\StartMatchReadPositionInDataDecoderTest.cs" />

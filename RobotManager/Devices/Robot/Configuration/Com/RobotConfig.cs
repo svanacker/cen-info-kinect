@@ -14,70 +14,118 @@
         private const int CONFIG_SPEED_VERY_LOW_MASK = 0x0200;
         private const int CONFIG_SPEED_ULTRA_LOW_MASK = 0x0400;
 
-        public int Value { get; set; }
+        public int Config { get; set; }
 
         public int StrategyIndex
         {
-            get { return Value & CONFIG_STRATEGY_MASK; }
-            set { Value |= CONFIG_STRATEGY_MASK; }
+            get { return Config & CONFIG_STRATEGY_MASK; }
+            set { Config |= CONFIG_STRATEGY_MASK & value; }
         }
 
         public bool DontWaitForStart
         {
-            get { return (Value & CONFIG_DONT_WAIT_FOR_START) != 0; }
-            set { Value |= CONFIG_DONT_WAIT_FOR_START; }
+            get { return (Config & CONFIG_DONT_WAIT_FOR_START) != 0; }
+            set
+            {
+                if (value)
+                {
+                    Config |= (CONFIG_DONT_WAIT_FOR_START);
+                }
+            }
         }
 
         public bool DoNotEnd
         {
-            get { return (Value & CONFIG_DO_NOT_END) != 0; }
-            set { Value |= CONFIG_DO_NOT_END; }
+            get { return (Config & CONFIG_DO_NOT_END) != 0; }
+            set
+            {
+                if (value)
+                {
+                    Config |= CONFIG_DO_NOT_END;
+                }
+            }
         }
 
         public bool RollingTest
         {
-            get { return (Value & CONFIG_ROLLING_TEST_MASK) != 0; }
-            set { Value |= CONFIG_ROLLING_TEST_MASK; }
+            get { return (Config & CONFIG_ROLLING_TEST_MASK) != 0; }
+            set
+            {
+                if (value)
+                {
+                    Config |= CONFIG_ROLLING_TEST_MASK;
+                }
+            }
         }
 
         public bool DontUseBeacon
         {
-            get { return (Value & CONFIG_DONT_USE_BEACON_MASK) != 0; }
-            set { Value |= CONFIG_DONT_USE_BEACON_MASK; }
+            get { return (Config & CONFIG_DONT_USE_BEACON_MASK) != 0; }
+            set
+            {
+                if (value)
+                {
+                    Config |= CONFIG_DONT_USE_BEACON_MASK;
+                }
+            }
         }
 
         public bool UseGreen
         {
-            get { return (Value & CONFIG_COLOR_GREEN_MASK) != 0; }
-            set { Value |= CONFIG_COLOR_GREEN_MASK; }
+            get { return (Config & CONFIG_COLOR_GREEN_MASK) != 0; }
+            set
+            {
+                if (value)
+                {
+                    Config |= CONFIG_COLOR_GREEN_MASK;
+                }
+            }
         }
 
         public bool SpeedLow
         {
-            get { return (Value & CONFIG_SPEED_LOW_MASK) != 0; }
-            set { Value |= CONFIG_SPEED_LOW_MASK; }
+            get { return (Config & CONFIG_SPEED_LOW_MASK) != 0; }
+            set
+            {
+                if (value)
+                {
+                    Config |= CONFIG_SPEED_LOW_MASK;
+                }
+            }
         }
 
         public bool SpeedVeryLow
         {
-            get { return (Value & CONFIG_SPEED_VERY_LOW_MASK) != 0; }
-            set { Value |= CONFIG_SPEED_VERY_LOW_MASK; }
+            get { return (Config & CONFIG_SPEED_VERY_LOW_MASK) != 0; }
+            set
+            {
+                if (value)
+                {
+                    Config |= CONFIG_SPEED_VERY_LOW_MASK;
+                }
+            }
         }
 
         public bool SpeedUltraLow
         {
-            get { return (Value & CONFIG_SPEED_ULTRA_LOW_MASK) != 0; }
-            set { Value |= CONFIG_SPEED_ULTRA_LOW_MASK; }
+            get { return (Config & CONFIG_SPEED_ULTRA_LOW_MASK) != 0; }
+            set
+            {
+                if (value)
+                {
+                    Config |= CONFIG_SPEED_ULTRA_LOW_MASK;
+                }
+            }
         }
 
-        public RobotConfig(int value)
+        public RobotConfig(int config)
         {
-            this.Value = value;
+            this.Config = config;
         }
 
         public override string ToString()
         {
-            return typeof(RobotConfigReadInData) + "{value=" + DataParserUtils.format(Value, 4) + "}";
+            return typeof(RobotConfigReadInData) + "{config=" + DataParserUtils.format(Config, 4) + "}";
         }
     }
 }

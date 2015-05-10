@@ -15,9 +15,9 @@ namespace Org.Cen.Devices.Robot.Configuration.Com
             this.RobotConfig = robotConfig;
         }
 
-        public override string getMessage()
+        public override string getArguments()
         {
-            return DataParserUtils.format(RobotConfig.Value, 2);
+            return DataParserUtils.format(RobotConfig.Config, 4);
         }
 
         public override string getHeader()

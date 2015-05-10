@@ -10,7 +10,6 @@
         {
             string expected = "!P01-1234-5678-9012";
 
-            StartMatchReadPositionInDataDecoder decoder = new StartMatchReadPositionInDataDecoder();
             StartMatchWritePositionOutData outData = new StartMatchWritePositionOutData(MatchSide.Green, 0x1234, 0x5678,
                 0x9012);
 
