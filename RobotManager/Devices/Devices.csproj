@@ -39,9 +39,14 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Eeprom\Com\EepromWriteOutData.cs" />
-    <Compile Include="Eeprom\Com\EepromReadInData.cs" />
-    <Compile Include="Eeprom\Com\EepromReadInDataDecoder.cs" />
+    <Compile Include="Eeprom\Com\EepromReadByteBlockInDataDecoder.cs" />
+    <Compile Include="Eeprom\Com\EepromReadByteBlockInData.cs" />
+    <Compile Include="Eeprom\Com\EepromWriteByteBlockInData.cs" />
+    <Compile Include="Eeprom\Com\EepromWriteByteBlockOutData.cs" />
+    <Compile Include="Eeprom\Com\EepromReadByteBlockOutData.cs" />
+    <Compile Include="Eeprom\Com\EepromWriteByteOutData.cs" />
+    <Compile Include="Eeprom\Com\EepromReadByteInData.cs" />
+    <Compile Include="Eeprom\Com\EepromReadByteInDataDecoder.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteOutData.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionReadOutData.cs" />
     <Compile Include="Motion\Simple\Com\MotionCalibrationOutData.cs" />

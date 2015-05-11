@@ -7,7 +7,7 @@ namespace Org.Cen.Devices.Eeprom.Com
     ///
     /// The encapsulation of the data which must be sent to write the eeprom.
     ///
-    public class EepromWriteOutData : OutData
+    public class EepromWriteByteOutData : OutData
     {
         /// <summary>
         /// The Header which is used by the message to read a char from the eeprom.
@@ -17,7 +17,7 @@ namespace Org.Cen.Devices.Eeprom.Com
         public int Address { get; private set; }
         public int Value { get; private set; }
 
-        public EepromWriteOutData(int address, int value)
+        public EepromWriteByteOutData(int address, int value)
             : base()
         {
             Address = address;

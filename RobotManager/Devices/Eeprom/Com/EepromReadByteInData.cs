@@ -2,13 +2,13 @@
 {
     using Cen.Com.In;
 
-    public class EepromReadInData : InData
+    public class EepromReadByteInData : InData
     {
         public const string HEADER = "Er";
 
         public int Value { get; private set; }
 
-        public EepromReadInData(int value)
+        public EepromReadByteInData(int value)
             : base()
         {
             this.Value = value;

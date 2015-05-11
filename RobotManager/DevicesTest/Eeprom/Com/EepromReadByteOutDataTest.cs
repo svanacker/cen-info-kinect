@@ -2,7 +2,7 @@
 {
     using NUnit.Framework;
 
-    public class EepromReadOutDataTest
+    public class EepromReadByteOutDataTest
     {
         [Test]
         public void ShouldGenerateEepromReadByteOutData()

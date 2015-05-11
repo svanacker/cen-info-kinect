@@ -2,14 +2,14 @@
 {
     using NUnit.Framework;
 
-    public class EepromWriteOutDataTest
+    public class EepromWriteByteOutDataTest
     {
         [Test]
-        public void ShouldGenerateEepromWriteOutData()
+        public void ShouldGenerateEepromWriteByteOutData()
         {
             string expected = "Ew1234-56";
 
-            EepromWriteOutData outData = new EepromWriteOutData(0x1234, 0x56);
+            EepromWriteByteOutData outData = new EepromWriteByteOutData(0x1234, 0x56);
             string actual = outData.getMessage();
             Assert.AreEqual(expected, actual);
         }

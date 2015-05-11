@@ -5,11 +5,11 @@
     using global::System.Collections.Generic;
     using global::System.Globalization;
 
-    public class EepromReadInDataDecoder : IInDataDecoder
+    public class EepromReadByteInDataDecoder : IInDataDecoder
     {
         public ISet<string> GetHandledHeaders()
         {
-            return new HashSet<string>() { EepromReadInData.HEADER };
+            return new HashSet<string>() { EepromReadByteInData.HEADER };
         }
 
         public InData Decode(string data)
@@ -18,7 +18,7 @@
             string valueAsString = data.Substring(3, 2);
             int value = int.Parse(valueAsString, NumberStyles.HexNumber);
 
-            EepromReadInData result = new EepromReadInData(value);
+            EepromReadByteInData result = new EepromReadByteInData(value);
 
             return result;
         }

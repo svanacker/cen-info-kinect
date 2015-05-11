@@ -42,9 +42,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Eeprom\Com\EepromWriteOutDataTest.cs" />
-    <Compile Include="Eeprom\Com\EepromReadOutDataTest.cs" />
-    <Compile Include="Eeprom\Com\EepromReadInDataDecoderTest.cs" />
+    <Compile Include="Eeprom\Com\EepromReadByteBlockInDataDecoderTest.cs" />
+    <Compile Include="Eeprom\Com\EepromWriteByteBlockOutDataTest.cs" />
+    <Compile Include="Eeprom\Com\EepromReadByteBlockOutDataTest.cs" />
+    <Compile Include="Eeprom\Com\EepromWriteByteOutDataTest.cs" />
+    <Compile Include="Eeprom\Com\EepromReadByteOutDataTest.cs" />
+    <Compile Include="Eeprom\Com\EepromReadByteInDataDecoderTest.cs" />
     <Compile Include="Motion\Position\Com\ReadRobotPositionInDataDecoderTest.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionDataInDecoderTest.cs" />
     <Compile Include="Motion\Simple\Com\MotionCalibrationOutDataTest.cs" />

@@ -4,25 +4,43 @@
       xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       mc:Ignorable="d" 
-      d:DesignHeight="300" Width="408.955">
+      d:DesignHeight="480" Width="680">
 
     <Grid x:Name="EepromGrid" Background="#FFE5E5E5" Margin="0,0,-167,0">
-        <DataGrid x:Name="EepromDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,47,0,0" Width="224" >
+        <DataGrid x:Name="EepromDataGrid" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,47,0,0" Width="348" Height="383" >
             <DataGrid.Columns>
+                <DataGridTextColumn Binding="{Binding Index}" Header="Index"/>
                 <DataGridTextColumn Binding="{Binding Data00}" Header="0x00"/>
-                <DataGridTextColumn Binding="{Binding Data00}" Header="0x02"/>
-                <DataGridTextColumn Binding="{Binding Data00}" Header="0x04"/>
-                <DataGridTextColumn Binding="{Binding Data00}" Header="0x06"/>
-                <DataGridTextColumn Binding="{Binding Data00}" Header="0x08"/>
-                <DataGridTextColumn Binding="{Binding Data00}" Header="0x10"/>
+                <DataGridTextColumn Binding="{Binding Data01}" Header="0x01"/>
+                <DataGridTextColumn Binding="{Binding Data02}" Header="0x02"/>
+                <DataGridTextColumn Binding="{Binding Data03}" Header="0x03"/>
+                <DataGridTextColumn Binding="{Binding Data04}" Header="0x04"/>
+                <DataGridTextColumn Binding="{Binding Data05}" Header="0x05"/>
+                <DataGridTextColumn Binding="{Binding Data06}" Header="0x06"/>
+                <DataGridTextColumn Binding="{Binding Data07}" Header="0x07"/>
             </DataGrid.Columns>
         </DataGrid>
-        <Button x:Name="ReadEepromButton" Content="Read" HorizontalAlignment="Left" Margin="229,80,0,0" VerticalAlignment="Top" Width="75" Click="ReadEepromButton_Click"/>
-        <Button x:Name="ReadEepromBlockButton" Content="Read Block" HorizontalAlignment="Left" Margin="67,182,0,0" VerticalAlignment="Top" Width="75"/>
-        <Button x:Name="WriteEepromButton" Content="Write" HorizontalAlignment="Left" Margin="310,80,0,0" VerticalAlignment="Top" Width="75" Click="WriteEepromButton_Click"/>
-        <TextBox x:Name="EepromDataTextBox" HorizontalAlignment="Left" Height="23" Margin="310,42,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.571,0.565"/>
+        <Button x:Name="ReadByteEepromButton" Content="Read" HorizontalAlignment="Left" Margin="361,80,0,0" VerticalAlignment="Top" Width="93" Click="ReadByteEepromButton_Click"/>
+        <Button x:Name="ReadByteBlockEepromButton" Content="Read Block" HorizontalAlignment="Left" Margin="361,126,0,0" VerticalAlignment="Top" Width="93" Click="ReadByteBlockEepromButton_Click"/>
+        <Button x:Name="WriteByteEepromButton" Content="Write" HorizontalAlignment="Left" Margin="459,80,0,0" VerticalAlignment="Top" Width="107" Click="WriteByteEepromButton_Click" RenderTransformOrigin="-0.067,0.591"/>
+        <Button x:Name="WriteByteBlockEepromButton" Content="Write Block" HorizontalAlignment="Left" Margin="459,126,0,0" VerticalAlignment="Top" Width="107" Click="WriteByteBlockEepromButton_Click"/>
+
+        <TextBox x:Name="EepromDataTextBox" HorizontalAlignment="Left" Height="23" Margin="428,39,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="70" RenderTransformOrigin="0.571,0.565"/>
         <TextBox x:Name="EepromAddressTextBox" HorizontalAlignment="Left" Height="23" Margin="92,10,0,0" TextWrapping="Wrap" Text="0" VerticalAlignment="Top" Width="70"/>
         <Label Content="Address : " HorizontalAlignment="Left" Margin="11,10,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.237,-3.308" Width="57"/>
-        <Label Content="Value : " HorizontalAlignment="Left" Margin="229,39,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.237,-3.308" Width="76"/>
+        <Label Content="Value : " HorizontalAlignment="Left" Margin="361,39,0,0" VerticalAlignment="Top" RenderTransformOrigin="-1.237,-3.308" Width="76"/>
+        <Button x:Name="ReadAllEepromButton" Content="Read Eeprom" HorizontalAlignment="Left" Margin="361,170,0,0" VerticalAlignment="Top" Width="93" Click="ReadAllEepromButton_Click"/>
+        <TextBox x:Name="EepromFilePathTextBox" HorizontalAlignment="Left" Height="23" Margin="132,447,0,0" TextWrapping="Wrap" Text="C:/PERSO/RobotManagerEeprom.hex" VerticalAlignment="Top" Width="345"/>
+        <Label Content="Path of EepromFile : " HorizontalAlignment="Left" Margin="10,447,0,0" VerticalAlignment="Top" Width="117"/>
+        <Button x:Name="EepromDumpButton" Content="Dump Eeprom To File" HorizontalAlignment="Left" Margin="494,447,0,0" VerticalAlignment="Top" Width="131" Click="EepromDumpButton_Click"/>
+        <Button x:Name="EepromLoadButton" Content="Load File Into Eeprom !" HorizontalAlignment="Left" Margin="706,447,0,0" VerticalAlignment="Top" Width="131" Click="EepromLoadButton_Click">
+            <Button.Background>
+                <LinearGradientBrush EndPoint="0,1" StartPoint="0,0">
+                    <GradientStop Color="#FFDDDDDD" Offset="0"/>
+                    <GradientStop Color="Red" Offset="1"/>
+                </LinearGradientBrush>
+            </Button.Background>
+        </Button>
+
     </Grid>
 </UserControl>
