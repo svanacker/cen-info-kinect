@@ -57,6 +57,14 @@
                 motionParameterData.Position2 -= 0x1000000;
             }
 
+            // Position3
+            string position3AsString = data.Substring(44, 6);
+            motionParameterData.NextPosition = int.Parse(position3AsString, NumberStyles.HexNumber);
+            if (motionParameterData.NextPosition > 0x7FFFFF)
+            {
+                motionParameterData.NextPosition -= 0x1000000;
+            }
+
             // TODO : 3 parameters more !
             // profileType;
             // motionParameterType
@@ -68,7 +76,7 @@
 
         public int GetDataLength(string header)
         {
-            return 49;
+            return 56;
         }
     }
 }

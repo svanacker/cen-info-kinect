@@ -46,6 +46,7 @@ namespace Org.Cen.RobotManager.Pages
             ThetaTime3Label.Content = motionParameterData.Time3;
             ThetaPosition1Label.Content = motionParameterData.Position1;
             ThetaPosition2Label.Content = motionParameterData.Position2;
+            ThetaNextPositionLabel.Content = motionParameterData.NextPosition;
 
             // Draw graph
             PlotModel motionModel = Main.MotionGraph.MotionGraph.Model;
@@ -78,7 +79,7 @@ namespace Org.Cen.RobotManager.Pages
             AlphaTime3Label.Content = motionParameterData.Time3;
             AlphaPosition1Label.Content = motionParameterData.Position1;
             AlphaPosition2Label.Content = motionParameterData.Position2;
-
+            AlphaNextPositionLabel.Content = motionParameterData.NextPosition;
         }
     }
 }

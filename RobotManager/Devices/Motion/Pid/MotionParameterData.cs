@@ -10,6 +10,7 @@
         public int Time3 { get; set; }
         public int Position1 { get; set; }
         public int Position2 { get; set; }
+        public int NextPosition { get; set; }
 
         // TODO
         // profileType

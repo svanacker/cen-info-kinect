@@ -16,6 +16,7 @@
         <Label x:Name="Time3Label" Content="Time 3 : " Height="25" Width="100" Margin="35,190,587,0" VerticalAlignment="Top"/>
         <Label x:Name="Position1Label" Content="Position 1 : " Height="25" Width="100" Margin="35,220,587,0" VerticalAlignment="Top"/>
         <Label x:Name="Position2Label" Content="Position 2 : " Height="25" Width="100" Margin="35,250,587,0" VerticalAlignment="Top"/>
+        <Label x:Name="NextPositionLabel" Content="Next Position : " Height="25" Width="100" Margin="35,280,565,0" VerticalAlignment="Top"/>
 
         <Label x:Name="ThetaAccelerationLabel" Height="25" Width="100" Margin="150,40,472,0" VerticalAlignment="Top" Content="N/A"/>
         <Label x:Name="ThetaSpeedLabel" Content="N/A" Height="25" Width="100" Margin="150,70,472,0" VerticalAlignment="Top"/>
@@ -25,6 +26,7 @@
         <Label x:Name="ThetaTime3Label" Content="N/A" Height="25" Width="100" Margin="150,190,472,0" VerticalAlignment="Top"/>
         <Label x:Name="ThetaPosition1Label" Content="N/A" Height="25" Width="100" Margin="150,220,472,0" VerticalAlignment="Top"/>
         <Label x:Name="ThetaPosition2Label" Content="N/A" Height="25" Width="100" Margin="150,250,472,0" VerticalAlignment="Top"/>
+        <Label x:Name="ThetaNextPositionLabel" Content="N/A" Height="25" Width="100" Margin="150,280,472,0" VerticalAlignment="Top"/>
 
         <Label x:Name="AlphaAccelerationLabel" Height="25" Width="100" Margin="300,40,322,0" VerticalAlignment="Top" Content="N/A"/>
         <Label x:Name="AlphaSpeedLabel" Content="N/A" Height="25" Width="100" Margin="300,70,322,0" VerticalAlignment="Top"/>
@@ -34,10 +36,11 @@
         <Label x:Name="AlphaTime3Label" Content="N/A" Height="25" Width="100" Margin="300,190,322,0" VerticalAlignment="Top"/>
         <Label x:Name="AlphaPosition1Label" Content="N/A" Height="25" Width="100" Margin="300,220,322,0" VerticalAlignment="Top"/>
         <Label x:Name="AlphaPosition2Label" Content="N/A" Height="25" Width="100" Margin="300,250,322,0" VerticalAlignment="Top"/>
+        <Label x:Name="AlphaNextPositionLabel" Content="N/A" Height="25" Width="100" Margin="300,280,322,0" VerticalAlignment="Top"/>
 
 
         <Label x:Name="ThetaLabel" Content="Theta : " Height="25" Width="100" Margin="168,10,454,0" VerticalAlignment="Top" FontWeight="Bold"/>
         <Label x:Name="AlphaLabel" Content="Alpha: " Height="25" Width="100" Margin="300,10,300,0" VerticalAlignment="Top" FontWeight="Bold"/>
-        <Button x:Name="ReadMotionParameterButton" Content="Read Motion Parameter" HorizontalAlignment="Center" Margin="220,290,263,0" VerticalAlignment="Top" Width="180" Click="ReadMotionParameterButton_Click"/>
+        <Button x:Name="ReadMotionParameterButton" Content="Read Motion Parameter" HorizontalAlignment="Center" Margin="240,327,280,0" VerticalAlignment="Top" Width="180" Click="ReadMotionParameterButton_Click"/>
     </Grid>
 </UserControl>

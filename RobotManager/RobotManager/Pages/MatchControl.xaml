@@ -29,7 +29,7 @@
             <Grid Margin="0,0,-21,0">
                 <Label Content="TIME LEFT : " HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
                 <Label x:Name="TimeLeftValueLabel" Content="N/A" HorizontalAlignment="Left" Margin="100,10,0,0" VerticalAlignment="Top"/>
-                <Button x:Name="TimeLeftReadButton" Content="Read" HorizontalAlignment="Left" Margin="151,14,0,0" VerticalAlignment="Top" Width="75" Click="TimeLeftReadButton_Click"/>
+                <Button x:Name="TimeLeftReadButton" Content="Read" HorizontalAlignment="Left" Margin="148,14,0,0" VerticalAlignment="Top" Width="75" Click="TimeLeftReadButton_Click"/>
             </Grid>
         </GroupBox>
         <Button x:Name="SimulateMatchStartButton" Content="Simulate Match Start" HorizontalAlignment="Left" Margin="42,274,0,0" VerticalAlignment="Top" Width="145" Click="SimulateMatchStartButton_Click"/>

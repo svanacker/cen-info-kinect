@@ -16,6 +16,9 @@
         {
             PIDDebugData pidData = new PIDDebugData();
 
+            // InstructionType
+            string instructionTypeAsString = data.Substring(3, 2);
+            pidData.InstructionType = int.Parse(instructionTypeAsString, NumberStyles.HexNumber);
 
             // pidTime 
             string pidTimeAsString = data.Substring(6, 4);
@@ -24,6 +27,10 @@
             {
                 pidData.PidTime -= 65536;
             }
+
+            // PidType
+            string pidTypeAsString = data.Substring(11, 2);
+            pidData.PidType = int.Parse(pidTypeAsString, NumberStyles.HexNumber);
 
             // normalPosition
             string normalPositionAsString = data.Substring(14, 6);
@@ -68,7 +75,7 @@
 
         public int GetDataLength(string header)
         {
-            return 49;
+            return 52;
         }
     }
 }
