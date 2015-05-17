@@ -21,5 +21,19 @@
             Assert.AreEqual(0x28, minute);
             Assert.AreEqual(0x05, second);
         }
+
+        [Test]
+        public void ShouldWriteClockHourOutDataGetMessage()
+        {
+            int hourExpected = 0x14;
+            int minuteExpected = 0x28;
+            int secondExpected = 0x05;
+
+
+            ClockWriteHourOutData writeData = new ClockWriteHourOutData(hourExpected, minuteExpected, secondExpected);
+            string result = writeData.getMessage();
+
+            Assert.AreEqual("kh142805", result);
+        }
     }
 }
