@@ -23,9 +23,6 @@
             <TabItem x:Name="MotionParametersTabItem" Header="Motion Params" Height="23" VerticalAlignment="Bottom">
                 <pages:MotionParametersControl x:Name="MotionParameters"/>
             </TabItem>
-            <TabItem x:Name="PidAllParametersTabItem" Header="PID Parameters">
-                <pages:PidAllParametersControl x:Name="PidAllParameters"/>
-            </TabItem>
             <TabItem x:Name="PidGraphTabItem" Header="PID Graph">
                 <pages:PIDGraphControl x:Name="PIDGraph"/>
             </TabItem>
@@ -48,7 +45,7 @@
                 <pages:NavigationControl x:Name="Navigation"/>
             </TabItem>
             <TabItem Header="Miscellaneous">
-                <Frame x:Name="MiscFrame" Source="/Pages/MiscPage.xaml"/>
+                <pages:MiscControl x:Name="Misc"/>
             </TabItem>
         </TabControl>
         <Image x:Name="LogoImage" HorizontalAlignment="Left" Height="55" Margin="25,0,0,0" VerticalAlignment="Top" Width="202" Source="Resources/Images/logo.png"/>

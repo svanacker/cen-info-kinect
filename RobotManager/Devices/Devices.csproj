@@ -53,9 +53,6 @@
     <Compile Include="Clock\Com\ClockReadOutData.cs" />
     <Compile Include="Clock\Com\ClockWriteDateOutData.cs" />
     <Compile Include="Clock\Com\ClockWriteHourOutData.cs" />
-    <Compile Include="Eeprom\Com\EepromReadOutData.cs" />
-    <Compile Include="Eeprom\Com\EepromReadInData.cs" />
-    <Compile Include="Eeprom\Com\EepromReadInDataDecoder.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteOutData.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionReadOutData.cs" />
     <Compile Include="Motion\Simple\Com\MotionCalibrationOutData.cs" />

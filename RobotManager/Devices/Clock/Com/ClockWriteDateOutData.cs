@@ -1,7 +1,8 @@
-﻿namespace Org.Cen.Devices.Clock.Com
+﻿using Org.Cen.Com.Out;
+using Org.Cen.Communication.Utils;
+
+namespace Org.Cen.Devices.Clock.Com
 {
-    using Cen.Com.Out;
-    using Cen.Com.Utils;
     public class ClockWriteDateOutData : OutData
     {
         public const string HEADER = "kd";
@@ -19,9 +20,9 @@
 
         public override string getArguments()
         {
-            string hexDayValue = ComDataUtils.format(this.Clock.Day, 2);
-            string hexMonthValue = ComDataUtils.format(this.Clock.Month, 2);
-            string hexYearValue = ComDataUtils.format(this.Clock.Year, 2);
+            string hexDayValue = DataParserUtils.format(this.Clock.Day, 2);
+            string hexMonthValue = DataParserUtils.format(this.Clock.Month, 2);
+            string hexYearValue = DataParserUtils.format(this.Clock.Year, 2);
             string result = hexDayValue + hexMonthValue + hexYearValue;
             return result;
         }

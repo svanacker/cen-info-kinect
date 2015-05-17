@@ -165,12 +165,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Pages\PidAllParametersControl.xaml">
-    <Page Include="Pages\MiscPage.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-    <Page Include="Pages\PIDGraphPage.xaml">
+    <Page Include="Pages\MiscControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -220,19 +215,11 @@
     <Compile Include="Pages\NavigationControl.xaml.cs">
       <DependentUpon>NavigationControl.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PidAllParametersControl.xaml.cs">
-      <DependentUpon>PidAllParametersControl.xaml</DependentUpon>
-    </Compile>
-<<<<<<< HEAD
     <Compile Include="Pages\PIDGraphControl.xaml.cs">
       <DependentUpon>PIDGraphControl.xaml</DependentUpon>
-=======
-    <Compile Include="Pages\MiscPage.xaml.cs">
-      <DependentUpon>MiscPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Pages\PIDGraphPage.xaml.cs">
-      <DependentUpon>PIDGraphPage.xaml</DependentUpon>
->>>>>>> clock done without graphics interface
+    <Compile Include="Pages\MiscControl.xaml.cs">
+      <DependentUpon>MiscControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\PositionControl.xaml.cs">
       <DependentUpon>PositionControl.xaml</DependentUpon>

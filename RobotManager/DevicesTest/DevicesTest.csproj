@@ -53,9 +53,6 @@
     <Compile Include="Clock\Com\ClockWriteDateOutDataTest.cs" />
     <Compile Include="Clock\Com\ClockReadOutDataTest.cs" />
     <Compile Include="Clock\Com\ClockWriteHourOutDataTest.cs" />
-    <Compile Include="Eeprom\Com\EepromWriteOutDataTest.cs" />
-    <Compile Include="Eeprom\Com\EepromReadOutDataTest.cs" />
-    <Compile Include="Eeprom\Com\EepromReadInDataDecoderTest.cs" />
     <Compile Include="Clock\Com\ClockDataReadInDecoderTest.cs" />
     <Compile Include="Motion\Position\Com\ReadRobotPositionInDataDecoderTest.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionDataInDecoderTest.cs" />
