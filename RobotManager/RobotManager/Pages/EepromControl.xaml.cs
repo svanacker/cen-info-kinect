@@ -73,7 +73,8 @@
 
             if (updateGrid)
             {
-                EepromDataItem dataItem = new EepromDataItem(address, inData.Values);
+                bool hexa = EepromHexCheckBox.IsChecked.GetValueOrDefault(true);
+                EepromDataItem dataItem = new EepromDataItem(hexa, address, inData.Values);
                 Main.Eeprom.EepromDataGrid.Items.Add(dataItem);
             }
 
@@ -127,7 +128,7 @@
             {
                 for (int address = 0; address < EepromReadByteBlockInData.EEPROM_DEVICE_MAX_ADDRESS; address += width)
                 {
-                    EepromReadByteBlockInData inData = ReadBlockEeprom(address, false);
+                    EepromReadByteBlockInData inData = ReadBlockEeprom(address, true);
                     streamWriter.Write(inData.Values);
                 }
             }
@@ -157,6 +158,21 @@
                     Main.receivedData.Remove(0, responseLength);
                 }
             }
+        }
+
+        private void EepromHexCheckBox_Checked(object sender, RoutedEventArgs e)
+        {
+            if (Main == null || Main.Eeprom == null)
+            {
+                return;
+            }
+            bool hexa = EepromHexCheckBox.IsChecked.GetValueOrDefault(true);
+            foreach (var item in Main.Eeprom.EepromDataGrid.Items)
+            {
+                EepromDataItem dataItem = (EepromDataItem) item;
+                dataItem.Hexa = hexa;
+            }
+            Main.Eeprom.EepromDataGrid.UpdateLayout();
         }
     }
 }

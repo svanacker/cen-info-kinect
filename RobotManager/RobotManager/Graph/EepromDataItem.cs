@@ -1,46 +1,79 @@
 ﻿namespace Org.Cen.RobotManager.Graph
 {
+    using Communication.Utils;
+
     public class EepromDataItem
     {
-        public int Index { get; set; }
+        public bool Hexa { get; set; }
 
-        public char[] Values { get; set; }
-
-        public char Data00
+        public int Index
         {
-            get { return Values[0]; }
-        }
-        public char Data01
-        {
-            get { return Values[1]; }
-        }
-        public char Data02
-        {
-            get { return Values[2]; }
-        }
-        public char Data03
-        {
-            get { return Values[3]; }
-        }
-        public char Data04
-        {
-            get { return Values[4]; }
-        }
-        public char Data05
-        {
-            get { return Values[5]; }
-        }
-        public char Data06
-        {
-            get { return Values[6]; }
-        }
-        public char Data07
-        {
-            get { return Values[7]; }
+            get;
+            private set;
         }
 
-        public EepromDataItem(int index, char[] values)
+        public string FormattedIndex
         {
+            get { return GetFormattedValue(Index, 4); }
+        }
+
+        public char[] Values { get; private set; }
+
+        private string GetFormattedValue(int value, int length)
+        {
+            if (Hexa)
+            {
+                return DataParserUtils.format(value, length);
+            }
+            else
+            {
+                return value.ToString();
+            }
+        }
+
+        public string Data00
+        {
+            get { return GetFormattedValue(Values[0], 2); }
+        }
+
+        public string Data01
+        {
+            get { return GetFormattedValue(Values[1], 2); }
+        }
+
+        public string Data02
+        {
+            get { return GetFormattedValue(Values[2], 2); }
+        }
+
+        public string Data03
+        {
+            get { return GetFormattedValue(Values[3], 2); }
+        }
+
+        public string Data04
+        {
+            get { return GetFormattedValue(Values[4], 2); }
+        }
+
+        public string Data05
+        {
+            get { return GetFormattedValue(Values[5], 2); }
+        }
+
+        public string Data06
+        {
+            get { return GetFormattedValue(Values[6], 2); }
+        }
+
+        public string Data07
+        {
+            get { return GetFormattedValue(Values[7], 2); }
+        }
+
+        public EepromDataItem(bool hexa, int index, char[] values)
+        {
+            Hexa = hexa;
             Index = index;
             Values = values;
         }
