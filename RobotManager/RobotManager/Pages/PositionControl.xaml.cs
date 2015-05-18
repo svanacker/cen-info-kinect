@@ -69,11 +69,15 @@
             RobotPositionReadInData inData = (RobotPositionReadInData)decoder.Decode(Main.receivedData.ToString());
             RobotPosition robotPosition = inData.Position;
 
+            UpdateTextBoxRobotPosition(robotPosition);
+            UpdateCanvasRobotPosition(robotPosition);
+        }
+
+        public void UpdateTextBoxRobotPosition(RobotPosition robotPosition)
+        {
             XTextBox.Text = robotPosition.X.ToString();
             YTextBox.Text = robotPosition.Y.ToString();
             AngleTextBox.Text = robotPosition.DeciDegreeAngle.ToString();
-
-            UpdateCanvasRobotPosition(robotPosition);
         }
 
         public void UpdateCanvasRobotPosition(RobotPosition robotPosition)
@@ -93,6 +97,21 @@
             WriteRobotPositionOutData outData = new WriteRobotPositionOutData(robotPosition);
             Main.SendText(outData.getMessage());
 
+            UpdateCanvasRobotPosition(robotPosition);
+        }
+
+
+        private void ClearRobotPosition_Click(object sender, RoutedEventArgs e)
+        {
+            RobotPosition robotPosition = new RobotPosition();
+            robotPosition.X = 0;
+            robotPosition.Y = 0;
+            robotPosition.DeciDegreeAngle = 0;
+
+            WriteRobotPositionOutData outData = new WriteRobotPositionOutData(robotPosition);
+            Main.SendText(outData.getMessage());
+
+            UpdateTextBoxRobotPosition(robotPosition);
             UpdateCanvasRobotPosition(robotPosition);
         }
 
@@ -172,5 +191,6 @@
                 }
             }
         }
+
     }
 }

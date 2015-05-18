@@ -10,17 +10,17 @@
 
     <Grid x:Name="PositionGrid"  Background="#FFE5E5E5">
         <pages:GameBoardControl x:Name="GameBoard" Margin="500, 0, 0, 0"/>
-        <GroupBox Header="Coders" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Height="100" Width="256">
+        <GroupBox Header="Coders" HorizontalAlignment="Left" Margin="5,5,0,0" VerticalAlignment="Top" Height="100" Width="279">
             <Grid>
                 <Label x:Name="LeftPositionLabel" Content="Left Position : " HorizontalAlignment="Left" Margin="10,13,0,0" VerticalAlignment="Top" Width="105"/>
                 <Label x:Name="LeftPositionValueLabel" Content="N/A" HorizontalAlignment="Left" Margin="91,14,0,0" VerticalAlignment="Top" Width="105"/>
                 <Label x:Name="RightPositionLabel" Content="Right Position : " HorizontalAlignment="Left" Margin="10,44,0,0" VerticalAlignment="Top" Width="105"/>
                 <Label x:Name="RightPositionValueLabel" Content="N/A" HorizontalAlignment="Left" Margin="91,45,0,0" VerticalAlignment="Top" Width="105"/>
-                <Button x:Name="ReadPositionButton" Content="Read" Width="55" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="187,10,0,0" Click="ReadPositionButton_Click"/>
-                <Button x:Name="ClearPositionButton" Content="Clear" Width="55" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="187,44,0,0" Click="ClearPositionButton_Click"/>
+                <Button x:Name="ReadPositionButton" Content="Read" Width="55" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="212,10,0,0" Click="ReadPositionButton_Click"/>
+                <Button x:Name="ClearPositionButton" Content="Clear" Width="55" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="212,44,0,0" Click="ClearPositionButton_Click"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Absolute Position" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" Height="165" Width="251">
+        <GroupBox Header="Absolute Position" HorizontalAlignment="Left" Margin="10,120,0,0" VerticalAlignment="Top" Height="165" Width="274">
             <Grid>
                 <Label x:Name="XLabel" Content="X (mm): " HorizontalAlignment="Left" Margin="10,11,0,0" VerticalAlignment="Top" Width="105"/>
                 <TextBox x:Name="XTextBox" Margin="115,10,67,110" Height="23" TextWrapping="Wrap" Text="0"/>
@@ -29,8 +29,9 @@
                 <TextBox x:Name="YTextBox" Margin="115,46,67,73" Height="23" TextWrapping="Wrap" Text="0"/>
                 <Label x:Name="AngleLabel" Content="Angle (deci deg) : " HorizontalAlignment="Left" Margin="10,77,0,0" VerticalAlignment="Top" Width="105"/>
                 <TextBox x:Name="AngleTextBox" Margin="115,80,67,40" Height="23" TextWrapping="Wrap" Text="0"/>
-                <Button x:Name="ReadRobotPositionButton" Content="Read" Width="51" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,108,0,0" Click="ReadRobotPositionButton_Click"/>
-                <Button x:Name="WriteRobotPositionButton" Content="Write" Width="58" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="114,108,0,0" Click="WriteRobotPositionButton_Click"/>
+                <Button x:Name="ReadRobotPositionButton" Content="Read" Width="64" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="25,108,0,0" Click="ReadRobotPositionButton_Click"/>
+                <Button x:Name="WriteRobotPositionButton" Content="Write" Width="58" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="115,108,0,0" Click="WriteRobotPositionButton_Click"/>
+                <Button x:Name="ClearRobotPosition" Content="Clear" Width="58" Height="30" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="194,108,0,0" Click="ClearRobotPosition_Click"/>
             </Grid>
         </GroupBox>
         <CheckBox x:Name="ShowPathCheckBox" Content="Show Paths" HorizontalAlignment="Left" Margin="310,25,0,0" VerticalAlignment="Top" Checked="ShowPathCheckBox_Checked" IsChecked="True" Unchecked="ShowPathCheckBox_Checked"/>

@@ -6,29 +6,29 @@
       mc:Ignorable="d"
     Height="342.273" Width="800">
 
-    <Grid x:Name="RunGrid" Background="#FFFFFFFF" Loaded="RunPage_Loaded" Margin="0,0,0,-86">
-        <GroupBox Header="Motion" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="300" Width="352">
+    <Grid x:Name="RunGrid" Background="#FFFFFFFF" Loaded="RunPage_Loaded" Margin="0,0,-313,-179">
+        <GroupBox Header="Motion" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="300" Width="607">
             <Grid>
-                <Slider x:Name="ForwardSlider" HorizontalAlignment="Left" Margin="20,40,0,0" VerticalAlignment="Top" Width="291" TickPlacement="BottomRight" TickFrequency="256" Value="512" Maximum="3000" ValueChanged="ForwardSlider_ValueChanged" SmallChange="10"/>
-                <Button x:Name="ForwardButton" Content="Forward" HorizontalAlignment="Left" Margin="132,13,0,0" VerticalAlignment="Top" Width="75" Click="ForwardButton_Click"/>
-                <Slider x:Name="BackwardSlider" HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top" Width="291" TickPlacement="BottomRight" TickFrequency="256" Value="512" Maximum="3000" ValueChanged="BackwardSlider_ValueChanged"/>
-                <Button x:Name="BackwardButton" Content="Backward" HorizontalAlignment="Left" Margin="132,177,0,0" VerticalAlignment="Top" Width="75" Click="BackwardButton_Click"/>
-                <Slider x:Name="LeftSlider" HorizontalAlignment="Left" Margin="20,81,0,0" VerticalAlignment="Top" Width="143" TickPlacement="BottomRight" TickFrequency="300" Value="300" Maximum="3594" ValueChanged="LeftSlider_ValueChanged" SmallChange="1"/>
+                <Slider x:Name="ForwardSlider" HorizontalAlignment="Left" Margin="20,40,0,0" VerticalAlignment="Top" Width="546" TickPlacement="BottomRight" TickFrequency="10" Value="500" Maximum="2000" ValueChanged="ForwardSlider_ValueChanged" SmallChange="10" LargeChange="100" IsSnapToTickEnabled="True"/>
+                <Button x:Name="ForwardButton" Content="Forward" HorizontalAlignment="Left" Margin="266,14,0,0" VerticalAlignment="Top" Width="75" Click="ForwardButton_Click"/>
+                <Slider x:Name="BackwardSlider" HorizontalAlignment="Left" Margin="20,150,0,0" VerticalAlignment="Top" Width="546" TickPlacement="BottomRight" TickFrequency="10" Value="512" Maximum="2000" ValueChanged="BackwardSlider_ValueChanged" SmallChange="10" LargeChange="100" IsSnapToTickEnabled="True"/>
+                <Button x:Name="BackwardButton" Content="Backward" HorizontalAlignment="Left" Margin="266,172,0,0" VerticalAlignment="Top" Width="75" Click="BackwardButton_Click"/>
+                <Slider x:Name="LeftSlider" HorizontalAlignment="Left" Margin="20,81,0,0" VerticalAlignment="Top" Width="266" TickPlacement="BottomRight" TickFrequency="100" Value="300" Maximum="3600" ValueChanged="LeftSlider_ValueChanged" SmallChange="10" LargeChange="100"/>
                 <Button x:Name="LeftButton" Content="Left" HorizontalAlignment="Left" Margin="20,118,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-6.911,0.409" Click="LeftButton_Click"/>
-                <Label x:Name="ForwardLabel" Content="" HorizontalAlignment="Left" Margin="230,10,0,0" VerticalAlignment="Top" Width="56"/>
-                <Label x:Name="BackwardLabel" Content="" HorizontalAlignment="Left" Margin="255,172,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.714,4.25"/>
-                <Label x:Name="LeftLabel" Content="" HorizontalAlignment="Left" Margin="102,92,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.714,4.25"/>
-                <Slider x:Name="RightSlider" HorizontalAlignment="Left" Margin="168,81,0,0" VerticalAlignment="Top" Width="143" TickPlacement="BottomRight" TickFrequency="300" Value="300" Maximum="3594" ValueChanged="RightSlider_ValueChanged" SmallChange="0"/>
-                <Button x:Name="RightButton" Content="Right" HorizontalAlignment="Left" Margin="266,118,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-6.911,0.409" Click="RightButton_Click"/>
-                <Label x:Name="RightLabel" Content="" HorizontalAlignment="Left" Margin="174,92,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.714,4.25"/>
-                <Button x:Name="StopButton" HorizontalAlignment="Left" Margin="139,212,0,0" VerticalAlignment="Top" Width="64" Height="64" Click="StopButton_Click">
+                <Label x:Name="ForwardLabel" Content="" HorizontalAlignment="Left" Margin="369,14,0,0" VerticalAlignment="Top" Width="56"/>
+                <Label x:Name="BackwardLabel" Content="" HorizontalAlignment="Left" Margin="369,172,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.714,4.25"/>
+                <Label x:Name="LeftLabel" Content="" HorizontalAlignment="Left" Margin="89,114,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.714,4.25"/>
+                <Slider x:Name="RightSlider" HorizontalAlignment="Left" Margin="305,81,0,0" VerticalAlignment="Top" Width="261" TickPlacement="BottomRight" TickFrequency="100" Value="300" Maximum="3600" ValueChanged="RightSlider_ValueChanged" SmallChange="10" LargeChange="100" IsSnapToTickEnabled="True"/>
+                <Button x:Name="RightButton" Content="Right" HorizontalAlignment="Left" Margin="422,118,0,0" VerticalAlignment="Top" Width="45" RenderTransformOrigin="-6.911,0.409" Click="RightButton_Click"/>
+                <Label x:Name="RightLabel" Content="" HorizontalAlignment="Left" Margin="488,114,0,0" VerticalAlignment="Top" Width="56" RenderTransformOrigin="0.714,4.25"/>
+                <Button x:Name="StopButton" HorizontalAlignment="Left" Margin="269,204,0,0" VerticalAlignment="Top" Width="64" Height="64" Click="StopButton_Click">
                     <StackPanel RenderTransformOrigin="-3.431,4.155" >
                         <Image Source="Resources/Images/stop.png" Width="64"/>
                     </StackPanel>
                 </Button>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Motor" HorizontalAlignment="Left" Margin="387,10,0,0" VerticalAlignment="Top" Height="169" Width="403">
+        <GroupBox Header="Motor" HorizontalAlignment="Left" Margin="622,10,0,0" VerticalAlignment="Top" Height="169" Width="403">
             <Grid Height="150" VerticalAlignment="Top">
                 <Slider x:Name="MotorLeftSlider" HorizontalAlignment="Left" Margin="15,41,0,0" VerticalAlignment="Top" Width="135" TickPlacement="BottomRight" TickFrequency="20" Value="40" Maximum="120" SmallChange="1" Minimum="-120" ValueChanged="MotorLeftSlider_ValueChanged"/>
                 <Button x:Name="MotorGoButton" Content="Go" HorizontalAlignment="Left" Margin="42,76,0,0" VerticalAlignment="Top" Width="68" RenderTransformOrigin="-6.911,0.409" Click="MotorGoButton_Click"/>
@@ -45,7 +45,7 @@
                 <CheckBox x:Name="SynchronizeMotorCheckBox" Content="Synchronize Left / Right" Grid.Column="1" HorizontalAlignment="Left" Margin="415,65,0,0" VerticalAlignment="Top" IsChecked="True"/>
             </Grid>
         </GroupBox>
-        <GroupBox Header="Calibration" HorizontalAlignment="Left" Margin="387,184,0,0" VerticalAlignment="Top" Height="114" Width="403">
+        <GroupBox Header="Calibration" HorizontalAlignment="Left" Margin="622,196,0,0" VerticalAlignment="Top" Height="114" Width="403">
             <Grid>
                 <RadioButton x:Name="CalibrationLeft" Content="Left" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" IsChecked="True"/>
                 <RadioButton x:Name="CalibrationRight" Content="Right" HorizontalAlignment="Left" Margin="68,10,0,0" VerticalAlignment="Top" Width="56"/>
