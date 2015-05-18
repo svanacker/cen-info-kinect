@@ -48,6 +48,7 @@
     <Compile Include="Eeprom\Com\EepromWriteByteOutDataTest.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteOutDataTest.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteInDataDecoderTest.cs" />
+    <Compile Include="Lcd\LcdWriteDataTest.cs" />
     <Compile Include="Motion\Position\Com\ReadRobotPositionInDataDecoderTest.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionDataInDecoderTest.cs" />
     <Compile Include="Motion\Simple\Com\MotionCalibrationOutDataTest.cs" />
