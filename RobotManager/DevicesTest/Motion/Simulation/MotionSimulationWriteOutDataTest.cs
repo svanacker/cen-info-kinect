@@ -1,6 +1,7 @@
-﻿namespace Org.Cen.Devices.Motion.Simulation
+﻿using Org.Cen.Devices.Motion.Simulation.Com;
+
+namespace Org.Cen.Devices.Motion.Simulation
 {
-    using Motion.Simulation.Com;
     using NUnit.Framework;
 
     public class MotionSimulationWriteOutDataTest

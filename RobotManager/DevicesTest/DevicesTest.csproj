@@ -11,6 +11,8 @@
     <AssemblyName>Org.Cen.Devices.Test</AssemblyName>
     <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <SolutionDir Condition="$(SolutionDir) == '' Or $(SolutionDir) == '*Undefined*'">..\</SolutionDir>
+    <RestorePackages>true</RestorePackages>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -35,11 +37,7 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Eeprom\Com\EepromReadByteBlockInDataDecoderTest.cs" />
@@ -49,6 +47,10 @@
     <Compile Include="Eeprom\Com\EepromReadByteOutDataTest.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteInDataDecoderTest.cs" />
     <Compile Include="Lcd\LcdWriteDataTest.cs" />
+    <Compile Include="Clock\Com\ClockWriteDateOutDataTest.cs" />
+    <Compile Include="Clock\Com\ClockReadOutDataTest.cs" />
+    <Compile Include="Clock\Com\ClockWriteHourOutDataTest.cs" />
+    <Compile Include="Clock\Com\ClockDataReadInDecoderTest.cs" />
     <Compile Include="Motion\Position\Com\ReadRobotPositionInDataDecoderTest.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionDataInDecoderTest.cs" />
     <Compile Include="Motion\Simple\Com\MotionCalibrationOutDataTest.cs" />
@@ -79,7 +81,9 @@
       <Name>Devices</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Service Include="{82A7F48D-3B50-4B1E-B82E-3ADA8210C358}" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

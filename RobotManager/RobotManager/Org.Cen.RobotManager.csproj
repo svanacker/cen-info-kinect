@@ -151,6 +151,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\MiscControl.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
     <Page Include="Pages\MotionGraphControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -203,6 +207,9 @@
     </Compile>
     <Compile Include="Pages\MatchControl.xaml.cs">
       <DependentUpon>MatchControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\MiscControl.xaml.cs">
+      <DependentUpon>MiscControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Pages\MotionGraphControl.xaml.cs">
       <DependentUpon>MotionGraphControl.xaml</DependentUpon>

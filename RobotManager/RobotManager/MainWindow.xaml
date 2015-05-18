@@ -47,6 +47,9 @@
             <TabItem Header="Navigation">
                 <pages:NavigationControl x:Name="Navigation"/>
             </TabItem>
+            <TabItem Header="Miscellaneous">
+                <pages:MiscControl x:Name="Misc"/>
+            </TabItem>
         </TabControl>
         <Image x:Name="LogoImage" HorizontalAlignment="Left" Height="55" Margin="25,0,0,0" VerticalAlignment="Top" Width="202" Source="Resources/Images/logo.png"/>
         <Label Content="COM : " HorizontalAlignment="Left" Margin="265,16,0,0" VerticalAlignment="Top"/>
