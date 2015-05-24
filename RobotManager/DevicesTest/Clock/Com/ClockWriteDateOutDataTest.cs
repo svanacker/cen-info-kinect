@@ -13,7 +13,7 @@
             int yearExpected = 0x0F;
 
             ClockWriteDateOutData writeData = new ClockWriteDateOutData(dayExpected, monthExpected, yearExpected);
-            string result = writeData.getMessage();
+            string result = writeData.GetMessage();
 
             Assert.AreEqual("kd04050F", result);
         }

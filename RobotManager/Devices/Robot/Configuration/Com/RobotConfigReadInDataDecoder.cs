@@ -1,5 +1,6 @@
 ﻿namespace Org.Cen.Devices.Robot.Configuration.Com
 {
+    using Communication.In;
     using global::System.Collections.Generic;
     using global::System.Globalization;
     using Org.Cen.Com;

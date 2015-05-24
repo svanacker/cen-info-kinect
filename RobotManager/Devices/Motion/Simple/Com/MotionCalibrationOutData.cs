@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motion.Simple.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
     using Communication.Utils;
 
     public class MotionCalibrationOutData : OutData
@@ -27,14 +28,14 @@
             LengthMM = lengthMM;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             string directionAsString = DataParserUtils.format((int) Direction, 2);
             string lengthMMAsString = DataParserUtils.format(LengthMM, 4);
             return directionAsString + "-" + lengthMMAsString;
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

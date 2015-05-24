@@ -1,5 +1,7 @@
 namespace Org.Cen.Com.Out
 {
+    using Communication.Out;
+
     /**
      * Interface to be called when there is a notification of sending outData to the
      * board of the robot

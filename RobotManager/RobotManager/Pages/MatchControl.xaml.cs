@@ -30,7 +30,7 @@
 
             // Yellow
             StartMatchReadPositionOutData outData = new StartMatchReadPositionOutData(MatchSide.Yellow);
-            string message = outData.getMessage();
+            string message = outData.GetMessage();
             Main.SendText(message);
 
             StartMatchReadPositionInDataDecoder decoder = new StartMatchReadPositionInDataDecoder();
@@ -48,7 +48,7 @@
             // Green
             Main.receivedData.Clear();
             outData = new StartMatchReadPositionOutData(MatchSide.Green);
-            message = outData.getMessage();
+            message = outData.GetMessage();
             Main.SendText(message);
 
             decoder = new StartMatchReadPositionInDataDecoder();
@@ -71,21 +71,21 @@
             int y = int.Parse(YellowY.Text);
             int angle = int.Parse(YellowAngle.Text);
             StartMatchWritePositionOutData outData = new StartMatchWritePositionOutData(MatchSide.Yellow, x, y, angle);
-            Main.SendText(outData.getMessage());
+            Main.SendText(outData.GetMessage());
 
             // Green
             x = int.Parse(GreenX.Text);
             y = int.Parse(GreenY.Text);
             angle = int.Parse(GreenAngle.Text);
             outData = new StartMatchWritePositionOutData(MatchSide.Green, x, y, angle);
-            Main.SendText(outData.getMessage());
+            Main.SendText(outData.GetMessage());
         }
 
         private void TimeLeftReadButton_Click(object sender, RoutedEventArgs e)
         {
             Main.receivedData.Clear();
             EndMatchReadTimeLeftOutData outData = new EndMatchReadTimeLeftOutData();
-            string message = outData.getMessage();
+            string message = outData.GetMessage();
             Main.SendText(message);
 
             EndMatchReadTimeLeftInDataDecoder decoder = new EndMatchReadTimeLeftInDataDecoder();
@@ -102,7 +102,7 @@
         private void SimulateMatchStartButton_Click(object sender, RoutedEventArgs e)
         {
             StartMatchSetStartedOutData outData = new StartMatchSetStartedOutData(true);
-            string message = outData.getMessage();
+            string message = outData.GetMessage();
             Main.SendText(message);
         }
     }

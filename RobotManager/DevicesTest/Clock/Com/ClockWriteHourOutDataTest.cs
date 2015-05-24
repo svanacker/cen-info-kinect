@@ -13,7 +13,7 @@
             int secondExpected = 0x05;
             
             ClockWriteHourOutData writeData = new ClockWriteHourOutData(hourExpected, minuteExpected, secondExpected);
-            string result = writeData.getMessage();
+            string result = writeData.GetMessage();
 
             Assert.AreEqual("kh142805", result);
         }

@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Robot.Start.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
     using Communication.Utils;
 
     public class StartMatchSetStartedOutData : OutData
@@ -14,12 +15,12 @@
             Started = started;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             return DataParserUtils.format(Started);
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

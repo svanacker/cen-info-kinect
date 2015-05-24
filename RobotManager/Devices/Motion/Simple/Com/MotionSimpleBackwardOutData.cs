@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motion.Simple.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
     using Communication.Utils;
 
     ///
@@ -22,13 +23,13 @@
             DistanceMm = distanceMm;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             string result = DataParserUtils.format(DistanceMm, 4);
             return result;
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

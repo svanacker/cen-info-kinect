@@ -17,7 +17,7 @@ namespace Org.Cen.Devices.Lcd
 
             LcdWriteData writeData = new LcdWriteData(length, dataExpected);
 
-            string result = writeData.getMessage();
+            string result = writeData.GetMessage();
             Debug.WriteLine(result);
 
             Assert.AreEqual("Lw0464656667", result);
@@ -33,7 +33,7 @@ namespace Org.Cen.Devices.Lcd
 
             LcdWriteData writeData = new LcdWriteData(length, dataExpected);
 
-            string result = writeData.getMessage();
+            string result = writeData.GetMessage();
 
             Assert.AreEqual("Lw0268690000", result);
         }

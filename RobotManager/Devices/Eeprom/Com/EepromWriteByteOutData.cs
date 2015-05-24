@@ -1,6 +1,7 @@
 namespace Org.Cen.Devices.Eeprom.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
     using Communication.Utils;
     using global::System.Text;
 
@@ -24,7 +25,7 @@ namespace Org.Cen.Devices.Eeprom.Com
             Value = value;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             StringBuilder result = new StringBuilder();
 
@@ -35,7 +36,7 @@ namespace Org.Cen.Devices.Eeprom.Com
             return result.ToString();
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

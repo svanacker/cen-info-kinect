@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motion.Simple.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
 
     ///
     /// The encapsulation of the data which must be used to stop.
@@ -18,7 +19,7 @@
         {
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

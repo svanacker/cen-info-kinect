@@ -1,5 +1,6 @@
 namespace Org.Cen.Com.In
 {
+    using Communication.In;
 
     /**
      * Class which corresponds to a data which has no Header or which is not

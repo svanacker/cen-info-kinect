@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Robot.Start.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
     using Communication.Utils;
     using global::System.Text;
 
@@ -21,7 +22,7 @@
             AngleDeciDegree = angleDeciDegree;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             StringBuilder result = new StringBuilder();
 
@@ -47,7 +48,7 @@
             return result.ToString();
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

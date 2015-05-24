@@ -1,5 +1,7 @@
 namespace Org.Cen.Com.In
 {
+    using Communication.In;
+
     /**
      * The interface for event corresponding to data from the port COM. 
      */

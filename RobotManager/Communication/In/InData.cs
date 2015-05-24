@@ -1,24 +1,23 @@
-namespace Org.Cen.Com.In
+namespace Org.Cen.Communication.In
 {
     using Communication;
 
-    /**
-     * Objects which represents the data which comes from the micro-controllers and
-     * which must be decrypted.
-     */
+    ///
+    /// Objects which represents the data which comes from the micro-controllers and
+    /// which must be decrypted.
+    /// 
     public abstract class InData : AbstractComData
     {
 
-        public InData()
+        protected InData()
             : base()
         {
 
         }
 
-        public string toString()
+        public override string ToString()
         {
-            // return getType().getSimpleName();
-            return "InData";
+            return GetType().Name.ToString();
         }
     }
 }

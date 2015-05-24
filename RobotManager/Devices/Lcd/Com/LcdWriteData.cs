@@ -1,5 +1,6 @@
 ﻿namespace Org.Cen.Devices.Lcd.Com
 {
+    using Communication.Out;
     using global::System;
     using global::System.Text;
     using Org.Cen.Communication.Utils;
@@ -25,7 +26,7 @@
             Length = length;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             // char array for convert message to write on the LCD
             char[] character = this.Data.ToCharArray();
@@ -48,7 +49,7 @@
             return result.ToString();
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

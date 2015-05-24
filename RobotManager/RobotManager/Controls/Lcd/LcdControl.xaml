@@ -1,0 +1,17 @@
+﻿<UserControl x:Class="Org.Cen.RobotManager.Controls.Lcd.LcdControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="300" d:DesignWidth="300">
+    <Grid Margin="0,0,0,0">
+        <GroupBox Header="LCD Control" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" Height="280" Width="336">
+            <Grid Margin="0,0,45,0">
+                <TextBox x:Name="LcdTextBox" HorizontalAlignment="Left" Height="23" Margin="10,10,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="169"/>
+                <Button x:Name="LcdSendButton" Height="24" Width="50" Content="Send" Margin="194,10,35,224" Click="LcdSendButton_Click"/>
+            </Grid>
+        </GroupBox>
+
+    </Grid>
+</UserControl>

@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Clock.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
 
     public class ClockReadOutData : OutData
     {
@@ -11,12 +12,12 @@
         {
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             return "";
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

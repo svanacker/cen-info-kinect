@@ -13,7 +13,7 @@
             StartMatchWritePositionOutData outData = new StartMatchWritePositionOutData(MatchSide.Green, 0x1234, 0x5678,
                 0x9012);
 
-            string actual = outData.getMessage();
+            string actual = outData.GetMessage();
 
             Assert.AreEqual(expected, actual);
         }

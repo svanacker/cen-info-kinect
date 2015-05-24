@@ -1,6 +1,7 @@
 namespace Org.Cen.Devices.Pid.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
     using Communication.Utils;
 
     /**
@@ -30,13 +31,13 @@ namespace Org.Cen.Devices.Pid.Com
             this.Index = index;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             string result = DataParserUtils.format(Index, 2);
             return result;
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

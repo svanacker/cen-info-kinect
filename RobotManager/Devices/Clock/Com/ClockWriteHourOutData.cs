@@ -1,12 +1,19 @@
-﻿using System;
-using Org.Cen.Communication.Utils;
-
-namespace Org.Cen.Devices.Clock.Com
+﻿namespace Org.Cen.Devices.Clock.Com
 {
-    using Cen.Com.Out;
+    using Cen.Com.In;
+    using Communication.Documentation;
+    using Org.Cen.Communication.Utils;
+    using Communication.Out;
+    using Communication.Out.Attributes;
+
+    [OutData(ClockWriteHourOutData.COMMAND_HEADER)]
+    [DeviceParameter("hour", 2, DeviceParameterType.UNSIGNED)]
+    [DeviceParameter("minute", 2, DeviceParameterType.UNSIGNED)]
+    [DeviceParameter("second", 2, DeviceParameterType.UNSIGNED)]
     public class ClockWriteHourOutData : OutData
     {
         public const string HEADER = "kh";
+        public const string COMMAND_HEADER = "h";
 
         public ClockData Clock { get; set; }
 
@@ -19,7 +26,7 @@ namespace Org.Cen.Devices.Clock.Com
             this.Clock.Second = second;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             string hexHourValue = DataParserUtils.format(this.Clock.Hour, 2);
             string hexMinuteValue = DataParserUtils.format(this.Clock.Minute, 2);
@@ -28,7 +35,7 @@ namespace Org.Cen.Devices.Clock.Com
             return result;
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

@@ -10,7 +10,7 @@
             string expected = "kr";
 
             ClockReadOutData outData = new ClockReadOutData();
-            string actual = outData.getMessage();
+            string actual = outData.GetMessage();
             Assert.AreEqual(expected, actual);
         }
     }

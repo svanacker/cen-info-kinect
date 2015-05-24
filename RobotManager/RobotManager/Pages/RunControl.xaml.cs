@@ -28,7 +28,7 @@
         {
             int value = (int)ForwardSlider.Value;
             MotionSimpleForwardOutData outData = new MotionSimpleForwardOutData(value);
-            string command = outData.getMessage();
+            string command = outData.GetMessage();
             Main.SendText(command);
         }
 
@@ -48,7 +48,7 @@
             int value = (int)BackwardSlider.Value;
 
             MotionSimpleBackwardOutData outData = new MotionSimpleBackwardOutData(value);
-            string command = outData.getMessage();
+            string command = outData.GetMessage();
             Main.SendText(command);
         }
 
@@ -77,7 +77,7 @@
             int value = (int)LeftSlider.Value;
 
             MotionSimpleRotateLeftOutData outData = new MotionSimpleRotateLeftOutData(value);
-            string command = outData.getMessage();
+            string command = outData.GetMessage();
             Main.SendText(command);
         }
 
@@ -96,14 +96,14 @@
         {
             int value = (int)RightSlider.Value;
             MotionSimpleRotateRightOutData outData = new MotionSimpleRotateRightOutData(value);
-            string command = outData.getMessage();
+            string command = outData.GetMessage();
             Main.SendText(command);
         }
 
         private void StopButton_Click(object sender, RoutedEventArgs e)
         {
             MotionSimpleStopOutData outData = new MotionSimpleStopOutData();
-            string command = outData.getMessage();
+            string command = outData.GetMessage();
             Main.SendText(command);
         }
 
@@ -115,7 +115,7 @@
             int rightValue = (int)MotorLeftSlider.Value;
             MotorWriteOutData outData = new MotorWriteOutData(leftValue, rightValue);
 
-            string command = outData.getMessage();
+            string command = outData.GetMessage();
             Main.SendText(command);
         }
 
@@ -124,7 +124,7 @@
             Main.receivedData.Clear();
 
             MotorStopOutData outData = new MotorStopOutData();
-            string command = outData.getMessage();
+            string command = outData.GetMessage();
             Main.SendText(command);
 
             while (Main.receivedData.Length < 3)
@@ -181,7 +181,7 @@
             }
             int calibrationLength = int.Parse(CalibrationLengthTextBox.Text);
             MotionCalibrationOutData outData = new MotionCalibrationOutData(direction, calibrationLength);
-            string message = outData.getMessage();
+            string message = outData.GetMessage();
             Main.SendText(message);
         }
     }

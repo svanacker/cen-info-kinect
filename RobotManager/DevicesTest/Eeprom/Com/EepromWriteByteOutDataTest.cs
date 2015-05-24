@@ -10,7 +10,7 @@
             string expected = "Ew1234-56";
 
             EepromWriteByteOutData outData = new EepromWriteByteOutData(0x1234, 0x56);
-            string actual = outData.getMessage();
+            string actual = outData.GetMessage();
             Assert.AreEqual(expected, actual);
         }
     }

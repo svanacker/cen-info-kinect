@@ -2,6 +2,7 @@ namespace Org.Cen.Devices.Pid.Com
 {
 
     using Cen.Com.Out;
+    using Communication.Out;
     using Org.Cen.Devices.Pid.Com;
 
 
@@ -28,7 +29,7 @@ namespace Org.Cen.Devices.Pid.Com
 
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

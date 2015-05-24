@@ -1,5 +1,6 @@
 ﻿namespace Org.Cen.Devices.Clock.Com
 {
+    using Communication.Out;
     using Org.Cen.Com.Out;
     using Org.Cen.Communication.Utils;
 
@@ -18,7 +19,7 @@
             this.Clock.Year = year;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             string hexDayValue = DataParserUtils.format(this.Clock.Day, 2);
             string hexMonthValue = DataParserUtils.format(this.Clock.Month, 2);
@@ -27,7 +28,7 @@
             return result;
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

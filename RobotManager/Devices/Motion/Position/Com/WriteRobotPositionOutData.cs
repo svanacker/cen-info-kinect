@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
     using Communication.Utils;
     using Org.Com.Devices.Motion.Position;
 
@@ -15,13 +16,13 @@
             Position = position;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             return DataParserUtils.format(Position.X, 4) + "-" + DataParserUtils.format(Position.Y, 4) + "-" +
                    DataParserUtils.format(Position.DeciDegreeAngle, 4);
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

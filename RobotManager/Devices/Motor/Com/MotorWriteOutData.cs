@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motor.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
     using Communication.Utils;
 
     ///
@@ -23,7 +24,7 @@
             RightValue = rightValue;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             string hexLeftValue = DataParserUtils.format(LeftValue, 2);
             string hexRightValue = DataParserUtils.format(RightValue, 2);
@@ -31,7 +32,7 @@
             return result;
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

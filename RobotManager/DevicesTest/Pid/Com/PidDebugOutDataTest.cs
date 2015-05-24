@@ -11,7 +11,7 @@
 
             PidDebugOutData outData = new PidDebugOutData(InstructionType.Alpha);
 
-            string actual = outData.getMessage();
+            string actual = outData.GetMessage();
             Assert.AreEqual(expected, actual);
         }
 

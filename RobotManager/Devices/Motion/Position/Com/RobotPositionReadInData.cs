@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
     using Cen.Com.In;
+    using Communication.In;
     using Org.Com.Devices.Motion.Position;
 
     public class RobotPositionReadInData : InData

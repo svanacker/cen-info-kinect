@@ -1,5 +1,6 @@
 namespace Org.Cen.Com.In
 {
+    using Communication.Documentation;
 
 /**
  * Describe a remote method called with its name, and all of its parameter.

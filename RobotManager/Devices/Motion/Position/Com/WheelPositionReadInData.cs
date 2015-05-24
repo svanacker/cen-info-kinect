@@ -1,6 +1,7 @@
 namespace Org.Cen.Devices.Motion.Position.Com
 {
     using Cen.Com.In;
+    using Communication.In;
 
     /**
      * Encapsulation of the message corresponding to the read of the Wheels.

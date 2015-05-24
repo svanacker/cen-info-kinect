@@ -54,7 +54,7 @@
 
             MotionEndDetectionParameterWriteOutData outData = new MotionEndDetectionParameterWriteOutData(parameter);
 
-            string data = outData.getHeader() + outData.getArguments();
+            string data = outData.GetHeader() + outData.GetArguments();
             Main.SendText(data);
         }
     }

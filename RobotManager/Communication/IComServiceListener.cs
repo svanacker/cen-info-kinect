@@ -1,5 +1,7 @@
 namespace Org.Cen.Com
 {
+    using Communication.In;
+    using Communication.Out;
     using In;
     using Out;
 

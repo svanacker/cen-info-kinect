@@ -14,7 +14,7 @@ namespace Org.Cen.Devices.Motion.Simulation
             MotionSimulationData data = new MotionSimulationData(true, false, true);
             MotionSimulationWriteOutData outData = new MotionSimulationWriteOutData(data);
 
-            string actual = outData.getMessage();
+            string actual = outData.GetMessage();
             Assert.AreEqual(expected, actual);
         }
     }

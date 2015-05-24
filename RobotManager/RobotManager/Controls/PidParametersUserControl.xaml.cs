@@ -46,7 +46,7 @@
             // THETA
             int baseIndex = (int)Type * 2;
             PIDReadOutData thetaOutData = new PIDReadOutData(baseIndex + (int)InstructionType.Theta);
-            string thetaMessage = thetaOutData.getMessage();
+            string thetaMessage = thetaOutData.GetMessage();
             Main.SendText(thetaMessage);
 
             PidReadInDataDecoder thetaDecoder = new PidReadInDataDecoder();
@@ -65,7 +65,7 @@
 
             // ALPHA
             PIDReadOutData alphaOutData = new PIDReadOutData(baseIndex + (int)InstructionType.Theta);
-            string alphaMessage = alphaOutData.getMessage();
+            string alphaMessage = alphaOutData.GetMessage();
             Main.SendText(alphaMessage);
 
             PidReadInDataDecoder alphaDecoder = new PidReadInDataDecoder();
@@ -95,7 +95,7 @@
 
             PidData thetaPidData = new PidData(thetaP, thetaI, thetaD, thetaMaxI);
             PIDWriteOutData thetaOutData = new PIDWriteOutData(baseIndex + (int) InstructionType.Theta, thetaPidData);
-            string thetaMessage = thetaOutData.getMessage();
+            string thetaMessage = thetaOutData.GetMessage();
             Main.SendText(thetaMessage);
 
             // Alpha
@@ -106,7 +106,7 @@
 
             PidData alphaPidData = new PidData(alphaP, alphaI, alphaD, alphaMaxI);
             PIDWriteOutData outData = new PIDWriteOutData(baseIndex + (int)InstructionType.Alpha, alphaPidData);
-            string alphaMessage = outData.getMessage();
+            string alphaMessage = outData.GetMessage();
             Main.SendText(alphaMessage);
         }
     }

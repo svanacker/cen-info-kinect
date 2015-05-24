@@ -105,7 +105,19 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\Clock\ClockControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Lcd\LcdControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\PidParametersUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\Robot\Kinematics\RobotKinematicsControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -117,10 +129,19 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Controls\Clock\ClockControl.xaml.cs">
+      <DependentUpon>ClockControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\InputHistory.cs" />
     <Compile Include="Controls\InputHistoryItem.cs" />
+    <Compile Include="Controls\Lcd\LcdControl.xaml.cs">
+      <DependentUpon>LcdControl.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\PidParametersUserControl.xaml.cs">
       <DependentUpon>PidParametersUserControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Robot\Kinematics\RobotKinematicsControl.xaml.cs">
+      <DependentUpon>RobotKinematicsControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Graph\EepromDataItem.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -298,6 +319,19 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Controls\Beacon\" />
+    <Folder Include="Controls\Eeprom\" />
+    <Folder Include="Controls\I2C\" />
+    <Folder Include="Controls\Log\" />
+    <Folder Include="Controls\Motion\" />
+    <Folder Include="Controls\Relay\" />
+    <Folder Include="Controls\Robot\Match\" />
+    <Folder Include="Controls\Robot\Opponent\" />
+    <Folder Include="Controls\Robot\Strategy\" />
+    <Folder Include="Controls\Servo\" />
+    <Folder Include="Controls\Timer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

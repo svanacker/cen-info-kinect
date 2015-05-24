@@ -13,17 +13,8 @@ namespace Org.Cen.Com.In
         /**
          * The raw Data which is sent by the client and received by the server.
          */
-        protected string rawData;
+        public string RawData { get; protected set; }
 
-        /**
-         * Returns the raw data which is sent by the client.
-         * 
-         * @return
-         */
-        public string getRawData()
-        {
-            return rawData;
-        }
 
         /**
          * Constructor
@@ -34,12 +25,12 @@ namespace Org.Cen.Com.In
         public RawInData(string data)
             : base()
         {
-            rawData = data;
+            RawData = data;
         }
 
         public override string ToString()
         {
-            return typeof(RawInData).Name.ToString() + "[rawData=" + rawData + "]";
+            return typeof(RawInData).Name.ToString() + "[RawData=" + RawData + "]";
         }
     }
 

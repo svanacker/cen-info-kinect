@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Robot.End.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
 
     public class EndMatchReadTimeLeftOutData : OutData
     {
@@ -10,7 +11,7 @@
         {
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

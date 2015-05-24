@@ -12,7 +12,7 @@
 
             MotionCalibrationOutData outData = new MotionCalibrationOutData(MotionCalibrationOutData.CalibrationDirection.Rigth, 0x1234);
 
-            string actual = outData.getMessage();
+            string actual = outData.GetMessage();
 
             Assert.AreEqual(expected, actual);
         }

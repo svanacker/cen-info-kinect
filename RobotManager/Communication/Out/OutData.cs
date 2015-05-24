@@ -1,4 +1,4 @@
-namespace Org.Cen.Com.Out
+namespace Org.Cen.Communication.Out
 {
     using System;
     using System.Text;
@@ -13,12 +13,18 @@ namespace Org.Cen.Com.Out
     public abstract class OutData : AbstractComData
     {
 
-        private bool waitForAck;
+        /**
+         * Retrieves the value of the flag indicating whether the COM service has to
+         * wait for acknowledgment after sending the data.
+         * 
+         * @return the value of the waitForAck flag
+         */
+        public bool WaitForAck { get; set; }
 
         /**
          * Constructor.
          */
-        public OutData()
+        protected OutData()
             : this(true)
         {
         }
@@ -26,14 +32,13 @@ namespace Org.Cen.Com.Out
         /**
          * Constructor
          * 
-         * @param waitForAck
-         *            the value of the waitForAck flag
+         * @param waitForAck the value of the waitForAck flag
          * @see setWaitForAck
          */
-        public OutData(bool waitForAck)
+        protected OutData(bool waitForAck)
             : base()
         {
-            this.waitForAck = waitForAck;
+            this.WaitForAck = waitForAck;
         }
 
         /**
@@ -41,7 +46,7 @@ namespace Org.Cen.Com.Out
          * 
          * @return the arguments of the message
          */
-        public virtual string getArguments()
+        public virtual string GetArguments()
         {
             // No arguments by default
             return null;
@@ -65,18 +70,18 @@ namespace Org.Cen.Com.Out
          * 
          * @return the header of the message
          */
-        public abstract string getHeader();
+        public abstract string GetHeader();
 
         /**
          * Returns the message which must be send to the client
          * 
          * @return the message which must be send to the client
          */
-        public virtual string getMessage()
+        public virtual string GetMessage()
         {
             StringBuilder message = new StringBuilder();
-            message.Append(getHeader());
-            String args = getArguments();
+            message.Append(GetHeader());
+            String args = GetArguments();
             if (args != null)
             {
                 message.Append(args);
@@ -85,34 +90,11 @@ namespace Org.Cen.Com.Out
             return result;
         }
 
-        /**
-         * Retrieves the value of the flag indicating whether the COM service has to
-         * wait for acknowledgment after sending the data.
-         * 
-         * @return the value of the waitForAck flag
-         */
-        public bool getWaitForAck()
-        {
-            return waitForAck;
-        }
-
-        /**
-         * Defines whether the COM service has to wait for acknowledgment after
-         * sending the data.
-         * 
-         * @param waitForAck
-         *            the value of the waitForAck flag
-         */
-        public void setWaitForAck(bool waitForAck)
-        {
-            this.waitForAck = waitForAck;
-        }
-
         // object implementation
 
         public override int GetHashCode()
         {
-            string message = getMessage();
+            string message = GetMessage();
             int result = message.GetHashCode();
             return result;
         }
@@ -132,8 +114,8 @@ namespace Org.Cen.Com.Out
                 return false;
             }
             OutData other = (OutData)obj;
-            String message = getMessage();
-            String otherMessage = other.getMessage();
+            String message = GetMessage();
+            String otherMessage = other.GetMessage();
             if (!message.Equals(otherMessage))
             {
                 return false;

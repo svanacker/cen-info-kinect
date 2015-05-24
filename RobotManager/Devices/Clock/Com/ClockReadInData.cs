@@ -1,6 +1,8 @@
 ﻿namespace Org.Cen.Devices.Clock.Com
 {
     using Cen.Com.In;
+    using Communication.In;
+
     public class ClockReadInData : InData
     {
         public const string HEADER = "kr";

@@ -100,7 +100,7 @@
             {
                 Main.receivedData.Clear();
                 PidDebugOutData outData = new PidDebugOutData(InstructionType.Theta);
-                string message = outData.getMessage();
+                string message = outData.GetMessage();
                 Main.SendText(message);
 
                 PIDDebugDataDecoder decoder = new PIDDebugDataDecoder();

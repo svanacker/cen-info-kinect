@@ -47,6 +47,7 @@
     <Compile Include="Documentation\DeviceMethodType.cs" />
     <Compile Include="Documentation\DeviceParameterAttribute.cs" />
     <Compile Include="Documentation\DeviceParameterType.cs" />
+    <Compile Include="Out\Attributes\OutDataAttribute.cs" />
     <Compile Include="Utils\ComManager.cs" />
     <Compile Include="Utils\IRemoteDataReceivedEvent.cs" />
     <Compile Include="Utils\Simulation\I2CSimulationManager.cs" />
@@ -70,6 +71,9 @@
     <Compile Include="Utils\Simulation\PipeClientManager.cs" />
     <Compile Include="Utils\Simulation\PipeServerManager.cs" />
     <Compile Include="Utils\Simulation\SerialSimulationManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Attributes\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

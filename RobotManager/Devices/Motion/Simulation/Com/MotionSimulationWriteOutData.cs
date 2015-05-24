@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motion.Simulation.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
     using Communication.Utils;
     using global::System.Text;
 
@@ -22,7 +23,7 @@
             SimulationData = motionSimulationData;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             StringBuilder result = new StringBuilder();
 
@@ -32,7 +33,7 @@
             return result.ToString();
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

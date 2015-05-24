@@ -2,6 +2,7 @@
 {
     using Cen.Com;
     using Cen.Com.In;
+    using Communication.In;
     using global::System.Collections.Generic;
     using global::System.Globalization;
     using Org.Com.Devices.Motion.Position;

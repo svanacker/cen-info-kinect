@@ -65,6 +65,8 @@
     <Compile Include="Robot\Configuration\Com\RobotConfigReadInDataDecoderTest.cs" />
     <Compile Include="Robot\Configuration\Com\RobotConfigWriteOutDataTest.cs" />
     <Compile Include="Robot\End\Com\EndMatchReadTimeLeftInDataDecoderTest.cs" />
+    <Compile Include="Robot\Kinematics\RobotKinematicsInDataDecoderTest.cs" />
+    <Compile Include="Robot\Kinematics\RobotKinematicsOutDataTest.cs" />
     <Compile Include="Robot\Start\Com\StartMatchWritePositionOutDataTest.cs" />
     <Compile Include="Robot\Start\Com\StartMatchReadPositionInDataDecoderTest.cs" />
   </ItemGroup>

@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Motion.Simulation.Com
 {
     using Cen.Com.Out;
+    using Communication.Out;
 
     ///
     /// The encapsulation of the data which must be sent to read the simulation Parameters.
@@ -12,7 +13,7 @@
         /// </summary>
         public const string HEADER = "/r";
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

@@ -1,7 +1,10 @@
-namespace Org.Cen.Com.In
+namespace Org.Cen.Communication.Documentation
 {
+    using System;
+    using Com.In;
 
-    public class DeviceParameterAttribute : System.Attribute
+    [AttributeUsage(AttributeTargets.Class, AllowMultiple = true)]
+    public class DeviceParameterAttribute : Attribute
     {
 
         /**
@@ -27,5 +30,18 @@ namespace Org.Cen.Com.In
          * @return
          */
         string Unit { get; set; }
+
+        public DeviceParameterAttribute(string name, int length, DeviceParameterType type)
+        {
+            Name = name;
+            Length = length;
+            Type = type;
+        }
+
+        public DeviceParameterAttribute(string name, int length, DeviceParameterType type, string unit)
+            : this(name, length, type)
+        {
+            Unit = unit;
+        }
     }
 }

@@ -31,7 +31,7 @@
         {
             Main.receivedData.Clear();
             WheelPositionClearOutData outData = new WheelPositionClearOutData();
-            string command = outData.getMessage();
+            string command = outData.GetMessage();
             Main.SendText(command);
             Thread.Sleep(100);
             ReadPositionButton_Click(null, null);
@@ -41,7 +41,7 @@
         {
             Main.receivedData.Clear();
             WheelPositionReadOutData outData = new WheelPositionReadOutData();
-            string command = outData.getMessage();
+            string command = outData.GetMessage();
             Main.SendText(command);
 
             WheelPositionReadInDataDecoder decoder = new WheelPositionReadInDataDecoder();
@@ -95,7 +95,7 @@
             robotPosition.DeciDegreeAngle = int.Parse(AngleTextBox.Text);
 
             WriteRobotPositionOutData outData = new WriteRobotPositionOutData(robotPosition);
-            Main.SendText(outData.getMessage());
+            Main.SendText(outData.GetMessage());
 
             UpdateCanvasRobotPosition(robotPosition);
         }
@@ -109,7 +109,7 @@
             robotPosition.DeciDegreeAngle = 0;
 
             WriteRobotPositionOutData outData = new WriteRobotPositionOutData(robotPosition);
-            Main.SendText(outData.getMessage());
+            Main.SendText(outData.GetMessage());
 
             UpdateTextBoxRobotPosition(robotPosition);
             UpdateCanvasRobotPosition(robotPosition);

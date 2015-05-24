@@ -169,7 +169,7 @@ namespace Org.Cen.RobotManager.Pages
         private void ShowUsageButton_Click(object sender, RoutedEventArgs e)
         {
             SystemUsageOutData outData = new SystemUsageOutData();
-            Main.SendText(outData.getMessage());
+            Main.SendText(outData.GetMessage());
         }
 
         private void ClearTargetBufferButton_Click(object sender, RoutedEventArgs e)

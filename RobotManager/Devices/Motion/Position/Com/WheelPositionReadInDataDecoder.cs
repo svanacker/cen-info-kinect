@@ -1,5 +1,6 @@
 ﻿namespace Org.Cen.Devices.Motion.Position.Com
 {
+    using Communication.In;
     using global::System.Collections.Generic;
     using global::System.Globalization;
     using Org.Cen.Com;

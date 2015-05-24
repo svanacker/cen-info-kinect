@@ -32,7 +32,7 @@
             int address = int.Parse(EepromAddressTextBox.Text);
 
             EepromReadByteOutData outData = new EepromReadByteOutData(address);
-            string message = outData.getMessage();
+            string message = outData.GetMessage();
             Main.SendText(message);
 
             EepromReadByteInDataDecoder decoder = new EepromReadByteInDataDecoder();
@@ -52,14 +52,14 @@
             int address = int.Parse(EepromAddressTextBox.Text);
             int value = int.Parse(EepromDataTextBox.Text);
             EepromWriteByteOutData outData = new EepromWriteByteOutData(address, value);
-            string message = outData.getMessage();
+            string message = outData.GetMessage();
             Main.SendText(message);
         }
 
         private EepromReadByteBlockInData ReadBlockEeprom(int address, bool updateGrid)
         {
             EepromReadByteBlockOutData outData = new EepromReadByteBlockOutData(address);
-            string message = outData.getMessage();
+            string message = outData.GetMessage();
             Main.SendText(message);
 
             EepromReadByteBlockInDataDecoder decoder = new EepromReadByteBlockInDataDecoder();
@@ -146,7 +146,7 @@
                     char[] values = new char[width];
                     streamReader.Read(values, 0, width);
                     EepromWriteByteBlockOutData outData = new EepromWriteByteBlockOutData(address, values);
-                    string message = outData.getMessage();
+                    string message = outData.GetMessage();
                     Main.SendText(message);
 
                     // Wait for ACK : TODO : Check if we have to synchronize data

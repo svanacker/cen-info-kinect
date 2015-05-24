@@ -11,7 +11,7 @@
 
             PIDWriteOutData outData = new PIDWriteOutData(1, new PidData(0x12, 0x34, 0x56, 0x78));
 
-            string actual = outData.getMessage();
+            string actual = outData.GetMessage();
             Assert.AreEqual(expected, actual);
         }
     }

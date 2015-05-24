@@ -1,71 +1,52 @@
 namespace Org.Cen.Common.Device
 {
-    using System.Collections;
     using System.Collections.Generic;
     using Request;
 
-    /**
-     * Encapsulate a device for a Robot (Ex : Servo, Arm, Motor Controller).
-     */
-
+    ///
+    /// Encapsulate a device for a Robot (Ex : Servo, Arm, Motor Controller).
+    /// 
     public interface IRobotDevice
     {
+        string Header { get; }
 
-        /**
-     * The name of the device.
-     * 
-     * @return
-     */
-        string getName();
+        /// <summary>
+        /// Name of the device.
+        /// </summary>
+        string Name { get; }
 
-        /**
-     * Unstructured device information
-     * 
-     * @return
-     */
-        IDictionary<string, object> getProperties();
+        /// <summary>
+        /// If the device is enabled or not.
+        /// </summary>
+        /// <returns></returns>
+        bool Enabled { get; set; }
 
-        /**
-     * Return a specific property by a name.
-     * 
-     * @param name
-     *            property name.
-     * @return
-     */
-        object getProperty(string name);
+        ///
+        /// Unstructured device information
+        /// 
+        IDictionary<string, object> GetProperties();
 
-        /**
-     * Set a property value by its name
-     * 
-     * @param propertyName
-     *            the name of the property
-     * @param value
-     *            the value.
-     */
-        void setProperty(string propertyName, object value);
+        /// 
+        /// <summary>Return a specific property by a name</summary>
+        ///  @param name property name.
+        /// 
+        object GetProperty(string name);
 
-        /**
-     * Initialization of the device.
-     * 
-     * @param servicesProvider
-     */
-        void initialize(IRobotServiceProvider servicesProvider);
+        ///
+        /// Set a property value by its name
+        /// @param propertyName the name of the property
+        /// @param value the value.
+        ///
+        void SetProperty(string propertyName, object value);
 
-        /**
-     * Handle a request for that Device.
-     * 
-     * @param request
-     */
-        void handleRequest(IRobotDeviceRequest request);
+        ///
+        /// Initialization of the device.
+        /// 
+        void Initialize(IRobotServiceProvider servicesProvider);
 
-        /**
-     * Is the device enabled or not.
-     * 
-     * @return
-     */
-        bool isEnabled();
-
-        void setEnabled(bool enabled);
-
+        ///
+        /// Handle a request for that Device.
+        /// 
+        void HandleRequest(IRobotDeviceRequest request);
     }
 }

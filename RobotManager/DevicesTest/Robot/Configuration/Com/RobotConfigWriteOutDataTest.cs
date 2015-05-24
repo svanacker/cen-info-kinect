@@ -14,7 +14,7 @@
             RobotConfig robotConfig = new RobotConfig(0x1234);
             RobotConfigWriteOutData outData = new RobotConfigWriteOutData(robotConfig);
 
-            string actual = outData.getMessage();
+            string actual = outData.GetMessage();
 
             Assert.AreEqual(expected, actual);
         }

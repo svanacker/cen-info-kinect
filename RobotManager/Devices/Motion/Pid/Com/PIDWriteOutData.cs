@@ -1,5 +1,6 @@
 namespace Org.Cen.Devices.Pid.Com
 {
+    using Communication.Out;
     using Communication.Utils;
     using Devices.Pid;
     using Org.Cen.Com.Out;
@@ -38,12 +39,12 @@ namespace Org.Cen.Devices.Pid.Com
             this.Data = data;
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             return PidEngineToData(Data);
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

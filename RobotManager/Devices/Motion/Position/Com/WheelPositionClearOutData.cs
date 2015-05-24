@@ -1,5 +1,6 @@
 namespace Org.Cen.Devices.Motion.Position.Com
 {
+    using Communication.Out;
     using Org.Cen.Com.Out;
 
     ///
@@ -18,12 +19,12 @@ namespace Org.Cen.Devices.Motion.Position.Com
         {
         }
 
-        public override string getArguments()
+        public override string GetArguments()
         {
             return "";
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

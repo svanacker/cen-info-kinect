@@ -44,7 +44,7 @@
                                            ConfigUltraLowCheckBox.IsChecked.Value;
 
             RobotConfigWriteOutData outData = new RobotConfigWriteOutData(robotConfig);
-            string message = outData.getMessage();
+            string message = outData.GetMessage();
             Main.SendText(message);
         }
 
@@ -53,7 +53,7 @@
         {
             Main.receivedData.Clear();
             RobotConfigReadOutData outData = new RobotConfigReadOutData();
-            string message = outData.getMessage();
+            string message = outData.GetMessage();
             Main.SendText(message);
 
             RobotConfigReadInDataDecoder decoder = new RobotConfigReadInDataDecoder();

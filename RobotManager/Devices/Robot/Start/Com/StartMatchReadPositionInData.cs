@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Robot.Start.Com
 {
     using Cen.Com.In;
+    using Communication.In;
     using Robot;
 
     public class StartMatchReadPositionInData : InData

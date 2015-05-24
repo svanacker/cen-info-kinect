@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.System
 {
     using Com.Out;
+    using Communication.Out;
 
     public class SystemUsageOutData : OutData
     {
@@ -15,7 +16,7 @@
         {
         }
 
-        public override string getHeader()
+        public override string GetHeader()
         {
             return HEADER;
         }

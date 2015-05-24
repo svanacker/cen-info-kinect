@@ -1,6 +1,7 @@
 namespace Org.Cen.Devices.Robot.Configuration.Com
 {
     using Cen.Com.In;
+    using Communication.In;
 
     public class RobotConfigReadInData : InData
     {

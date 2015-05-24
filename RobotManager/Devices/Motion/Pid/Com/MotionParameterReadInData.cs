@@ -1,5 +1,6 @@
 ﻿namespace Org.Cen.Devices.Pid.Com
 {
+    using Communication.In;
     using Org.Cen.Com.In;
 
     public class MotionParameterReadInData : InData

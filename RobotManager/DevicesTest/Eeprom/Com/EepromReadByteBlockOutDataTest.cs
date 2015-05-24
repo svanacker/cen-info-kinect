@@ -10,7 +10,7 @@
             string expected = "Eb1234";
 
             EepromReadByteBlockOutData outData = new EepromReadByteBlockOutData(0x1234);
-            string actual = outData.getMessage();
+            string actual = outData.GetMessage();
             Assert.AreEqual(expected, actual);
         }
     }

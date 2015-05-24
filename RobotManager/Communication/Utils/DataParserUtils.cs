@@ -61,9 +61,9 @@ namespace Org.Cen.Communication.Utils
             return value;
         }
 
-        public static long parseShortHex(String data)
+        public static int parseShortHex(String data)
         {
-            long value = long.Parse(data, NumberStyles.HexNumber);
+            int value = int.Parse(data, NumberStyles.HexNumber);
             if (value > 0x7FFF)
             {
                 value -= 0x10000;
