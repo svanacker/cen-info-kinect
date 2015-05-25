@@ -69,6 +69,8 @@
     <Compile Include="Robot\Kinematics\RobotKinematicsOutDataTest.cs" />
     <Compile Include="Robot\Start\Com\StartMatchWritePositionOutDataTest.cs" />
     <Compile Include="Robot\Start\Com\StartMatchReadPositionInDataDecoderTest.cs" />
+    <Compile Include="Servo\ServoInDataDecoderTest.cs" />
+    <Compile Include="Servo\ServoOutDataTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

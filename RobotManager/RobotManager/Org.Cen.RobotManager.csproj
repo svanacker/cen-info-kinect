@@ -121,6 +121,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Servo\ServoControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -142,6 +146,9 @@
     </Compile>
     <Compile Include="Controls\Robot\Kinematics\RobotKinematicsControl.xaml.cs">
       <DependentUpon>RobotKinematicsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Servo\ServoControl.xaml.cs">
+      <DependentUpon>ServoControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Graph\EepromDataItem.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -208,6 +215,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Pages\ServoListControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Graph\MotionDataItem.cs" />
@@ -255,6 +266,9 @@
     </Compile>
     <Compile Include="Pages\RunControl.xaml.cs">
       <DependentUpon>RunControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Pages\ServoListControl.xaml.cs">
+      <DependentUpon>ServoListControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>
@@ -330,7 +344,6 @@
     <Folder Include="Controls\Robot\Match\" />
     <Folder Include="Controls\Robot\Opponent\" />
     <Folder Include="Controls\Robot\Strategy\" />
-    <Folder Include="Controls\Servo\" />
     <Folder Include="Controls\Timer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

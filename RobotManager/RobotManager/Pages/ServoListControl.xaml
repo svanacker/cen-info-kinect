@@ -1,0 +1,19 @@
+﻿<UserControl x:Class="Org.Cen.RobotManager.Pages.ServoListControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+             d:DesignHeight="500" d:DesignWidth="900"
+            xmlns:controls="clr-namespace:Org.Cen.RobotManager.Controls.Servo">
+    <Grid x:Name="ServoListGrid" Loaded="ServoListGrid_OnLoaded">
+        <!--
+        <controls:ServoControl x:Name="Servo1"/>
+        <controls:ServoControl x:Name="Servo2" Margin="0, 150, 0, 0"/>
+        <controls:ServoControl x:Name="Servo3" Margin="0, 300, 0, 0"/>
+        <controls:ServoControl x:Name="Servo4" Margin="500, 0, 0, 0"/>
+        <controls:ServoControl x:Name="Servo5" Margin="500, 150, 0, 0"/>
+        <controls:ServoControl x:Name="Servo6" Margin="500, 300, 0, 0"/>
+        -->
+    </Grid>
+</UserControl>

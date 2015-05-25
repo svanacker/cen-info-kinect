@@ -101,7 +101,10 @@
     <Compile Include="Robot\Kinematics\RobotKinematicsWheelsAverageForOnePulseLengthReadOutData.cs" />
     <Compile Include="Robot\Kinematics\RobotKinematicsLoadDefaultValuesOutData.cs" />
     <Compile Include="Robot\Start\Com\StartMatchSetStartedOutData.cs" />
-    <Compile Include="Servo\Com\ServoReadTargetPositionInData.cs" />
+    <Compile Include="Servo\Com\ServoReadParametersInDataDecoder.cs" />
+    <Compile Include="Servo\Com\ServoReadParametersInData.cs" />
+    <Compile Include="Servo\Com\ServoWriteParametersOutData.cs" />
+    <Compile Include="Servo\Com\ServoReadParametersOutData.cs" />
     <Compile Include="Servo\ServoData.cs" />
     <Compile Include="Motion\Position\Com\RobotPositionReadInDataDecoder.cs" />
     <Compile Include="Motion\Position\Com\RobotPositionReadInData.cs" />

@@ -1,10 +1,8 @@
-﻿using System.Windows.Controls;
-
-namespace Org.Cen.RobotManager.Pages
+﻿namespace Org.Cen.RobotManager.Pages
 {
     using System.Windows;
-    using UartWPFTest;
-
+    using System.Windows.Controls;
+    
     /// <summary>
     /// Interaction logic for PidAllParametersControl.xaml
     /// </summary>
