@@ -8,11 +8,11 @@
     <Grid>
         <GroupBox x:Name="ServoGroupBox" Header=" Servo XXX" Margin="10,10,10,0" VerticalAlignment="Top">
             <Grid>
-                <Slider x:Name="ServoSpeedSlider" HorizontalAlignment="Left" Margin="77,10,0,0" VerticalAlignment="Top" Width="287" TickFrequency="10"  Minimum="0" Maximum="255" Value="255" TickPlacement="BottomRight" SmallChange="1" ValueChanged="ServoSpeedSlider_OnValueChanged"/>
+                <Slider x:Name="ServoSpeedSlider" HorizontalAlignment="Left" Margin="77,10,0,0" VerticalAlignment="Top" Width="287" TickFrequency="10"  Minimum="0" Maximum="255" Value="255" TickPlacement="BottomRight" SmallChange="1" ValueChanged="ServoSpeedSlider_OnValueChanged" Thumb.DragStarted="ServoSpeedSlider_OnDragStarted" Thumb.DragCompleted="ServoSpeedSlider_OnDragCompleted"/>
                 <Label Content="Speed : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,10,0,0"/>
                 <Label x:Name="ServoSpeedValueLabel" Content="255" HorizontalAlignment="Left" Margin="380,6,0,0" VerticalAlignment="Top"/>
                 <Label Content="Target Position : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
-                <Slider x:Name="ServoTargetPositionSlider" HorizontalAlignment="Left" Margin="114,41,0,0" VerticalAlignment="Top" Width="250" TickFrequency="100" Value="1500"  Minimum="500" Maximum="2500" TickPlacement="BottomRight" SmallChange="10" ValueChanged="ServoTargetPositionSlider_OnValueChanged"/>
+                <Slider x:Name="ServoTargetPositionSlider" HorizontalAlignment="Left" Margin="114,41,0,0" VerticalAlignment="Top" Width="250" TickFrequency="100" Value="1500"  Minimum="500" Maximum="2500" TickPlacement="BottomRight" SmallChange="10" ValueChanged="ServoTargetPositionSlider_OnValueChanged" Thumb.DragStarted="ServoTargetPositionSlider_OnDragStarted" Thumb.DragCompleted="ServoTargetPositionSlider_OnDragCompleted"/>
                 <Label x:Name="ServoTargetPositionValueLabel" Content="1500" HorizontalAlignment="Left" Margin="380,37,0,0" VerticalAlignment="Top"/>
                 <Label Content="Current Position : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
                 <Label x:Name="ServoCurrentPositionValueLabel" Content="1500" HorizontalAlignment="Left" Margin="380,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.444,3.385"/>

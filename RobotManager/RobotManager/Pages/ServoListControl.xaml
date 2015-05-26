@@ -7,13 +7,11 @@
              d:DesignHeight="500" d:DesignWidth="900"
             xmlns:controls="clr-namespace:Org.Cen.RobotManager.Controls.Servo">
     <Grid x:Name="ServoListGrid" Loaded="ServoListGrid_OnLoaded">
-        <!--
         <controls:ServoControl x:Name="Servo1"/>
         <controls:ServoControl x:Name="Servo2" Margin="0, 150, 0, 0"/>
         <controls:ServoControl x:Name="Servo3" Margin="0, 300, 0, 0"/>
         <controls:ServoControl x:Name="Servo4" Margin="500, 0, 0, 0"/>
         <controls:ServoControl x:Name="Servo5" Margin="500, 150, 0, 0"/>
         <controls:ServoControl x:Name="Servo6" Margin="500, 300, 0, 0"/>
-        -->
     </Grid>
 </UserControl>

@@ -48,7 +48,7 @@
                 <controls:NavigationControl x:Name="Navigation"/>
             </TabItem>
             <TabItem Header="Servos">
-                <!--<controls:ServoListControl x:Name="ServoList"/>-->
+                <controls:ServoListControl x:Name="ServoList"/>
             </TabItem>
             <TabItem Header="Miscellaneous">
                 <controls:MiscControl x:Name="Misc"/>
