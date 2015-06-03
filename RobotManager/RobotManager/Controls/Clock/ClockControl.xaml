@@ -3,12 +3,11 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             mc:Ignorable="d" 
-             d:DesignHeight="150" d:DesignWidth="270">
-    <Grid Margin="0,0,0,0">
-        <GroupBox Header="Clock" HorizontalAlignment="Left" Margin="0,0,0,0" VerticalAlignment="Top" Height="144">
+             mc:Ignorable="d" Height="187" Width="242">
+    <Grid>
+        <GroupBox Header="Clock" HorizontalAlignment="Left" Width="239">
             <Grid>
-                <Button x:Name="ReadClockButton" Content="Read Hour" HorizontalAlignment="Left" Margin="169,59,0,0" VerticalAlignment="Top" Width="80" Grid.Column="0" Click="ReadClock"/>
+                <Button x:Name="ReadClockButton" Content="Read Hour and Date" HorizontalAlignment="Left" Margin="19,127,0,0" VerticalAlignment="Top" Width="116" Grid.Column="0" Click="ReadClock"/>
 
                 <Label Content="Hour" Margin="10,8,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Label Content="Min" Margin="55,8,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -16,7 +15,7 @@
                 <TextBox x:Name="WriteHourTextBoxClock" HorizontalAlignment="Left" Height="22" Margin="10,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" FontFamily="Courier New" Grid.Column="0"/>
                 <TextBox x:Name="WriteMinuteTextBoxClock" HorizontalAlignment="Left" Height="22" Margin="55,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" FontFamily="Courier New" Grid.Column="0"/>
                 <TextBox x:Name="WriteSecondTextBoxClock" HorizontalAlignment="Left" Height="22" Margin="100,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" FontFamily="Courier New" Grid.Column="0"/>
-                <Button x:Name="WriteHourClockButton" Content="Write hour" HorizontalAlignment="Left" Margin="169,34,0,0" VerticalAlignment="Top" Width="80" Grid.Column="0" Click="WriteClockHour"/>
+                <Button x:Name="WriteHourClockButton" Content="Write hour" HorizontalAlignment="Left" Margin="140,39,0,0" VerticalAlignment="Top" Width="80" Grid.Column="0" Click="WriteClockHour"/>
 
                 <Label Content="Day" Margin="10,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
                 <Label Content="Month" Margin="45,75,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
@@ -24,7 +23,7 @@
                 <TextBox x:Name="WriteDayTextBoxClock" HorizontalAlignment="Left" Height="22" Margin="10,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" FontFamily="Courier New" Grid.Column="0"/>
                 <TextBox x:Name="WriteMonthTextBoxClock" HorizontalAlignment="Left" Height="22" Margin="55,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" FontFamily="Courier New" Grid.Column="0"/>
                 <TextBox x:Name="WriteYearTextBoxClock" HorizontalAlignment="Left" Height="22" Margin="100,99,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="35" FontFamily="Courier New" Grid.Column="0"/>
-                <Button x:Name="WriteDateClockButton" Content="Write date" HorizontalAlignment="Left" Margin="169,87,0,0" VerticalAlignment="Top" Width="80" Grid.Column="0" Click="WriteClockDate"/>
+                <Button x:Name="WriteDateClockButton" Content="Write date" HorizontalAlignment="Left" Margin="140,99,0,0" VerticalAlignment="Top" Width="80" Grid.Column="0" Click="WriteClockDate"/>
             </Grid>
         </GroupBox>
     </Grid>

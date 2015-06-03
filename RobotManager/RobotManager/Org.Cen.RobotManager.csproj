@@ -69,6 +69,8 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -125,6 +127,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Timer\TimerControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -133,6 +139,7 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Bindings\TimerDataItem.cs" />
     <Compile Include="Controls\Clock\ClockControl.xaml.cs">
       <DependentUpon>ClockControl.xaml</DependentUpon>
     </Compile>
@@ -149,6 +156,9 @@
     </Compile>
     <Compile Include="Controls\Servo\ServoControl.xaml.cs">
       <DependentUpon>ServoControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Timer\TimerControl.xaml.cs">
+      <DependentUpon>TimerControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Graph\EepromDataItem.cs" />
     <Compile Include="MainWindow.xaml.cs">
@@ -344,7 +354,6 @@
     <Folder Include="Controls\Robot\Match\" />
     <Folder Include="Controls\Robot\Opponent\" />
     <Folder Include="Controls\Robot\Strategy\" />
-    <Folder Include="Controls\Timer\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

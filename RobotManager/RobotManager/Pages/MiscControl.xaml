@@ -6,12 +6,12 @@
       xmlns:pages="clr-namespace:Org.Cen.RobotManager.Pages"
       xmlns:clock="clr-namespace:Org.Cen.RobotManager.Controls.Clock"
       xmlns:kinematics="clr-namespace:Org.Cen.RobotManager.Controls.Robot.Kinematics"
+      xmlns:timer="clr-namespace:Org.Cen.RobotManager.Controls.Timer"
+      mc:Ignorable="d" d:DesignWidth="750" Height="537.75">
 
-      mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="750">
-
-    <Grid x:Name="MiscGrid" Background="#FFE5E5E5" Margin="0,0,0,0">
-        <clock:ClockControl x:Name="ClockControl"/>
-        <kinematics:RobotKinematicsControl Margin="263,10,-113,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+    <Grid x:Name="MiscGrid" Background="#FFE5E5E5">
+        <clock:ClockControl x:Name="ClockControl" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+        <kinematics:RobotKinematicsControl Margin="252,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
+        <timer:TimerControl Margin="0,236,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></timer:TimerControl>
     </Grid>
 </UserControl>

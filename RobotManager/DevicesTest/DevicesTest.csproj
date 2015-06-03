@@ -71,6 +71,8 @@
     <Compile Include="Robot\Start\Com\StartMatchReadPositionInDataDecoderTest.cs" />
     <Compile Include="Servo\ServoInDataDecoderTest.cs" />
     <Compile Include="Servo\ServoOutDataTest.cs" />
+    <Compile Include="Timer\TimerOutDataTest.cs" />
+    <Compile Include="Timer\TimerInDataDecoderTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

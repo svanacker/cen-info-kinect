@@ -141,6 +141,20 @@
     <Compile Include="Robot\Start\Com\StartMatchReadPositionOutData.cs" />
     <Compile Include="Robot\Start\Com\StartMatchWritePositionOutData.cs" />
     <Compile Include="System\SystemUsageOutData.cs" />
+    <Compile Include="Timer\Com\TimerWriteMarkInDataDecoder.cs" />
+    <Compile Include="Timer\Com\TimerWriteMarkInData.cs" />
+    <Compile Include="Timer\Com\TimerReadInData.cs" />
+    <Compile Include="Timer\Com\TimerReadInDataDecoder.cs" />
+    <Compile Include="Timer\Com\TimerReadIsTimeoutInDataDecoder.cs" />
+    <Compile Include="Timer\Com\TimerReadIsTimeoutInData.cs" />
+    <Compile Include="Timer\Com\TimerReadCountInDataDecoder.cs" />
+    <Compile Include="Timer\Com\TimerReadCountInData.cs" />
+    <Compile Include="Timer\Com\TimerReadIsTimeoutOutData.cs" />
+    <Compile Include="Timer\Com\TimerWriteMarkOutData.cs" />
+    <Compile Include="Timer\Com\TimerReadTimeSinceLastMarkOutData.cs" />
+    <Compile Include="Timer\Com\TimerWriteEnableOutData.cs" />
+    <Compile Include="Timer\Com\TimerReadOutData.cs" />
+    <Compile Include="Timer\Com\TimerReadCountOutData.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Communication\Communication.csproj">

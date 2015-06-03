@@ -2,6 +2,7 @@ namespace Org.Cen.Communication.Utils
 {
     using System;
     using System.Globalization;
+    using Com;
 
     /**
      * Set of function useful to read and write data.
@@ -53,6 +54,19 @@ namespace Org.Cen.Communication.Utils
                 result = result.Substring(length - len);
             }
             return result.ToUpper();
+        }
+
+        public static bool ParseBool(string data)
+        {
+            if ("0".Equals(data))
+            {
+                return false;
+            }
+            if ("1".Equals(data))
+            {
+                return true;
+            }
+            throw new IllegalComDataException("data bool format is not correct : " + data);
         }
 
         public static byte parseByteHex(string data)
