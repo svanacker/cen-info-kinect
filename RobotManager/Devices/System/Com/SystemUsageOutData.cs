@@ -1,6 +1,5 @@
-﻿namespace Org.Cen.Devices.System
+﻿namespace Org.Cen.Devices.System.Com
 {
-    using Com.Out;
     using Communication.Out;
 
     public class SystemUsageOutData : OutData

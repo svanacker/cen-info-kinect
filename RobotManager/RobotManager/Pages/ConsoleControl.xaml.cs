@@ -1,13 +1,12 @@
-﻿using System;
-using System.Windows;
-using System.Windows.Controls;
-using System.Windows.Input;
-
-namespace Org.Cen.RobotManager.Pages
+﻿namespace Org.Cen.RobotManager.Pages
 {
+    using System;
+    using System.Windows;
+    using System.Windows.Controls;
+    using System.Windows.Input;
+
     using Controls;
-    using Devices.System;
-    using UartWPFTest;
+    using Devices.System.Com;
 
     /// <summary>
     /// Interaction logic for ConsoleControl.xaml

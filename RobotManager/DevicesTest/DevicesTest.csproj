@@ -40,6 +40,8 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Battery\Com\BatteryInDataDecoderTest.cs" />
+    <Compile Include="Battery\Com\BatteryOutDataTest.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteBlockInDataDecoderTest.cs" />
     <Compile Include="Eeprom\Com\EepromWriteByteBlockOutDataTest.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteBlockOutDataTest.cs" />
@@ -71,6 +73,8 @@
     <Compile Include="Robot\Start\Com\StartMatchReadPositionInDataDecoderTest.cs" />
     <Compile Include="Servo\ServoInDataDecoderTest.cs" />
     <Compile Include="Servo\ServoOutDataTest.cs" />
+    <Compile Include="System\SystemOutDataTest.cs" />
+    <Compile Include="System\SystemInDataDecoderTest.cs" />
     <Compile Include="Timer\TimerOutDataTest.cs" />
     <Compile Include="Timer\TimerInDataDecoderTest.cs" />
   </ItemGroup>

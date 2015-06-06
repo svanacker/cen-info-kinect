@@ -1,11 +1,7 @@
-﻿using Org.Cen.Devices.Clock;
-
-namespace Org.Cen.RobotManager.Pages
+﻿namespace Org.Cen.RobotManager.Pages
 {
     using System.Windows;
     using System.Windows.Controls;
-
-    using Devices.Clock.Com;
 
 
     /// <summary>

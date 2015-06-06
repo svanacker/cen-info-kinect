@@ -39,6 +39,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Battery\Com\BatteryReadInData.cs" />
+    <Compile Include="Battery\Com\BatteryReadOutData.cs" />
+    <Compile Include="Battery\Com\BatteryReadInDataDecoder.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteBlockInDataDecoder.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteBlockInData.cs" />
     <Compile Include="Eeprom\Com\EepromWriteByteBlockInData.cs" />
@@ -140,7 +143,11 @@
     <Compile Include="Robot\Start\Com\StartMatchReadPositionInDataDecoder.cs" />
     <Compile Include="Robot\Start\Com\StartMatchReadPositionOutData.cs" />
     <Compile Include="Robot\Start\Com\StartMatchWritePositionOutData.cs" />
-    <Compile Include="System\SystemUsageOutData.cs" />
+    <Compile Include="System\Com\SystemGetLastErrorInData.cs" />
+    <Compile Include="System\Com\SystemGetLastErrorInDataDecoder.cs" />
+    <Compile Include="System\Com\SystemGetLastErrorOutData.cs" />
+    <Compile Include="System\Com\SystemClearLastErrorOutData.cs" />
+    <Compile Include="System\Com\SystemUsageOutData.cs" />
     <Compile Include="Timer\Com\TimerWriteMarkInDataDecoder.cs" />
     <Compile Include="Timer\Com\TimerWriteMarkInData.cs" />
     <Compile Include="Timer\Com\TimerReadInData.cs" />
