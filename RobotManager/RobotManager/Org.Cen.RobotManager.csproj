@@ -127,6 +127,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\Serial\SerialControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Servo\ServoControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -160,6 +164,9 @@
     </Compile>
     <Compile Include="Controls\Robot\Kinematics\RobotKinematicsControl.xaml.cs">
       <DependentUpon>RobotKinematicsControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\Serial\SerialControl.xaml.cs">
+      <DependentUpon>SerialControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\Servo\ServoControl.xaml.cs">
       <DependentUpon>ServoControl.xaml</DependentUpon>
