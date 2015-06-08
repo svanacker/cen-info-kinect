@@ -48,7 +48,8 @@
     <Compile Include="Eeprom\Com\EepromWriteByteOutDataTest.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteOutDataTest.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteInDataDecoderTest.cs" />
-    <Compile Include="Lcd\LcdWriteDataTest.cs" />
+    <Compile Include="Lcd\Com\LcdClearDataTest.cs" />
+    <Compile Include="Lcd\Com\LcdWriteDataTest.cs" />
     <Compile Include="Clock\Com\ClockWriteDateOutDataTest.cs" />
     <Compile Include="Clock\Com\ClockReadOutDataTest.cs" />
     <Compile Include="Clock\Com\ClockWriteHourOutDataTest.cs" />

@@ -9,10 +9,12 @@
       xmlns:timer="clr-namespace:Org.Cen.RobotManager.Controls.Timer"
       xmlns:battery="clr-namespace:Org.Cen.RobotManager.Controls.Battery"
       xmlns:serial="clr-namespace:Org.Cen.RobotManager.Controls.Serial"
-      mc:Ignorable="d" d:DesignWidth="750" Height="537.75">
+      xmlns:lcd="clr-namespace:Org.Cen.RobotManager.Controls.Lcd"
+      mc:Ignorable="d" Height="900" Width="1050.001">
 
-    <Grid x:Name="MiscGrid" Background="#FFE5E5E5">
+    <Grid x:Name="MiscGrid" Background="#FFE5E5E5" Margin="0,0,-30,0" HorizontalAlignment="Left" Width="1050">
         <clock:ClockControl x:Name="ClockControl" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,0,0,0"/>
+        <lcd:LcdControl x:Name="LcdControl" Margin="707,0, 0, 0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <kinematics:RobotKinematicsControl Margin="252,0,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
         <timer:TimerControl Margin="0,236,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></timer:TimerControl>
         <battery:BatteryControl Margin="0,441,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"></battery:BatteryControl>
