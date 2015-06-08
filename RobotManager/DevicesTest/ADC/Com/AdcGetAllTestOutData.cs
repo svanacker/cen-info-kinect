@@ -1,11 +1,11 @@
-﻿namespace Org.Cen.Devices.ADC
+﻿namespace Org.Cen.Devices.ADC.Com
 {
     using NUnit.Framework;
 
     class AdcGetAllTest
     {
         [Test]
-        public void ShouldGenerateGetAdcllOut()
+        public void ShouldGenerateGetAdcllOutData()
         {
             string expected = "dR";
 

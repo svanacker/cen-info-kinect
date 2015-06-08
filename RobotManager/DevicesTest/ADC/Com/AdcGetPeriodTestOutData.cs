@@ -1,11 +1,11 @@
-﻿namespace Org.Cen.Devices.ADC
+﻿namespace Org.Cen.Devices.ADC.Com
 {
     using NUnit.Framework;
 
     class AdcGetPeriodTest
     {
         [Test]
-        public void ShouldGenerateGetAdcPeriodeOut()
+        public void ShouldGenerateGetAdcPeriodeOutData()
         {
             int adcIndex = 05;
             int sampleCount = 05;
@@ -17,7 +17,6 @@
             string actual = outData.GetMessage();
 
             Assert.AreEqual(expected, actual);
-
         }
     }
 }

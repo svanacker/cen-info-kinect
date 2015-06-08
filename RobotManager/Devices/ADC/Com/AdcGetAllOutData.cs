@@ -1,7 +1,6 @@
-﻿namespace Org.Cen.Devices.ADC
+﻿namespace Org.Cen.Devices.ADC.Com
 {
-    using Org.Cen.Communication.Out;
-    using Org.Cen.Communication.Utils;
+    using Communication.Out;
 
     public class AdcGetAll : OutData
     {
@@ -9,12 +8,7 @@
 
         public AdcGetAll()
             : base()
-        {
-        }
-        public override string GetArguments()
-        {
-            return "";
-        }
+        {}
 
         public override string GetHeader()
         {

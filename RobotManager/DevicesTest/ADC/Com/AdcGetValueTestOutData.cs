@@ -1,11 +1,11 @@
-﻿namespace Org.Cen.Devices.ADC
+﻿namespace Org.Cen.Devices.ADC.Com
 {
     using NUnit.Framework;
 
     class AdcGetValueTest
     {
         [Test]
-        public void shouldGenerateGetAdcValue()
+        public void ShouldGenerateGetAdcValueOutData()
         {
             int adr = 05; //index de l'adresse que l'on veut lire
 

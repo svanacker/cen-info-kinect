@@ -4,11 +4,11 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             d:DesignHeight="300" d:DesignWidth="300">
+             d:DesignHeight="300" d:DesignWidth="330">
 
-    <Grid Margin="-86,-50,-86,-65">
-        <GroupBox Header="ADC" Margin="51,25,60,40"/>
-        <Grid Margin="77,56,101,58">
+    <Grid Margin="0,0,0,0">
+        <GroupBox Header="ADC" Margin="0,0,0,0"/>
+        <Grid Margin="10,10,0,0">
             <Label Content="Address" Margin="21,8,0,0" HorizontalAlignment="Left" VerticalAlignment="Top"/>
             <TextBox x:Name="AdcGetValueAddressTextBox" HorizontalAlignment="Left" Height="22" Margin="21,39,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="159" FontFamily="Courier New" Grid.Column="0"/>
             <Button x:Name="AdcGetValueButton" Content="Get Value" HorizontalAlignment="Left" Margin="204,39,0,0" VerticalAlignment="Top" Width="80" Grid.Column="0"/>
