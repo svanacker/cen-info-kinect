@@ -40,6 +40,9 @@
     <Reference Include="Microsoft.CSharp" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ADC\AdcGetAllTest.cs" />
+    <Compile Include="ADC\AdcGetPeriodTest.cs" />
+    <Compile Include="ADC\AdcGetValueTest.cs" />
     <Compile Include="Battery\Com\BatteryInDataDecoderTest.cs" />
     <Compile Include="Battery\Com\BatteryOutDataTest.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteBlockInDataDecoderTest.cs" />
