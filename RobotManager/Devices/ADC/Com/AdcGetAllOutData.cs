@@ -2,11 +2,11 @@
 {
     using Communication.Out;
 
-    public class AdcGetAll : OutData
+    public class AdcGetAllOutData : OutData
     {
         public const string HEADER = "dR";
 
-        public AdcGetAll()
+        public AdcGetAllOutData()
             : base()
         {}
 

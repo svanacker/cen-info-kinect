@@ -2,7 +2,7 @@
 {
     using NUnit.Framework;
 
-    class AdcGetPeriodTest
+    public class AdcGetPeriodOutDataTest
     {
         [Test]
         public void ShouldGenerateGetAdcPeriodeOutData()
@@ -13,7 +13,7 @@
 
             string expected = "ds050502";
 
-            AdcGetPeriod outData = new AdcGetPeriod(adcIndex, sampleCount, secondeBetweenRead);
+            AdcGetPeriodOutData outData = new AdcGetPeriodOutData(adcIndex, sampleCount, secondeBetweenRead);
             string actual = outData.GetMessage();
 
             Assert.AreEqual(expected, actual);

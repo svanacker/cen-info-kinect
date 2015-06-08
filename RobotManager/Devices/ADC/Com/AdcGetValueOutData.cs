@@ -3,12 +3,12 @@
     using Communication.Out;
     using Communication.Utils;
 
-    public class AdcGetValue : OutData
+    public class AdcGetValueOutData : OutData
     {
         public const string HEADER = "dr";
         public int AdcIndex { get; private set; }
 
-        public AdcGetValue(int adcIndex)
+        public AdcGetValueOutData(int adcIndex)
             : base()
         {
             AdcIndex = adcIndex;

@@ -2,14 +2,14 @@
 {
     using NUnit.Framework;
 
-    class AdcGetAllTest
+    public class AdcGetAllOutDataTest
     {
         [Test]
-        public void ShouldGenerateGetAdcllOutData()
+        public void ShouldGenerateGetAdcValueOutData()
         {
             string expected = "dR";
 
-            AdcGetAll outData = new AdcGetAll();
+            AdcGetAllOutData outData = new AdcGetAllOutData();
             string actual = outData.GetMessage();
 
             Assert.AreEqual(expected, actual);

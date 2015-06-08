@@ -3,14 +3,14 @@
     using Communication.Out;
     using Communication.Utils;
 
-    public class AdcGetPeriod : OutData
+    public class AdcGetPeriodOutData : OutData
     {
         public const string HEADER = "ds";
         public int AdcIndex { get; private set; }
         public int SampleCount { get; private set; }
         public int SecondeBetweenRead { get; private set; }
 
-        public AdcGetPeriod(int adcIndex, int sampleCount, int secondeBetweenRead)
+        public AdcGetPeriodOutData(int adcIndex, int sampleCount, int secondeBetweenRead)
             : base()
         {
             AdcIndex = adcIndex;

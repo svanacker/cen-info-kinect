@@ -2,16 +2,16 @@
 {
     using NUnit.Framework;
 
-    class AdcGetValueTest
+    public class AdcGetValueOutDataTest
     {
         [Test]
         public void ShouldGenerateGetAdcValueOutData()
         {
-            int adr = 05; //index de l'adresse que l'on veut lire
+            int address = 05; //index de l'adresse que l'on veut lire
 
             string expected = "dr05";
 
-            AdcGetValue outData = new AdcGetValue(adr);
+            AdcGetValueOutData outData = new AdcGetValueOutData(address);
             string actual = outData.GetMessage();
             Assert.AreEqual(expected, actual);
         }
