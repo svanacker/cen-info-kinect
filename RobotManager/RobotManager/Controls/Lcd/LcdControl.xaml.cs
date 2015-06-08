@@ -1,11 +1,10 @@
-﻿using System;
-
-using System.Windows;
-using System.Windows.Controls;
-
-namespace Org.Cen.RobotManager.Controls.Lcd
+﻿namespace Org.Cen.RobotManager.Controls.Lcd
 {
     using Devices.Lcd.Com;
+    using System;
+
+    using System.Windows;
+    using System.Windows.Controls;
 
     /// <summary>
     /// Interaction logic for LcdControl.xaml
@@ -25,15 +24,25 @@ namespace Org.Cen.RobotManager.Controls.Lcd
         private void LcdSendButton_Click(object sender, RoutedEventArgs e)
         {
             string text = LcdTextBox.Text;
+            int textLength = text.Length;
+            int textSend = 0;
 
-            while (text.Length > 0)
+            while (textLength != 0)
             {
-                int length = Math.Min(text.Length, LcdWriteData.MESSAGE_LENGTH);
-                string data = text.Substring(0, length);
+                int length = Math.Min(textLength, LcdWriteData.MESSAGE_LENGTH);
+                string data = text.Substring(textSend, length);
                 LcdWriteData outData = new LcdWriteData(length, data);
                 string message = outData.GetMessage();
                 Main.SendText(message);
+                textSend += length;
+                textLength -= length;
             }
+        }
+        private void LcdClearButton_Click(object sender, RoutedEventArgs e)
+        {
+            LcdClearData outData = new LcdClearData();
+            string messageClear = outData.GetMessage();
+            Main.SendText(messageClear);
         }
     }
 }

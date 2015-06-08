@@ -60,6 +60,7 @@
     <Compile Include="Clock\Com\ClockWriteDateOutData.cs" />
     <Compile Include="Clock\Com\ClockWriteHourOutData.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteOutData.cs" />
+    <Compile Include="Lcd\Com\LcdClearData.cs" />
     <Compile Include="Lcd\Com\LcdWriteData.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionReadOutData.cs" />
     <Compile Include="Motion\Simple\Com\MotionCalibrationOutData.cs" />
