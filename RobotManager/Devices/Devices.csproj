@@ -57,6 +57,8 @@
     <Compile Include="Clock\Com\ClockWriteDateOutData.cs" />
     <Compile Include="Clock\Com\ClockWriteHourOutData.cs" />
     <Compile Include="Eeprom\Com\EepromReadByteOutData.cs" />
+    <Compile Include="I2c\Master\Com\I2CMasterWriteCharOutData.cs" />
+    <Compile Include="I2c\Master\Com\I2CMasterDebugEnableOutData.cs" />
     <Compile Include="Lcd\Com\LcdClearData.cs" />
     <Compile Include="Lcd\Com\LcdWriteData.cs" />
     <Compile Include="Motion\Position\Com\WheelPositionReadOutData.cs" />
@@ -170,7 +172,9 @@
       <Name>Communication</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="I2c\Slave\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

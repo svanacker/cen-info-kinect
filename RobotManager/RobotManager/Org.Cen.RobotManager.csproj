@@ -115,6 +115,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Controls\I2C\Master\I2cMasterUserControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Lcd\LcdControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -153,6 +157,9 @@
     </Compile>
     <Compile Include="Controls\Clock\ClockControl.xaml.cs">
       <DependentUpon>ClockControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\I2C\Master\I2cMasterUserControl.xaml.cs">
+      <DependentUpon>I2cMasterUserControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Controls\InputHistory.cs" />
     <Compile Include="Controls\InputHistoryItem.cs" />
@@ -361,7 +368,7 @@
   <ItemGroup>
     <Folder Include="Controls\Beacon\" />
     <Folder Include="Controls\Eeprom\" />
-    <Folder Include="Controls\I2C\" />
+    <Folder Include="Controls\I2C\Slave\" />
     <Folder Include="Controls\Log\" />
     <Folder Include="Controls\Motion\" />
     <Folder Include="Controls\Relay\" />
