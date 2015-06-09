@@ -3,8 +3,7 @@
     using Communication.In;
     using global::System.Collections.Generic;
     using global::System.Globalization;
-    using Org.Cen.Com;
-    using Org.Cen.Com.In;
+    using Cen.Com;
 
     public class ClockReadInDataDecoder : IInDataDecoder
     {

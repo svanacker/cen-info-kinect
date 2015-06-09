@@ -107,6 +107,10 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Page Include="Controls\ADC\Adc.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Controls\Battery\BatteryControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -152,6 +156,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Bindings\TimerDataItem.cs" />
+    <Compile Include="Controls\ADC\Adc.xaml.cs">
+      <DependentUpon>Adc.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Controls\Battery\BatteryControl.xaml.cs">
       <DependentUpon>BatteryControl.xaml</DependentUpon>
     </Compile>
