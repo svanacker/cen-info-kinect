@@ -1,6 +1,7 @@
 ﻿
 namespace Org.Cen.RobotManager.Pages
 {
+    using Devices.Motion.Pid.Com;
     using Devices.Pid;
     using Devices.Pid.Com;
     using OxyPlot;

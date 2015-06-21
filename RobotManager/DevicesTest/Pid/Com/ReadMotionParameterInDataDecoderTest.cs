@@ -1,5 +1,6 @@
 ﻿namespace Org.Cen.Devices.Pid.Com
 {
+    using Motion.Pid.Com;
     using NUnit.Framework;
 
     public class ReadMotionParameterInDataDecoderTest

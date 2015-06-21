@@ -31,7 +31,7 @@
             {
                 int length = Math.Min(textLength, LcdWriteData.MESSAGE_LENGTH);
                 string data = text.Substring(textSend, length);
-                LcdWriteData outData = new LcdWriteData(length, data);
+                LcdWriteData outData = new LcdWriteData(data);
                 string message = outData.GetMessage();
                 Main.SendText(message);
                 textSend += length;

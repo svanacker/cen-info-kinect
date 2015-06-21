@@ -1,10 +1,11 @@
-﻿namespace Org.Cen.Devices.Pid.Com
+﻿namespace Org.Cen.Devices.Motion.Pid.Com
 {
+    using Cen.Com;
     using Communication.In;
+    using Devices.Pid;
+    using Devices.Pid.Com;
     using global::System.Collections.Generic;
     using global::System.Globalization;
-    using Org.Cen.Com;
-    using Org.Cen.Com.In;
 
     public class MotionParameterReadInDataDecoder : IInDataDecoder
     {
