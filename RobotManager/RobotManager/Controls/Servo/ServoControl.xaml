@@ -14,9 +14,10 @@
                 <Label Content="Target Position : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,41,0,0"/>
                 <Slider x:Name="ServoTargetPositionSlider" HorizontalAlignment="Left" Margin="114,41,0,0" VerticalAlignment="Top" Width="250" TickFrequency="100" Value="1500"  Minimum="500" Maximum="2500" TickPlacement="BottomRight" SmallChange="10" ValueChanged="ServoTargetPositionSlider_OnValueChanged" Thumb.DragStarted="ServoTargetPositionSlider_OnDragStarted" Thumb.DragCompleted="ServoTargetPositionSlider_OnDragCompleted"/>
                 <Label x:Name="ServoTargetPositionValueLabel" Content="1500" HorizontalAlignment="Left" Margin="380,37,0,0" VerticalAlignment="Top"/>
-                <Label Content="Current Position : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10,72,0,0"/>
-                <Label x:Name="ServoCurrentPositionValueLabel" Content="1500" HorizontalAlignment="Left" Margin="380,68,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.444,3.385"/>
-                <Button x:Name="ReadServoParametersButton" Content="Read" HorizontalAlignment="Left" Height="27" VerticalAlignment="Top" Width="75" Margin="200,67,0,0" RenderTransformOrigin="0.6,1.037" Click="ReadServoParametersButton_Click"/>
+                <Label Content="Current Position : " HorizontalAlignment="Left" VerticalAlignment="Top" Margin="195,63,0,0"/>
+                <Label x:Name="ServoCurrentPositionValueLabel" Content="1500" HorizontalAlignment="Left" Margin="300,64,0,0" VerticalAlignment="Top" RenderTransformOrigin="-6.444,3.385"/>
+                <Button x:Name="ReadServoParametersButton" Content="Read" HorizontalAlignment="Left" Height="26" VerticalAlignment="Top" Width="57" Margin="352,63,0,0" RenderTransformOrigin="0.6,1.037" Click="ReadServoParametersButton_Click"/>
+                <Button x:Name="ResetServoPositionButton" Content="Reset" HorizontalAlignment="Left" Height="25" VerticalAlignment="Top" Width="57" Margin="25,63,0,0" RenderTransformOrigin="0.6,1.037" Click="ResetServoPositionButton_OnClick"/>
             </Grid>
         </GroupBox>
     </Grid>

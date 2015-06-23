@@ -128,5 +128,10 @@
             WriteServo();
             targetPositionDragStarted = false;
         }
+
+        private void ResetServoPositionButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            ServoTargetPositionSlider.Value = 1500;
+        }
     }
 }
