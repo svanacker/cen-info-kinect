@@ -8,7 +8,7 @@
         public void ShouldGenerateLcdClearData()
         {
             string expected = "Lc";
-            LcdClearData outData = new LcdClearData();
+            LcdClearOutData outData = new LcdClearOutData();
             string actual = outData.GetMessage();
             Assert.AreEqual(expected, actual);
         }

@@ -5,7 +5,7 @@
     using global::System.Text;
     using Org.Cen.Communication.Utils;
     
-    public class LcdWriteData : OutData
+    public class LcdWriteOutData : OutData
     {
         public const string HEADER = "Lw";
 
@@ -13,7 +13,7 @@
 
         public const int MESSAGE_LENGTH = 4;
 
-        public LcdWriteData(string data)
+        public LcdWriteOutData(string data)
             : base()
         {
             if (data.Length > MESSAGE_LENGTH)

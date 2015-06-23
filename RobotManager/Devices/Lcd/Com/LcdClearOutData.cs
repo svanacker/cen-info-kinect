@@ -2,11 +2,11 @@
 {
     using Communication.Out;
 
-    public class LcdClearData : OutData
+    public class LcdClearOutData : OutData
     {
         public const string HEADER = "Lc";
 
-        public LcdClearData()
+        public LcdClearOutData()
             : base()
         {
             

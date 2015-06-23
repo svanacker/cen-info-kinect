@@ -11,7 +11,7 @@
             String dataExpected = "defg";
             //Result expected : Lw0464656667 because lenght = 4, d in hexa is 64 e is 65...
 
-            LcdWriteData writeData = new LcdWriteData(dataExpected);
+            LcdWriteOutData writeData = new LcdWriteOutData(dataExpected);
 
             string result = writeData.GetMessage();
 
@@ -25,7 +25,7 @@
             String dataExpected = "hi";
             //Result expected : Lw68690000 because h = 68, i = 69 and nothing = 0000.
 
-            LcdWriteData writeData = new LcdWriteData(dataExpected);
+            LcdWriteOutData writeData = new LcdWriteOutData(dataExpected);
 
             string result = writeData.GetMessage();
 

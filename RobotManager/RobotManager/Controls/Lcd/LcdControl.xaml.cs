@@ -29,9 +29,9 @@
 
             while (textLength != 0)
             {
-                int length = Math.Min(textLength, LcdWriteData.MESSAGE_LENGTH);
+                int length = Math.Min(textLength, LcdWriteOutData.MESSAGE_LENGTH);
                 string data = text.Substring(textSend, length);
-                LcdWriteData outData = new LcdWriteData(data);
+                LcdWriteOutData outData = new LcdWriteOutData(data);
                 string message = outData.GetMessage();
                 Main.SendText(message);
                 textSend += length;
@@ -40,7 +40,7 @@
         }
         private void LcdClearButton_Click(object sender, RoutedEventArgs e)
         {
-            LcdClearData outData = new LcdClearData();
+            LcdClearOutData outData = new LcdClearOutData();
             string messageClear = outData.GetMessage();
             Main.SendText(messageClear);
         }
