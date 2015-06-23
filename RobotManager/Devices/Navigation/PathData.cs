@@ -9,13 +9,13 @@
         public Location Location2 { get; private set; }
 
         /** Cost of the path. */
-        public uint Cost { get; private set; }
+        public int Cost { get; private set; }
 
         /** Distance of the control point P0-P1 in cm. */
-        public sbyte ControlPointDistance1 { get; private set; }
+        public int ControlPointDistance1 { get; private set; }
 
         /** Distance of the control point P1->P3 in cm. */
-        public sbyte ControlPointDistance2 { get; private set; }
+        public int ControlPointDistance2 { get; private set; }
 
         /** angle1 (when at P0) in decidegree. */
         public int Angle1 { get; private set; }
@@ -24,16 +24,16 @@
         public int Angle2 { get; private set; }
 
         /** AccelerationFactor factor (min = 1, max = 16). */
-        public byte AccelerationFactor { get; private set; }
+        public int AccelerationFactor { get; private set; }
 
         /** Speed factor (min = 1, max = 16). */
-        public byte SpeedFactor { get; private set; }
+        public int SpeedFactor { get; private set; }
 
         /** When reversed, the path must be done backward. */
         public bool MustGoBackward { get; private set; }
 
-        public PathData(Location location1, Location location2, uint cost, sbyte controlPointDistance1
-            , sbyte controlPointDistance2, int angle1, int angle2, byte accelerationFactor, byte speedFactor,
+        public PathData(Location location1, Location location2, int cost, int controlPointDistance1
+            , int controlPointDistance2, int angle1, int angle2, byte accelerationFactor, int speedFactor,
             bool mustGoBackward)
         {
             Location1 = location1;

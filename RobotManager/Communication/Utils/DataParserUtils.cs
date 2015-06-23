@@ -3,6 +3,7 @@ namespace Org.Cen.Communication.Utils
     using System;
     using System.Globalization;
     using Com;
+    using System.Text;
 
     /**
      * Set of function useful to read and write data.
@@ -10,13 +11,11 @@ namespace Org.Cen.Communication.Utils
     public class DataParserUtils
     {
 
-        /**
-	 * Format a boolean value into a string with a length. false is converted as
-	 * 0, true as 1
-	 * 
-	 * @param value
-	 *            the boolean value
-	 */
+        /// 
+        /// Format a boolean value into a string with a length. false is converted as
+        /// 0, true as 1
+        /// @param value the boolean value
+        ///
 
         public static string format(bool value)
         {
@@ -30,16 +29,35 @@ namespace Org.Cen.Communication.Utils
             }
         }
 
-        /**
-	 * Format a value as int into a hexadecimal string with a length.
-	 * 
-	 * @param value
-	 *            the value to convert
-	 * @param len
-	 *            the length of the string
-	 * @return
-	 */
+        public static string FormatFixedCharArray(string s)
+        {
+            // char array for convert message to write on the LCD
+            char[] character = s.ToCharArray();
 
+            // String to return
+            StringBuilder result = new StringBuilder();
+
+            // Add the letters to write
+            for (int i = 0; i < 4; i++)
+            {
+                if (i < character.Length)
+                {
+                    string charAsHexString = DataParserUtils.format((int)character[i], 2);
+                    result.Append(charAsHexString);
+                }
+                else
+                {
+                    result.Append("00");
+                }
+            }
+            return result.ToString();
+        }
+
+        ///
+        /// Format a value as int into a hexadecimal string with a length.
+        /// @param value the value to convert
+        /// @param len the length of the string
+        /// @return
         public static string format(int value, int len)
         {
             String result = value.ToString("X" + len);

@@ -64,6 +64,10 @@
     <Compile Include="Motion\Position\Com\WheelPositionDataInDecoderTest.cs" />
     <Compile Include="Motion\Simple\Com\MotionCalibrationOutDataTest.cs" />
     <Compile Include="Motion\Simulation\MotionSimulationWriteOutDataTest.cs" />
+    <Compile Include="Navigation\Com\NavigationPathInDataDecoderTest.cs" />
+    <Compile Include="Navigation\Com\NavigationLocationInDataDecoderTest.cs" />
+    <Compile Include="Navigation\Com\NavigationPathOutDataTest.cs" />
+    <Compile Include="Navigation\Com\NavigationLocationOutDataTest.cs" />
     <Compile Include="Pid\Com\PidDebugDataDecoderTest.cs" />
     <Compile Include="Pid\Com\PidDebugOutDataTest.cs" />
     <Compile Include="Pid\Com\PidReadInDataDecoderTest.cs" />
