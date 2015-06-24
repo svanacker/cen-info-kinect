@@ -36,6 +36,11 @@
             ConsolePage.ContentTextBox.Text += text + "\n";
         }
 
+        private void SelectPort(string portName)
+        {
+            COMComboBox.SelectedItem = portName;
+        }
+
         private void LoadPortNames()
         {
             string[] portNames = SerialPort.GetPortNames();
@@ -72,13 +77,25 @@
                 
             }
             // TODO Manage I2C and Simulation => Create a Factory
-            CommunicationManager = new ComManager(this, selectedItem.ToString());
+            string portName = selectedItem.ToString();
+            CommunicationManager = new ComManager(this, portName);
+
+            Properties.Settings.Default["DefaultCom"] = portName;
+            Properties.Settings.Default.Save();
         }
 
+        private void DisconnectButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            COMComboBox.SelectedItem = null;
+            Properties.Settings.Default["DefaultCom"] = "";
+            Properties.Settings.Default.Save();
+        }
 
         private void Window_Loaded(object sender, RoutedEventArgs e)
         {
             LoadPortNames();
+            string defaultPortName = (string) Properties.Settings.Default["DefaultCom"];
+            SelectPort(defaultPortName);
         }
 
         private void AttachToRobotSimulatorButton_Click(object sender, RoutedEventArgs e)
@@ -107,5 +124,6 @@
                 motorBoardProcess.Kill();
             }
         }
+
     }
 }

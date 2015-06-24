@@ -10,7 +10,6 @@
     using Devices.Motion.Position;
     using Devices.Motion.Position.Com;
     using Org.Com.Devices.Motion.Position;
-    using UartWPFTest;
 
     /// <summary>
     /// Interaction logic for PositionControl.xaml

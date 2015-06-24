@@ -1,8 +1,9 @@
-﻿<Application x:Class="UartWPFTest.App"
+﻿<Application x:Class="Org.Cen.RobotManager.App"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:properties="clr-namespace:Org.Cen.RobotManager.Properties"
              StartupUri="MainWindow.xaml">
     <Application.Resources>
-         
+        <properties:Settings x:Key="Settings" />
     </Application.Resources>
 </Application>

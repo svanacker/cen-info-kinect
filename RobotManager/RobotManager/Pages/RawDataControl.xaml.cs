@@ -1,6 +1,5 @@
 ﻿namespace Org.Cen.RobotManager.Pages
 {
-    using UartWPFTest;
     using System.Windows;
     using System.Windows.Controls;
 

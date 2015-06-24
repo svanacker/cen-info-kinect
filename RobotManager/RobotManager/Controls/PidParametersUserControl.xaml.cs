@@ -5,7 +5,6 @@
     using System.Windows.Controls;
     using Devices.Pid;
     using Devices.Pid.Com;
-    using UartWPFTest;
     using Xceed.Wpf.Toolkit;
 
     /// <summary>

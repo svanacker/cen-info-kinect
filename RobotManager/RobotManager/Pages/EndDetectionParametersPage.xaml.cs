@@ -2,7 +2,6 @@
 {
     using Devices.Pid;
     using Devices.Pid.Com;
-    using UartWPFTest;
     using System.Windows;
     using System.Windows.Controls;
 

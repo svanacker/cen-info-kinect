@@ -6,7 +6,6 @@ namespace Org.Cen.RobotManager.Pages
     using Devices.Pid.Com;
     using OxyPlot;
     using OxyPlot.Series;
-    using UartWPFTest;
     using System.Windows;
     using System.Windows.Controls;
 

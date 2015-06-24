@@ -11,8 +11,7 @@
     using OxyPlot;
     using OxyPlot.Axes;
     using OxyPlot.Series;
-    using UartWPFTest;
-
+    
     /// <summary>
     /// Interaction logic for PIDGraphControl.xaml
     /// </summary>

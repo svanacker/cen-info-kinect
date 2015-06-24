@@ -6,7 +6,6 @@
     using Devices.Robot;
     using Devices.Robot.End.Com;
     using Devices.Robot.Start.Com;
-    using UartWPFTest;
 
     /// <summary>
     /// Interaction logic for MatchPage.xaml

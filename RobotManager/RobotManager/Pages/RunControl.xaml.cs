@@ -4,7 +4,6 @@
     using System.Windows.Controls;
     using Devices.Motion.Simple.Com;
     using Devices.Motor.Com;
-    using UartWPFTest;
 
     /// <summary>
     /// Interaction logic for RunControl.xaml

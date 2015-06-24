@@ -8,7 +8,6 @@
 
     using Devices.Eeprom.Com;
     using Graph;
-    using UartWPFTest;
 
     /// <summary>
     /// Interaction logic for EepromControl.xaml

@@ -49,7 +49,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup>
-    <StartupObject>UartWPFTest.App</StartupObject>
+    <StartupObject>Org.Cen.RobotManager.App</StartupObject>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="nunit.framework">

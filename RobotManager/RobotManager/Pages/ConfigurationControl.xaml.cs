@@ -3,8 +3,7 @@
     using System.Windows;
     using System.Windows.Controls;
     using Devices.Robot.Configuration.Com;
-    using UartWPFTest;
-
+    
     /// <summary>
     /// Interaction logic for ConfigurationPage.xaml
     /// </summary>
