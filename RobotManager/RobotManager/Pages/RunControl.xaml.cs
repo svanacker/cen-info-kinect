@@ -111,7 +111,7 @@
         private void MotorGoButton_Click(object sender, RoutedEventArgs e)
         {
             int leftValue = (int)MotorLeftSlider.Value;
-            int rightValue = (int)MotorLeftSlider.Value;
+            int rightValue = (int)MotorRightSlider.Value;
             MotorWriteOutData outData = new MotorWriteOutData(leftValue, rightValue);
 
             string command = outData.GetMessage();
