@@ -67,15 +67,18 @@
         private void COMComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             object selectedItem = COMComboBox.SelectedItem;
-            if (selectedItem == null)
-            {
-                return;
-            }
             if (CommunicationManager != null)
             {
                 CommunicationManager.Dispose();
-                
+
             }
+            if (selectedItem == null)
+            {
+                Properties.Settings.Default["DefaultCom"] = "";
+                Properties.Settings.Default.Save();
+                return;
+            }
+
             // TODO Manage I2C and Simulation => Create a Factory
             string portName = selectedItem.ToString();
             CommunicationManager = new ComManager(this, portName);
