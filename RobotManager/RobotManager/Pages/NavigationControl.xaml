@@ -10,7 +10,7 @@
 
     <Grid Margin="0,0,-461,0">
         <Label Content="Location List :" HorizontalAlignment="Left" Margin="10,0,0,0" VerticalAlignment="Top"/>
-        <DataGrid x:Name="LocationGrid" Width="150" HorizontalAlignment="Left" Margin="0, 25, 0, 0" >
+        <DataGrid x:Name="LocationGrid" Width="150" HorizontalAlignment="Left" Margin="0,25,0,76" >
             <DataGrid.Columns>
                 <DataGridTextColumn Binding="{Binding Name}" Header="Name" Width="60"/>
                 <DataGridTextColumn Binding="{Binding X}" Header="X" Width="40"/>
@@ -31,6 +31,8 @@
                 <DataGridTextColumn Binding="{Binding MustGoBackward}" Header="MustGoBackward"/>
             </DataGrid.Columns>
         </DataGrid>
-        <pages:GameBoardControl/>
+        <pages:GameBoardControl x:Name="GameBoard" Margin="600, 0, 0, 0"/>
+        <Button x:Name="LocationClearButton" Content="Clear" HorizontalAlignment="Left" Margin="104,268,0,0" VerticalAlignment="Top" Width="46" Click="LocationClearButton_Click"/>
+        <Button x:Name="LocationCopyCanvasButton" Content="Copy Canvas" HorizontalAlignment="Left" Margin="10,268,0,0" VerticalAlignment="Top" Width="82" Click="LocationCopyCanvasButton_Click"/>
     </Grid>
 </UserControl>

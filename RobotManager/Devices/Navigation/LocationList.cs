@@ -4,25 +4,30 @@
 
     public class LocationList : IEnumerable<Location>
     {
-        private readonly IList<Location> list;
+        public IList<Location> Elements { get; set; }
 
-        public int Count { get { return list.Count; } }
+        public int Count { get { return Elements.Count; } }
 
         public LocationList()
         {
-            list = new List<Location>();
+            Elements = new List<Location>();
         }
 
-        public Location AddLocation(string name, int x, int y)
+        public void Add(Location location)
+        {
+            Elements.Add(location);
+        }
+
+        public Location Add(string name, int x, int y)
         {
             Location result = new Location(name, x, y);
-            list.Add(result);
+            Elements.Add(result);
             return result;
         }
 
         public IEnumerator<Location> GetEnumerator()
         {
-            return list.GetEnumerator();
+            return Elements.GetEnumerator();
         }
 
         global::System.Collections.IEnumerator global::System.Collections.IEnumerable.GetEnumerator()

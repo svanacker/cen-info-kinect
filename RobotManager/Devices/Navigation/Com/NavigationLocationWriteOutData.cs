@@ -19,9 +19,9 @@
         {
             StringBuilder s = new StringBuilder();
 
-            s.Append(DataParserUtils.FormatFixedCharArray(Path.Location1.Name));
+            s.Append(DataParserUtils.FormatFixedCharArray(Path.LocationName1));
             s.Append("-");
-            s.Append(DataParserUtils.FormatFixedCharArray(Path.Location2.Name));
+            s.Append(DataParserUtils.FormatFixedCharArray(Path.LocationName2));
             s.Append("-");
             s.Append(DataParserUtils.format(Path.Cost, 4));
             s.Append("-");

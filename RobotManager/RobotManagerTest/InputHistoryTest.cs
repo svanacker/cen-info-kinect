@@ -1,8 +1,7 @@
-﻿namespace RobotManagerTest
+﻿namespace Org.Cen.RobotManager
 {
     using NUnit.Framework;
     using Org.Cen.RobotManager.Controls;
-    using Org.Cen.RobotManager;
 
     public class InputHistoryTest
     {

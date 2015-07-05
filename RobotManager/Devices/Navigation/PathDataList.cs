@@ -1,26 +1,28 @@
 ﻿namespace Org.Cen.Devices.Navigation
 {
     using global::System.Collections.Generic;
+    using global::System.Xml.Serialization;
 
     public class PathDataList : IEnumerable<PathData>
     {
-        private readonly IList<PathData> list;
+        [XmlArray("PathCollection")]
+        public IList<PathData> PathCollection { get; set; }
 
-        public int Count { get { return list.Count; } }
+        public int Count { get { return PathCollection.Count; } }
 
         public PathDataList()
         {
-            list = new List<PathData>();
+            PathCollection = new List<PathData>();
         }
 
-        public void AddPathData(PathData pathData)
+        public void Add(PathData pathData)
         {
-            list.Add(pathData);
+            PathCollection.Add(pathData);
         }
 
         public IEnumerator<PathData> GetEnumerator()
         {
-            return list.GetEnumerator();
+            return PathCollection.GetEnumerator();
         }
 
         global::System.Collections.IEnumerator global::System.Collections.IEnumerable.GetEnumerator()

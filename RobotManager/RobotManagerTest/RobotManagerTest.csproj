@@ -46,11 +46,16 @@
   <ItemGroup>
     <Compile Include="InputHistoryTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerializationTest.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\Devices\Devices.csproj">
+      <Project>{C4F8C935-2BC1-4A9C-9A79-60317233CE74}</Project>
+      <Name>Devices</Name>
+    </ProjectReference>
     <ProjectReference Include="..\RobotManager\Org.Cen.RobotManager.csproj">
       <Project>{9A06EA1F-424C-4E36-AEB6-0A6BACA55DC6}</Project>
       <Name>Org.Cen.RobotManager</Name>

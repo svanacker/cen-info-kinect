@@ -80,6 +80,8 @@
     <Compile Include="Motion\Simulation\MotionSimulationData.cs" />
     <Compile Include="Motor\Com\MotorStopOutData.cs" />
     <Compile Include="Motor\Com\MotorWriteOutData.cs" />
+    <Compile Include="Navigation\Com\NavigationLocationReadInDataDecoder.cs" />
+    <Compile Include="Navigation\Com\NavigationLocationReadInData.cs" />
     <Compile Include="Navigation\Com\NavigationPathListCountInDataDecoder.cs" />
     <Compile Include="Navigation\Com\NavigationPathListCountInData.cs" />
     <Compile Include="Navigation\Com\NavigationLocationListCountInData.cs" />

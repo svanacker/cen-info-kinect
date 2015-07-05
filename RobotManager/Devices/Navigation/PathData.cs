@@ -1,43 +1,63 @@
 ﻿namespace Org.Cen.Devices.Navigation
 {
+    using global::System.Xml.Serialization;
+
     public class PathData
     {
         /** first point (with name). */
-        public Location Location1 { get; private set; }
+        [XmlAttribute("locationName1")]
+        public string LocationName1 { get; set; }
 
         /** second point (with name). */
-        public Location Location2 { get; private set; }
-
-        /** Cost of the path. */
-        public int Cost { get; private set; }
+        [XmlAttribute("locationName2")]
+        public string LocationName2 { get; set; }
 
         /** Distance of the control point P0-P1 in cm. */
-        public int ControlPointDistance1 { get; private set; }
+        [XmlAttribute("cp1")]
+        public int ControlPointDistance1 { get; set; }
 
         /** Distance of the control point P1->P3 in cm. */
-        public int ControlPointDistance2 { get; private set; }
+        [XmlAttribute("cp2")]
+        public int ControlPointDistance2 { get; set; }
+
+        /** Cost of the path. */
+        [XmlAttribute("cost")]
+        public int Cost { get; set; }
 
         /** angle1 (when at P0) in decidegree. */
-        public int Angle1 { get; private set; }
+        [XmlAttribute("angle1")]
+        public int Angle1 { get; set; }
 
         /** angle2 (when at P3) in decidegree. */
-        public int Angle2 { get; private set; }
+        [XmlAttribute("angle2")]
+        public int Angle2 { get; set; }
 
         /** AccelerationFactor factor (min = 1, max = 16). */
-        public int AccelerationFactor { get; private set; }
+        [XmlAttribute("aFactor")]
+        public int AccelerationFactor { get; set; }
 
         /** Speed factor (min = 1, max = 16). */
-        public int SpeedFactor { get; private set; }
+        [XmlAttribute("sFactor")]
+        public int SpeedFactor { get; set; }
 
         /** When reversed, the path must be done backward. */
-        public bool MustGoBackward { get; private set; }
+        [XmlAttribute("backward")]
+        public bool MustGoBackward { get; set; }
 
-        public PathData(Location location1, Location location2, int cost, int controlPointDistance1
-            , int controlPointDistance2, int angle1, int angle2, byte accelerationFactor, int speedFactor,
+        /**
+         * For serialization only !
+         */
+        public PathData()
+        {
+
+        }
+
+        public PathData(string locationName1, string locationName2, int cost, int controlPointDistance1
+            , int controlPointDistance2, int angle1, int angle2, int accelerationFactor, int speedFactor,
             bool mustGoBackward)
         {
-            Location1 = location1;
-            Location2 = location2;
+            LocationName1 = locationName1;
+            LocationName2 = locationName2;
             Cost = cost;
             ControlPointDistance1 = controlPointDistance1;
             ControlPointDistance2 = controlPointDistance2;

@@ -21,9 +21,7 @@
         {
             string expected = "NP41424344-45464748-1234-5678-0123-0234-0456-01-02-1";
 
-            Location location1 = new Location("ABCD", 0, 0);
-            Location location2 = new Location("EFGH", 0, 0);
-            PathData pathData = new PathData(location1, location2, 0x1234, 0x5678, 0x0123, 0x0234, 0x0456, 0x01, 0x02,
+            PathData pathData = new PathData("ABCD", "EFGH", 0x1234, 0x5678, 0x0123, 0x0234, 0x0456, 0x01, 0x02,
                 true);
 
             NavigationPathWriteOutData outData = new NavigationPathWriteOutData(pathData);

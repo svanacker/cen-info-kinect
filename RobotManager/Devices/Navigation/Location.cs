@@ -1,6 +1,7 @@
 ﻿namespace Org.Cen.Devices.Navigation
 {
     using global::System;
+    using global::System.Xml.Serialization;
 
     public class Location
     {
@@ -9,18 +10,28 @@
         /// <summary>
         /// Name of the point
         /// </summary>
-        public string Name { get; private set; }
- 
+        [XmlAttribute("name")]
+        public string Name { get; set; }
+
         /// <summary>
         /// The coordinates in x.
         /// </summary>
-        public int X { get; private set; }
-        
+        [XmlAttribute("x")]
+        public int X { get; set; }
+
         /// <summary>
         /// The coordinates in y.
         /// </summary>
-        public int Y { get; private set; }
+        [XmlAttribute("y")]
+        public int Y { get; set; }
 
+        /// <summary>
+        /// For Serialization only ! Do not use.
+        /// </summary>
+        public Location()
+        {
+
+        }
         /// <summary>
         /// 
         /// </summary>
