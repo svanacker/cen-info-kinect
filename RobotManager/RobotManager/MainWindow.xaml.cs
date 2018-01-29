@@ -128,5 +128,9 @@
             }
         }
 
+        private void Navigation_Loaded(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

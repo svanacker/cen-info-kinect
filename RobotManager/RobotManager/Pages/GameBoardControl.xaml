@@ -14,88 +14,128 @@
                     <TranslateTransform x:Name="GameBoardScaleTranslateTransform" Y="300"/>
                 </TransformGroup>
             </Canvas.RenderTransform>
-            <Rectangle x:Name="Border" Stroke="Black" Width="200" Height="300"/>
+            <!-- Start Area -->
+            <Rectangle x:Name="GreenStartArea" Fill="Green" Height="40" Stroke="Black" Width="65"/>
+            <Rectangle x:Name="OrangeStartArea" Fill="Orange" Height="40" Stroke="Black" Canvas.Bottom="0" Width="65"/>
 
-            <Rectangle x:Name="CenterGreenRectangle" Fill="Green" Height="118" Stroke="Black" Canvas.Left="83" Canvas.Top="91" Width="50"/>
-            <Rectangle x:Name="RightGreenRectangle" Fill="Green" Height="80" Stroke="Black" RadiusX="10" RadiusY="10" Width="20" Canvas.Top="110" Canvas.Left="180" />
+            <!-- Building Zone -->
+            <Rectangle x:Name="BuildingZoneGreen" Fill="Gray" Height="64" Stroke="Green" Canvas.Top="40" Width="18"/>
+            <Rectangle x:Name="BuildingZoneOrange" Fill="Gray" Height="64" Stroke="Orange" Canvas.Bottom="40" Width="18"/>
 
-            <!-- Step -->
-            <Rectangle x:Name="YellowStep" Fill="Yellow" Height="53" Stroke="Black" Canvas.Top="97" Width="58"/>
-            <Rectangle x:Name="GreenStep" Fill="Green" Height="53" Stroke="Black" Canvas.Top="150" Width="58"/>
+            <!-- Garbage Area -->
+            <Rectangle x:Name="OrangeGarbage" Fill="Gray" Height="60" Stroke="Orange" Canvas.Right="0" Canvas.Top="90" Width="25"/>
+            <Rectangle x:Name="GreenGarbage" Fill="Gray" Height="60" Stroke="Green" Canvas.Right="0" Canvas.Bottom="90" Width="25"/>
 
-            <!-- Area Green -->
-            <Rectangle x:Name="CinemaAreaLeftYellow" Fill="Yellow" Height="40" Stroke="Black" Canvas.Left="40" Canvas.Top="260" Width="40"/>
-            <Ellipse x:Name="StartAreaCircleGreen" Fill="Green" Height="40" Stroke="Black" Canvas.Left="80" Canvas.Top="235" Width="40"/>
-            <Rectangle x:Name="StartAreaGreen" Fill="Green" Height="40" Stroke="Black" Canvas.Left="80" Canvas.Top="260" Width="40"/>
-            <Rectangle x:Name="CinemaAreaRightYellow" Fill="Yellow" Height="40" Stroke="Black" Canvas.Left="120" Canvas.Top="260" Width="40"/>
-            <Rectangle x:Name="StartLineHorizontalGreen" Fill="Black" Height="2" Stroke="Black" Canvas.Left="82" Canvas.Top="245" Width="80"/>
-            <Rectangle x:Name="StartLineVerticalGreen" Fill="Black" Width="2" Stroke="Black" Canvas.Left="185" Canvas.Bottom="40" Height="40"/>
-            <Rectangle x:Name="ClapGreen1" Fill="Green" Width="5" Canvas.Right="0" Canvas.Bottom="25" Height="16"/>
-            <Rectangle x:Name="ClapGree3" Fill="Yellow" Width="5" Canvas.Right="0" Canvas.Bottom="55" Height="16"/>
-            <Rectangle x:Name="ClapGreen2" Fill="Green" Width="5" Canvas.Right="0" Canvas.Bottom="85" Height="16"/>
 
-            <Ellipse x:Name="PopCornGreenLeft" Fill="White" Stroke="Black" Canvas.Left="79" Canvas.Bottom="87" Width="8" Height="8" />
-            <Ellipse x:Name="PopCornGreenRight" Fill="White" Stroke="Black" Canvas.Left="171" Canvas.Bottom="21" Width="8" Height="8" />
-            <Ellipse x:Name="PopCornCommon" Fill="White" Stroke="Black" Canvas.Left="161" Canvas.Bottom="146" Width="8" Height="8" />
+            <!-- Follow Lines -->
+            <Rectangle x:Name="GreenSwitchHorizontalLine" Fill="White" Height="6" Stroke="Black" StrokeThickness="2" Canvas.Top="110" Width="34"/>
+            <Rectangle x:Name="OrangeSwitchHorizontalLine" Fill="White" Height="6" Stroke="Black" StrokeThickness="2" Canvas.Top="184" Width="34"/>
+            <Rectangle x:Name="OrangeHorizontalLine" Fill="White" Height="6" Stroke="Black" StrokeThickness="2" Canvas.Left="40" Canvas.Bottom="58" Width="135"/>
+            <Rectangle x:Name="GreenHorizontalLine" Fill="White" Height="6" Stroke="Black" StrokeThickness="2" Canvas.Left="38" Canvas.Top="58" Width="135"/>
+            <Rectangle x:Name="StartVerticalLine" Fill="White" Width="6" Stroke="Black" StrokeThickness="2" Canvas.Left="34" Height="300"/>
+            <Ellipse Width="78" Height="78" Canvas.Right="-39" Canvas.Top="22" Stroke="Black" StrokeThickness="6" Fill="Transparent">
+                <Ellipse.Clip>
+                    <RectangleGeometry Rect="0, 0, 39, 39"/>
+                </Ellipse.Clip>
+            </Ellipse>
+            <Ellipse Width="74" Height="74" Canvas.Right="-37" Canvas.Top="24" Stroke="White" StrokeThickness="2" Fill="Transparent">
+                <Ellipse.Clip>
+                    <RectangleGeometry Rect="0, 0, 37, 37"/>
+                </Ellipse.Clip>
+            </Ellipse>
+            <Ellipse Width="78" Height="78" Canvas.Right="-39" Canvas.Bottom="22" Stroke="Black" StrokeThickness="6" Fill="Transparent">
+                <Ellipse.Clip>
+                    <RectangleGeometry Rect="0, 39, 39, 39"/>
+                </Ellipse.Clip>
+            </Ellipse>
+            <Ellipse Width="74" Height="74" Canvas.Right="-37" Canvas.Bottom="24" Stroke="White" StrokeThickness="2" Fill="Transparent">
+                <Ellipse.Clip>
+                    <RectangleGeometry Rect="0, 37, 37, 37"/>
+                </Ellipse.Clip>
+            </Ellipse>
+            <!-- Distributors -->
+            <Ellipse x:Name="DistributorGreen1" Fill="Green" Stroke="Black" Canvas.Left="81" Width="6" Height="6" Canvas.Top="0" />
+            <Ellipse x:Name="DistributorGreen2" Fill="Green" Stroke="Black" Canvas.Right="0" Width="6" Height="6" Canvas.Bottom="58" />
+            <Ellipse x:Name="DistributorOrange1" Fill="Orange" Stroke="Black" Canvas.Left="81" Width="6" Height="6" Canvas.Bottom="0" />
+            <Ellipse x:Name="DistributorOrange2" Fill="Orange" Stroke="Black" Canvas.Right="0" Width="6" Height="6" Canvas.Top="58" />
 
-            <Ellipse x:Name="StackLeftGreen1" Fill="Green" Stroke="Black" Canvas.Left="17" Canvas.Bottom="7" Width="6" Height="6" />
-            <Ellipse x:Name="StackLeftGreen2" Fill="Green" Stroke="Black" Canvas.Left="7" Canvas.Bottom="82" Width="6" Height="6" />
-            <Ellipse x:Name="StackLeftGreen3" Fill="Green" Stroke="Black" Canvas.Left="17" Canvas.Bottom="82" Width="6" Height="6" />
+            <!-- Left Square 1 -->
+            <Rectangle x:Name="LeftSquare1_N" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="51" Canvas.Top="88"/>
+            <Rectangle x:Name="LeftSquare1_E" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="57" Canvas.Top="82"/>
+            <Rectangle x:Name="LeftSquare1_S" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="51" Canvas.Top="76"/>
+            <Rectangle x:Name="LeftSquare1_O" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="45" Canvas.Top="82"/>
+            <Rectangle x:Name="LeftSquare1_C" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="51" Canvas.Top="82"/>
 
-            <Ellipse x:Name="StackCenterGreen1" Fill="Green" Stroke="Black" Canvas.Left="132" Canvas.Bottom="84" Width="6" Height="6" />
-            <Ellipse x:Name="StackCenterGreen2" Fill="Green" Stroke="Black" Canvas.Left="137" Canvas.Bottom="127" Width="6" Height="6" />
+            <!-- Left Square 2 -->
+            <Rectangle x:Name="LeftSquare2_N" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="51" Canvas.Bottom="88"/>
+            <Rectangle x:Name="LeftSquare2_E" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="57" Canvas.Bottom="82"/>
+            <Rectangle x:Name="LeftSquare2_S" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="51" Canvas.Bottom="76"/>
+            <Rectangle x:Name="LeftSquare2_O" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="45" Canvas.Bottom="82"/>
+            <Rectangle x:Name="LeftSquare2_C" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="51" Canvas.Bottom="82"/>
 
-            <Ellipse x:Name="StackRightGreen1" Fill="Green" Stroke="Black" Canvas.Left="172" Canvas.Bottom="6" Width="6" Height="6" />
-            <Ellipse x:Name="StackRightGreen2" Fill="Green" Stroke="Black" Canvas.Left="182" Canvas.Bottom="6" Width="6" Height="6" />
-            <Ellipse x:Name="StackRightGreen3" Fill="Green" Stroke="Black" Canvas.Left="172" Canvas.Bottom="107" Width="6" Height="6" />
+            <!-- Middle Square 1 -->
+            <Rectangle x:Name="MiddleSquare1_N" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="116" Canvas.Top="33"/>
+            <Rectangle x:Name="MiddleSquare1_E" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="122" Canvas.Top="27"/>
+            <Rectangle x:Name="MiddleSquare1_S" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="116" Canvas.Top="21"/>
+            <Rectangle x:Name="MiddleSquare1_O" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="110" Canvas.Top="27"/>
+            <Rectangle x:Name="MiddleSquare1_C" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="116" Canvas.Top="27"/>
+
+            <!-- Middle Square 2 -->
+            <Rectangle x:Name="MiddleSquare2_N" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="116" Canvas.Bottom="33"/>
+            <Rectangle x:Name="MiddleSquare2_E" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="122" Canvas.Bottom="27"/>
+            <Rectangle x:Name="MiddleSquare2_S" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="116" Canvas.Bottom="21"/>
+            <Rectangle x:Name="MiddleSquare2_O" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="110" Canvas.Bottom="27"/>
+            <Rectangle x:Name="MiddleSquare2_C" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="116" Canvas.Bottom="27"/>
+
+            <!-- Right Square 1 -->
+            <Rectangle x:Name="RightSquare1_N" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="147" Canvas.Top="113"/>
+            <Rectangle x:Name="RightSquare1_E" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="153" Canvas.Top="107"/>
+            <Rectangle x:Name="RightSquare1_S" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="147" Canvas.Top="101"/>
+            <Rectangle x:Name="RightSquare1_O" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="141" Canvas.Top="107"/>
+            <Rectangle x:Name="RightSquare1_C" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="147" Canvas.Top="107"/>
+
+            <!-- Right Square 1 -->
+            <Rectangle x:Name="RightSquare2_N" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="147" Canvas.Bottom="113"/>
+            <Rectangle x:Name="RightSquare2_E" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="153" Canvas.Bottom="107"/>
+            <Rectangle x:Name="RightSquare2_S" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="147" Canvas.Bottom="101"/>
+            <Rectangle x:Name="RightSquare2_O" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="141" Canvas.Bottom="107"/>
+            <Rectangle x:Name="RightSquare2_C" Fill="Gray" Height="6" Width="6" Stroke="Black" Canvas.Left="147" Canvas.Bottom="107"/>
 
             <!-- Path -->
-            <!--<Path x:Name="StartToGreen2Path" Stroke="#22000000" StrokeThickness="35" Data="M 100,283   C100,200   150,215   180,215" />-->
-            <Path x:Name="StartToGreen1Path" Visibility="Visible" Stroke="#22000000" StrokeThickness="35" Data="M 100,270   C100,200   170,215   180,275" StrokeEndLineCap="Round" StrokeStartLineCap="Round" />
-            <!-- Rotation -->
-            <!-- Go Back -->
-            <!--<Path x:Name="Green2ToGreen1Path" Stroke="#22000000" StrokeThickness="35" Data="M 180,215   180,230   180,250   180,270" />-->
-            <Path x:Name="Green1ToGreen2Path" Visibility="Visible" Stroke="#22000000" StrokeThickness="35" Data="M 180,275   180,250   180,230   180,195"  StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
-            <!-- Rotation -->
-            <Path x:Name="Green2ToStartFarPath" Visibility="Visible" Stroke="#22000000" StrokeThickness="35" Data="M 180,195   C110,220   100,220   100,270"  StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
-            <!-- Rotation -->
-            <Path x:Name="StartFarPath" Visibility="Visible" Stroke="#22000000" StrokeThickness="35" Data="M 100,270   C100,200   180,100   180,70"  StrokeEndLineCap="Round" StrokeStartLineCap="Round"/>
+            <Path x:Name="StartToGreenDistributor1Path" Visibility="Visible" Stroke="#22FF0000" StrokeThickness="35" Data="M 41.4,15.4  C51.4,25.4   62,35   75,18" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Canvas.Left="0" Canvas.Top="0" />
+            <Path x:Name="GreenDistributor1ToBeePath" Visibility="Visible" Stroke="#2200FF00" StrokeThickness="35" Data="M 75,18  C20,130  170,20  185,20" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Canvas.Left="0" Canvas.Top="0" />
+            <Path x:Name="BeeToGreenDistributor2Path" Visibility="Visible" Stroke="#220000FF" StrokeThickness="35" Data="M 185,20  C130,20  20,210  185,239" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Canvas.Left="0" Canvas.Top="0" />
+            <Path x:Name="BeeToGreenBuildingAreaPath" Visibility="Visible" Stroke="#22FF0000" StrokeThickness="35" Data="M 185,20  C180,30  80,120  15,80" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Canvas.Left="0" Canvas.Top="0" />
+            <Path x:Name="GreenBuildingAreaToSwitch1Path" Visibility="Visible" Stroke="#220000FF" StrokeThickness="35" Data="M15,80  C20,90  50,113  15,113" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Canvas.Left="0" Canvas.Top="0" />
+            <Path x:Name="Switch1ToGreenDistributor2Path" Visibility="Visible" Stroke="#22FFFF00" StrokeThickness="35" Data="M15,113  C50,113  50,180  185,239" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Canvas.Left="0" Canvas.Top="0" />
+            <Path x:Name="GreenDistributor2ToGarbageAreaFrontPath" Visibility="Visible" Stroke="#22FF00FF" StrokeThickness="35" Data="M185,239  C80,180  165,200  160,170" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Canvas.Left="0" Canvas.Top="0" />
+            <Path x:Name="  " Visibility="Visible" Stroke="#2200FFFF" StrokeThickness="35" Data="M160,170  C120,170  100,100  80,50" StrokeEndLineCap="Round" StrokeStartLineCap="Round" Canvas.Left="0" Canvas.Top="0" />
 
-            <!-- Area Yellow -->
-            <Rectangle x:Name="CinemaAreaLeftGreen" Fill="Green" Height="40" Stroke="Black" Canvas.Left="40" Canvas.Top="0" Width="40"/>
-            <Ellipse x:Name="StartAreaCircleYellow" Fill="Yellow" Height="40" Stroke="Black" Canvas.Left="80" Canvas.Top="25" Width="40"/>
-            <Rectangle x:Name="StartAreaYellow" Fill="Yellow" Height="40" Stroke="Black" Canvas.Left="80" Canvas.Top="0" Width="40"/>
-            <Rectangle x:Name="CinemaAreaRightGreen" Fill="Green" Height="40" Stroke="Black" Canvas.Left="120" Canvas.Top="0" Width="40"/>
-            <Rectangle x:Name="StartLineHorizontalYellow" Fill="Black" Height="2" Stroke="Black" Canvas.Left="82" Canvas.Top="55" Width="80"/>
-            <Rectangle x:Name="StartLineVerticalYellow" Fill="Black" Width="2" Stroke="Black" Canvas.Left="185" Canvas.Top="40" Height="40"/>
-            <Rectangle x:Name="ClapYellow1" Fill="Yellow" Width="5" Canvas.Right="0" Canvas.Top="25" Height="16"/>
-            <Rectangle x:Name="ClapGreen3" Fill="Green" Width="5" Canvas.Right="0" Canvas.Top="55" Height="16"/>
-            <Rectangle x:Name="ClapYellow2" Fill="Yellow" Width="5" Canvas.Right="0" Canvas.Top="85" Height="16"/>
-
-            <Ellipse x:Name="PopCornYellowLeft" Fill="White" Stroke="Black" Canvas.Left="79" Canvas.Top="87" Width="8" Height="8" />
-            <Ellipse x:Name="PopCornYellowRight" Fill="White" Stroke="Black" Canvas.Left="171" Canvas.Top="21" Width="8" Height="8" />
-
-            <Ellipse x:Name="StackLeftYellow1" Fill="Yellow" Stroke="Black" Canvas.Left="17" Canvas.Top="7" Width="6" Height="6" />
-            <Ellipse x:Name="StackLeftYellow2" Fill="Yellow" Stroke="Black" Canvas.Left="7" Canvas.Top="82" Width="6" Height="6" />
-            <Ellipse x:Name="StackLeftYellow3" Fill="Yellow" Stroke="Black" Canvas.Left="17" Canvas.Top="82" Width="6" Height="6" />
-
-            <Ellipse x:Name="StackCenterYellow1" Fill="Yellow" Stroke="Black" Canvas.Left="132" Canvas.Top="84" Width="6" Height="6" />
-            <Ellipse x:Name="StackCenterYellow2" Fill="Yellow" Stroke="Black" Canvas.Left="137" Canvas.Top="127" Width="6" Height="6" />
-
-            <Ellipse x:Name="StackRightYellow1" Fill="Yellow" Stroke="Black" Canvas.Left="172" Canvas.Top="6" Width="6" Height="6" />
-            <Ellipse x:Name="StackRightYellow2" Fill="Yellow" Stroke="Black" Canvas.Left="182" Canvas.Top="6" Width="6" Height="6" />
-            <Ellipse x:Name="StackRightYellow3" Fill="Yellow" Stroke="Black" Canvas.Left="172" Canvas.Top="107" Width="6" Height="6" />
-
-            <Grid x:Name="RobotGrid" Width="30.8">
-                <Path x:Name="Robot" Data="M-6.4,-15.4, +6.4,-15.4, +6.4,+15.4, -6.4,+15.4, -15.4,+6.4, -15.4,-6.4, -6.4,-15.4" Fill="#FFF4F4F5" Stretch="Fill" Stroke="Black" Width="30.8"/>
+            <!-- Big Robot -->
+            <Grid x:Name="BigRobotGrid" Width="30.8" Height="30.8" Canvas.Left="0" Canvas.Top="0">
+                <Path x:Name="BigRobot" Data="M-6.4,-15.4, +15.4,-15.4, +15.4,+15.4, -6.4,+15.4, -15.4,+6.4, -15.4,-6.4, -6.4,-15.4" Fill="#FFF4F4F5" Stretch="Fill" Stroke="Black" Height="30.8" Width="30.8"/>
                 <Grid.RenderTransform>
                     <TransformGroup>
                         <!-- To Center the robot -->
-                        <TranslateTransform Y="-15.4"/>
+                        <TranslateTransform Y="-15.4" X="0"/>
                         <!-- Rotation around the center -->
-                        <RotateTransform x:Name="RobotPositionRotateTransform" Angle="90"/>
+                        <RotateTransform x:Name="BigRobotPositionRotateTransform" Angle="45"/>
                         <!-- Real Position -->
-                        <TranslateTransform x:Name="RobotPositionTranslateTransform" X="100" Y="20"/>
+                        <TranslateTransform x:Name="BigRobotPositionTranslateTransform" X="30" Y="5"/>
+                    </TransformGroup>
+                </Grid.RenderTransform>
+            </Grid>
+            <!-- Small Robot -->
+            <Grid x:Name="SmallRobotGrid" Width="20" Height="20" Canvas.Left="0" Canvas.Top="0">
+                <Rectangle x:Name="SmallRobot" Fill="Gray" Height="20" Width="20" Stroke="Black" Canvas.Left="0" Canvas.Top="0"/>
+                <Grid.RenderTransform>
+                    <TransformGroup>
+                        <!-- To Center the robot -->
+                        <TranslateTransform Y="0" X="0"/>
+                        <!-- Rotation around the center -->
+                        <RotateTransform x:Name="SmallRobotPositionRotateTransform" Angle="90"/>
+                        <!-- Real Position -->
+                        <TranslateTransform x:Name="SmallRobotPositionTranslateTransform" X="20" Y="0"/>
                     </TransformGroup>
                 </Grid.RenderTransform>
             </Grid>

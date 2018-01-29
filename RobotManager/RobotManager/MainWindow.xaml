@@ -46,7 +46,7 @@
                 <controls:EepromControl x:Name="Eeprom"/>
             </TabItem>
             <TabItem Header="Navigation">
-                <controls:NavigationControl x:Name="Navigation"/>
+                <controls:NavigationControl x:Name="Navigation" Loaded="Navigation_Loaded"/>
             </TabItem>
             <TabItem Header="Servos">
                 <controls:ServoListControl x:Name="ServoList"/>
